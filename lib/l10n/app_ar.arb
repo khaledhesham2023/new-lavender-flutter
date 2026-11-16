@@ -1,0 +1,618 @@
+{
+  "@@locale": "ar",
+  "aboutApp": "عن التطبيق",
+  "aboutDoctor": "عن الطبيب :",
+  "account": "الحساب",
+  "accountCreatedSuccessfully": "لقد تم إنشاء حسابك بنجاح",
+  "addComment": "اضف تعليقك..",
+  "addYourBookReviewBody": "قم باضافة تقييمك و مشاركة رأيك في الطبيب",
+  "addYourBookReviewTitle": "اضف تقييمك للطبيب",
+  "agreeToThe": "توافق على",
+  "all": "الكل",
+  "allDoctors": "جميع الاطباء {p1}",
+  "@allDoctors": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "allMedicalSpecialities": "جميع التخصصات الطبية",
+  "allReservations": "جميع الحجوزات",
+  "allRightsReserved": "كل الحقوق محفوظة لتطبيق طبي 2025",
+  "allYourMedicalServicesInOnePlace": "كل خدماتك الطبية في مكان واحد",
+  "appName": "Lavender Land Clinics",
+  "appProvides": "يوفر التطبيق أيضًا إمكانية استكشاف العروض والخصومات، وتلقي\n إشعارات بمواعيد الحجوزات والتنبيهات المهمة، مع مرونة في إدارة\n المواعيد وإعادة جدولتها عند الحاجة",
+  "appointmentCanceledSuccessfully": "تم الغاء الحجز بنجاح",
+  "appointmentChangedSuccessfully": "تم تغيير الموعد بنجاح",
+  "appointmentsAvailable": "المواعيد المتاحة",
+  "arabic": "العربية",
+  "areYouSureAboutYourDecisionBody": "سيتم فقدان جميع بياناتك ولن تتمكن من استعادتها\n بعد الحذف.",
+  "areYouSureAboutYourDecisionTitle": "هل أنت متأكد من قرارك؟",
+  "availableDoctorsWithNumber": "{p1} دكتور متوفر",
+  "@availableDoctorsWithNumber": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "availableTimes": "الاوقات المٌتاحة",
+  "back": "العودة",
+  "backToHomePage": "الرئيسية",
+  "backToLogin": "العودة للتسجيل",
+  "basedOnNoOfReviews": "بناءً على {p1} تقييمًا",
+  "@basedOnNoOfReviews": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "bookAnAppointment": "حجز موعد",
+  "bookAnOffer": "حجز عرض",
+  "bookEasilyAnytime": "احجز بسهولة في أي وقت",
+  "bookNormalExaminationWithValue": "حجز كشف عادي بتكلفة {p1} ر.س",
+  "@bookNormalExaminationWithValue": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "bookNow": "احجز الان",
+  "bookYourAppointments": "احجز مواعيدك، استشر أطباء متخصصين، وتابع صحتك بكل سهولة من خلال تطبيقنا الطبي",
+  "bookingAppointments": "مواعيد الحجز",
+  "bookingDetails": "تفاصيل الحجز",
+  "bookingDetailsWithColon": "تفاصيل الحجز:",
+  "bookingDetailsWithValue": "تفاصيل الحجز {p1}",
+  "@bookingDetailsWithValue": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "bookings": "الحجوزات",
+  "browseTheListOfDoctorsAndServices": "استعرض قائمة الأطباء والخدمات، اختر الأنسب لك، وحدد الموعد الذي يناسبك بضغطة زر، بدون مكالمات أو انتظار\n طويل",
+  "calender": "التقويم",
+  "cancel": "الغاء",
+  "cancelBooking": "الغاء الحجز",
+  "canceled": "ملغية",
+  "certificates": "الشهادات المهنية :",
+  "changeAppointment": "تغيير الموعد",
+  "changeImage": "تغيير الصورة",
+  "changePasswordBody": "أدخل كلمة مرور قوية تحتوي على 8 أحرف على الأقل،\n وأرقام ورموز",
+  "checkTheDoctors": "تفقد الاطباء",
+  "choosePaymentMethod": "اختر طريقة الدفع",
+  "chooseSubSpecialities": "اختر تخصص فرعي او اكثر",
+  "chooseTheLanguage": "اختر اللغة التي ترغب بها",
+  "codeNotCorrect": "عذراً, الكود غير صحيح",
+  "commentAddedSuccessfully": "تم اضافة تعليقك بنجاح",
+  "complainSentSuccessfully": "تم ارسال الشكوي بنجاح",
+  "completed": "مكتملة",
+  "confirm": "تأكيد",
+  "confirmCancelAppointmentBody": "انت الان علي وشك الغاء الحجز الحالي .. لن تستطيع التراجع عن هذه الخطوة و يمكنك بدأ حجز جديد",
+  "confirmCancelAppointmentTitle": "هل انت متأكد من الغاء الحجز ..؟",
+  "confirmChangeAppointmentBody": "انت الان علي وشك تغيير موعد الحجز الحالي .. هل انت متأكد من هذا التغيير ؟",
+  "confirmChangeAppointmentTitle": "هل انت متأكد من تغيير الموعد ..؟",
+  "confirmNewPassword": "تأكيد كلمة المرور الجديدة*",
+  "confirmPassword": "تأكيد كلمة المرور*",
+  "confirmed": "مؤكدة",
+  "connectionError": "حدثت مشكلة في الاتصال!",
+  "contactUs": "تواصل معنا",
+  "continueAsGuest": "المُتابعة كزائر",
+  "copied": "تم النسخ",
+  "createAccount": "انشاء حساب",
+  "creditCards": "بطاقات ائتمان",
+  "currentPassword": "كلمة المرور الحالية*",
+  "dataModifiedSuccessfully": "تم تعديل البيانات بنجاح",
+  "date": "التاريخ:",
+  "dateAndTime": "الوقت و التاريخ",
+  "deleteAccount": "حذف الحساب",
+  "dentistry": "طب اسنان",
+  "dermatology": "جلدية",
+  "details": "التفاصيل :",
+  "discount": "نسبة الخصم",
+  "discountWithPercent": "{p1}%",
+  "@discountWithPercent": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "doYouWantToLeaveNowBody": "يمكنك العودة في أي وقت للاستمتاع بخدماتنا مجددًا!",
+  "doYouWantToLeaveNowTitle": "هل تود المغادرة الآن؟",
+  "doctor": "طبيب",
+  "doctorDetails": "تفاصيل الطبيب",
+  "doctorF": "دكتورة",
+  "doctorIsOffToday": "الطبيب مغلق اليوم",
+  "doctorM": "دكتور",
+  "doctors": "الاطباء",
+  "downloadThisApp": "حمل هذا التطبيق",
+  "downloadingWithValue": "جاري تحميل {p1}",
+  "@downloadingWithValue": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "editBooking": "تعديل الحجز",
+  "elgbeelElsnaaya": "الجبيل الصناعية",
+  "email": "البريد الالكتروني",
+  "emailMustStartWithALetter": "يجب أن يبدأ البريد الإلكتروني بخطاب.",
+  "english": "English",
+  "enterADescription": "ادخل وصف حالتك الطبية",
+  "enterFullName": "ادخل الاسم بالكامل",
+  "enterMessageHeadline": "ادخل عنوان الرسالة",
+  "enterNewPasswordBody": "احفظ كلمة المرور الجديدة في مكان أمن, إذا نسيتها , عليك\n أن تفعل كلمة المرور المنسية مرة أخرى.",
+  "enterNewPasswordTitle": "ادخل كلمة المرور الجديدة",
+  "enterOtpBody": "ادخل الكود الذي تم ارساله الي رقم الهاتف {p1} لتأكيد الحساب الخاص بك",
+  "@enterOtpBody": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "enterOtpTitle": "ادخل رمز التأكيد",
+  "enterPhoneNumber": "ادخل رقم الهاتف",
+  "enterTheCodeSentToThePhoneNumber": "ادخل الكود الذي تم ارساله الي رقم الهاتف",
+  "enterTheConfirmationCode": "ادخل رمز التأكيد",
+  "enterValidEmail": "قم بادخال بريد الكتروني صحيح",
+  "enterYourMedicalCondition": "ادخل وصف حالتك الطبية",
+  "enterYourMessage": "ادخل رسالتك",
+  "enterYourPassword": "ادخل كلمة المرور",
+  "examinationBook": "حجز كشف",
+  "examinationDuration": "مدة الكشف:",
+  "examinationDurationNoColon": "مدة الكشف",
+  "examinationPrice": "سعر الكشف:",
+  "examinationPriceNoColon": "سعر الكشف",
+  "favoriteDoctors": "الاطباء المُفضلين",
+  "favorites": "المفضلة",
+  "featuredMedicalOffers": "عروض طبي المميزة",
+  "filterBy": "فلتر حسب",
+  "filterByDate": "تصفية حسب التاريخ",
+  "filterByType": "تصفية حسب",
+  "forgetPassword": "نسيت كلمة المرور ؟",
+  "forgetPasswordBody": "قم بإدخال رقم الهاتف لاستلام كود يمكنك من خلاله تغيير\n كلمة المرور",
+  "forgetPasswordTitle": "نسيت كلمة المرور ..!",
+  "fromToValues": "من {p1} الى {p2}",
+  "@fromToValues": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      },
+      "p2": {
+        "type": "String"
+      }
+    }
+  },
+  "fullName": "الاسم بالكامل",
+  "fullNameMustBeAtLeast2Letters": "يجب أن يتكون الاسم الكامل من حرفين على الأقل",
+  "gender": "النوع",
+  "generalInfo": "معلومات عامة",
+  "generalMedicine": "طب عام",
+  "getTheOffer": "الحصول علي العرض",
+  "gifFilesAreNotAllowed": "ملفات GIF غير مسموح بها",
+  "goToReservations": "الذهاب الي الحجوزات",
+  "goodAfternoon": "مساء الخير {p1}",
+  "@goodAfternoon": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "goodEvening": "مساء الخير {p1}",
+  "@goodEvening": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "goodMorning": "صباح الخير {p1}",
+  "@goodMorning": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "highToLowPrice": "السعر من الاعلى الي الاقل",
+  "highToLowRate": "التقييم من الاعلي الي الاقل",
+  "home": "الرئيسية",
+  "hour": "ساعة",
+  "howAreYouFeelingToday": "كيف تشعر اليوم ..؟",
+  "howCanWeHelp": "كيف يمكننا المساعدة؟",
+  "invalidImage": "الصورة غير صالحة",
+  "keepADigitalMedicalRecordThatIncludesYourPreviousAppointments": "احتفظ بسجل طبي رقمي يشمل مواعيدك السابقة، نتائج تحاليلك، وتوصيات الأطباء، مع إشعارات لمتابعة حالتك\n الصحية باستمرار",
+  "laboratory": "التحاليل",
+  "language": "اللغة",
+  "last12Months": "اخر 12 شهر",
+  "last3Months": "اخر 3 شهور",
+  "last6Months": "اخر 6 شهور",
+  "latestSearchResults": "“نتائج البحث الاخيرة”",
+  "login": "تسجيل الدخول",
+  "loginScreenBody": "من فضلك ادخل رقم الهاتف و كلمة المرور لتسجيل\n دخولك",
+  "loginScreenTitle": "قم بتسجيل دخولك الان ..!",
+  "loginStart": "تسجيل دخول",
+  "logout": "تسجيل الخروج",
+  "lowToHighPrice": "السعر من الاقل الي الاعلي",
+  "lowToHighRate": "التقييم من الاقل الي الاعلي",
+  "makeSureYouCancelYourAccountBecauseYouWonTBeAbleToLogBackInWithThisInformation": ">تأكد من إلغاء رحلتك، لأنه لن يكون بإمكانك تسجيل الدخول مرة أخرى باستخدام هذه المعلومات",
+  "medicalConditionDescription": "وصف الحالة المرضية",
+  "medicalOffers": "عروض طبي",
+  "medicalReport": "التقرير الطبي المُرفق",
+  "medicalReportPdf": "تقرير طبي PDF",
+  "mental": "صحة نفسية",
+  "messageHeadline": "عنوان الرسالة",
+  "messageHeadlineMustBeAtLeast2Letters": "يجب أن يتكون عنوان الرسالة من حرفين على الأقل",
+  "messageMustBeAtLeast2Letters": "يجب أن تكون الرسالة مكونة من حرفين على الأقل",
+  "minValues": "{p1} دقيقة",
+  "@minValues": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "minute": "دقيقة",
+  "modifyPersonalInformation": "تعديل البيانات الشخصية",
+  "mogamaaElkhazamyEltiby": "مجمع أرض الخزامي الطبي",
+  "more": "المزيد",
+  "moreThanOneTimeWithValue": "{p1} مرات",
+  "@moreThanOneTimeWithValue": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "mostPopularSpecialities": "التخصصات الاكثر اختياراً",
+  "myBookings": "حجوزاتي",
+  "myOffers": "عروضي",
+  "myReports": "تقاريري",
+  "name": "الاسم*",
+  "nameMustBeAtLeast2Characters": "يجب أن يكون الاسم حرفين على الأقل.",
+  "nameMustStartWithALetter": "يجب أن يبدأ الاسم بحرف.",
+  "newPassword": "كلمة المرور الجديدة*",
+  "next": "التالي",
+  "noAddress": "لا توجد عناويين",
+  "noAddressesAddedYet": "لم تتم إضافة أي عناوين حتى الآن",
+  "noAppFoundToHandleTheRequest": "لا يوجد تطبيق لفتح هذا الطلب",
+  "noAppFoundToOpenMaps": "لم يتم العثور على تطبيق لفتح الخرائط",
+  "noAvailableTimesToday": "لا يوجد اوقات متاحة هذا اليوم ..!",
+  "noDataToPreview": "لا يوجد بيانات للعرض",
+  "noDescription": "لا يوجد وصف للحالة المرضية",
+  "noDoctorsInThisSpeciality": "لا يوجد أطباء",
+  "noDoctorsInThisSpecialityBody": "لا يوجد أطباء في هذا التخصص",
+  "noDoctorsToFilter": "لا يوجد اطباء لعمل فلتر",
+  "noFavoriteDoctorsBody": "يمكنك اضافة اي طبيب مفضل لك و سوف يظهر هنا في قائمة المفضلات",
+  "noFavoriteDoctorsTitle": "لا يوجد لديك اطباء مفضلين لديك",
+  "noInformationAvailable": "لا توجد معلومات متاحة",
+  "noInternetConncetion": "لا يوجد اتصال بالإنترنت",
+  "noInternetConncetionBody": "من فضلك اتصل بالإنترنت أولاً",
+  "noInternetConncetionBody2": "تم قطع الاتصال بالانترنت , تأكد من الاتصال و اعد المحاولة في وقت لاحق",
+  "noMyOffersBody": "في حالة اشتراكك في عروض طبي سوف يمكنك تفقد جميع العروض الخاصة بك هنا",
+  "noMyOffersTitle": "لا يوجد عروض لديك",
+  "noNeedToSearchInMultiplePlaces": "لا داعي للبحث في أماكن متعددة! نوفر لك إمكانية حجز\n الأطباء، التحاليل، الأشعة، والاستشارات الطبية بسهولة وسرعة من مكانك",
+  "noNotificationsBody": "عند حدوث أي تغييرات، سيتم إبلاغك هنا عبر الإشعارات",
+  "noNotificationsTitle": "لا يوجد اشعارات بعد",
+  "noOffersBody": "لا توجد عروض متاحة في هذا التخصص حاليا",
+  "noOffersTitle": "لا يوجد عروض متاحة",
+  "noReportsBody": "سيظهر هنا جميع التقارير المرفوعة من خلال الاطباء الخاصين بك",
+  "noReportsTitle": "لا يوجد تقارير لديك",
+  "noReservations": "لا يوجد حجوزات قمت بها حتي الان ..!",
+  "noReservationsBody": "عند حدوث أي تغييرات، سيتم إبلاغك عبر الإشعارات",
+  "noReservationsSearchResultsBody": "لا يوجد حجوزات باسم الطبيب المذكور في محرك البحث",
+  "noReservationsSearchResultsTitle": "لا يوجد حجوزات",
+  "noReservationsTitle": "لا يوجد لديك حجوزات بعد",
+  "noReviews": "لا يوجد تقييمات حتي الان ..!",
+  "noSearchResultsDoctorsBody": "يرجى محاولة البحث عن اطباء آخرين",
+  "noSearchResultsSpecialtiesBody": "يرجى محاولة البحث عن تخصصات أخرى",
+  "noSearchResultsTitle": "آسف لم نتمكن من العثور على ما تبحث عنه ..",
+  "noSubspecialtiesBody": "لا يوجد تخصصات فرعية لهذا التخصص",
+  "noSubspecialtiesTitle": "لا يوجد تخصصات فرعية",
+  "noSuitableAppFoundToOpenTheLink": "لم يتم العثور على تطبيق مناسب لفتح الرابط",
+  "none": "لا يوجد",
+  "normalReservations": "حجوزات عادية",
+  "notifications": "الاشعارات",
+  "nowLoading": "جاري التحميل",
+  "numberOfOfferBookings": "عدد مرات حجز العرض",
+  "numberOfSessions": "عدد الجلسات :",
+  "numberOfSessionsNoColon": "عدد الجلسات",
+  "numberOfSessionsWithValue": "({p1}/{p2}) جلسة",
+  "@numberOfSessionsWithValue": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      },
+      "p2": {
+        "type": "String"
+      }
+    }
+  },
+  "off": "خصم",
+  "offer": "حجز عرض",
+  "offerDetails": "تفاصيل العرض",
+  "offerObtainedSuccessfully": "تم الحصول علي العرض بنجاح",
+  "offerValidityPeriod": "فترة سريان العرض",
+  "offersReservations": "حجوزات عروض",
+  "oneTime": "مرة واحدة",
+  "openCalender": "فتح التقويم",
+  "openWith": "فتح بواسطة",
+  "optional": "(اختياري)",
+  "orYouCan": "أو يمكنك",
+  "ordinal1": "الأولى",
+  "ordinal10": "العاشرة",
+  "ordinal100": "المائة",
+  "ordinal11": "الحادية عشرة",
+  "ordinal12": "الثانية عشرة",
+  "ordinal13": "الثالثة عشرة",
+  "ordinal14": "الرابعة عشرة",
+  "ordinal15": "الخامسة عشرة",
+  "ordinal16": "السادسة عشرة",
+  "ordinal17": "السابعة عشرة",
+  "ordinal18": "الثامنة عشرة",
+  "ordinal19": "التاسعة عشرة",
+  "ordinal2": "الثانية",
+  "ordinal20": "العشرون",
+  "ordinal3": "الثالثة",
+  "ordinal30": "الثلاثون",
+  "ordinal4": "الرابعة",
+  "ordinal40": "الأربعون",
+  "ordinal5": "الخامسة",
+  "ordinal50": "الخمسون",
+  "ordinal6": "السادسة",
+  "ordinal60": "الستون",
+  "ordinal7": "السابعة",
+  "ordinal70": "السبعون",
+  "ordinal8": "الثامنة",
+  "ordinal80": "الثمانون",
+  "ordinal9": "التاسعة",
+  "ordinal90": "التسعون",
+  "ourVision": "رؤيتنا:",
+  "ourVisionDescription": "نسعى إلى إحداث ثورة في المجال الطبي الرقمي، من خلال تقديم خدمات متكاملة تسهّل على الجميع الوصول إلى الرعاية الصحية بأعلى جودة وأقصى سرعة. رؤيتنا هي أن يصبح الحجز والاستفادة من الخدمات الطبية تجربة سلسة وآمنة، تلبي احتياجات المرضى بكفاءة وراحة",
+  "password": "كلمة المرور",
+  "passwordChangedSuccessfully": "لقد تم تغيير كلمة المرور بنجاح",
+  "passwordChangedSuccessfullyBody": "لقد تم تحديث كلمة السر بنجاح قم بالذهاب الي تسجيل\n الدخول مرة اخري",
+  "passwordChangedSuccessfullyBtn": "العودة لتسجيل الدخول",
+  "passwordChangedSuccessfullyTitle": "تم تحديث كلمة المرور بنجاح",
+  "passwordMustBeAtLeast8CharactersLong": "يجب أن تكون كلمة المرور 8 أحرف على الأقل",
+  "passwordMustStartWithALetter": "يجب أن تبدأ كلمة المرور بحرف أو رقم.",
+  "passwordNotCorrect": "عذراً, كلمة المرور غير صحيحة",
+  "passwordRecoveryBody": "ادخل الكود الذي تم ارساله الي رقم الهاتف {p1} لاسترجاع كلمة المرور الخاصة بك",
+  "@passwordRecoveryBody": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "passwordRecoveryTitle": "استرجاع كلمة المرور",
+  "passwordWithStar": "كلمة المرور*",
+  "paymentSummary": "ملخص الدفع",
+  "pediatrics": "اطفال",
+  "pendingForConfirmation": "قيد التأكيد",
+  "personalInformation": "البيانات الشخصية",
+  "phone": "رقم الهاتف*",
+  "phoneChangedSuccessfully": "لقد تم تغيير رقم الهاتف بنجاح",
+  "phoneExample": "5********",
+  "phoneNotCorrect": "عذراً, رقم الهاتف غير صحيح",
+  "pickUpBookingAppointment": "اختر موعد الحجز",
+  "pickUpRebookingAppointment": "اختر موعد اعادة الحجز",
+  "pleaseAcceptTheTermsAndConditions": "من فضلك وافق على سياسات استخدام التطبيق",
+  "pleaseEnterHowWeCanHelpYou": "يرجى إدخال كيف يمكننا مساعدتك",
+  "pleaseEnterTheMessageHeadline": "يرجى إدخال عنوان الرسالة",
+  "pleaseEnterThePassword": "يرجى إدخال كلمة المرور",
+  "pleaseEnterThePhoneNumber": "يرجى إدخال رقم الهاتف",
+  "pleaseEnterYourName": "الرجاء إدخال اسمك.",
+  "pleaseSelectAppointmentType": "رجاء اختر موعد",
+  "pleaseSelectDay": "رجاء اختار اليوم",
+  "pleaseSelectTime": "رجاء اختار الميعاد",
+  "policyOfUse": "📌سياسة الاستخدام⚖️📜",
+  "priceAfterDiscount": "السعر بعد الخصم",
+  "priceBeforeDiscount": "السعر قبل الخصم",
+  "priceWithValue": "{p1} ر.س",
+  "@priceWithValue": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "privacyPolicy": "سياسة الخصوصية",
+  "processing": "جارية",
+  "quickReplies": "ردود سريعة :",
+  "radiology": "الأشعة",
+  "radiologyAndAnalysisReports": "تقارير الاشعة و التحاليل",
+  "rateBooking": "تقييم الحجز",
+  "rateNumberOfReviewsWithValues": "({p1}) {p2}",
+  "@rateNumberOfReviewsWithValues": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      },
+      "p2": {
+        "type": "String"
+      }
+    }
+  },
+  "rateTheApp": "تقييم التطبيق",
+  "ratesWithValue": "التقييمات {p1}",
+  "@ratesWithValue": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "reReserve": "اعادة حجز",
+  "rebook": "اعادة الحجز",
+  "recentlyAddedDoctors": "الاطباء المضافين حديثاً",
+  "regularMonitoringOfYourHealth": "متابعة دورية لصحتك",
+  "rejected": "مرفوضة",
+  "remainingSessions": "متبقى ({p1}/{p2}) جلسة",
+  "@remainingSessions": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      },
+      "p2": {
+        "type": "String"
+      }
+    }
+  },
+  "remove": "حذف",
+  "removeAll": "حذف الكل",
+  "resend": "إعادة الارسال",
+  "resendWithin": "اعادة الارسال خلال:",
+  "reservationConfirmed": "تم تأكيد الحجز",
+  "reservationRequestSentSuccessfully": "تم ارسال طلب الحجز بنجاح",
+  "reserveConfirmation": "تأكيد الحجز",
+  "retry": "اعادة المحاولة",
+  "reviewed": "تم التقييم",
+  "reviews": "التقييمات",
+  "reviewsTotalNumber": "التقييمات {p1}",
+  "@reviewsTotalNumber": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "reviewsWithNumber": "{p1} تقييم",
+  "@reviewsWithNumber": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "sar": "{p1} ر.س",
+  "@sar": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "saveChanges": "حفظ التغييرات",
+  "search": "بحث",
+  "searchByDoctorsName": "ابحث باسم الطبيب",
+  "searchBySpecialityOrDoctor": "ابحث بالتخصص او اسم الطبيب",
+  "searchIn": "بحث في",
+  "second": "ثانية",
+  "selectedDayNotAvailableYet": "الطبيب غير متاح في ذلك اليوم",
+  "send": "ارسال",
+  "sendOtp": "ارسال الرمز",
+  "serverError": "خطأ في الخادوم",
+  "serverErrorBody": "خطأ في الوصول للشبكة",
+  "serverErrorBody2": "حدث خطـأ ما , تأكد من اتصالك الصحيح و اعد المحاولة في وقت لاحق",
+  "sessionWithValue": "الجلسة {p1}",
+  "@sessionWithValue": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "showAll": "عرض الكل",
+  "showBookings": "حجوزات العروض",
+  "showDetails": "عرض التفاصيل",
+  "showLess": "عرض أقل",
+  "showMore": "عرض المزيد",
+  "showResults": "عرض النتائج",
+  "sideMenu": "القائمة الجانبية",
+  "somethingWrongHappen": "حدث خطأ ما!",
+  "sortBy": "ترتيب حسب",
+  "sortByDate": "ترتيب حسب التاريخ",
+  "sortingBy": "تصنيف حسب",
+  "specialities": "التخصصات",
+  "specialty": "تخصص",
+  "startABetterHealthyJourney": "ابدأ الآن في رحلة صحية أفضل معنا!",
+  "startNow": "ابدأ الان",
+  "startYourHealthJourneyNowBody": "سجل حسابك في دقائق للوصول إلى أفضل الأطباء\n و الخدمات الطبية,و حجز مواعيدك بسهولة تامة",
+  "startYourHealthJourneyNowTitle": "ابدأ رحلتك الصحية الاّن",
+  "subSpecialties": "التخصصات الفرعية",
+  "subscriptionDate": "تاريخ الاشتراك:",
+  "subscriptionDateNoColon": "تاريخ الاشتراك",
+  "termsAndConditions": "الأحكام والشروط",
+  "termsOfUse": "📌شروط الاستخدام⚖️📜",
+  "termsOfUseTitle": "شروط الاستخدام",
+  "text1": "1",
+  "text2": "2",
+  "text3": "3",
+  "text4": "4",
+  "text5": "5",
+  "theConfirmationPasswordDoesNotMatchWithTheOriginalPassword": "كلمة المرور المؤكدة لا تتطابق مع كلمة المرور الأصلية.",
+  "theLinkIsInvalidOrEmpty": "الرابط غير صالح أو غير موجود",
+  "thePhoneNumberIsInvalidPleaseStartWith5": "عذراً، رقم الهاتف غير صالح، يرجى البدء بـ 5",
+  "thePhoneNumberMustBeAtLeast9CharactersLong": "رقم الهاتف يجب أن يكون 9 أرقام بالضبط",
+  "thereAreNoMessagesYet": "لا يوجد رسائل حتي الان",
+  "thisCodeIsInvalidPleaseTryAgain": "هذا الرمز غير صحيح. يُرجى المحاولة مرة أخرى",
+  "thisOfferAppliesOnSpecialty": "هذا العرض ينطبق علي جميع الاطباء في تخصص {p1}",
+  "@thisOfferAppliesOnSpecialty": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "thisOfferNoLongerAvailable": "هذا العرض لم يعد متاحا",
+  "time": "الوقت:",
+  "toConfirmYourAccount": "لتأكيد الحساب الخاص بك",
+  "toRetrieveYourPassword": "لاسترجاع كلمة المرور الخاصة بك",
+  "trySearchForDoctorOrSpeciality": "حاول البحث عن اسم الطبيب او التخصص الطبي",
+  "tvGuestBody": "خطوات بسيطة لحجز كشفك >>",
+  "tvGuestTitle": "سجل دخولك مع فريق طبي المتميز",
+  "unableToGetCurrentLocation": "غير قادر على الحصول على الموقع الحالي",
+  "update": "تعديل",
+  "valid": "صالحة",
+  "waitRememberPassword": "لحظة ! ..تذكرت كلمة المرور",
+  "weightLoss": "تخسيس و تغذية",
+  "welcome": "مرحباً بك {p1}",
+  "@welcome": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "welcomeWithName": "مرحباً بك {p1}",
+  "@welcomeWithName": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "whatAreYouLookingFor": "ما الذي تبحث عنه ؟",
+  "whatDoesTibiAppPresents": "ماذا يقدم تطبيق طبي؟",
+  "whatDoesTibiAppPresentsAnswer": "\"تطبيق \"طبي\" هو منصتك المتكاملة للحصول على الخدمات\n الطبية بسهولة وسرعة. يمكنك من خلاله حجز المواعيد مع الأطباء في مختلف التخصصات، وطلب الفحوصات الطبية\n مثل الأشعة والتحاليل من أفضل المراكز المعتمدة\"",
+  "whatsappNotInstalled": "تطبيق WhatsApp غير مثبت",
+  "whenAnyChangesOccurYouWillBeNotifiedByNotifications": "عند حدوث اي تغيرات سيتم إبلاغك بالإشعارات",
+  "whoAreWe": "من نحن؟",
+  "whoAreWeDescription": "نقدم خدمات طبية متكاملة تشمل حجز الأطباء، الفحوصات، والتحاليل، لنوفر لك رعاية صحية سهلة وسريعة",
+  "whoWeAre": "من نحن",
+  "whyChoosingUs": "لماذا تختارنا:",
+  "whyChoosingUsDescription": "أننا نوفر لك تجربة طبية متكاملة، تجمع بين الراحة، السرعة، والدقة. من خلال منصتنا، يمكنك حجز الأطباء، الفحوصات، والتحاليل بسهولة، مع ضمان أعلى معايير الجودة في الخدمات المقدمة. نحن هنا لجعل الرعاية الصحية أكثر سهولة وأمانًا لك ولعائلتك. 💙",
+  "workingTimes": "مواعيد العمل :",
+  "yearsOfExperience": "سنوات الخبرة",
+  "yesSure": "نعم متأكد",
+  "youCanNoLongerReceiveNotifications": "لن تستطيع استلام اشعرات جديدة , قم بتفعيل الاشعارات",
+  "youDoNotMakeReservationsYetTitle": "لا يوجد حجوزات قمت بها حتي الان ..!",
+  "youHaveToLoginFirstBodyReservationsAndGetNotified": "قم بتسجيل الدخول لتحديد موعدك والبقاء على اطلاع دائم بالإشعارات",
+  "youHaveToLoginFirstBodyReservationsAndTrackFavorites": "قم بتسجيل دخولك او انشاء حسابك حتي يمكنك حجز كشفك و متابعة حجوزاتك او اضافة الاطباء المفضلين لديك",
+  "youHaveToLoginFirstBodyReservationsOrFavorites": "قم بتسجيل دخولك او انشاء حسابك حتي يمكنك حجز كشفك او اضافة الاطباء المفضلين لديك",
+  "youHaveToLoginFirstTitle": "يجب عليك تسجيل الدخول اولاً",
+  "youMustLoginBody": "قم بتسجيل دخولك او انشاء حسابك حتي يمكنك حجز كشفك او اضافة الاطباء المفضلين لديك",
+  "youMustLoginTitle": "يجب عليك تسجيل الدخول اولاً",
+  "yourComplainSentSuccessfully": "تم ارسال الشكوي بنجاح",
+  "yourNextReservation": "حجزك القادم",
+  "yourReservationRequestHasBeenSentSuccessfully": "تم ارسال طلب الحجز بنجاح"
+}

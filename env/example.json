@@ -1,0 +1,6 @@
+{
+  "BASE_URL": "https://example.com/api/",
+  "HOST_URL": "https://example.com",
+  "HOST": "example.com",
+  "PAYMENT_KEY": "sk_test_xxx"
+}
