@@ -59,7 +59,12 @@ class _SuccessDialogState extends State<_SuccessDialog> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Image.asset(AppAssets.successGif, width: 120, height: 120),
+              Image.asset(
+                AppAssets.successGif,
+                width: 120,
+                height: 120,
+                errorBuilder: (_, _, _) => const SizedBox(width: 120, height: 120),
+              ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 16, 16, 50),
                 child: Text(

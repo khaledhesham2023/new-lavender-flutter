@@ -104,3 +104,14 @@ frame, the success dialog and the must-login sheet. Building them once now keeps
 - `convertTo24HourTime` name is inverted (returns 12-hour). Keep the Android names so screen tasks can map 1:1.
 - Prices/rates use English digits even in Arabic UI.
 - Do not import anything from `features/` into `core/`.
+
+## Notes
+- Done: `ApiResult`/`ApiFailure` (with `cast<R>()`), date/number/validator utils, and every widget under Build; `initializeDateFormatting()` added to `main.dart`. analyze, test and debug APK pass.
+- Step 20 (temporary on-device demo) was not run: no Android device was available. Its checks are covered by `test/core/widgets/shared_widgets_test.dart` (half star, spinner/ignored taps, StateView variants, toast show/replace/auto-remove, success dialog closes after 2 s). Still unchecked visually: toast look vs Android, bottom sheet dim/rounding, RTL arrow mirroring.
+- `convertTo24HourTime`, `reverseConvertTo24HourTime`, `convertDateToReadableFormat` take a `lang` argument; all emit English digits (Android's reverse helper kept locale digits).
+- `stripLeadingNonAlnum` drops only the first char (matches the Android text watchers). `validators.dart` also has `isValidEmail` and `isValidKsaNumber`.
+- `formatDecimal`/`formatPercentage` return only the number text; wrap with `l10n.priceWithValue` / `l10n.sar` in screens.
+- `StateView`: `serverError`, `connectionLost`, `empty`, `forFailure`; the serverError button shows only when `onRetry` is given. `StarRating` is stateless: the parent keeps `score` and updates it in `onChanged`; touch input picks whole stars only (task file). Check `app:halfStars` in the Android review layouts before adding half-star input.
+- `ProgressButton` shows a spinner instead of the text while loading and takes the grey disabled look; `small` = 50 high / 10sp text.
+- `must_login_sheet.dart` uses the literal `'/auth/start'` until T10 adds `Routes`.
+- The success dialog's gif has an `errorBuilder`, so a missing asset does not crash it.
