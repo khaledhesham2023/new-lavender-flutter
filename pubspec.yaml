@@ -42,6 +42,8 @@ dependencies:
     sdk: flutter
   intl: ^0.20.3
   cupertino_ui: ^1.1.6
+  flutter_svg: ^2.4.0
+  lottie: ^3.8.2
 
 dev_dependencies:
   flutter_test:
@@ -53,7 +55,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^6.0.0
-  xml: ^7.1.0
+  xml: ^7.0.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -66,6 +68,35 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+
+  assets:
+    - assets/svg/
+    - assets/images/
+    - assets/images/ar/
+    - assets/gifs/
+    - assets/lottie/
+
+  fonts:
+    - family: UrwDinArabic
+      fonts:
+        - { asset: assets/fonts/urw_din_arabic_thin.ttf, weight: 100 }
+        - { asset: assets/fonts/urw_din_arabic_xlight.ttf, weight: 200 }
+        - { asset: assets/fonts/urw_din_arabic_light.ttf, weight: 300 }
+        - { asset: assets/fonts/urw_din_arabic_regular.ttf, weight: 400 }
+        - { asset: assets/fonts/urw_din_arabic_medium.ttf, weight: 500 }
+        - { asset: assets/fonts/urw_din_arabic_semi_bold.ttf, weight: 600 }
+        - { asset: assets/fonts/urw_din_arabic_bold.ttf, weight: 700 }
+        - { asset: assets/fonts/urw_din_arabic_black.ttf, weight: 900 }
+    - family: Messiri
+      fonts:
+        - { asset: assets/fonts/messiri_regular.ttf, weight: 400 }
+        - { asset: assets/fonts/messiri_medium.ttf, weight: 500 }
+        - { asset: assets/fonts/messiri_semibold.ttf, weight: 600 }
+        - { asset: assets/fonts/messiri_bold.ttf, weight: 700 }
+    - family: ComicSans
+      fonts:
+        - { asset: assets/fonts/comic_sans_ms.ttf, weight: 400 }
+        - { asset: assets/fonts/comic_sans_ms_bold.ttf, weight: 700 }
 
   # To add assets to your application, add an assets section, like this:
   # assets:
