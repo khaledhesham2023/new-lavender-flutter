@@ -1,0 +1,618 @@
+{
+  "@@locale": "en",
+  "aboutApp": "About App",
+  "aboutDoctor": "About Doctor:",
+  "account": "Account",
+  "accountCreatedSuccessfully": "Your account has been created successfully.",
+  "addComment": "Add your comment..",
+  "addYourBookReviewBody": "Add your rating and share your opinion about the doctor",
+  "addYourBookReviewTitle": "Add your rate for the doctor",
+  "agreeToThe": "Agree to the",
+  "all": "All",
+  "allDoctors": "All doctors {p1}",
+  "@allDoctors": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "allMedicalSpecialities": "All medical specialties",
+  "allReservations": "All Reservations",
+  "allRightsReserved": "All rights reserved to the Tibi application 2025",
+  "allYourMedicalServicesInOnePlace": "All your medical services in one place",
+  "appName": "Lavender Land Clinics",
+  "appProvides": "The app also provides the ability to explore offers and discounts, receive notifications of booking dates and important alerts, and the flexibility to manage and reschedule appointments when needed.",
+  "appointmentCanceledSuccessfully": "The reservation was successfully cancelled",
+  "appointmentChangedSuccessfully": "The appointment has been changed successfully",
+  "appointmentsAvailable": "Appointments available",
+  "arabic": "العربية",
+  "areYouSureAboutYourDecisionBody": "All your data will be lost and you will not be able to recover it after deletion",
+  "areYouSureAboutYourDecisionTitle": "Are you sure about your decision?",
+  "availableDoctorsWithNumber": "{p1} available doctor/s",
+  "@availableDoctorsWithNumber": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "availableTimes": "Available times",
+  "back": "Back",
+  "backToHomePage": "Back Home",
+  "backToLogin": "Back to login",
+  "basedOnNoOfReviews": "Based on {p1} reviews",
+  "@basedOnNoOfReviews": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "bookAnAppointment": "Book appointment",
+  "bookAnOffer": "Book an offer",
+  "bookEasilyAnytime": "Book easily anytime",
+  "bookNormalExaminationWithValue": "Book normal examination for {p1} SAR",
+  "@bookNormalExaminationWithValue": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "bookNow": "Book now",
+  "bookYourAppointments": "Book your appointments, consult specialist doctors, and track your health easily through our medical app.",
+  "bookingAppointments": "Booking Appointments",
+  "bookingDetails": "Booking details",
+  "bookingDetailsWithColon": "Booking Details:",
+  "bookingDetailsWithValue": "Booking details {p1}",
+  "@bookingDetailsWithValue": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "bookings": "Bookings",
+  "browseTheListOfDoctorsAndServices": "Browse the list of doctors and services, choose the one that suits you best, and schedule an appointment that suits you with the click of a button, without calls or long waits.",
+  "calender": "Calender",
+  "cancel": "Cancel",
+  "cancelBooking": "Cancel Booking",
+  "canceled": "Canceled",
+  "certificates": "Certificates",
+  "changeAppointment": "Change Appointment",
+  "changeImage": "Change Image",
+  "changePasswordBody": "Enter a strong password that contains at least 8 characters, numbers, and symbols.",
+  "checkTheDoctors": "Check the doctors",
+  "choosePaymentMethod": "Choose payment method",
+  "chooseSubSpecialities": "Choose one or more sub-specialities",
+  "chooseTheLanguage": "Choose the language you want",
+  "codeNotCorrect": "Sorry, the code number is incorrect.",
+  "commentAddedSuccessfully": "Your comment has been added successfully",
+  "complainSentSuccessfully": "The complaint has been sent successfully",
+  "completed": "Completed",
+  "confirm": "Confirm",
+  "confirmCancelAppointmentBody": "You are now about to cancel your current reservation. You will not be able to undo this step and you can start a new reservation.",
+  "confirmCancelAppointmentTitle": "Are you sure you want to cancel the reservation?",
+  "confirmChangeAppointmentBody": "You are about to change your current reservation date. Are you sure about this change?",
+  "confirmChangeAppointmentTitle": "Are you sure you want to change the appointment?",
+  "confirmNewPassword": "Confirm New Password*",
+  "confirmPassword": "Confirm password*",
+  "confirmed": "Confirmed",
+  "connectionError": "Connection Error",
+  "contactUs": "Contact us",
+  "continueAsGuest": "Continue as guest",
+  "copied": "copied",
+  "createAccount": "Create account",
+  "creditCards": "Credit Cards",
+  "currentPassword": "Current Password*",
+  "dataModifiedSuccessfully": "The data has been modified successfully",
+  "date": "Date:",
+  "dateAndTime": "Date and Time",
+  "deleteAccount": "Delete Account",
+  "dentistry": "Dentistry",
+  "dermatology": "Dermatology",
+  "details": "Details :",
+  "discount": "Discount",
+  "discountWithPercent": "{p1}%",
+  "@discountWithPercent": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "doYouWantToLeaveNowBody": "You can come back anytime to enjoy our services again!",
+  "doYouWantToLeaveNowTitle": "Do you want to leave now?",
+  "doctor": "Doctor",
+  "doctorDetails": "Doctor Details",
+  "doctorF": "Doctor(Female)",
+  "doctorIsOffToday": "Doctor is off today",
+  "doctorM": "Doctor(Male)",
+  "doctors": "Doctors",
+  "downloadThisApp": "Download this app",
+  "downloadingWithValue": "Downloading {p1}",
+  "@downloadingWithValue": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "editBooking": "Edit Booking",
+  "elgbeelElsnaaya": "Jubail Industrial City",
+  "email": "E-mail",
+  "emailMustStartWithALetter": "Email must start with a letter.",
+  "english": "English",
+  "enterADescription": "Enter a description of your medical condition.",
+  "enterFullName": "Enter full name",
+  "enterMessageHeadline": "Enter message headline",
+  "enterNewPasswordBody": "Save your new password in a safe place. If you forget it, you will have to reset the forgotten password again.",
+  "enterNewPasswordTitle": "Enter the new password",
+  "enterOtpBody": "Enter the code sent to phone number {p1} to confirm your account.",
+  "@enterOtpBody": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "enterOtpTitle": "Enter the confirmation code",
+  "enterPhoneNumber": "Enter phone number",
+  "enterTheCodeSentToThePhoneNumber": "Enter the code sent to the phone number",
+  "enterTheConfirmationCode": "Enter the confirmation code",
+  "enterValidEmail": "Enter valid email",
+  "enterYourMedicalCondition": "Enter your medical condition",
+  "enterYourMessage": "Enter your message",
+  "enterYourPassword": "Enter your password",
+  "examinationBook": "Examination Book",
+  "examinationDuration": "Examination duration:",
+  "examinationDurationNoColon": "Examination duration",
+  "examinationPrice": "Examination Price:",
+  "examinationPriceNoColon": "Examination Price",
+  "favoriteDoctors": "Favorite doctors",
+  "favorites": "Favorites",
+  "featuredMedicalOffers": "Featured Medical Offers",
+  "filterBy": "Filter by",
+  "filterByDate": "Filter by date",
+  "filterByType": "Filter by",
+  "forgetPassword": "Forgot your password?",
+  "forgetPasswordBody": "Enter your phone number to receive a code that will allow you to change your password.",
+  "forgetPasswordTitle": "Forgot your password..!",
+  "fromToValues": "From {p1}  to {p2}",
+  "@fromToValues": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      },
+      "p2": {
+        "type": "String"
+      }
+    }
+  },
+  "fullName": "Full Name",
+  "fullNameMustBeAtLeast2Letters": "\"Full Name must be at least 2 letters \"",
+  "gender": "Gender",
+  "generalInfo": "General information",
+  "generalMedicine": "General medicine",
+  "getTheOffer": "Get the offer",
+  "gifFilesAreNotAllowed": "GIF files are not allowed",
+  "goToReservations": "Go to reservations",
+  "goodAfternoon": "Good afternoon{p1}",
+  "@goodAfternoon": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "goodEvening": "Good evening{p1}",
+  "@goodEvening": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "goodMorning": "Good morning{p1}",
+  "@goodMorning": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "highToLowPrice": "Price from highest to lowest",
+  "highToLowRate": "Rating from highest to lowest",
+  "home": "Home",
+  "hour": "Hour",
+  "howAreYouFeelingToday": "How are you feeling today..?",
+  "howCanWeHelp": "How can we help ?",
+  "invalidImage": "Invalid Image",
+  "keepADigitalMedicalRecordThatIncludesYourPreviousAppointments": "Keep a digital medical record that includes your previous appointments, test results, and doctor recommendations, with notifications to continuously monitor your health status.",
+  "laboratory": "Laboratory",
+  "language": "Language",
+  "last12Months": "Last 12 months",
+  "last3Months": "Last 3 months",
+  "last6Months": "Last 6 months",
+  "latestSearchResults": "“Latest search results”",
+  "login": "Login",
+  "loginScreenBody": "Please enter your phone number and password to log in.",
+  "loginScreenTitle": "Sign in now ..!",
+  "loginStart": "Login",
+  "logout": "Log out",
+  "lowToHighPrice": "Price from lowest to highest",
+  "lowToHighRate": "Rating from lowest to highest",
+  "makeSureYouCancelYourAccountBecauseYouWonTBeAbleToLogBackInWithThisInformation": "Make sure you cancel your trip, because you won't be able to log back in with this information",
+  "medicalConditionDescription": "Description of medical condition",
+  "medicalOffers": "Medical offers",
+  "medicalReport": "The attached medical report",
+  "medicalReportPdf": "Medical Report PDF",
+  "mental": "Mental health",
+  "messageHeadline": "Message Headline",
+  "messageHeadlineMustBeAtLeast2Letters": "message headline must be at least 2 letters",
+  "messageMustBeAtLeast2Letters": "message must be at least 2 letters",
+  "minValues": "{p1} minute(s)",
+  "@minValues": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "minute": "Minute",
+  "modifyPersonalInformation": "Modify personal information",
+  "mogamaaElkhazamyEltiby": "Lavender Land Medical Complex",
+  "more": "More",
+  "moreThanOneTimeWithValue": "{p1} times",
+  "@moreThanOneTimeWithValue": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "mostPopularSpecialities": "Most popular specialities",
+  "myBookings": "My Bookings",
+  "myOffers": "My Offers",
+  "myReports": "My Reports",
+  "name": "Name*",
+  "nameMustBeAtLeast2Characters": "Name must be at least 2 characters.",
+  "nameMustStartWithALetter": "Name must start with a letter.",
+  "newPassword": "New Password*",
+  "next": "Next",
+  "noAddress": "No address",
+  "noAddressesAddedYet": "No Addresses added yet",
+  "noAppFoundToHandleTheRequest": "No app found to handle the request.",
+  "noAppFoundToOpenMaps": "No app found to open maps",
+  "noAvailableTimesToday": "There are no available times today..!",
+  "noDataToPreview": "No data to preview",
+  "noDescription": "No medical condition description",
+  "noDoctorsInThisSpeciality": "No doctors found",
+  "noDoctorsInThisSpecialityBody": "No doctors found in this specialty",
+  "noDoctorsToFilter": "No doctors to filter",
+  "noFavoriteDoctorsBody": "You can add any doctor you like and it will appear here in your favourites list.",
+  "noFavoriteDoctorsTitle": "You don't have any favorite doctors.",
+  "noInformationAvailable": "No available information",
+  "noInternetConncetion": "No Internet Connection",
+  "noInternetConncetionBody": "Please connect first",
+  "noInternetConncetionBody2": "Internet connection has been interrupted. Please check your connection and try again later.",
+  "noMyOffersBody": "If you subscribe to Tibi offers, you will be able to check all your offers here",
+  "noMyOffersTitle": "You have no offers",
+  "noNeedToSearchInMultiplePlaces": "No need to search in multiple places! We offer you the ability to book doctors, tests, x-rays, and medical consultations easily and quickly from your location.",
+  "noNotificationsBody": "When any changes occur, you will be notified here via notifications.",
+  "noNotificationsTitle": "No notifications yet",
+  "noOffersBody": "You have no available offers in that specialty",
+  "noOffersTitle": "No available offers",
+  "noReportsBody": "All reports submitted by your doctors will appear here",
+  "noReportsTitle": "You have no reports",
+  "noReservations": "No reservation made yet..!",
+  "noReservationsBody": "When any changes occur, you will be notified via notifications",
+  "noReservationsSearchResultsBody": "No appointments with the given doctor name",
+  "noReservationsSearchResultsTitle": "No appointments",
+  "noReservationsTitle": "You have no reservations yet",
+  "noReviews": "There are no reviews yet..!",
+  "noSearchResultsDoctorsBody": "Please try to find other doctors.",
+  "noSearchResultsSpecialtiesBody": "Please try to find other specialties.",
+  "noSearchResultsTitle": "Sorry we couldn't find what you were looking for..",
+  "noSubspecialtiesBody": "No subspecialties for that specialty",
+  "noSubspecialtiesTitle": "No subspecialties",
+  "noSuitableAppFoundToOpenTheLink": "No suitable app found to open the link",
+  "none": "None",
+  "normalReservations": "Normal Reservations",
+  "notifications": "Notifications",
+  "nowLoading": "Now Loading",
+  "numberOfOfferBookings": "Number of offer bookings",
+  "numberOfSessions": "Number of sessions:",
+  "numberOfSessionsNoColon": "Number of sessions",
+  "numberOfSessionsWithValue": "({p1}/{p2}) session",
+  "@numberOfSessionsWithValue": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      },
+      "p2": {
+        "type": "String"
+      }
+    }
+  },
+  "off": "Off",
+  "offer": "Offer",
+  "offerDetails": "Offer details",
+  "offerObtainedSuccessfully": "The offer has been successfully obtained",
+  "offerValidityPeriod": "Offer Validity Period",
+  "offersReservations": "Offers Reservations",
+  "oneTime": "Once",
+  "openCalender": "Open Calender",
+  "openWith": "Open With",
+  "optional": "(optional)",
+  "orYouCan": "Or you can",
+  "ordinal1": "First",
+  "ordinal10": "Tenth",
+  "ordinal100": "Hundredth",
+  "ordinal11": "Eleventh",
+  "ordinal12": "Twelfth",
+  "ordinal13": "Thirteenth",
+  "ordinal14": "Fourteenth",
+  "ordinal15": "Fifteenth",
+  "ordinal16": "Sixteenth",
+  "ordinal17": "Seventeenth",
+  "ordinal18": "Eighteenth",
+  "ordinal19": "Nineteenth",
+  "ordinal2": "Second",
+  "ordinal20": "Twentieth",
+  "ordinal3": "Third",
+  "ordinal30": "Thirtieth",
+  "ordinal4": "Fourth",
+  "ordinal40": "Fortieth",
+  "ordinal5": "Fifth",
+  "ordinal50": "Fiftieth",
+  "ordinal6": "Sixth",
+  "ordinal60": "Sixtieth",
+  "ordinal7": "Seventh",
+  "ordinal70": "Seventieth",
+  "ordinal8": "Eighth",
+  "ordinal80": "Eightieth",
+  "ordinal9": "Ninth",
+  "ordinal90": "Ninetieth",
+  "ourVision": "Our vision:",
+  "ourVisionDescription": "We seek to revolutionize the digital healthcare field by providing integrated services that facilitate access to the highest quality and fastest healthcare for everyone. Our vision is to make booking and availing medical services a seamless and safe experience, meeting patients' needs efficiently and comfortably.",
+  "password": "Password",
+  "passwordChangedSuccessfully": "The password has been changed successfully",
+  "passwordChangedSuccessfullyBody": "Your password has been updated successfully. Go to login again.",
+  "passwordChangedSuccessfullyBtn": "Back to login",
+  "passwordChangedSuccessfullyTitle": "Password updated successfully",
+  "passwordMustBeAtLeast8CharactersLong": "Password must be at least 8 characters long",
+  "passwordMustStartWithALetter": "Password must start with a letter or digit.",
+  "passwordNotCorrect": "Sorry, the password is incorrect.",
+  "passwordRecoveryBody": "Enter the code sent to phone number {p1} to retrieve your password",
+  "@passwordRecoveryBody": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "passwordRecoveryTitle": "Password recovery",
+  "passwordWithStar": "Password*",
+  "paymentSummary": "Payment summary",
+  "pediatrics": "Pediatrics",
+  "pendingForConfirmation": "Pending",
+  "personalInformation": "Personal information",
+  "phone": "Phone Number*",
+  "phoneChangedSuccessfully": "The phone number has been changed successfully.",
+  "phoneExample": "5********",
+  "phoneNotCorrect": "Sorry, the phone number is incorrect.",
+  "pickUpBookingAppointment": "Pick up your booking appointment",
+  "pickUpRebookingAppointment": "Pick up your rebooking appointment",
+  "pleaseAcceptTheTermsAndConditions": "Please accept the terms and conditions",
+  "pleaseEnterHowWeCanHelpYou": "please enter how we can help you",
+  "pleaseEnterTheMessageHeadline": "please enter the message headline",
+  "pleaseEnterThePassword": "Please enter the password",
+  "pleaseEnterThePhoneNumber": "Please enter the phone number",
+  "pleaseEnterYourName": "Please enter your name.",
+  "pleaseSelectAppointmentType": "Select an appointment",
+  "pleaseSelectDay": "Please select day",
+  "pleaseSelectTime": "Please select time",
+  "policyOfUse": "📌Usage Policy⚖️📜",
+  "priceAfterDiscount": "Price after discount",
+  "priceBeforeDiscount": "Price before discount",
+  "priceWithValue": "{p1} SAR",
+  "@priceWithValue": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "privacyPolicy": "Privacy Policy",
+  "processing": "Processing",
+  "quickReplies": "Quick replies:",
+  "radiology": "Radiology",
+  "radiologyAndAnalysisReports": "Radiology and analysis reports",
+  "rateBooking": "Booking Review",
+  "rateNumberOfReviewsWithValues": "({p1}) {p2}",
+  "@rateNumberOfReviewsWithValues": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      },
+      "p2": {
+        "type": "String"
+      }
+    }
+  },
+  "rateTheApp": "Rate the app",
+  "ratesWithValue": "Reviews {p1}",
+  "@ratesWithValue": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "reReserve": "Re-reserve",
+  "rebook": "Rebook",
+  "recentlyAddedDoctors": "Newly added doctors",
+  "regularMonitoringOfYourHealth": "Regular monitoring of your health",
+  "rejected": "Rejected",
+  "remainingSessions": "Remaining ({p1}/{p2}) session/s",
+  "@remainingSessions": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      },
+      "p2": {
+        "type": "String"
+      }
+    }
+  },
+  "remove": "Remove",
+  "removeAll": "Remove all",
+  "resend": "Resend",
+  "resendWithin": "Resend within:",
+  "reservationConfirmed": "Reservation confirmed",
+  "reservationRequestSentSuccessfully": "Your reservation request has been sent successfully.",
+  "reserveConfirmation": "Confirm Reservation",
+  "retry": "Retry",
+  "reviewed": "Reviewed",
+  "reviews": "Reviews",
+  "reviewsTotalNumber": "Reviews {p1}",
+  "@reviewsTotalNumber": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "reviewsWithNumber": "{p1} reviews",
+  "@reviewsWithNumber": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "sar": "{p1} SAR",
+  "@sar": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "saveChanges": "Save changes",
+  "search": "Search",
+  "searchByDoctorsName": "Search by doctor name",
+  "searchBySpecialityOrDoctor": "Search by specialty or doctor's name",
+  "searchIn": "Search in",
+  "second": "Second",
+  "selectedDayNotAvailableYet": "The Doctor is not available in that day",
+  "send": "Send",
+  "sendOtp": "Send Code",
+  "serverError": "Server Error",
+  "serverErrorBody": "Internet access error",
+  "serverErrorBody2": "Something went wrong, please check your connection and try again later.",
+  "sessionWithValue": "{p1} session",
+  "@sessionWithValue": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "showAll": "Show All",
+  "showBookings": "Show bookings",
+  "showDetails": "Show Details",
+  "showLess": "Show Less",
+  "showMore": "Show More",
+  "showResults": "Show results",
+  "sideMenu": "Side menu",
+  "somethingWrongHappen": "Something went wrong",
+  "sortBy": "Sort by",
+  "sortByDate": "Sort by date",
+  "sortingBy": "Sort by",
+  "specialities": "Specialities",
+  "specialty": "Specialty",
+  "startABetterHealthyJourney": "Start a better healthy journey with us now!",
+  "startNow": "Start Now",
+  "startYourHealthJourneyNowBody": "Register your account in minutes to access the best doctors and medical services, and book your appointments with complete ease",
+  "startYourHealthJourneyNowTitle": "Start your health journey now",
+  "subSpecialties": "Sub-Specialties",
+  "subscriptionDate": "Subscription Date:",
+  "subscriptionDateNoColon": "Subscription Date",
+  "termsAndConditions": "Terms and conditions",
+  "termsOfUse": "📌Terms of use⚖️📜",
+  "termsOfUseTitle": "Terms of use",
+  "text1": "1",
+  "text2": "2",
+  "text3": "3",
+  "text4": "4",
+  "text5": "5",
+  "theConfirmationPasswordDoesNotMatchWithTheOriginalPassword": "The confirmation password does not match with the original password.",
+  "theLinkIsInvalidOrEmpty": "The link is invalid or empty",
+  "thePhoneNumberIsInvalidPleaseStartWith5": "The phone number is invalid, please start with 5",
+  "thePhoneNumberMustBeAtLeast9CharactersLong": "Phone number must be exactly 9 characters long",
+  "thereAreNoMessagesYet": "There are no messages yet.",
+  "thisCodeIsInvalidPleaseTryAgain": "This code is invalid. Please try again.",
+  "thisOfferAppliesOnSpecialty": "This offer applies to all doctors in the specialty of {p1}",
+  "@thisOfferAppliesOnSpecialty": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "thisOfferNoLongerAvailable": "This offer is no longer available",
+  "time": "Time:",
+  "toConfirmYourAccount": "To confirm your account",
+  "toRetrieveYourPassword": "To retrieve your password",
+  "trySearchForDoctorOrSpeciality": "Try searching for the doctor's name or medical specialty.",
+  "tvGuestBody": "Simple steps to book your examination >>",
+  "tvGuestTitle": "Log in with the distinguished medical team",
+  "unableToGetCurrentLocation": "Unable to get current location",
+  "update": "Update",
+  "valid": "Valid",
+  "waitRememberPassword": "Wait! Remembered the password",
+  "weightLoss": "Weight loss and Nutrition",
+  "welcome": "Welcome {p1}",
+  "@welcome": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "welcomeWithName": "Welcome {p1}",
+  "@welcomeWithName": {
+    "placeholders": {
+      "p1": {
+        "type": "String"
+      }
+    }
+  },
+  "whatAreYouLookingFor": "What are you looking for ?",
+  "whatDoesTibiAppPresents": "What does Tibi application offer?",
+  "whatDoesTibiAppPresentsAnswer": "The \"Tibi\" app is your integrated platform for obtaining medical services quickly and easily. Through it, you can book appointments with doctors in various specialties and request medical tests such as x-rays and lab tests from the best accredited centers.",
+  "whatsappNotInstalled": "WhatsApp not installed",
+  "whenAnyChangesOccurYouWillBeNotifiedByNotifications": "When any changes occur, you will be notified by notifications.",
+  "whoAreWe": "Who are we ?",
+  "whoAreWeDescription": "We offer comprehensive medical services, including doctor appointments, examinations, and tests, to provide you with easy and fast healthcare.",
+  "whoWeAre": "Who we are",
+  "whyChoosingUs": "Why us ?",
+  "whyChoosingUsDescription": "We provide you with a comprehensive medical experience that combines convenience, speed, and accuracy. Through our platform, you can easily book doctors, checkups, and tests, while ensuring the highest quality standards in the services provided. We are here to make healthcare easier and safer for you and your family. 💙",
+  "workingTimes": "Working times:",
+  "yearsOfExperience": "Years of experience",
+  "yesSure": "Yes, sure",
+  "youCanNoLongerReceiveNotifications": "You will not be able to receive new notifications. Activate notifications.",
+  "youDoNotMakeReservationsYetTitle": "There are no reservations made yet..!",
+  "youHaveToLoginFirstBodyReservationsAndGetNotified": "Log in to schedule your appointment and stay updated with notifications",
+  "youHaveToLoginFirstBodyReservationsAndTrackFavorites": "Log in or create an account so you can book your appointment, track your appointments, or add your favorite doctors",
+  "youHaveToLoginFirstBodyReservationsOrFavorites": "Log in or create an account so you can book your appointment or add your favorite doctors.",
+  "youHaveToLoginFirstTitle": "You must log in first",
+  "youMustLoginBody": "Log in or create an account so you can book your appointment or add your favorite doctors",
+  "youMustLoginTitle": "You must log in first",
+  "yourComplainSentSuccessfully": "The complaint has been sent successfully.",
+  "yourNextReservation": "Your Next Reservation",
+  "yourReservationRequestHasBeenSentSuccessfully": "Your reservation request has been sent successfully"
+}
