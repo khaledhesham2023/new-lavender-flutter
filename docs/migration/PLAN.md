@@ -201,7 +201,7 @@ lavender-flutter/
 - [x] T01 - Flutter project setup (depends on: -)
 - [x] T02 - Strings and localization (depends on: T01)
 - [x] T03 - Assets, fonts and theme (depends on: T01)
-- [ ] T04 - Shared utils and widgets (depends on: T02, T03)
+- [x] T04 - Shared utils and widgets (depends on: T02, T03)
 
 ### Models and data layer
 - [x] T05 - Data models (depends on: T01)
