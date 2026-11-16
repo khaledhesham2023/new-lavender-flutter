@@ -67,20 +67,3 @@ class AboutModel extends Equatable {
   @override
   List<Object?> get props => [id, image, links, name, images];
 }
-
-@JsonSerializable(createToJson: false)
-@StrConv()
-@BoolOrNullConv()
-class SettingModel extends Equatable {
-  final bool? allowNotification;
-  @JsonKey(name: 'whats_app_number')
-  final String? whatsAppNumber;
-
-  const SettingModel({this.allowNotification, this.whatsAppNumber});
-
-  factory SettingModel.fromJson(Map<String, dynamic> json) =>
-      _$SettingModelFromJson(json);
-
-  @override
-  List<Object?> get props => [allowNotification, whatsAppNumber];
-}

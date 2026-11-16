@@ -34,10 +34,3 @@ AboutModel _$AboutModelFromJson(Map<String, dynamic> json) => AboutModel(
           .toList() ??
       [],
 );
-
-SettingModel _$SettingModelFromJson(Map<String, dynamic> json) => SettingModel(
-  allowNotification: const BoolOrNullConv().fromJson(
-    json['allow_notification'],
-  ),
-  whatsAppNumber: const StrConv().fromJson(json['whats_app_number']),
-);

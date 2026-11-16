@@ -22,7 +22,8 @@ Files in `lib/data/models/`:
 - `search.dart` — `SearchResultsData`, `RecentSearchModel`
 - `notification.dart` — `NotificationModel`, `NotificationTypeData`
 - `report.dart` — `DayReportsModel`, `ReportModel`
-- `about.dart` — `AboutModel`, `AboutImage`, `SocialLink`, `SettingModel`
+- `about.dart` — `AboutModel`, `AboutImage`, `SocialLink`
+- `setting.dart` — `SettingModel`
 - `enums.dart` — `BookingStatus`, `AppointmentType`, `OfferType`, `ReportType`, `SortByStatus`, `GenderType`, `NotificationType` each with a `value` string and `fromValue`
 - `json_utils.dart` — safe readers
 Tests in `test/data/models/`.
@@ -69,7 +70,7 @@ Done. `flutter analyze` clean, `flutter test` all pass, debug APK builds.
 - Lists are non-null (`[]` when missing/null); scalars stay nullable like Kotlin. Kotlin defaults apply only when a key is missing (`CountryModel`).
 - Extra request classes not in the Build list: `ToggleFavoriteRequest` (doctor.dart, sends `doctor_id` as String), `BuyOfferRequest` (offer.dart), `GetBookingsRequest` (appointment.dart); `DoctorsBySpecialityData` is in speciality.dart. `BannerModel` fields are non-null (fallback 0/'').
 - Enum members: `AppointmentType.defaultType/offer/notOffer`, `BookingStatus` has `value` + `position`, `SortByStatus` has no l10n key (map in the sort sheet, T20). `NotificationModel.copyWith(isReaded:)` added for T31.
-- Kotlin -> Dart mapping: UserModel/CityModel/CountryModel/AuthRequest -> user.dart; MetaResponse/MetaModel -> PaginationMeta, LinksResponse/LinkModel -> PaginationLinks; DoctorModel, WorkTimeModel, TimeModel, ReviewModel, CertificateModel -> doctor.dart; SpecialityModel, SubSpecialtiesData (SubSpecialtyModel), FilterData, DoctorsBySpecialityData -> speciality.dart; HomeData, BannerModel, NextReservationModel -> home.dart; OfferModel, MyOffersResponseData (MyOffersData), SessionDetailsModel, BuyOfferRequest -> offer.dart; AppointmentData, QuickComment, the booking requests, BookingRequestModel (BookingDraft) -> appointment.dart; SearchResultsData, SearchResultModel (RecentSearchModel) -> search.dart; NotificationModel/NotificationType (NotificationTypeData) -> notification.dart; DayReportsModel, ReportModel -> report.dart; AboutModel, AboutUsImages (AboutImage), LinkSocial (SocialLink), SettingModel -> about.dart; utils/enums -> enums.dart.
+- Kotlin -> Dart mapping: UserModel/CityModel/CountryModel/AuthRequest -> user.dart; MetaResponse/MetaModel -> PaginationMeta, LinksResponse/LinkModel -> PaginationLinks; DoctorModel, WorkTimeModel, TimeModel, ReviewModel, CertificateModel -> doctor.dart; SpecialityModel, SubSpecialtiesData (SubSpecialtyModel), FilterData, DoctorsBySpecialityData -> speciality.dart; HomeData, BannerModel, NextReservationModel -> home.dart; OfferModel, MyOffersResponseData (MyOffersData), SessionDetailsModel, BuyOfferRequest -> offer.dart; AppointmentData, QuickComment, the booking requests, BookingRequestModel (BookingDraft) -> appointment.dart; SearchResultsData, SearchResultModel (RecentSearchModel) -> search.dart; NotificationModel/NotificationType (NotificationTypeData) -> notification.dart; DayReportsModel, ReportModel -> report.dart; AboutModel, AboutUsImages (AboutImage), LinkSocial (SocialLink) -> about.dart; SettingModel -> setting.dart; utils/enums -> enums.dart.
 - Not ported: all `Get*Response`/`*Response` wrappers (repositories read `data`, T08/T09), `BaseResponse`, `LanguageModel/Response`, `UploadImage*` (response `data` is a String), `NotificationToggle*` (read `allow_notification`), `MostSelectedSpecialitiesData`, `GeneralFirebaseModel` (T39), `Link`, `LinksModel`, `AttachmentModelType`, `MessageStatus`, `OnBoardingItem` (T11).
 
 ### Update: switched to json_serializable + build_runner (owner decision)
