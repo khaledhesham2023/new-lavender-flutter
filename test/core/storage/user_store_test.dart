@@ -1,6 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lavender/core/storage/user_store.dart';
-import 'package:lavender/data/models/user.dart';
+import 'package:lavender/data/models/responses/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<UserStore> _make() async {

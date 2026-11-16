@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:equatable/equatable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../data/models/user.dart';
+import '../../data/models/responses/user.dart';
 
 /// Logged-in user snapshot kept in local storage (no token: see [AppPrefs]).
 class UserData extends Equatable {
