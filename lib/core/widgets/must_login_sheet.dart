@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
+import '../../router/routes.dart';
 import '../l10n/l10n_ext.dart';
 import '../theme/app_assets.dart';
 import '../theme/app_colors.dart';
@@ -34,8 +35,7 @@ Future<void> showMustLoginSheet(BuildContext context) {
             buttonTitle: l10n.login,
             onButton: () {
               Navigator.of(sheetContext).pop();
-              // TODO(T10): route constant
-              context.push('/auth/start');
+              context.push(Routes.authStart);
             },
           ),
         ),
