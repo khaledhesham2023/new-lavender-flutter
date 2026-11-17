@@ -6,12 +6,19 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'app.dart';
 import 'core/di/injection.dart';
 import 'core/session/session_cubit.dart';
+import 'core/theme/app_colors.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await initializeDateFormatting();
   await configureDependencies();
+  // One fixed navigation bar for the whole app (never changes per screen).
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    systemNavigationBarColor: AppColors.white,
+    systemNavigationBarIconBrightness: Brightness.dark,
+    systemNavigationBarContrastEnforced: false,
+  ));
 
   runApp(
     BlocProvider.value(

@@ -4,7 +4,9 @@ import 'package:material_ui/material_ui.dart';
 import '../data/models/requests/booking_draft.dart';
 import '../data/models/responses/offer.dart';
 import '../data/models/responses/speciality.dart';
+import '../features/onboarding/onboarding_screen.dart';
 import '../features/shell/main_shell.dart';
+import '../features/splash/splash_screen.dart';
 import '../features/shell/placeholder_screen.dart';
 import 'route_args.dart';
 import 'routes.dart';
@@ -17,23 +19,12 @@ GoRouter createRouter() {
     routes: [
       GoRoute(
         path: Routes.splash,
-        builder: (context, state) => PlaceholderScreen(
-          name: 'Splash',
-          showBack: false,
-          // TODO(T11): the real splash replaces these test buttons.
-          actions: [
-            TextButton(
-              onPressed: () => context.go(Routes.home),
-              child: const Text('Go to /home'),
-            ),
-            TextButton(
-              onPressed: () => context.go(Routes.authStart),
-              child: const Text('Go to /auth/start'),
-            ),
-          ],
-        ),
+        builder: (context, state) => const SplashScreen(),
       ),
-      _page(Routes.onboarding, 'Onboarding'),
+      GoRoute(
+        path: Routes.onboarding,
+        builder: (context, state) => const OnboardingScreen(),
+      ),
 
       // Auth flow: slide in from the end (Android enter_from_right).
       _authPage(Routes.authStart, 'AuthStart'),
