@@ -211,7 +211,7 @@ lavender-flutter/
 - [x] T09 - Repositories: home, specialities, search, doctor, booking, favorites, offers (depends on: T07)
 
 ### Navigation shell
-- [ ] T10 - Session, router and bottom-nav shell (depends on: T04, T08)
+- [x] T10 - Session, router and bottom-nav shell (depends on: T04, T08)
 
 ### Screens
 - [ ] T11 - Splash and onboarding (depends on: T10)

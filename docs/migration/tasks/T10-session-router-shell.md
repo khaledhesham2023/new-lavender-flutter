@@ -105,3 +105,14 @@ replaces one placeholder.
 - Detail routes opened from inside a tab must use `context.push` (so back returns to the tab). Flows that Android ends with
   `NavigateToBackStack` (pop up to Home) use `context.go(Routes.home)`.
 - Do not put Cubits for screens at the app root; only `SessionCubit` lives there.
+
+## Notes
+- Done: `SessionCubit` (+ `SessionState`), `routes.dart` (all paths, `id` helper functions like `Routes.doctorDetailsOf(id)`, `Routes.tabs`), arg classes in `route_args.dart` (split from routes.dart for SRP: import it where you build `extra`)
+  `OtpArgs`/`NewPasswordArgs`/`ChangePasswordArgs`/`BookWithOfferArgs`, `OtpDestination`), `app_router.dart` (every route with `PlaceholderScreen`),
+  `MainShell`, `main.dart` and `app.dart`. `must_login_sheet.dart` now uses `Routes.authStart`.
+- DI is `get_it` (`core/di/injection.dart`, `sl`): `configureDependencies()` registers `AppPrefs`, `UserStore`, `ApiClient`, the 11 repositories (lazy) and `SessionCubit`.
+- `PlaceholderScreen({name, showBack, actions})`. Splash and Home placeholders carry temporary test buttons (marked `TODO(T11)` / `TODO(T16)`): remove them with the real screens.
+- Shell bottom bar is a custom row (56dp, `cCDFFFFFF` bg, 16dp top radius, 1dp `cF8F6FA` border, 12sp medium labels, primary / `c7E94B0`), not `NavigationBar`, to avoid ripple/indicator.
+  It is always visible inside tab routes; non-tab routes are top-level so they cover it (no slide animation like Android's hide).
+- `FilterArgs` still unknown: `/filter` reads `extra` as `Object?` until T21. Deep links/notification routing not done (T39/T40).
+- Not verified on a device/emulator (RTL tab mirroring, back behavior); analyze, tests (192) and debug APK build pass.
