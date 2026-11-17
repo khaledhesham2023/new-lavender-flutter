@@ -208,7 +208,7 @@ lavender-flutter/
 - [x] T06 - Local storage (depends on: T05)
 - [x] T07 - Network client (depends on: T06)
 - [x] T08 - Repositories: auth, profile, general, notifications (depends on: T07)
-- [ ] T09 - Repositories: home, specialities, search, doctor, booking, favorites, offers (depends on: T07)
+- [x] T09 - Repositories: home, specialities, search, doctor, booking, favorites, offers (depends on: T07)
 
 ### Navigation shell
 - [ ] T10 - Session, router and bottom-nav shell (depends on: T04, T08)

@@ -1,3 +1,4 @@
+import '../../core/network/api_client.dart' show JsonParser;
 import '../json/json_utils.dart';
 import '../models/responses/user.dart';
 
@@ -14,3 +15,11 @@ UserModel parseUser(dynamic body) =>
 /// `data` is an optional user object.
 UserModel? parseUserOrNull(dynamic body) =>
     asObject(asMap(body)?['data'], UserModel.fromJson);
+
+/// `data` is a list of objects (missing or malformed gives `[]`).
+JsonParser<List<T>> parseList<T>(T Function(Map<String, dynamic>) from) =>
+    (body) => asList(asMap(body)?['data'], from);
+
+/// `data` is a required object (a missing one becomes an UnknownFailure).
+JsonParser<T> parseObject<T>(T Function(Map<String, dynamic>) from) =>
+    (body) => asObject(asMap(body)?['data'], from)!;
