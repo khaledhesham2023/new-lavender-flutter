@@ -8,6 +8,7 @@ import 'package:material_ui/material_ui.dart';
 
 import 'core/session/session_cubit.dart';
 import 'core/theme/app_theme.dart';
+import 'core/widgets/system_ui.dart';
 import 'l10n/generated/app_localizations.dart';
 import 'router/app_router.dart';
 
@@ -47,6 +48,8 @@ class _LavenderAppState extends State<LavenderApp> {
         locale: Locale(session.languageCode),
         theme: AppTheme.light(),
         routerConfig: _router,
+        // App-wide default bars; a screen overrides with its own SystemUi.
+        builder: (context, child) => SystemUi(child: child!),
       ),
     );
   }

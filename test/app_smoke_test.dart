@@ -1,27 +1,51 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lavender/app.dart';
+import 'package:lavender/core/di/injection.dart';
 import 'package:lavender/core/session/session_cubit.dart';
 import 'package:lavender/core/storage/app_prefs.dart';
 import 'package:lavender/core/storage/user_store.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  testWidgets('LavenderApp shows the splash placeholder, then the shell', (tester) async {
-    SharedPreferences.setMockInitialValues({});
-    final sp = await SharedPreferences.getInstance();
-    await tester.pumpWidget(
-      BlocProvider(
-        create: (_) => SessionCubit(AppPrefs(sp), UserStore(sp)),
-        child: const LavenderApp(),
-      ),
-    );
-    await tester.pumpAndSettle();
-    expect(find.text('Splash'), findsOneWidget);
+Future<void> _boot(WidgetTester tester, Map<String, Object> values) async {
+  SharedPreferences.setMockInitialValues(values);
+  final sp = await SharedPreferences.getInstance();
+  final prefs = AppPrefs(sp);
+  final session = SessionCubit(prefs, UserStore(sp));
+  await sl.reset();
+  sl
+    ..registerSingleton<AppPrefs>(prefs)
+    ..registerSingleton<SessionCubit>(session);
+  await tester.pumpWidget(
+    BlocProvider.value(value: session, child: const LavenderApp()),
+  );
+  // Logo animation (Lottie, once) + loader GIF timer.
+  for (var i = 0; i < 20; i++) {
+    await tester.pump(const Duration(seconds: 1));
+  }
+}
 
-    await tester.tap(find.text('Go to /home'));
+void main() {
+  testWidgets('first launch: splash then onboarding, 3 taps reach auth',
+      (tester) async {
+    await _boot(tester, {});
+    expect(find.text('التالي'), findsOneWidget);
+
+    await tester.tap(find.text('التالي'));
+    await tester.pump();
+    await tester.tap(find.text('التالي'));
+    await tester.pump();
+    expect(find.text('ابدأ الان'), findsOneWidget);
+
+    await tester.tap(find.text('ابدأ الان'));
     await tester.pumpAndSettle();
-    expect(find.text('Home'), findsWidgets);
-    expect(find.text('Account'), findsNothing); // Arabic by default
+    expect(find.textContaining('AuthStart'), findsWidgets);
+    expect(sl<AppPrefs>().isFirstTime, isFalse);
+  });
+
+  testWidgets('not first launch and logged out: splash goes to auth',
+      (tester) async {
+    await _boot(tester, {AppPrefs.keyFirstTime: false});
+    expect(find.textContaining('AuthStart'), findsWidgets);
   });
 }
