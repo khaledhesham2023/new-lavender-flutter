@@ -206,8 +206,8 @@ lavender-flutter/
 ### Models and data layer
 - [x] T05 - Data models (depends on: T01)
 - [x] T06 - Local storage (depends on: T05)
-- [ ] T07 - Network client (depends on: T06)
-- [ ] T08 - Repositories: auth, profile, general, notifications (depends on: T07)
+- [x] T07 - Network client (depends on: T06)
+- [x] T08 - Repositories: auth, profile, general, notifications (depends on: T07)
 - [ ] T09 - Repositories: home, specialities, search, doctor, booking, favorites, offers (depends on: T07)
 
 ### Navigation shell
