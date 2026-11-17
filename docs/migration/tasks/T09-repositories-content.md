@@ -53,3 +53,11 @@ In `lib/data/repositories/`: `home_repository.dart`, `specialities_repository.da
 ## Gotchas
 - `client/offers` GET endpoints don't send Authorization in Android; ours adds it when logged in — harmless, keep the shared client.
 - Booking list `type` is `default` / `offer` / `not_offer` or null; `month` is `"3"`, `"6"`, `"12"` or null.
+
+## Notes
+- Added `home`, `specialities`, `search`, `doctor`, `booking`, `favorites` and `offers` repositories in `lib/data/repositories/`. Tests: `test/data/repositories/content_repositories_test.dart`.
+- `repository_parsers.dart` now also has `parseList(from)` and `parseObject(from)` (read `body['data']`); use them in new repositories.
+- `getDoctors` builds the query with `buildQuery` and passes it as `rawQuery`, so the path is e.g. `client/specialty/5?gender=male&sub_specialty[0]=1&sub_specialty[1]=2`. Its result type is `DoctorsBySpecialityData`.
+- Android's extra `sub_specialty_id` query param is never sent, so it is not ported.
+- `BookingRepository.addComment` returns the response `message`. A 404 from `workTimes` is a `ServerFailure(404, message)`; an empty or missing `data` gives `[]`.
+- `toggleFavorite` exists in Home, Doctor and Favorites repositories (same endpoint, `doctor_id` as a string).
