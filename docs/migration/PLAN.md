@@ -214,7 +214,7 @@ lavender-flutter/
 - [x] T10 - Session, router and bottom-nav shell (depends on: T04, T08)
 
 ### Screens
-- [ ] T11 - Splash and onboarding (depends on: T10)
+- [x] T11 - Splash and onboarding (depends on: T10)
 - [ ] T12 - Start now and login (depends on: T10)
 - [ ] T13 - Register (depends on: T12)
 - [ ] T14 - OTP and success dialog (depends on: T12)
