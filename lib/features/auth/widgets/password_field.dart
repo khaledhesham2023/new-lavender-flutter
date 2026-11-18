@@ -10,7 +10,7 @@ import '../../../core/utils/validators.dart';
 import '../../../core/widgets/app_svg.dart';
 import 'field_error.dart';
 
-enum _PasswordMessage { none, empty, tooShort, mustStartWithLetter }
+enum _PasswordMessage { none, empty, tooShort, mustStartWithLetter, mismatch }
 
 /// Obscured password input with eye toggle (`tiLoginPassword`) and its rules.
 /// Owns its error state; call [PasswordFieldState.validate] on submit.
@@ -19,11 +19,20 @@ class PasswordField extends StatefulWidget {
   final TextInputAction textInputAction;
   final ValueChanged<String>? onSubmitted;
 
+  /// Label above the field; defaults to the login "Password*".
+  final String? label;
+
+  /// When set, this is a confirmation field: empty / different from this
+  /// controller's text are its rules (instead of the length rule).
+  final TextEditingController? confirmOf;
+
   const PasswordField({
     super.key,
     required this.controller,
     this.textInputAction = TextInputAction.done,
     this.onSubmitted,
+    this.label,
+    this.confirmOf,
   });
 
   @override
@@ -53,10 +62,20 @@ class PasswordFieldState extends State<PasswordField> {
     PasswordError.tooShort => _PasswordMessage.tooShort,
   };
 
+  _PasswordMessage _rule(String text) {
+    final other = widget.confirmOf;
+    if (other == null) return _fromRule(validatePassword(text));
+    return switch (validateConfirm(other.text.trim(), text)) {
+      ConfirmError.ok => _PasswordMessage.none,
+      ConfirmError.empty => _PasswordMessage.empty,
+      ConfirmError.mismatch => _PasswordMessage.mismatch,
+    };
+  }
+
   void _onFocusChange() {
     setState(() {
       if (!_focus.hasFocus) {
-        _error = _fromRule(validatePassword(widget.controller.text));
+        _error = _rule(widget.controller.text);
       }
     });
   }
@@ -76,9 +95,9 @@ class PasswordFieldState extends State<PasswordField> {
 
   /// Submit validation (empty, < 8). Android checks the trimmed text. Shows the error.
   bool validate() {
-    final e = validatePassword(widget.controller.text.trim());
-    setState(() => _error = _fromRule(e));
-    return e == PasswordError.ok;
+    final e = _rule(widget.controller.text.trim());
+    setState(() => _error = e);
+    return e == _PasswordMessage.none;
   }
 
   String? _message(BuildContext context) {
@@ -88,6 +107,8 @@ class PasswordFieldState extends State<PasswordField> {
       _PasswordMessage.empty => l10n.pleaseEnterThePassword,
       _PasswordMessage.tooShort => l10n.passwordMustBeAtLeast8CharactersLong,
       _PasswordMessage.mustStartWithLetter => l10n.passwordMustStartWithALetter,
+      _PasswordMessage.mismatch =>
+        l10n.theConfirmationPasswordDoesNotMatchWithTheOriginalPassword,
     };
   }
 
@@ -102,7 +123,7 @@ class PasswordFieldState extends State<PasswordField> {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Text(
-            l10n.passwordWithStar,
+            widget.label ?? l10n.passwordWithStar,
             style: AppTextStyles.regular(14, AppColors.primary),
           ),
         ),
