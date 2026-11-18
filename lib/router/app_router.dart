@@ -4,6 +4,8 @@ import 'package:material_ui/material_ui.dart';
 import '../data/models/requests/booking_draft.dart';
 import '../data/models/responses/offer.dart';
 import '../data/models/responses/speciality.dart';
+import '../features/auth/login/login_screen.dart';
+import '../features/auth/start_now_screen.dart';
 import '../features/onboarding/onboarding_screen.dart';
 import '../features/shell/main_shell.dart';
 import '../features/splash/splash_screen.dart';
@@ -27,8 +29,14 @@ GoRouter createRouter() {
       ),
 
       // Auth flow: slide in from the end (Android enter_from_right).
-      _authPage(Routes.authStart, 'AuthStart'),
-      _authPage(Routes.authLogin, 'AuthLogin'),
+      GoRoute(
+        path: Routes.authStart,
+        pageBuilder: (context, state) => _slide(state, const StartNowScreen()),
+      ),
+      GoRoute(
+        path: Routes.authLogin,
+        pageBuilder: (context, state) => _slide(state, const LoginScreen()),
+      ),
       _authPage(Routes.authRegister, 'AuthRegister'),
       _authPage(Routes.authForgetPassword, 'AuthForgetPassword'),
       GoRoute(

@@ -8,4 +8,7 @@ class DeviceTokenProvider {
   final AppPrefs _prefs;
 
   Future<String?> getToken() async => _prefs.deviceToken;
+
+  /// Android AuthViewModel.saveDeviceToken (done right after the token is fetched at login).
+  Future<void> saveToken(String token) => _prefs.setDeviceToken(token);
 }
