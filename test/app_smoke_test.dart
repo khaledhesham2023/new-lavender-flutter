@@ -5,6 +5,7 @@ import 'package:lavender/core/di/injection.dart';
 import 'package:lavender/core/session/session_cubit.dart';
 import 'package:lavender/core/storage/app_prefs.dart';
 import 'package:lavender/core/storage/user_store.dart';
+import 'package:lavender/features/auth/start_now_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> _boot(WidgetTester tester, Map<String, Object> values) async {
@@ -38,14 +39,16 @@ void main() {
     expect(find.text('ابدأ الان'), findsOneWidget);
 
     await tester.tap(find.text('ابدأ الان'));
-    await tester.pumpAndSettle();
-    expect(find.textContaining('AuthStart'), findsWidgets);
+    // Start now has a looping Lottie, so pumpAndSettle would never finish.
+    await tester.pump(const Duration(seconds: 1));
+    await tester.pump(const Duration(seconds: 1));
+    expect(find.byType(StartNowScreen), findsOneWidget);
     expect(sl<AppPrefs>().isFirstTime, isFalse);
   });
 
   testWidgets('not first launch and logged out: splash goes to auth',
       (tester) async {
     await _boot(tester, {AppPrefs.keyFirstTime: false});
-    expect(find.textContaining('AuthStart'), findsWidgets);
+    expect(find.byType(StartNowScreen), findsOneWidget);
   });
 }

@@ -9,6 +9,7 @@ import '../../core/theme/app_assets.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_text_styles.dart';
 import '../../core/widgets/app_svg.dart';
+import '../../core/widgets/spacers.dart';
 import '../../router/routes.dart';
 
 /// Scaffold around the five tabs (port of `activity_main.xml` + `MainActivity`).
@@ -110,7 +111,7 @@ class _BottomBar extends StatelessWidget {
                           width: 24,
                           height: 24,
                         ),
-                        const SizedBox(height: 4),
+                        const VerticalSpacer(4),
                         Text(
                           labels[i],
                           maxLines: 1,

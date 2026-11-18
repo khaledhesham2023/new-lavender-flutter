@@ -215,7 +215,7 @@ lavender-flutter/
 
 ### Screens
 - [x] T11 - Splash and onboarding (depends on: T10)
-- [ ] T12 - Start now and login (depends on: T10)
+- [x] T12 - Start now and login (depends on: T10)
 - [ ] T13 - Register (depends on: T12)
 - [ ] T14 - OTP and success dialog (depends on: T12)
 - [ ] T15 - Forget password, new password, success screen (depends on: T14)

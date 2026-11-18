@@ -12,6 +12,7 @@ import '../../core/theme/app_assets.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_text_styles.dart';
 import '../../core/widgets/system_ui.dart';
+import '../../core/widgets/spacers.dart';
 import '../../router/routes.dart';
 
 /// Measured real duration of `loader.gif` (75 frames). Android plays it once.
@@ -114,7 +115,7 @@ class _SplashScreenState extends State<SplashScreen>
                         textAlign: TextAlign.center,
                         style: AppTextStyles.messiriBold(16, AppColors.white),
                       ),
-                      const SizedBox(height: 1),
+                      const VerticalSpacer(1),
                       Text(
                         l10n.elgbeelElsnaaya,
                         textAlign: TextAlign.center,
@@ -147,7 +148,7 @@ class _SplashScreenState extends State<SplashScreen>
                         l10n.nowLoading,
                         style: AppTextStyles.semiBold(18, AppColors.white),
                       ),
-                      const SizedBox(width: 6),
+                      const HorizontalSpacer(6),
                       SizedBox(
                         width: 50,
                         height: 50,
