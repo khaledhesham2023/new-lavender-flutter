@@ -32,7 +32,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get addYourBookReviewTitle => 'اضف تقييمك للطبيب';
 
   @override
-  String get agreeToThe => 'توافق على';
+  String get agreeToThe => 'أوافق على';
 
   @override
   String get all => 'الكل';

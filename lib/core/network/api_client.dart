@@ -6,6 +6,7 @@ import 'package:path/path.dart' as p;
 
 import '../config/env.dart';
 import '../storage/app_prefs.dart';
+import 'api_logger.dart';
 import 'api_result.dart';
 
 typedef JsonParser<T> = T Function(dynamic json);
@@ -30,10 +31,7 @@ class ApiClient {
       ..responseType = ResponseType.json
       ..validateStatus = (_) => true;
     _dio.interceptors.add(InterceptorsWrapper(onRequest: _addHeaders));
-    if (kDebugMode) {
-      _dio.interceptors
-          .add(LogInterceptor(requestBody: true, responseBody: true));
-    }
+    if (kDebugMode) _dio.interceptors.add(ApiLogger());
   }
 
   static const _timeout = Duration(seconds: 30);
