@@ -9,16 +9,33 @@ class AppBackButton extends StatelessWidget {
   final double size;
   final Color? color;
 
-  const AppBackButton({super.key, this.onTap, this.size = 24, this.color});
+  /// Tap area (square); the icon is centered inside it.
+  final double boxSize;
+
+  const AppBackButton({
+    super.key,
+    this.onTap,
+    this.size = 24,
+    this.color,
+    this.boxSize = 40,
+  });
 
   @override
   Widget build(BuildContext context) {
     return InkResponse(
       onTap: onTap ?? () => Navigator.maybePop(context),
-      radius: size,
-      child: Padding(
-        padding: const EdgeInsets.all(8),
-        child: AppSvg(AppAssets.icBack, width: size, height: size, color: color),
+      radius: boxSize / 2,
+      child: SizedBox(
+        width: boxSize,
+        height: boxSize,
+        child: Center(
+          child: AppSvg(
+            AppAssets.icBack,
+            width: size,
+            height: size,
+            color: color,
+          ),
+        ),
       ),
     );
   }
