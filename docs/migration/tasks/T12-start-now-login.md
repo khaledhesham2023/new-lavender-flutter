@@ -55,3 +55,13 @@ Port the auth entry screen and login with all its field validation and the "not 
 - `phone_code` is sent **without** `+` (`tvLoginCode.text.substring(1)` → `966`).
 - Android gets a fresh FCM token before login; until T39, `DeviceTokenProvider` returns the stored value (may be null → omitted).
 - Login screen sets `adjustPan` on destroy; Flutter handles the keyboard with `resizeToAvoidBottomInset` + scroll view — make the form scrollable.
+
+## Notes
+- Login has no PopScope: system back just pops to Start now. The header arrow uses _back() (pop, or go to Start now if nothing to pop).
+- Built: `start_now_screen.dart`, `login/login_screen.dart`, `login/login_cubit.dart`, `widgets/{auth_header,phone_field,password_field,field_error}.dart`; router `authStart`/`authLogin` now use them.
+- `PhoneField` / `PasswordField` own their error state (typing + focus-lost rules). The screen calls `validate()` through a `GlobalKey<PhoneFieldState>` / `GlobalKey<PasswordFieldState>` on submit (phone first, then password; only the first failing field shows). Reuse them in register / forget password / edit profile. `PhoneFieldState.phoneCode` = `+966`.
+- `AuthHeader(title, body, onBack)` is the shared hexagon header (logo + back + title + body); T13/T15 can reuse it if their layouts match.
+- `DeviceTokenProvider.saveToken(token)` added (Android saves the token before login); T39 should keep it.
+- `LoginCubit` emits a one-shot `event` (`navigateHome` / `navigateOtp`) or a `failure`; the screen calls `consumeEvent()` after handling it.
+- The Start now screen has a looping Lottie (guest eyes), so widget tests must not use `pumpAndSettle` there (`app_smoke_test.dart` updated).
+- Not verified on a device/emulator: layout pixel match and the live login flow.

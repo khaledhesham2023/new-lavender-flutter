@@ -2,6 +2,7 @@ import 'package:flutter/widgets.dart';
 
 import '../theme/app_assets.dart';
 import 'app_svg.dart';
+import 'spacers.dart';
 
 /// Port of `CustomRatingBar`. Read-only: shows [score] rounded to the nearest 0.5
 /// (full / half / empty stars). Not read-only: tap or drag to choose 1..[count]
@@ -51,11 +52,13 @@ class StarRating extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         for (var i = 1; i <= count; i++) ...[
-          if (i > 1) const SizedBox(width: _gap),
+          if (i > 1) const HorizontalSpacer(_gap),
           AppSvg(
             i <= shown
                 ? AppAssets.icFullStar
-                : (half && i - 0.5 <= shown ? AppAssets.icHalf : AppAssets.icEmptyStar),
+                : (half && i - 0.5 <= shown
+                      ? AppAssets.icHalf
+                      : AppAssets.icEmptyStar),
             width: size,
             height: size,
           ),
