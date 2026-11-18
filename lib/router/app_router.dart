@@ -5,6 +5,7 @@ import '../data/models/requests/booking_draft.dart';
 import '../data/models/responses/offer.dart';
 import '../data/models/responses/speciality.dart';
 import '../features/auth/login/login_screen.dart';
+import '../features/auth/register/register_screen.dart';
 import '../features/auth/start_now_screen.dart';
 import '../features/onboarding/onboarding_screen.dart';
 import '../features/shell/main_shell.dart';
@@ -37,7 +38,10 @@ GoRouter createRouter() {
         path: Routes.authLogin,
         pageBuilder: (context, state) => _slide(state, const LoginScreen()),
       ),
-      _authPage(Routes.authRegister, 'AuthRegister'),
+      GoRoute(
+        path: Routes.authRegister,
+        pageBuilder: (context, state) => _slide(state, const RegisterScreen()),
+      ),
       _authPage(Routes.authForgetPassword, 'AuthForgetPassword'),
       GoRoute(
         path: Routes.authOtp,
