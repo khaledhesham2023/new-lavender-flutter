@@ -45,6 +45,9 @@ class _LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<_LoginView> {
+  /// Temporarily hidden: set to true to show the "Forgot your password?" link.
+  static const bool _showForgetPassword = false;
+
   final _phone = TextEditingController();
   final _password = TextEditingController();
   final _phoneKey = GlobalKey<PhoneFieldState>();
@@ -132,24 +135,28 @@ class _LoginViewState extends State<_LoginView> {
                         onSubmitted: (_) => _submit(),
                       ),
                       const VerticalSpacer(16),
-                      Align(
-                        alignment: AlignmentDirectional.centerEnd,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16),
-                          child: GestureDetector(
-                            behavior: HitTestBehavior.opaque,
-                            onTap: () =>
-                                context.push(Routes.authForgetPassword),
-                            child: Text(
-                              l10n.forgetPassword,
-                              style: AppTextStyles.medium(
-                                12,
-                                AppColors.c3D4C5E,
-                              ).copyWith(decoration: TextDecoration.underline),
+                      if (_showForgetPassword)
+                        Align(
+                          alignment: AlignmentDirectional.centerEnd,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            child: GestureDetector(
+                              behavior: HitTestBehavior.opaque,
+                              onTap: () =>
+                                  context.push(Routes.authForgetPassword),
+                              child: Text(
+                                l10n.forgetPassword,
+                                style:
+                                    AppTextStyles.medium(
+                                      12,
+                                      AppColors.c3D4C5E,
+                                    ).copyWith(
+                                      decoration: TextDecoration.underline,
+                                    ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
                       const Spacer(),
                       Padding(
                         padding: const EdgeInsets.all(16),
