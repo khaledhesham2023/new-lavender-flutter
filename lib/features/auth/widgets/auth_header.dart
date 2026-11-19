@@ -15,11 +15,15 @@ class AuthHeader extends StatelessWidget {
   final String body;
   final VoidCallback onBack;
 
+  /// Rich replacement for [body] (the OTP screen embeds the phone number in it).
+  final InlineSpan? bodySpan;
+
   const AuthHeader({
     super.key,
     required this.title,
     required this.body,
     required this.onBack,
+    this.bodySpan,
   });
 
   @override
@@ -83,8 +87,8 @@ class AuthHeader extends StatelessWidget {
                 const VerticalSpacer(10),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    body,
+                  child: Text.rich(
+                    bodySpan ?? TextSpan(text: body),
                     textAlign: TextAlign.center,
                     style: AppTextStyles.regular(
                       14,
