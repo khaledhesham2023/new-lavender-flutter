@@ -14,6 +14,7 @@ import '../features/auth/success/auth_success_screen.dart';
 import '../features/home/home_screen.dart';
 import '../features/onboarding/onboarding_screen.dart';
 import '../features/shell/main_shell.dart';
+import '../features/specialities/all_specialities_screen.dart';
 import '../features/splash/splash_screen.dart';
 import '../features/shell/placeholder_screen.dart';
 import 'route_args.dart';
@@ -91,7 +92,10 @@ GoRouter createRouter() {
       ),
 
       _page(Routes.notifications, 'Notifications'),
-      _page(Routes.allSpecialities, 'AllSpecialities'),
+      GoRoute(
+        path: Routes.allSpecialities,
+        builder: (context, state) => const AllSpecialitiesScreen(),
+      ),
       _page(Routes.offers, 'Offers'),
       GoRoute(
         path: Routes.offerDetails,
