@@ -16,6 +16,7 @@ import '../features/offers/offer_details_screen.dart';
 import '../features/offers/offers_screen.dart';
 import '../features/onboarding/onboarding_screen.dart';
 import '../features/search/search_screen.dart';
+import '../features/search_details/search_details_screen.dart';
 import '../features/shell/main_shell.dart';
 import '../features/specialities/all_specialities_screen.dart';
 import '../features/splash/splash_screen.dart';
@@ -127,7 +128,7 @@ GoRouter createRouter() {
         path: Routes.searchDetails,
         builder: (context, state) {
           final speciality = state.extra! as SpecialityModel;
-          return PlaceholderScreen(name: 'SearchDetails #${speciality.id}');
+          return SearchDetailsScreen(speciality: speciality);
         },
       ),
       GoRoute(
