@@ -9,7 +9,6 @@ import '../../core/l10n/l10n_ext.dart';
 import '../../core/network/api_result.dart';
 import '../../core/session/session_cubit.dart';
 import '../../core/theme/app_colors.dart';
-import '../../core/theme/app_text_styles.dart';
 import '../../core/widgets/app_button.dart';
 import '../../core/widgets/app_toast.dart';
 import '../../core/widgets/failure_toast.dart';
@@ -19,6 +18,7 @@ import '../../core/widgets/state_view.dart';
 import '../../core/widgets/system_ui.dart';
 import '../../data/repositories/doctor_repository.dart';
 import '../../router/routes.dart';
+import '../booking/widgets/day_time_picker.dart';
 import 'doctor_details_cubit.dart';
 import 'widgets/detail_tabs.dart';
 import 'widgets/doctor_header.dart';
@@ -126,15 +126,12 @@ class _DoctorDetailsViewState extends State<_DoctorDetailsView> {
                           child: IndexedStack(
                             index: _tab,
                             children: [
-                              // T23: booking time tab.
-                              Center(
-                                child: Text(
-                                  context.l10n.bookingAppointments,
-                                  style: AppTextStyles.medium(
-                                    14,
-                                    AppColors.c3D4C5E,
-                                  ),
-                                ),
+                              DayTimePicker(
+                                days: doctor.workTimes,
+                                selectedDay: state.selectedDay,
+                                selectedTime: state.selectedTime,
+                                onDayChanged: cubit.selectDay,
+                                onTimeChanged: cubit.selectTime,
                               ),
                               InfoTab(doctor: doctor),
                               ReviewsTab(doctor: doctor),
