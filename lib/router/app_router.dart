@@ -5,6 +5,7 @@ import '../data/models/requests/booking_draft.dart';
 import '../data/models/responses/offer.dart';
 import '../data/models/responses/speciality.dart';
 import '../features/auth/login/login_screen.dart';
+import '../features/auth/otp/otp_screen.dart';
 import '../features/auth/register/register_screen.dart';
 import '../features/auth/start_now_screen.dart';
 import '../features/onboarding/onboarding_screen.dart';
@@ -47,10 +48,7 @@ GoRouter createRouter() {
         path: Routes.authOtp,
         pageBuilder: (context, state) {
           final args = state.extra! as OtpArgs;
-          return _slide(
-            state,
-            PlaceholderScreen(name: 'AuthOtp (${args.fromDestination.name})'),
-          );
+          return _slide(state, OtpScreen(args: args));
         },
       ),
       GoRoute(
