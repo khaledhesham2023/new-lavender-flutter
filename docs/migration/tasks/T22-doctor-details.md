@@ -53,3 +53,10 @@ selection fields in the Cubit ready.
 ## Gotchas
 - Selection must reset when the doctor reloads (Android adapters reselect the first day on submit — T23 handles; keep `selectDay(null)` on load).
 - `stars` is used for the summary rating bar, `rate` for the numeric value.
+
+## Notes
+- Done: `DoctorDetailsCubit` (doctor, `isFav` flipped only after success, `selectedDay`/`selectedTime`, `buildDraft()`), screen with header/tabs/footer, Info tab (`ExpandableText`, certificates + `photo_view` gallery), Reviews tab (summary + 2500 ms bars + list). Route `doctorDetails` replaced. Packages added: `photo_view`, `share_plus`.
+- T23: tab 0 is a text placeholder in the `IndexedStack`. Call `cubit.selectDay(day)` / `cubit.selectTime(time)` from it; `selectDay` clears the time and `load()` clears both. `buildDraft()` maps `day = dayTranslated`, `date = date`, `formattedDate = formatedDate`, `time = timeFormatted`; adjust there if T23 needs other fields.
+- T25: the Book button has a `// T25` branch for `user_offers` that currently pushes `Routes.bookAppointment` like the no-offer case.
+- Header shows 0 when `rate`/`reviews_count` are null (Android printed "null").
+- Not verified on a device.
