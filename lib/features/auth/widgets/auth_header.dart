@@ -18,16 +18,58 @@ class AuthHeader extends StatelessWidget {
   /// Rich replacement for [body] (the OTP screen embeds the phone number in it).
   final InlineSpan? bodySpan;
 
+  /// When set, the header is at least as tall as the background image plus this
+  /// gap (Android anchors the next field to the bottom of `ivHeader` + margin).
+  final double? gapBelowImage;
+
   const AuthHeader({
     super.key,
     required this.title,
     required this.body,
     required this.onBack,
     this.bodySpan,
+    this.gapBelowImage,
   });
 
   @override
   Widget build(BuildContext context) {
+    final gap = gapBelowImage;
+    if (gap == null) return _content(context);
+    // ic_auth_header_bg.png is 375x262, drawn at full width.
+    final minHeight = MediaQuery.sizeOf(context).width * 262 / 375 + gap;
+    return ConstrainedBox(
+      constraints: BoxConstraints(minHeight: minHeight),
+      child: _content(context),
+    );
+  }
+
+  static final TextStyle _bodyStyle = AppTextStyles.regular(
+    14,
+    AppColors.c47586E,
+  ).copyWith(height: 1.4);
+
+  /// A body with explicit line breaks keeps exactly those lines: a line that is
+  /// too wide shrinks to fit instead of wrapping into an extra line.
+  Widget _body() {
+    if (bodySpan == null && body.contains('\n')) {
+      return Column(
+        children: [
+          for (final line in body.split('\n'))
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(line.trim(), style: _bodyStyle),
+            ),
+        ],
+      );
+    }
+    return Text.rich(
+      bodySpan ?? TextSpan(text: body),
+      textAlign: TextAlign.center,
+      style: _bodyStyle,
+    );
+  }
+
+  Widget _content(BuildContext context) {
     return Stack(
       children: [
         Positioned(
@@ -87,14 +129,7 @@ class AuthHeader extends StatelessWidget {
                 const VerticalSpacer(10),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
-                  child: Text.rich(
-                    bodySpan ?? TextSpan(text: body),
-                    textAlign: TextAlign.center,
-                    style: AppTextStyles.regular(
-                      14,
-                      AppColors.c47586E,
-                    ).copyWith(height: 1.4),
-                  ),
+                  child: _body(),
                 ),
               ],
             ),

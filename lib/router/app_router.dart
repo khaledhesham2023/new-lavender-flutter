@@ -4,10 +4,13 @@ import 'package:material_ui/material_ui.dart';
 import '../data/models/requests/booking_draft.dart';
 import '../data/models/responses/offer.dart';
 import '../data/models/responses/speciality.dart';
+import '../features/auth/forget_password/forget_password_screen.dart';
 import '../features/auth/login/login_screen.dart';
+import '../features/auth/new_password/new_password_screen.dart';
 import '../features/auth/otp/otp_screen.dart';
 import '../features/auth/register/register_screen.dart';
 import '../features/auth/start_now_screen.dart';
+import '../features/auth/success/auth_success_screen.dart';
 import '../features/onboarding/onboarding_screen.dart';
 import '../features/shell/main_shell.dart';
 import '../features/splash/splash_screen.dart';
@@ -43,7 +46,11 @@ GoRouter createRouter() {
         path: Routes.authRegister,
         pageBuilder: (context, state) => _slide(state, const RegisterScreen()),
       ),
-      _authPage(Routes.authForgetPassword, 'AuthForgetPassword'),
+      GoRoute(
+        path: Routes.authForgetPassword,
+        pageBuilder: (context, state) =>
+            _slide(state, const ForgetPasswordScreen()),
+      ),
       GoRoute(
         path: Routes.authOtp,
         pageBuilder: (context, state) {
@@ -55,13 +62,14 @@ GoRouter createRouter() {
         path: Routes.authNewPassword,
         pageBuilder: (context, state) {
           final args = state.extra! as NewPasswordArgs;
-          return _slide(
-            state,
-            PlaceholderScreen(name: 'AuthNewPassword (${args.phone})'),
-          );
+          return _slide(state, NewPasswordScreen(args: args));
         },
       ),
-      _authPage(Routes.authSuccess, 'AuthSuccess'),
+      GoRoute(
+        path: Routes.authSuccess,
+        pageBuilder: (context, state) =>
+            _slide(state, const AuthSuccessScreen()),
+      ),
 
       // The five tabs share the bottom-navigation shell.
       ShellRoute(
@@ -208,12 +216,6 @@ int _id(GoRouterState state) => int.parse(state.pathParameters['id']!);
 GoRoute _page(String path, String name) => GoRoute(
       path: path,
       builder: (context, state) => PlaceholderScreen(name: name),
-    );
-
-GoRoute _authPage(String path, String name) => GoRoute(
-      path: path,
-      pageBuilder: (context, state) =>
-          _slide(state, PlaceholderScreen(name: name)),
     );
 
 GoRoute _tab(String path, String name, {List<Widget> actions = const []}) =>
