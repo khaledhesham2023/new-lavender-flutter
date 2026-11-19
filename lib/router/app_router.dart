@@ -11,6 +11,7 @@ import '../features/auth/otp/otp_screen.dart';
 import '../features/auth/register/register_screen.dart';
 import '../features/auth/start_now_screen.dart';
 import '../features/auth/success/auth_success_screen.dart';
+import '../features/doctor_details/doctor_details_screen.dart';
 import '../features/filter/filter_screen.dart';
 import '../features/home/home_screen.dart';
 import '../features/offers/offer_details_screen.dart';
@@ -140,7 +141,7 @@ GoRouter createRouter() {
       GoRoute(
         path: Routes.doctorDetails,
         builder: (context, state) =>
-            PlaceholderScreen(name: 'DoctorDetails #${_id(state)}'),
+            DoctorDetailsScreen(doctorId: _id(state)),
       ),
       GoRoute(
         path: Routes.bookAppointment,
