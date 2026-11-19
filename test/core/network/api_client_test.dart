@@ -14,8 +14,11 @@ class _FakeAdapter implements HttpClientAdapter {
   RequestOptions? last;
 
   @override
-  Future<ResponseBody> fetch(RequestOptions options, Stream<Uint8List>? body,
-      Future<void>? cancel) {
+  Future<ResponseBody> fetch(
+    RequestOptions options,
+    Stream<Uint8List>? body,
+    Future<void>? cancel,
+  ) {
     last = options;
     return respond(options);
   }
@@ -25,12 +28,12 @@ class _FakeAdapter implements HttpClientAdapter {
 }
 
 ResponseBody _json(Object? body, int status) => ResponseBody.fromString(
-      body is String ? body : jsonEncode(body),
-      status,
-      headers: {
-        Headers.contentTypeHeader: ['application/json'],
-      },
-    );
+  body is String ? body : jsonEncode(body),
+  status,
+  headers: {
+    Headers.contentTypeHeader: ['application/json'],
+  },
+);
 
 Future<(ApiClient, _FakeAdapter)> _make(
   Future<ResponseBody> Function(RequestOptions o) respond, {
@@ -46,7 +49,7 @@ Future<(ApiClient, _FakeAdapter)> _make(
 void main() {
   test('headers without token', () async {
     final (c, a) = await _make((_) async => _json({'data': 1}, 200));
-    await c.get<int>('a', parse: (j) => j['data'] as int);
+    await c.call<int>((s) => s.home(), parse: (j) => j['data'] as int);
     final h = a.last!.headers;
     expect(h['Accept'], 'application/json');
     expect(h['Content-Type'], 'application/json');
@@ -65,15 +68,19 @@ void main() {
         AppPrefs.keyLanguage: 'en',
       },
     );
-    await c.get<int>('a', parse: (j) => 1);
+    await c.call<int>((s) => s.home(), parse: (j) => 1);
     expect(a.last!.headers['Authorization'], 'Bearer abc');
     expect(a.last!.headers['lang'], 'en');
   });
 
   test('200 parses whole body and message', () async {
     final (c, _) = await _make(
-        (_) async => _json({'data': 7, 'message': 'ok'}, 200));
-    final r = await c.get<int>('a', parse: (j) => j['data'] as int);
+      (_) async => _json({'data': 7, 'message': 'ok'}, 200),
+    );
+    final r = await c.call<int>(
+      (s) => s.home(),
+      parse: (j) => j['data'] as int,
+    );
     expect(r, isA<ApiSuccess<int>>());
     expect((r as ApiSuccess<int>).data, 7);
     expect(r.message, 'ok');
@@ -81,60 +88,78 @@ void main() {
 
   test('200 with null body -> UnknownFailure', () async {
     final (c, _) = await _make((_) async => _json('null', 200));
-    expect(await c.get<int>('a', parse: (j) => 1), isA<UnknownFailure<int>>());
+    expect(
+      await c.call<int>((s) => s.home(), parse: (j) => 1),
+      isA<UnknownFailure<int>>(),
+    );
   });
 
   test('parse throwing -> UnknownFailure', () async {
     final (c, _) = await _make((_) async => _json({'a': 1}, 200));
-    final r = await c.get<int>('a', parse: (j) => throw StateError('bad'));
+    final r = await c.call<int>(
+      (s) => s.home(),
+      parse: (j) => throw StateError('bad'),
+    );
     expect(r, isA<UnknownFailure<int>>());
   });
 
   test('422 -> ServerFailure', () async {
-    final (c, _) =
-        await _make((_) async => _json({'message': 'invalid'}, 422));
-    final r = await c.post<void>('a', parse: (_) {});
+    final (c, _) = await _make((_) async => _json({'message': 'invalid'}, 422));
+    final r = await c.call<void>((s) => s.logout({}), parse: (_) {});
     expect(r, isA<ServerFailure<void>>());
     expect((r as ServerFailure<void>).code, 422);
     expect(r.message, 'invalid');
   });
 
   test('500 html body -> UnknownFailure', () async {
-    final (c, _) = await _make((_) async => ResponseBody.fromString(
-          '<html>err</html>',
-          500,
-          headers: {
-            Headers.contentTypeHeader: ['text/html'],
-          },
-        ));
-    expect(await c.get<int>('a', parse: (j) => 1), isA<UnknownFailure<int>>());
+    final (c, _) = await _make(
+      (_) async => ResponseBody.fromString(
+        '<html>err</html>',
+        500,
+        headers: {
+          Headers.contentTypeHeader: ['text/html'],
+        },
+      ),
+    );
+    expect(
+      await c.call<int>((s) => s.home(), parse: (j) => 1),
+      isA<UnknownFailure<int>>(),
+    );
   });
 
   test('timeout -> NetworkFailure', () async {
-    final (c, _) = await _make((o) async => throw DioException(
-        requestOptions: o, type: DioExceptionType.connectionTimeout));
-    expect(await c.get<int>('a', parse: (j) => 1), isA<NetworkFailure<int>>());
+    final (c, _) = await _make(
+      (o) async => throw DioException(
+        requestOptions: o,
+        type: DioExceptionType.connectionTimeout,
+      ),
+    );
+    expect(
+      await c.call<int>((s) => s.home(), parse: (j) => 1),
+      isA<NetworkFailure<int>>(),
+    );
   });
 
   test('null query values dropped', () async {
     final (c, a) = await _make((_) async => _json({}, 200));
-    await c.get<int>('a', query: {'x': 1, 'y': null}, parse: (j) => 1);
-    expect(a.last!.uri.queryParameters, {'x': '1'});
-  });
-
-  test('buildQuery keeps brackets and drops nulls', () {
-    expect(
-      buildQuery({'sub_specialty[0]': 3, 'gender': 'male', 'z': null}),
-      'sub_specialty[0]=3&gender=male',
+    await c.call<int>(
+      (s) => s.appointments(status: 'new', month: null),
+      parse: (j) => 1,
     );
-    expect(buildQuery({'k': 'a b'}), 'k=a+b');
+    expect(a.last!.uri.queryParameters, {'status': 'new'});
   });
 
-  test('rawQuery is appended and decodes to bracketed keys', () async {
+  test('map filters keep bracketed keys', () async {
     final (c, a) = await _make((_) async => _json({}, 200));
-    await c.get<int>('a',
-        rawQuery: buildQuery({'sub_specialty[0]': 3}), parse: (j) => 1);
-    // Dart's Uri may percent-encode brackets on the wire; servers decode them.
-    expect(a.last!.uri.queryParameters, {'sub_specialty[0]': '3'});
+    await c.call<int>(
+      (s) => s.specialtyDoctors(5, {'gender': 'male', 'sub_specialty[0]': 3}),
+      parse: (j) => 1,
+    );
+    // Dio may percent-encode brackets on the wire; servers decode them.
+    expect(a.last!.uri.queryParameters, {
+      'gender': 'male',
+      'sub_specialty[0]': '3',
+    });
+    expect(a.last!.path, 'client/specialty/5');
   });
 }

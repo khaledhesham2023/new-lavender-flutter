@@ -82,10 +82,12 @@ void main() {
       final r = await SpecialitiesRepository(api)
           .getDoctors(5, gender: 'male', subSpecialtyIds: [1, 2]);
       expect(a.method, 'GET');
-      expect(
-        a.path,
-        'client/specialty/5?gender=male&sub_specialty[0]=1&sub_specialty[1]=2',
-      );
+      expect(a.path, 'client/specialty/5');
+      expect(a.query, {
+        'gender': 'male',
+        'sub_specialty[0]': 1,
+        'sub_specialty[1]': 2,
+      });
       final d = (r as ApiSuccess<DoctorsBySpecialityData>).data;
       expect(d.doctors.length, 1);
       expect(d.count, 1);
@@ -100,11 +102,13 @@ void main() {
         maxPrice: 150,
         name: 'a b',
       );
-      expect(
-        a.path,
-        'client/specialty/5?sort_by=price&max_price=150.0&min_price=50.0'
-        '&doctor_name=a+b',
-      );
+      expect(a.path, 'client/specialty/5');
+      expect(a.query, {
+        'sort_by': 'price',
+        'max_price': 150.0,
+        'min_price': 50.0,
+        'doctor_name': 'a b',
+      });
     });
   });
 

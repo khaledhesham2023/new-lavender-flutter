@@ -2,23 +2,19 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
-import 'package:path/path.dart' as p;
+import 'package:retrofit/retrofit.dart';
 
 import '../config/env.dart';
 import '../storage/app_prefs.dart';
 import 'api_logger.dart';
 import 'api_result.dart';
+import 'lavender_api.dart';
 
 typedef JsonParser<T> = T Function(dynamic json);
 
-/// Encodes [q] as a query string: values are percent-encoded, keys are kept
-/// as-is so `sub_specialty[0]` keeps its brackets. Null values are dropped.
-String buildQuery(Map<String, Object?> q) => q.entries
-    .where((e) => e.value != null)
-    .map((e) => '${e.key}=${Uri.encodeQueryComponent('${e.value}')}')
-    .join('&');
-
-/// Single HTTP entry point. Never throws: every outcome is an [ApiResult].
+/// Single HTTP entry point. Holds the Dio setup (headers, timeouts, logging)
+/// and the generated Retrofit [service]; [call] never throws: every outcome
+/// is an [ApiResult].
 class ApiClient {
   ApiClient(this._prefs, {Dio? dio, String? baseUrl}) : _dio = dio ?? Dio() {
     final base = baseUrl ?? Env.baseUrl;
@@ -32,12 +28,16 @@ class ApiClient {
       ..validateStatus = (_) => true;
     _dio.interceptors.add(InterceptorsWrapper(onRequest: _addHeaders));
     if (kDebugMode) _dio.interceptors.add(ApiLogger());
+    service = LavenderApi(_dio);
   }
 
   static const _timeout = Duration(seconds: 30);
 
   final AppPrefs _prefs;
   final Dio _dio;
+
+  /// The generated Retrofit interface with every endpoint.
+  late final LavenderApi service;
 
   void _addHeaders(RequestOptions o, RequestInterceptorHandler handler) {
     final lang = _prefs.languageCode;
@@ -52,78 +52,16 @@ class ApiClient {
     handler.next(o);
   }
 
-  Future<ApiResult<T>> get<T>(
-    String path, {
-    Map<String, dynamic>? query,
-    String? rawQuery,
+  /// Runs one [service] call and maps the outcome:
+  /// 2xx with a JSON object -> [ApiSuccess] (via [parse]); any other status ->
+  /// [ServerFailure] when the body has a message map; connection problems ->
+  /// [NetworkFailure]; everything else -> [UnknownFailure].
+  Future<ApiResult<T>> call<T>(
+    Future<HttpResponse<dynamic>> Function(LavenderApi api) request, {
     required JsonParser<T> parse,
-  }) =>
-      _handle(
-        () => _dio.get<dynamic>(
-          _withRaw(path, rawQuery),
-          queryParameters: _clean(query),
-        ),
-        parse,
-      );
-
-  Future<ApiResult<T>> post<T>(
-    String path, {
-    Object? body,
-    Map<String, dynamic>? query,
-    required JsonParser<T> parse,
-  }) =>
-      _handle(
-        () => _dio.post<dynamic>(
-          path,
-          data: body,
-          queryParameters: _clean(query),
-        ),
-        parse,
-      );
-
-  Future<ApiResult<T>> delete<T>(
-    String path, {
-    Map<String, dynamic>? query,
-    required JsonParser<T> parse,
-  }) =>
-      _handle(
-        () => _dio.delete<dynamic>(path, queryParameters: _clean(query)),
-        parse,
-      );
-
-  Future<ApiResult<T>> upload<T>(
-    String path, {
-    required String filePath,
-    required String field,
-    Map<String, dynamic>? query,
-    required JsonParser<T> parse,
-  }) =>
-      _handle(() async {
-        final form = FormData.fromMap({
-          field: await MultipartFile.fromFile(
-            filePath,
-            filename: p.basename(filePath),
-          ),
-        });
-        return _dio.post<dynamic>(
-          path,
-          data: form,
-          queryParameters: _clean(query),
-        );
-      }, parse);
-
-  static String _withRaw(String path, String? raw) =>
-      (raw == null || raw.isEmpty) ? path : '$path?$raw';
-
-  static Map<String, dynamic>? _clean(Map<String, dynamic>? q) =>
-      q == null ? null : (Map.of(q)..removeWhere((_, v) => v == null));
-
-  Future<ApiResult<T>> _handle<T>(
-    Future<Response<dynamic>> Function() call,
-    JsonParser<T> parse,
-  ) async {
+  }) async {
     try {
-      final res = await call();
+      final res = (await request(service)).response;
       final status = res.statusCode ?? 0;
       final body = res.data;
       if (status >= 200 && status < 300) {

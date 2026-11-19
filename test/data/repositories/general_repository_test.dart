@@ -18,7 +18,9 @@ void main() {
         // Windows may still hold the multipart file handle.
       }
     });
-    final file = File('${dir.path}/pic.png')..writeAsBytesSync([1, 2, 3]);
+    // Retrofit derives the filename by splitting on the platform separator.
+    final file = File('${dir.path}${Platform.pathSeparator}pic.png')
+      ..writeAsBytesSync([1, 2, 3]);
 
     final (api, a) = await makeApi(body: {'data': 'stored/pic.png'});
     final r = await GeneralRepository(api).uploadImage(file.path);
