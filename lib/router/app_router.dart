@@ -11,6 +11,7 @@ import '../features/auth/otp/otp_screen.dart';
 import '../features/auth/register/register_screen.dart';
 import '../features/auth/start_now_screen.dart';
 import '../features/auth/success/auth_success_screen.dart';
+import '../features/filter/filter_screen.dart';
 import '../features/home/home_screen.dart';
 import '../features/offers/offer_details_screen.dart';
 import '../features/offers/offers_screen.dart';
@@ -133,11 +134,8 @@ GoRouter createRouter() {
       ),
       GoRoute(
         path: Routes.filter,
-        builder: (context, state) {
-          // FilterArgs is defined in T21.
-          final Object? args = state.extra;
-          return PlaceholderScreen(name: 'Filter (${args.runtimeType})');
-        },
+        builder: (context, state) =>
+            FilterScreen(args: state.extra! as FilterArgs),
       ),
       GoRoute(
         path: Routes.doctorDetails,

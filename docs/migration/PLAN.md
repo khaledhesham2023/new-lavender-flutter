@@ -225,7 +225,7 @@ lavender-flutter/
 - [x] T18 - Offers list and offer details (depends on: T16)
 - [x] T19 - Search (last search and results) (depends on: T16)
 - [x] T20 - Search details and sort sheet (depends on: T19)
-- [ ] T21 - Filter screen and subspecialties sheet (depends on: T20)
+- [x] T21 - Filter screen and subspecialties sheet (depends on: T20)
 - [ ] T22 - Doctor details: header, info tab, reviews tab (depends on: T20)
 - [ ] T23 - Doctor details: booking time tab and day/time picker (depends on: T22)
 - [ ] T24 - Book appointment, change appointment sheet, successful request (depends on: T23)

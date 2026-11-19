@@ -94,43 +94,68 @@ class _SearchDetailsView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             _Header(title: cubit.speciality.name ?? ''),
-            Padding(
-              padding: const EdgeInsetsDirectional.only(start: 16, top: 16),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    child: DebouncedSearchField(
-                      hint: context.l10n.searchBySpecialityOrDoctor,
-                      debounce: const Duration(milliseconds: 1000),
-                      onChanged: cubit.setName,
-                    ),
-                  ),
-                  const HorizontalSpacer(10),
-                  BlocSelector<SearchDetailsCubit, SearchDetailsState, _Bar>(
-                    selector: (s) => _Bar(
-                      visible: s.status == ViewStatus.success,
-                      dot: s.filter.hasFilter,
-                    ),
-                    builder: (context, bar) => Visibility(
-                      visible: bar.visible,
-                      maintainSize: true,
-                      maintainAnimation: true,
-                      maintainState: true,
-                      child: Padding(
-                        padding: const EdgeInsetsDirectional.only(end: 16),
-                        child: GestureDetector(
-                          behavior: HitTestBehavior.opaque,
-                          onTap: () => _openFilter(context),
-                          child: _Dotted(
-                            showDot: bar.dot,
-                            child: AppSvg(AppAssets.icFilter, width: 50, height: 50),
+            // Hidden (state kept, so the typed text survives) while the list
+            // shows the loader or the server / network error view. While a
+            // name search is active the field stays, otherwise the keyboard
+            // would close after every debounced query.
+            BlocSelector<SearchDetailsCubit, SearchDetailsState, bool>(
+              selector: (s) => switch (s.status) {
+                ViewStatus.initial => true,
+                ViewStatus.loading => s.name == null,
+                ViewStatus.failure =>
+                  s.failure is NetworkFailure || s.failure is ServerFailure,
+                ViewStatus.success => false,
+              },
+              builder: (context, hidden) => Visibility(
+                visible: !hidden,
+                maintainState: true,
+                child: Padding(
+                  padding: const EdgeInsetsDirectional.only(start: 16, top: 16),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: DebouncedSearchField(
+                          hint: context.l10n.searchBySpecialityOrDoctor,
+                          debounce: const Duration(milliseconds: 1000),
+                          onChanged: cubit.setName,
+                        ),
+                      ),
+                      const HorizontalSpacer(10),
+                      BlocSelector<
+                        SearchDetailsCubit,
+                        SearchDetailsState,
+                        _Bar
+                      >(
+                        selector: (s) => _Bar(
+                          visible: s.status == ViewStatus.success,
+                          dot: s.filter.hasFilter,
+                        ),
+                        builder: (context, bar) => Visibility(
+                          visible: bar.visible,
+                          maintainSize: true,
+                          maintainAnimation: true,
+                          maintainState: true,
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.only(end: 16),
+                            child: GestureDetector(
+                              behavior: HitTestBehavior.opaque,
+                              onTap: () => _openFilter(context),
+                              child: _Dotted(
+                                showDot: bar.dot,
+                                child: AppSvg(
+                                  AppAssets.icFilter,
+                                  width: 50,
+                                  height: 50,
+                                ),
+                              ),
+                            ),
                           ),
                         ),
                       ),
-                    ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
             Expanded(
