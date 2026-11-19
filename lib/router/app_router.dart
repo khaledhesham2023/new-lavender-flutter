@@ -12,6 +12,8 @@ import '../features/auth/register/register_screen.dart';
 import '../features/auth/start_now_screen.dart';
 import '../features/auth/success/auth_success_screen.dart';
 import '../features/home/home_screen.dart';
+import '../features/offers/offer_details_screen.dart';
+import '../features/offers/offers_screen.dart';
 import '../features/onboarding/onboarding_screen.dart';
 import '../features/shell/main_shell.dart';
 import '../features/specialities/all_specialities_screen.dart';
@@ -79,10 +81,8 @@ GoRouter createRouter() {
         routes: [
           GoRoute(
             path: Routes.home,
-            pageBuilder: (context, state) => NoTransitionPage(
-              key: state.pageKey,
-              child: const HomeScreen(),
-            ),
+            pageBuilder: (context, state) =>
+                NoTransitionPage(key: state.pageKey, child: const HomeScreen()),
           ),
           _tab(Routes.search, 'Search'),
           _tab(Routes.bookings, 'Bookings'),
@@ -96,11 +96,13 @@ GoRouter createRouter() {
         path: Routes.allSpecialities,
         builder: (context, state) => const AllSpecialitiesScreen(),
       ),
-      _page(Routes.offers, 'Offers'),
+      GoRoute(
+        path: Routes.offers,
+        builder: (context, state) => const OffersScreen(),
+      ),
       GoRoute(
         path: Routes.offerDetails,
-        builder: (context, state) =>
-            PlaceholderScreen(name: 'OfferDetails #${_id(state)}'),
+        builder: (context, state) => OfferDetailsScreen(offerId: _id(state)),
       ),
       GoRoute(
         path: Routes.purchaseOffer,
@@ -191,7 +193,9 @@ GoRouter createRouter() {
         path: Routes.forgetPasswordForEdit,
         builder: (context, state) {
           final args = state.extra! as NewPasswordArgs;
-          return PlaceholderScreen(name: 'ForgetPasswordForEdit (${args.phone})');
+          return PlaceholderScreen(
+            name: 'ForgetPasswordForEdit (${args.phone})',
+          );
         },
       ),
       _page(Routes.contactUs, 'ContactUs'),
@@ -213,9 +217,9 @@ GoRouter createRouter() {
 int _id(GoRouterState state) => int.parse(state.pathParameters['id']!);
 
 GoRoute _page(String path, String name) => GoRoute(
-      path: path,
-      builder: (context, state) => PlaceholderScreen(name: name),
-    );
+  path: path,
+  builder: (context, state) => PlaceholderScreen(name: name),
+);
 
 GoRoute _tab(String path, String name, {List<Widget> actions = const []}) =>
     GoRoute(
@@ -233,8 +237,10 @@ CustomTransitionPage<void> _slide(GoRouterState state, Widget child) {
     child: child,
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       return SlideTransition(
-        position: Tween(begin: const Offset(1, 0), end: Offset.zero)
-            .animate(CurvedAnimation(parent: animation, curve: Curves.easeOut)),
+        position: Tween(
+          begin: const Offset(1, 0),
+          end: Offset.zero,
+        ).animate(CurvedAnimation(parent: animation, curve: Curves.easeOut)),
         child: SlideTransition(
           position: Tween(begin: Offset.zero, end: const Offset(-1, 0)).animate(
             CurvedAnimation(parent: secondaryAnimation, curve: Curves.easeOut),
