@@ -87,9 +87,9 @@ lavender-flutter/
     core/
       config/env.dart       # String.fromEnvironment for BASE_URL, HOST_URL, HOST, PAYMENT_KEY
       network/
-        api_client.dart     # Dio setup, headers, request helpers returning ApiResult
+        api_client.dart     # Dio setup, headers, call() maps a Retrofit response to ApiResult
+        lavender_api.dart   # @RestApi interface with every endpoint (lavender_api.g.dart is generated)
         api_result.dart     # sealed ApiResult / ApiFailure
-        endpoints.dart      # all paths from CONTEXT §5.3
       storage/
         app_prefs.dart      # typed wrapper over SharedPreferences (CONTEXT §6.1)
         user_store.dart     # UserData (CONTEXT §6.2) as JSON in prefs
@@ -140,7 +140,8 @@ lavender-flutter/
 - Checks after every task: `flutter analyze` → **No issues found**; `flutter test` → all pass; `flutter build apk --debug --dart-define-from-file=env/debug.json` → succeeds.
 
 ### 4.2 Networking
-- `ApiClient` (T07) exposes `Future<ApiResult<T>> get/post/delete(path, {query, body, parser})` and `upload(...)`.
+- Endpoints are declared once in `LavenderApi` (Retrofit, `@RestApi`, generated with `dart run build_runner build`). Its methods return the raw `HttpResponse`.
+- `ApiClient.call<T>((api) => api.login(body), parse: ...)` runs one of them and returns `Future<ApiResult<T>>`; repositories use only that.
 - `ApiResult<T>` is sealed: `ApiSuccess<T>(T data, String message)` | `ApiFailure` subclasses
   `ServerFailure(int code, String message)`, `NetworkFailure()`, `UnknownFailure(String message)`.
 - Mapping mirrors CONTEXT §5.2: non-2xx with a JSON body having `message` → `ServerFailure`; non-2xx without parseable

@@ -59,3 +59,10 @@ headers, uses the same timeouts and maps every outcome to `ApiResult`. All repos
 - Android always sends `Content-Type: application/json`, even on GET. Keep it (some Laravel middleware may rely on it).
 - Do not throw from `ApiClient`; every path returns an `ApiResult`.
 - Base URL must end with `/` or dio joins paths wrongly — assert it in debug.
+
+## Notes (Retrofit change)
+- Endpoints now live in `lib/core/network/lavender_api.dart` (`@RestApi`, generated `lavender_api.g.dart`); `endpoints.dart`, `ApiClient.get/post/delete/upload` and `buildQuery` were removed.
+- `ApiClient` still owns Dio (headers, timeouts, logger) and exposes `service` and `call(request, parse:)`, which keeps the same ApiResult mapping. Repositories keep their signatures and call `_api.call((s) => s.xxx(...), parse: ...)`.
+- `@Queries()` (used by `specialtyDoctors`) does NOT drop null values: the repository removes them itself. Sub-specialty keys `sub_specialty[0]` are now sent percent-encoded (`%5B0%5D`) instead of raw brackets; servers decode both the same.
+- Multipart upload takes a `File`; Retrofit derives the filename by splitting on the platform separator (fine on Android).
+- Adding an endpoint: add a method to `LavenderApi`, then `dart run build_runner build --delete-conflicting-outputs`.

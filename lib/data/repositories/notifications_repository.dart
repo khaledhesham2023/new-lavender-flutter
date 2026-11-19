@@ -2,7 +2,6 @@ import 'package:equatable/equatable.dart';
 
 import '../../core/network/api_client.dart';
 import '../../core/network/api_result.dart';
-import '../../core/network/endpoints.dart';
 import '../json/json_utils.dart';
 import '../models/responses/base_response.dart';
 import '../models/responses/notification.dart';
@@ -32,9 +31,8 @@ class NotificationsRepository {
 
   final ApiClient _api;
 
-  Future<ApiResult<NotificationsPage>> getPage(int page) => _api.get(
-    Endpoints.notifications,
-    query: {'page': page},
+  Future<ApiResult<NotificationsPage>> getPage(int page) => _api.call(
+    (s) => s.notifications(page),
     parse: (j) {
       final body = asMap(j);
       final items = asList(body?['data'], NotificationModel.fromJson);
@@ -48,19 +46,18 @@ class NotificationsRepository {
   );
 
   Future<ApiResult<void>> delete(String id) =>
-      _api.delete(Endpoints.notification(id), parse: parseVoid);
+      _api.call((s) => s.deleteNotification(id), parse: parseVoid);
 
   Future<ApiResult<void>> markRead(String id) =>
-      _api.get(Endpoints.readNotification(id), parse: parseVoid);
+      _api.call((s) => s.readNotification(id), parse: parseVoid);
 
   /// Kept for completeness; unused by the UI.
   Future<ApiResult<void>> readAll() =>
-      _api.get(Endpoints.readAllNotifications, parse: parseVoid);
+      _api.call((s) => s.readAllNotifications(), parse: parseVoid);
 
   /// Laravel method spoofing: POST with `_method=PUT`.
-  Future<ApiResult<bool>> toggleAllow() => _api.post(
-    Endpoints.allowNotifications,
-    query: {'_method': 'PUT'},
+  Future<ApiResult<bool>> toggleAllow() => _api.call(
+    (s) => s.allowNotifications('PUT'),
     parse: (j) => asBool(asMap(asMap(j)?['data'])?['allow_notification']),
   );
 }
