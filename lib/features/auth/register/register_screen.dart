@@ -117,7 +117,8 @@ class _RegisterViewState extends State<_RegisterView> {
       final phone = state.otpPhone ?? '';
       cubit.consumeEvent();
       // Android uses Destination.LOGIN for register too.
-      context.push(
+      // Replace Register so back from OTP does not return to the filled form.
+      context.pushReplacement(
         Routes.authOtp,
         extra: OtpArgs(
           phone: phone,

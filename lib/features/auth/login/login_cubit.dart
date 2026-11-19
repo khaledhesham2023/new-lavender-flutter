@@ -76,27 +76,15 @@ class LoginCubit extends Cubit<LoginState> {
             ),
           );
         } else {
-          await _resend(data.phone ?? phone);
+          // Backend resend is broken: go straight to the OTP screen.
+          emit(
+            LoginState(
+              status: ViewStatus.success,
+              event: LoginEvent.navigateOtp,
+              otpPhone: data.phone ?? phone,
+            ),
+          );
         }
-    }
-  }
-
-  Future<void> _resend(String phone) async {
-    final result = await _auth.resendCode(
-      AuthRequest(phone: phone, phoneCode: phoneCode),
-    );
-    if (isClosed) return;
-    switch (result) {
-      case ApiFailure():
-        emit(LoginState(status: ViewStatus.failure, failure: result));
-      case ApiSuccess():
-        emit(
-          LoginState(
-            status: ViewStatus.success,
-            event: LoginEvent.navigateOtp,
-            otpPhone: phone,
-          ),
-        );
     }
   }
 

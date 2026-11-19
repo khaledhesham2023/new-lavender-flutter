@@ -77,16 +77,14 @@ void main() {
     expect(req.password, 'password1');
   });
 
-  test('unverified login resends the code and navigates to OTP', () async {
+  test('unverified login navigates to OTP without resending', () async {
     final (cubit, repo, _, session) = await _make();
     repo.loginResult = const ApiSuccess(UserModel(id: 6, phone: '511111111'));
 
     await cubit.submit('512345678', 'password1');
 
     expect(session.state.isLoggedIn, false);
-    final resend = repo.resendRequests.single;
-    expect(resend.phone, '511111111');
-    expect(resend.phoneCode, '966');
+    expect(repo.resendRequests, isEmpty); // backend resend is broken: not called
     expect(cubit.state.event, LoginEvent.navigateOtp);
     expect(cubit.state.otpPhone, '511111111');
   });
@@ -97,20 +95,9 @@ void main() {
 
     await cubit.submit('512345678', 'password1');
 
-    expect(repo.resendRequests.single.phone, '512345678');
+    expect(repo.resendRequests, isEmpty);
+    expect(cubit.state.event, LoginEvent.navigateOtp);
     expect(cubit.state.otpPhone, '512345678');
-  });
-
-  test('resend failure is passed through', () async {
-    final (cubit, repo, _, _) = await _make();
-    repo.loginResult = const ApiSuccess(UserModel(id: 6));
-    repo.resendResult = const ServerFailure(500, 'boom');
-
-    await cubit.submit('512345678', 'password1');
-
-    expect(cubit.state.status, ViewStatus.failure);
-    expect(cubit.state.event, LoginEvent.none);
-    expect(cubit.state.failure, isA<ServerFailure<dynamic>>());
   });
 
   test('server failure is passed through and nothing is saved', () async {
