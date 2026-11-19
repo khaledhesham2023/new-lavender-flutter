@@ -42,3 +42,12 @@ leads to purchase (logged in) or the must-login sheet (guest).
 ## Gotchas
 - Offer details can be opened by a notification with `offerId` (T39) — keep the route id-based.
 - `start_date`/`end_date` are shown raw (no formatting).
+
+## Notes
+- Added `lib/features/offers/`: `offers_screen.dart` + `offers_cubit.dart` (independent `tabsStatus` / `listStatus`), `offer_details_screen.dart` + `offer_details_cubit.dart`, widgets `offer_card.dart`, `specialty_tabs.dart`, `discount_badge.dart`. Routes `offers` and `offerDetails` now point to them.
+- `DiscountBadge` (63x55, label + value rotated -10° ar / +10° otherwise) is shared by the list card and the details screen; reuse it for T37 if the purchase screen shows the badge. `SpecialOfferCard` on Home keeps its own copy.
+- List card prices use `kotlinFloatString` (Android prints `Float.toString()`, e.g. `220.0`); the details screen uses `formatDecimal` like Android.
+- Empty specialties list (Android would crash on `specialties[0]`) shows the empty offers view.
+- The list's network error view has a working Retry (reloads the selected tab); Android's button there did nothing.
+- Offer details sheet body scrolls with the "Get offer" button pinned at the bottom (Android's was a fixed layout).
+- Not checked on a device/emulator: header/tab spacing vs Android, rotated badge in ar/en, 404 view.
