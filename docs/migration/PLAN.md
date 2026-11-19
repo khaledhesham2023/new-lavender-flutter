@@ -222,7 +222,7 @@ lavender-flutter/
 - [x] T16 - Home (depends on: T09, T10)
 - [x] T17 - All specialities (depends on: T16)
 - [x] T18 - Offers list and offer details (depends on: T16)
-- [ ] T19 - Search (last search and results) (depends on: T16)
+- [x] T19 - Search (last search and results) (depends on: T16)
 - [ ] T20 - Search details and sort sheet (depends on: T19)
 - [ ] T21 - Filter screen and subspecialties sheet (depends on: T20)
 - [ ] T22 - Doctor details: header, info tab, reviews tab (depends on: T20)

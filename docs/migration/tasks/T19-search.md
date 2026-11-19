@@ -47,3 +47,13 @@ Port the Search tab: most-selected specialties, recent searches (logged in), liv
 ## Gotchas
 - The "Medical offers" check compares the **display name** with the localized string (Android does that) — the most-selected API returns a real specialty list; keep the comparison.
 - Do not fire a search on the initial empty text.
+
+## Notes
+- Built `lib/features/search/`: `search_cubit.dart` (`SearchCubit(repo, isLoggedIn:)`, state `mode` + `status`/`failure` + three data lists), `search_screen.dart`, `widgets/{most_selected_list,recent_searches_list,search_results_view}.dart`. `TrySearchView` (recent empty / after "Remove all") lives in `recent_searches_list.dart`. Router `search` tab now builds `SearchScreen`.
+- The 500 ms debounce is in the cubit (`onTextChanged`), not the screen; the screen only forwards text/focus/keyboard events (`onFocusGained`, `onKeyboardClosed`). Each request has an id, so a slow older response never overwrites a newer one.
+- A controller listener (not `onChanged`) drives text changes, so tapping a recent item (`controller.text = ...`) triggers the search like Android's `doAfterTextChanged`.
+- Keyboard-closed detection uses `didChangeMetrics` (viewInsets bottom going >0 → 0): drops the pending search, unfocuses, and with a blank field shows the already-loaded most-selected list without a new request.
+- Errors follow Android: network → connection-lost view with Retry (`showMostSelected`), anything else → server-error view (no button). Loading hides every body (loader only), so the results view (and its tab) is recreated on tab 0 for each new result, as in Android.
+- System back: the shell still goes Home; the screen only unfocuses first. "Cancel" unfocuses and goes Home.
+- Added `fake_async` as a dev dependency (used by the debounce tests).
+- Not tested on a device (logged in / guest); analyze, `flutter test` and the debug APK build pass.

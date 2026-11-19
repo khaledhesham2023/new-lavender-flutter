@@ -15,6 +15,7 @@ import '../features/home/home_screen.dart';
 import '../features/offers/offer_details_screen.dart';
 import '../features/offers/offers_screen.dart';
 import '../features/onboarding/onboarding_screen.dart';
+import '../features/search/search_screen.dart';
 import '../features/shell/main_shell.dart';
 import '../features/specialities/all_specialities_screen.dart';
 import '../features/splash/splash_screen.dart';
@@ -84,7 +85,13 @@ GoRouter createRouter() {
             pageBuilder: (context, state) =>
                 NoTransitionPage(key: state.pageKey, child: const HomeScreen()),
           ),
-          _tab(Routes.search, 'Search'),
+          GoRoute(
+            path: Routes.search,
+            pageBuilder: (context, state) => NoTransitionPage(
+              key: state.pageKey,
+              child: const SearchScreen(),
+            ),
+          ),
           _tab(Routes.bookings, 'Bookings'),
           _tab(Routes.favorites, 'Favorites'),
           _tab(Routes.profile, 'Profile'),
