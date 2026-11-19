@@ -41,7 +41,14 @@ class HomeScreen extends StatelessWidget {
         sl<GeneralRepository>(),
         sl<AppPrefs>(),
       )..load(),
-      child: const SystemUi(child: _HomeView()),
+      // Guest -> login -> `context.go(Routes.home)` keeps this very page (same
+      // page key), so the cubit is not recreated: reload when the session's
+      // login state changes (Android reloads in `onResume`).
+      child: BlocListener<SessionCubit, SessionState>(
+        listenWhen: (prev, curr) => prev.isLoggedIn != curr.isLoggedIn,
+        listener: (context, _) => context.read<HomeCubit>().load(),
+        child: const SystemUi(child: _HomeView()),
+      ),
     );
   }
 }
@@ -57,7 +64,8 @@ class _HomeView extends StatelessWidget {
         bottom: false,
         child: BlocConsumer<HomeCubit, HomeState>(
           listenWhen: (prev, curr) =>
-              (curr.failure is UnknownFailure && prev.failure != curr.failure) ||
+              (curr.failure is UnknownFailure &&
+                  prev.failure != curr.failure) ||
               (curr.favoriteFailure != null &&
                   prev.favoriteFailure != curr.favoriteFailure),
           listener: (context, state) {
@@ -154,8 +162,7 @@ class _HomeContent extends StatelessWidget {
               onShowAll: () => context.push(Routes.allSpecialities),
               onOffers: () => context.push(Routes.offers),
               onMore: () => context.push(Routes.allSpecialities),
-              onSpeciality: (s) =>
-                  context.push(Routes.searchDetails, extra: s),
+              onSpeciality: (s) => context.push(Routes.searchDetails, extra: s),
             ),
           if (state.doctors.isNotEmpty) ...[
             SectionHeader(title: l10n.recentlyAddedDoctors),

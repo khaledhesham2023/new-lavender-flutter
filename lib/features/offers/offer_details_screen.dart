@@ -36,7 +36,8 @@ class OfferDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) => OfferDetailsCubit(sl<OffersRepository>(), offerId)..load(),
-      // Transparent status bar with light icons over the banner image.
+      // Light icons over the banner image; the loading/error states below
+      // switch back to dark icons because they sit on white.
       child: const SystemUi(
         statusBarIconsDark: false,
         child: _OfferDetailsView(),
@@ -60,9 +61,10 @@ class _OfferDetailsView extends StatelessWidget {
           switch (state.status) {
             case ViewStatus.initial:
             case ViewStatus.loading:
-              return const LoadingView();
+              return const SystemUi(child: LoadingView());
             case ViewStatus.failure:
-              return SafeArea(child: _failure(context, state));
+              // White background: dark icons (light ones only fit the banner).
+              return SystemUi(child: SafeArea(child: _failure(context, state)));
             case ViewStatus.success:
               return _Details(offer: state.offer!);
           }
@@ -105,10 +107,14 @@ class _Details extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     return Stack(
+      // Fill the screen: the sheet is positioned from the banner down to the bottom.
+      fit: StackFit.expand,
       children: [
         // Banner with a 25% black scrim.
-        SizedBox(
-          width: double.infinity,
+        Positioned(
+          left: 0,
+          right: 0,
+          top: 0,
           height: bannerHeight,
           child: Stack(
             fit: StackFit.expand,
@@ -212,11 +218,17 @@ class _SheetBody extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(offer.name ?? '', style: AppTextStyles.bold(15)),
+                    Text(
+                      offer.name ?? '',
+                      style: AppTextStyles.bold(15).copyWith(height: 1.4),
+                    ),
                     const VerticalSpacer(8),
                     Text(
                       offer.description ?? '',
-                      style: AppTextStyles.semiBold(12, AppColors.c666666),
+                      style: AppTextStyles.semiBold(
+                        12,
+                        AppColors.c666666,
+                      ).copyWith(height: 1.4),
                     ),
                   ],
                 ),
@@ -297,7 +309,10 @@ class _SheetBody extends StatelessWidget {
           ),
           child: Text(
             offer.details ?? '',
-            style: AppTextStyles.medium(13, AppColors.c3D4C5E),
+            style: AppTextStyles.medium(
+              13,
+              AppColors.c3D4C5E,
+            ).copyWith(height: 1.5),
           ),
         ),
       ],
@@ -343,7 +358,10 @@ class _InfoBox extends StatelessWidget {
                 Expanded(
                   child: Padding(
                     padding: const EdgeInsetsDirectional.only(end: 10),
-                    child: Text(value, style: AppTextStyles.bold(14)),
+                    child: Text(
+                      value,
+                      style: AppTextStyles.bold(14).copyWith(height: 1.3),
+                    ),
                   ),
                 ),
               ],
@@ -358,7 +376,10 @@ class _InfoBox extends StatelessWidget {
             ),
             child: Text(
               label,
-              style: AppTextStyles.medium(12, AppColors.c666666),
+              style: AppTextStyles.medium(
+                12,
+                AppColors.c666666,
+              ).copyWith(height: 1.3),
             ),
           ),
         ],
