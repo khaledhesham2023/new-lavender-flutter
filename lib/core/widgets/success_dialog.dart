@@ -5,6 +5,7 @@ import 'package:material_ui/material_ui.dart';
 import '../theme/app_assets.dart';
 import '../theme/app_colors.dart';
 import '../theme/app_text_styles.dart';
+import 'system_ui.dart';
 
 /// Port of `SuccessDialog` / `dialog_success.xml`: non-dismissible card with the
 /// success gif and [title]; closes itself after 2 s. What happens next (Android type
@@ -13,9 +14,23 @@ Future<void> showSuccessDialog(BuildContext context, String title) {
   return showDialog<void>(
     context: context,
     barrierDismissible: false,
-    builder: (_) => _SuccessDialog(title: title),
+    // No SafeArea: the SystemUi region below must reach the very top and bottom
+    // of the screen, otherwise the status bar keeps the screen's own style.
+    useSafeArea: false,
+    builder: (_) => SystemUi(
+      // Solid bars (transparent ones would show the purple window background):
+      // tinted like the barrier so they look dimmed with the rest of the screen.
+      statusBarColor: _dimmedWhite,
+      navigationBarColor: _dimmedWhite,
+      child: _SuccessDialog(title: title),
+    ),
   );
 }
+
+final Color _dimmedWhite = Color.alphaBlend(
+  const Color(0x8A000000), // Colors.black54, the dialog barrier
+  AppColors.white,
+);
 
 class _SuccessDialog extends StatefulWidget {
   final String title;
