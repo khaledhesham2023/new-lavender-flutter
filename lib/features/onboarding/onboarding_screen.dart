@@ -103,7 +103,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 child: Text(
                   titles[_index],
                   textAlign: TextAlign.center,
-                  style: AppTextStyles.bold(20, AppColors.black),
+                  style: AppTextStyles.bold(
+                    20,
+                    AppColors.black,
+                  ).copyWith(height: 1.3),
                 ),
               ),
               const VerticalSpacer(18),
@@ -114,7 +117,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   textAlign: TextAlign.center,
                   // Box shrinks to the longest line so lines look balanced.
                   textWidthBasis: TextWidthBasis.longestLine,
-                  style: AppTextStyles.medium(14, AppColors.c666666),
+                  style: AppTextStyles.medium(
+                    14,
+                    AppColors.c666666,
+                  ).copyWith(height: 1.5),
                 ),
               ),
               const VerticalSpacer(36),
