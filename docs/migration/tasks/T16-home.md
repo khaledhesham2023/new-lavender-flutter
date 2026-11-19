@@ -59,3 +59,14 @@ grid, newly added doctors with favorite toggle and special offers. It is the fir
 - `difference` is seconds (Long).
 - The Android specialities adapter shows "More" only on Home (`inHome`), not on All specialities.
 - Prices use English digits; the doctor `price` is a String — parse with `double.tryParse`.
+
+## Notes
+- Built `HomeCubit`/`HomeScreen` and the widgets listed above; `Routes.home` now opens `HomeScreen` (the temporary `TODO(T16)` button is gone). The screen is created per tab selection, so it reloads every time Home is selected (Android behaviour).
+- `HomeCubit.load()` runs `getHome` and `getSettings` in parallel; settings (`allowNotifications`, `whatsAppNumber`) are saved to prefs even when home fails, and a settings failure is ignored.
+- Specialities: `buildHomeSpecialities()` in `home_cubit.dart` builds `[offers tile] + (>= 8 ? first 7 : all)`. Tile index 0 = gift (offers), index 7 = "More" (like Android, this also happens with exactly 7 specialities). Sections are hidden when their list is empty (null already arrives as empty from `HomeData`); with no specialities the offers tile is hidden too.
+- Failure views: `ServerFailure` -> `StateView.serverError` (no Retry, as Android); `NetworkFailure` -> `StateView.connectionLost` with Retry; `UnknownFailure` -> toast and an empty screen. Favorite failure -> heart flips back + toast.
+- Reusable widgets for later tasks: `DoctorCard` (heart only when `onFavorite != null`, 319dp wide by default, `width` overridable), `SpecialityItem` (`asset`/`title` override for local icons), `SpecialOfferCard`, `SectionHeader`.
+- The next-reservation card keeps its 24dp top gap even when there is no reservation (Android keeps the include's margin).
+- Logged-in user without `user_name` shows an empty greeting (Android never sets the text in that case).
+- Rating stars are drawn at 11dp so 5 stars fit the 66dp Android bar. Null `rate`/`reviews_count` print as `null` like Kotlin.
+- Not run on a device: only `flutter analyze`, `flutter test` and the debug APK build were checked. Side-by-side visual comparison with the Android app is still to do.

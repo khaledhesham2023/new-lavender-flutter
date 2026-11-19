@@ -11,6 +11,7 @@ import '../features/auth/otp/otp_screen.dart';
 import '../features/auth/register/register_screen.dart';
 import '../features/auth/start_now_screen.dart';
 import '../features/auth/success/auth_success_screen.dart';
+import '../features/home/home_screen.dart';
 import '../features/onboarding/onboarding_screen.dart';
 import '../features/shell/main_shell.dart';
 import '../features/splash/splash_screen.dart';
@@ -75,18 +76,12 @@ GoRouter createRouter() {
       ShellRoute(
         builder: (context, state, child) => MainShell(child: child),
         routes: [
-          _tab(
-            Routes.home,
-            'Home',
-            // TODO(T16): temporary button to test that detail routes hide the bar.
-            actions: [
-              Builder(
-                builder: (context) => TextButton(
-                  onPressed: () => context.push(Routes.notifications),
-                  child: const Text('Push /notifications'),
-                ),
-              ),
-            ],
+          GoRoute(
+            path: Routes.home,
+            pageBuilder: (context, state) => NoTransitionPage(
+              key: state.pageKey,
+              child: const HomeScreen(),
+            ),
           ),
           _tab(Routes.search, 'Search'),
           _tab(Routes.bookings, 'Bookings'),
