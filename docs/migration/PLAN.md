@@ -220,7 +220,7 @@ lavender-flutter/
 - [x] T14 - OTP and success dialog (depends on: T12)
 - [ ] T15 - Forget password, new password, success screen (depends on: T14)
 - [x] T16 - Home (depends on: T09, T10)
-- [ ] T17 - All specialities (depends on: T16)
+- [x] T17 - All specialities (depends on: T16)
 - [ ] T18 - Offers list and offer details (depends on: T16)
 - [ ] T19 - Search (last search and results) (depends on: T16)
 - [ ] T20 - Search details and sort sheet (depends on: T19)
