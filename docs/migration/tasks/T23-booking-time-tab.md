@@ -49,3 +49,11 @@ the Booking-time tab of doctor details. The same widget is reused by the change-
 ## Gotchas
 - Android `AvailableDatesValidator` compares UTC midnight millis; compare `DateTime(y, m, d)` values, not instants, to avoid timezone shifts.
 - `selectedDate` in Android picker is formatted with `Locale.ENGLISH` — keep English digits in any string you build.
+
+## Notes
+- Done: `lib/features/booking/day_time_logic.dart` (`initialDay`, `activeDates`, `findDayForDate`, plus `dayHasTimes`), `widgets/day_chip.dart`, `time_chip.dart`, `day_time_picker.dart`; doctor details tab 0 now uses `DayTimePicker(days: doctor.workTimes, ...)`. Tests in `test/features/booking/day_time_logic_test.dart`.
+- `DayTimePicker` is controlled by the parent (`selectedDay`/`selectedTime`). On first build and when `days` changes it calls `onDayChanged(initialDay)` + `onTimeChanged(null)` in a post-frame callback; picking a day also clears the time. T24/T27 sheets can reuse it with `showCalendarButton` as needed.
+- Deviation from step 6: days are a plain horizontal `Row` with a `GlobalKey` per chip and `Scrollable.ensureVisible` (chips are wrap-content like Android, so no fixed extent).
+- The empty view is inside a fixed 240-high box (`StateView` centers in bounded space only). With no days, the days row, separator, and calendar button are hidden but the "Appointments available" title stays, like Android.
+- Date picker uses the platform `showDatePicker`; `selectableDayPredicate` compares date-only values, so no timezone shift.
+- Not verified on a device.
