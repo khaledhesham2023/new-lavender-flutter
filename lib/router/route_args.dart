@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 
 import '../data/models/requests/booking_draft.dart';
 import '../data/models/responses/offer.dart';
+import '../features/search_details/search_filter.dart';
 
 /// Typed arguments passed in route `extra` (paths live in routes.dart).
 /// Where an OTP screen was opened from (decides what happens after verifying).
@@ -61,4 +62,15 @@ class BookWithOfferArgs extends Equatable {
 
   @override
   List<Object?> get props => [draft, offer];
+}
+
+/// Opens the Filter screen (T21) from Search details; it pops a `SearchFilter`.
+class FilterArgs extends Equatable {
+  final int specialtyId;
+  final SearchFilter current;
+
+  const FilterArgs(this.specialtyId, this.current);
+
+  @override
+  List<Object?> get props => [specialtyId, current];
 }

@@ -44,3 +44,11 @@ Port the doctors-by-specialty list with name search, sort sheet, filter entry po
 ## Gotchas
 - Android sends `minPrice/maxPrice` as Float; keep doubles.
 - The Android shared ViewModel lives across the screen and the filter; here the filter is passed in and returned — don't add a global filter state.
+
+## Notes
+- Built `lib/features/search_details/`: `search_filter.dart`, `search_details_cubit.dart` (`SearchDetailsCubit(SpecialitiesRepository, HomeRepository, SpecialityModel)`), `search_details_screen.dart`, `sort_sheet.dart`. Router `searchDetails` now builds `SearchDetailsScreen`. No separate `doctor_search_card.dart`: `DoctorCard(width: double.infinity)` matches `recycler_item_doctor_search.xml`.
+- `FilterArgs(specialtyId, current)` lives in `lib/router/route_args.dart` (where the other args are), not `routes.dart`. The Filter route is still the placeholder; T21 builds the screen and pops a `SearchFilter`.
+- `SearchFilter.copyWith` takes getters for the nullable fields (`copyWith(sortBy: () => null)` clears it). `cleared()` drops gender/prices/sub-specialties and keeps `sortBy` (Reset on the Filter screen must not touch the sort; `hasFilter` also ignores it).
+- `showSortSheet` returns `Future<({String? value})?>` instead of `Future<String?>`: `null` = sheet dismissed (no change), `(value: null)` = Confirm with nothing selected (clears the sort). A plain `String?` would clear the sort whenever the sheet is dismissed.
+- Behaviour kept from Android: count = list length, name is trimmed and debounced 1000 ms in `DebouncedSearchField`, Filter/Sort/count hide while loading or on error (the search field stays), reload after returning from Doctor details and on pull-to-refresh, hearts only when logged in, optimistic favorite with revert + toast. Each load has an id, so a slow older answer never overwrites a newer one.
+- Doctor details is still a placeholder (T22). Not tested on a device; analyze, `flutter test` (269) and the debug APK build pass.
