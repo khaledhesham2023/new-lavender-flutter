@@ -62,3 +62,16 @@ they call stub callbacks.
 ## Gotchas
 - Android `BOOKING_ITEM_CANCEL_CLICK_PENDING` sends type `"pending"`, confirmed sends `"confirmed"` — T27 needs the status, so pass the item and its status to the callbacks.
 - The keyword search runs only when the field is focused (avoid firing when the text is set programmatically).
+
+## Notes
+- Done: `BookingsCubit`, `BookingsScreen` (guest + logged-in views), `BookingCard`, `StatusTabs`, filter by date / type sheets; the `bookings` shell route now builds `BookingsScreen`.
+- Filter sheets share `widgets/filter_options_sheet.dart` (`showFilterOptionsSheet`, `FilterSheetResult<T>`, `FilterOption`). `showFilterByDateSheet` / `showFilterByTypeSheet` re-export `FilterSheetResult`. Result is null when dismissed, `FilterSheetResult(null)` for "remove all" + confirm.
+- Callbacks `onCancel / onEdit / onRate / onRebook` of `BookingCard` take the `AppointmentData` (its `status`, `id`, `doctor`, `offer` are what T27 needs). The screen currently toasts `TODO(T27)` for them (`_BookingsList` in `bookings_screen.dart`). T27 should use `BookingsCubit.removeAt(index)` / `reload()`; `removeAt` does not show the empty view by itself — the list screen shows it when `items` is empty.
+- Defaults on every visit (tab pending, no keyword/filters): the screen is rebuilt on each tab switch, as decided in step 7. Guest -> login flips `SessionCubit.isLoggedIn`, which swaps in the logged-in view and loads.
+- Network failure in the list uses `StateView.empty(icon_network_error_2, ...)` instead of `StateView.connectionLost`, because the latter always shows a Retry button and Android shows none here.
+- Search uses `DebouncedSearchField(debounce: 1000 ms)`; `TextField.onChanged` only fires on user input, so programmatic changes never trigger a load.
+- Only the newest `load()` may update state (stale responses are dropped). Re-tapping the selected tab does nothing.
+- Spacing under the date row is approximated (13dp when the offer badge shows, 23dp otherwise) to mimic the ConstraintLayout separator position.
+- Not verified on a device / with a real account (no emulator run): checks done are `flutter analyze`, `flutter test` (325 pass), debug APK build.
+- Review fixes: the logged-in Bookings screen uses a transparent status bar over the white page (a solid white bar stayed bright above sheets' dimmed barrier). `DebouncedSearchField` (shared with search details) now uses height 1.4 with evenly distributed leading, so the hint/text stay centered and descenders are not clipped.
+- `convertTo24HourTime` / `reverseConvertTo24HourTime` now keep only the leading `HH:mm` (Android's lenient `SimpleDateFormat` accepts `HH:mm:ss`; strict parsing returned '' and the booking date line lost its time). Also affects the appointment/session requested screens.

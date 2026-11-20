@@ -15,6 +15,7 @@ import '../features/booking/appointment_requested_screen.dart';
 import '../features/booking/book_appointment_screen.dart';
 import '../features/booking/book_with_offer_screen.dart';
 import '../features/booking/session_requested_screen.dart';
+import '../features/bookings/bookings_screen.dart';
 import '../features/doctor_details/doctor_details_screen.dart';
 import '../features/filter/filter_screen.dart';
 import '../features/home/home_screen.dart';
@@ -99,7 +100,13 @@ GoRouter createRouter() {
               child: const SearchScreen(),
             ),
           ),
-          _tab(Routes.bookings, 'Bookings'),
+          GoRoute(
+            path: Routes.bookings,
+            pageBuilder: (context, state) => NoTransitionPage(
+              key: state.pageKey,
+              child: const BookingsScreen(),
+            ),
+          ),
           _tab(Routes.favorites, 'Favorites'),
           _tab(Routes.profile, 'Profile'),
         ],
