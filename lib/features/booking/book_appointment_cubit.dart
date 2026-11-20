@@ -93,6 +93,8 @@ class BookAppointmentCubit extends Cubit<BookAppointmentState> {
         doctorId: draft.doctorId,
         day: convertIsoToDateOnly(draft.date ?? ''),
         time: draft.time,
+        // Set only by the book-with-offer screen (T25); null for a normal booking.
+        userOfferId: draft.userOfferId,
         notes: trimmed.isEmpty ? null : trimmed,
       ),
     );

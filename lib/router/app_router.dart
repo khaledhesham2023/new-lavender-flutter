@@ -13,6 +13,8 @@ import '../features/auth/start_now_screen.dart';
 import '../features/auth/success/auth_success_screen.dart';
 import '../features/booking/appointment_requested_screen.dart';
 import '../features/booking/book_appointment_screen.dart';
+import '../features/booking/book_with_offer_screen.dart';
+import '../features/booking/session_requested_screen.dart';
 import '../features/doctor_details/doctor_details_screen.dart';
 import '../features/filter/filter_screen.dart';
 import '../features/home/home_screen.dart';
@@ -156,9 +158,7 @@ GoRouter createRouter() {
         path: Routes.bookAppointmentWithOffer,
         builder: (context, state) {
           final args = state.extra! as BookWithOfferArgs;
-          return PlaceholderScreen(
-            name: 'BookAppointmentWithOffer #${args.offer.id}',
-          );
+          return BookWithOfferScreen(draft: args.draft, offer: args.offer);
         },
       ),
       GoRoute(
@@ -169,7 +169,7 @@ GoRouter createRouter() {
       GoRoute(
         path: Routes.sessionRequested,
         builder: (context, state) =>
-            PlaceholderScreen(name: 'SessionRequested #${_id(state)}'),
+            SessionRequestedScreen(sessionId: _id(state)),
       ),
       GoRoute(
         path: Routes.appointmentDetails,
