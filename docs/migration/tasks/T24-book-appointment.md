@@ -48,3 +48,11 @@ work-times API, and the success screen that loads the created appointment.
 ## Gotchas
 - The draft `date` is the ISO string from `WorkTimeModel.date`; the API wants `yyyy-MM-dd`.
 - After returning from the change sheet the time shown is `convertTo24HourTime(time_formatted)` (Android does that) — verify it displays correctly; if `time_formatted` is already 12-hour text, record the observed behavior in Notes.
+
+## Notes
+- Done: `book_appointment_{screen,cubit}.dart`, `change_appointment_{sheet,cubit}.dart`, `appointment_requested_{screen,cubit}.dart`, `widgets/doctor_summary_card.dart` (`bordered` for the success-screen card) and `widgets/booking_info_card.dart` (bordered 12-radius card + value/label-value lines, shared with T25+). Router: `bookAppointment` and `appointmentRequested` now build the real screens. Tests: `test/features/booking/booking_cubits_test.dart`. Analyze, tests and debug APK pass; **not run on a device**.
+- `BookAppointmentCubit.changeTo(r, lang:)` takes the UI language to build `"<dayName>,<dd MMMM yyyy>"`. Book result is one-shot state (`bookedId` / `failure`); the screen calls `consume()` after handling it.
+- Time display uses `convertTo24HourTime(time_formatted, lang)` (it parses `HH:mm`, returns 12-hour). If the API ever sends `time_formatted` as 12-hour text it would show empty: verify on a device.
+- Change sheet: Android hides Confirm/Cancel while the selected day has no times (kept); back still closes it with null. Unknown failures also toast; any non-network failure shows the server-error view with a `back` button.
+- Footer of both screens is pinned to the bottom when content is short and scrolls with the content otherwise (`SliverFillRemaining`), like Android's `fillViewport`.
+- Success screen reuses `SpeedLottie` from `features/auth/widgets/` for the two confetti animations (layout approximated, check visually).

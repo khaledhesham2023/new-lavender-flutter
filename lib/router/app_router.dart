@@ -11,6 +11,8 @@ import '../features/auth/otp/otp_screen.dart';
 import '../features/auth/register/register_screen.dart';
 import '../features/auth/start_now_screen.dart';
 import '../features/auth/success/auth_success_screen.dart';
+import '../features/booking/appointment_requested_screen.dart';
+import '../features/booking/book_appointment_screen.dart';
 import '../features/doctor_details/doctor_details_screen.dart';
 import '../features/filter/filter_screen.dart';
 import '../features/home/home_screen.dart';
@@ -147,7 +149,7 @@ GoRouter createRouter() {
         path: Routes.bookAppointment,
         builder: (context, state) {
           final draft = state.extra! as BookingDraft;
-          return PlaceholderScreen(name: 'BookAppointment #${draft.doctorId}');
+          return BookAppointmentScreen(draft: draft);
         },
       ),
       GoRoute(
@@ -162,7 +164,7 @@ GoRouter createRouter() {
       GoRoute(
         path: Routes.appointmentRequested,
         builder: (context, state) =>
-            PlaceholderScreen(name: 'AppointmentRequested #${_id(state)}'),
+            AppointmentRequestedScreen(appointmentId: _id(state)),
       ),
       GoRoute(
         path: Routes.sessionRequested,
