@@ -11,7 +11,6 @@ import '../../core/theme/app_assets.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_text_styles.dart';
 import '../../core/widgets/app_svg.dart';
-import '../../core/widgets/app_toast.dart';
 import '../../core/widgets/debounced_search_field.dart';
 import '../../core/widgets/failure_toast.dart';
 import '../../core/widgets/loading_view.dart';
@@ -21,6 +20,7 @@ import '../../data/enums/enums.dart';
 import '../../data/models/responses/appointment.dart';
 import '../../data/repositories/booking_repository.dart';
 import '../../router/routes.dart';
+import 'actions/booking_actions.dart';
 import 'bookings_cubit.dart';
 import 'filter_by_date_sheet.dart';
 import 'filter_by_type_sheet.dart';
@@ -286,8 +286,57 @@ class _BookingsList extends StatelessWidget {
     if (!cubit.isClosed) cubit.load();
   }
 
-  void _stub(BuildContext context) =>
-      AppToast.show(context, 'TODO(T27)', ToastType.normal);
+  /// Applies what a booking action asks of the list. The item is looked up by
+  /// id again: the list may have changed while the sheets were open.
+  void _apply(
+    BookingsCubit cubit,
+    AppointmentData item,
+    BookingActionResult result,
+  ) {
+    if (cubit.isClosed) return;
+    switch (result) {
+      case BookingActionResult.none:
+        break;
+      case BookingActionResult.removed:
+        cubit.removeAt(cubit.state.items.indexWhere((e) => e.id == item.id));
+      case BookingActionResult.reload:
+        cubit.load();
+    }
+  }
+
+  Future<void> _cancel(BuildContext context, AppointmentData item) async {
+    final id = item.id;
+    if (id == null) return;
+    final cubit = context.read<BookingsCubit>();
+    final result = await const BookingActions().cancel(context, id);
+    _apply(cubit, item, result);
+  }
+
+  Future<void> _edit(BuildContext context, AppointmentData item) async {
+    final cubit = context.read<BookingsCubit>();
+    final result = await const BookingActions().edit(
+      context,
+      item,
+      BookingStatus.fromValue(item.status) ?? cubit.state.status,
+    );
+    _apply(cubit, item, result);
+  }
+
+  Future<void> _rate(BuildContext context, AppointmentData item) async {
+    final cubit = context.read<BookingsCubit>();
+    final result = await const BookingActions().rate(context, item);
+    _apply(cubit, item, result);
+  }
+
+  Future<void> _rebook(BuildContext context, AppointmentData item) async {
+    final cubit = context.read<BookingsCubit>();
+    final result = await const BookingActions().rebook(
+      context,
+      item,
+      BookingStatus.fromValue(item.status) ?? cubit.state.status,
+    );
+    _apply(cubit, item, result);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -345,11 +394,10 @@ class _BookingsList extends StatelessWidget {
               key: ValueKey(item.id),
               item: item,
               onTap: () => _open(context, item),
-              // TODO(T27): wire the cancel / edit / rate / rebook flows.
-              onCancel: (_) => _stub(context),
-              onEdit: (_) => _stub(context),
-              onRate: (_) => _stub(context),
-              onRebook: (_) => _stub(context),
+              onCancel: (item) => _cancel(context, item),
+              onEdit: (item) => _edit(context, item),
+              onRate: (item) => _rate(context, item),
+              onRebook: (item) => _rebook(context, item),
             );
           },
         );

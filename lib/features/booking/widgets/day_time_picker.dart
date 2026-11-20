@@ -23,6 +23,9 @@ class DayTimePicker extends StatefulWidget {
   final ValueChanged<TimeModel?> onTimeChanged;
   final bool showCalendarButton;
 
+  /// Heading above the days; defaults to `pickUpBookingAppointment`.
+  final String? title;
+
   const DayTimePicker({
     super.key,
     required this.days,
@@ -31,6 +34,7 @@ class DayTimePicker extends StatefulWidget {
     required this.onDayChanged,
     required this.onTimeChanged,
     this.showCalendarButton = true,
+    this.title,
   });
 
   @override
@@ -128,7 +132,7 @@ class _DayTimePickerState extends State<DayTimePicker> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    l10n.pickUpBookingAppointment,
+                    widget.title ?? l10n.pickUpBookingAppointment,
                     style: AppTextStyles.bold(14, AppColors.c3D4C5E),
                   ),
                   if (widget.showCalendarButton)
