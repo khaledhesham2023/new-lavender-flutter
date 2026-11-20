@@ -15,7 +15,7 @@ class AppBackButton extends StatelessWidget {
   const AppBackButton({
     super.key,
     this.onTap,
-    this.size = 24,
+    this.size = 36,
     this.color,
     this.boxSize = 40,
   });
