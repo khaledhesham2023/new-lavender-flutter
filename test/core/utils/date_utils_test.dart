@@ -26,6 +26,13 @@ void main() {
     expect(convertTo24HourTime('bad', 'en'), '');
   });
 
+  test('convertTo24HourTime ignores seconds like Android (HH:mm:ss from API)',
+      () {
+    expect(convertTo24HourTime('09:15:00', 'en'), '09:15 AM');
+    expect(convertTo24HourTime('18:00:00', 'en'), '06:00 PM');
+    expect(reverseConvertTo24HourTime('14:30:00', 'en'), '02:30 PM');
+  });
+
   test('convertTo24HourTime2 / reverse / makeTimeFixedOnEnglish', () {
     expect(convertTo24HourTime2('18:45:10'), '06:45 PM');
     expect(reverseConvertTo24HourTime('00:15', 'en'), '12:15 AM');
