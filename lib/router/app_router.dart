@@ -4,6 +4,7 @@ import 'package:material_ui/material_ui.dart';
 import '../data/models/requests/booking_draft.dart';
 import '../data/models/responses/offer.dart';
 import '../data/models/responses/speciality.dart';
+import '../features/appointment_details/appointment_details_screen.dart';
 import '../features/auth/forget_password/forget_password_screen.dart';
 import '../features/auth/login/login_screen.dart';
 import '../features/auth/new_password/new_password_screen.dart';
@@ -181,7 +182,7 @@ GoRouter createRouter() {
       GoRoute(
         path: Routes.appointmentDetails,
         builder: (context, state) =>
-            PlaceholderScreen(name: 'AppointmentDetails #${_id(state)}'),
+            AppointmentDetailsScreen(appointmentId: _id(state)),
       ),
       GoRoute(
         path: Routes.sessionDetails,

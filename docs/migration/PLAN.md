@@ -232,7 +232,7 @@ lavender-flutter/
 - [x] T25 - Appointment type sheet, book with offer, successful request with offer (depends on: T24)
 - [x] T26 - Bookings tab (list, tabs, search, filters) (depends on: T24)
 - [ ] T27 - Booking actions: confirmation, rebook/change, add comment (depends on: T26)
-- [ ] T28 - Appointment details and report download (depends on: T27)
+- [x] T28 - Appointment details and report download (depends on: T27)
 - [ ] T29 - Session details (depends on: T28)
 - [ ] T30 - Favorites (depends on: T22)
 - [ ] T31 - Notifications screen (depends on: T28, T29)
