@@ -228,7 +228,7 @@ lavender-flutter/
 - [x] T21 - Filter screen and subspecialties sheet (depends on: T20)
 - [x] T22 - Doctor details: header, info tab, reviews tab (depends on: T20)
 - [x] T23 - Doctor details: booking time tab and day/time picker (depends on: T22)
-- [ ] T24 - Book appointment, change appointment sheet, successful request (depends on: T23)
+- [x] T24 - Book appointment, change appointment sheet, successful request (depends on: T23)
 - [ ] T25 - Appointment type sheet, book with offer, successful request with offer (depends on: T24)
 - [ ] T26 - Bookings tab (list, tabs, search, filters) (depends on: T24)
 - [ ] T27 - Booking actions: confirmation, rebook/change, add comment (depends on: T26)
