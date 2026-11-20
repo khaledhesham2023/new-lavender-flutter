@@ -81,6 +81,21 @@ class HomeCubit extends Cubit<HomeState> {
     await Future.wait<void>([_loadHome(), _loadSettings()]);
   }
 
+  /// Refetches home without the loading state (after coming back from a
+  /// details screen, as Android does in `onResume`). Failures keep what is
+  /// shown.
+  Future<void> refresh() async {
+    final result = await _home.getHome();
+    if (isClosed || result is! ApiSuccess<HomeData>) return;
+    emit(
+      HomeState(
+        status: ViewStatus.success,
+        data: result.data,
+        doctors: result.data.doctors,
+      ),
+    );
+  }
+
   Future<void> _loadHome() async {
     final result = await _home.getHome();
     if (isClosed) return;

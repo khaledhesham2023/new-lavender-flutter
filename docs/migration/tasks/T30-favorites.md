@@ -34,3 +34,10 @@ Port the Favorites tab: guest prompt, list of favorite doctors with search, un-f
 
 ## Gotchas
 - `client/fav` toggles — calling it on a favorite removes it.
+
+## Notes
+- Built with T29 on branch `T29-T30-session-details-favorites`.
+- `FavoritesScreen` + `FavoritesCubit` in `features/favorites/`; reuses `DoctorCard` (full width) since the Android item is the search doctor card. Guest uses `youMustLoginBody` (not the bookings variant).
+- Like Android, the heart flips at once and the row is removed only after the toggle succeeds; failure flips it back and toasts.
+- Search debounce 1000 ms; blank keyword -> null (empty-with-keyword shows the "no results" state). Doctor details pop reloads the list.
+- Not verified on a device (analyze, 347 tests and the debug APK build pass).

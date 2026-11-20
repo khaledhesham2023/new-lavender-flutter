@@ -12,7 +12,6 @@ import '../../core/utils/date_utils.dart';
 import '../../core/utils/file_downloader.dart';
 import '../../core/utils/number_utils.dart';
 import '../../core/widgets/app_back_button.dart';
-import '../../core/widgets/app_svg.dart';
 import '../../core/widgets/failure_toast.dart';
 import '../../core/widgets/loading_view.dart';
 import '../../core/widgets/spacers.dart';
@@ -25,6 +24,7 @@ import '../booking/widgets/booking_info_card.dart';
 import '../booking/widgets/doctor_summary_card.dart';
 import '../bookings/actions/booking_actions.dart';
 import 'appointment_details_cubit.dart';
+import 'widgets/details_widgets.dart';
 import 'widgets/status_pill.dart';
 
 /// Port of `AppointmentDetailsFragment`: the booking's status, doctor, slot,
@@ -167,7 +167,7 @@ class _Content extends StatelessWidget {
       BookingStatus.pending || BookingStatus.confirmed => Row(
         children: [
           Expanded(
-            child: _BarButton(
+            child: DetailsBarButton(
               label: l10n.editBooking,
               filled: true,
               enabled: appointment.canReschedule,
@@ -180,7 +180,7 @@ class _Content extends StatelessWidget {
           ),
           const HorizontalSpacer(16),
           Expanded(
-            child: _BarButton(
+            child: DetailsBarButton(
               label: l10n.cancelBooking,
               onTap: () => _apply(
                 context,
@@ -196,7 +196,7 @@ class _Content extends StatelessWidget {
       BookingStatus.completed => Row(
         children: [
           Expanded(
-            child: _BarButton(
+            child: DetailsBarButton(
               label: appointment.isReviewed ? l10n.reviewed : l10n.rateBooking,
               filled: true,
               enabled: !appointment.isReviewed,
@@ -209,7 +209,7 @@ class _Content extends StatelessWidget {
           ),
           const HorizontalSpacer(16),
           Expanded(
-            child: _BarButton(
+            child: DetailsBarButton(
               label: l10n.rebook,
               onTap: () => _apply(
                 context,
@@ -220,7 +220,7 @@ class _Content extends StatelessWidget {
           ),
         ],
       ),
-      BookingStatus.canceled || BookingStatus.rejected => _BarButton(
+      BookingStatus.canceled || BookingStatus.rejected => DetailsBarButton(
         label: l10n.rebook,
         onTap: () => _apply(
           context,
@@ -332,7 +332,7 @@ class _Content extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-                  child: _ReportRow(
+                  child: ReportRow(
                     onTap: () => downloadFile(
                       context,
                       url: report,
@@ -362,107 +362,6 @@ class _Content extends StatelessWidget {
             ),
           ),
       ],
-    );
-  }
-}
-
-/// `clAttachment`: PDF icon, title and download icon; the whole row downloads.
-class _ReportRow extends StatelessWidget {
-  final VoidCallback onTap;
-
-  const _ReportRow({required this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: onTap,
-      child: Container(
-        padding: const EdgeInsets.all(14).copyWith(left: 10, right: 10),
-        decoration: BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.circular(12),
-          border: Border.all(color: AppColors.cE6E6E6),
-        ),
-        child: Row(
-          children: [
-            const AppSvg(AppAssets.icPdfAttachment),
-            const HorizontalSpacer(10),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsetsDirectional.only(end: 58),
-                child: Text(
-                  context.l10n.medicalReportPdf,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: AppTextStyles.semiBold(14, AppColors.c10162E),
-                ),
-              ),
-            ),
-            const HorizontalSpacer(10),
-            const AppSvg(AppAssets.icDownload),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-/// 56dp-high rounded (16) bar button: primary-filled or primary-outlined. A
-/// disabled filled one stays primary like Android's `isEnabled = false`, except
-/// the grey edit button (`bg_btn_grey_color_rounded_12`).
-class _BarButton extends StatelessWidget {
-  final String label;
-  final bool filled;
-  final bool enabled;
-  final String? icon;
-  final VoidCallback onTap;
-
-  const _BarButton({
-    required this.label,
-    required this.onTap,
-    this.filled = false,
-    this.enabled = true,
-    this.icon,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final grey = filled && !enabled && icon == null;
-    final background = !filled
-        ? AppColors.white
-        : (grey ? AppColors.cBEBEBE : AppColors.primary);
-    final textColor = filled ? AppColors.white : AppColors.primary;
-    return GestureDetector(
-      behavior: HitTestBehavior.opaque,
-      onTap: enabled ? onTap : null,
-      child: Container(
-        height: 56,
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: background,
-          borderRadius: BorderRadius.circular(16),
-          border: filled ? null : Border.all(color: AppColors.primary),
-        ),
-        child: FittedBox(
-          fit: BoxFit.scaleDown,
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              if (icon != null) ...[
-                AppSvg(icon!),
-                const HorizontalSpacer(7),
-              ],
-              Text(
-                label,
-                maxLines: 1,
-                style: AppTextStyles.bold(14, textColor),
-              ),
-            ],
-          ),
-        ),
-      ),
     );
   }
 }
