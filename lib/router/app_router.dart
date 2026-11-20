@@ -18,6 +18,7 @@ import '../features/booking/book_with_offer_screen.dart';
 import '../features/booking/session_requested_screen.dart';
 import '../features/bookings/bookings_screen.dart';
 import '../features/doctor_details/doctor_details_screen.dart';
+import '../features/favorites/favorites_screen.dart';
 import '../features/filter/filter_screen.dart';
 import '../features/home/home_screen.dart';
 import '../features/offers/offer_details_screen.dart';
@@ -25,6 +26,7 @@ import '../features/offers/offers_screen.dart';
 import '../features/onboarding/onboarding_screen.dart';
 import '../features/search/search_screen.dart';
 import '../features/search_details/search_details_screen.dart';
+import '../features/session_details/session_details_screen.dart';
 import '../features/shell/main_shell.dart';
 import '../features/specialities/all_specialities_screen.dart';
 import '../features/splash/splash_screen.dart';
@@ -108,7 +110,13 @@ GoRouter createRouter() {
               child: const BookingsScreen(),
             ),
           ),
-          _tab(Routes.favorites, 'Favorites'),
+          GoRoute(
+            path: Routes.favorites,
+            pageBuilder: (context, state) => NoTransitionPage(
+              key: state.pageKey,
+              child: const FavoritesScreen(),
+            ),
+          ),
           _tab(Routes.profile, 'Profile'),
         ],
       ),
@@ -187,7 +195,7 @@ GoRouter createRouter() {
       GoRoute(
         path: Routes.sessionDetails,
         builder: (context, state) =>
-            PlaceholderScreen(name: 'SessionDetails #${_id(state)}'),
+            SessionDetailsScreen(sessionId: _id(state)),
       ),
       _page(Routes.editProfile, 'EditProfile'),
       GoRoute(

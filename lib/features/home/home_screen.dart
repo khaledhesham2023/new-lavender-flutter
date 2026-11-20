@@ -142,10 +142,11 @@ class _HomeContent extends StatelessWidget {
                 ? const SizedBox.shrink()
                 : NextReservationCard(
                     reservation: reservation,
-                    onTap: () {
+                    onTap: () async {
                       final id = reservation.id;
                       if (id != null) {
-                        context.push(Routes.appointmentDetailsOf(id));
+                        await context.push(Routes.appointmentDetailsOf(id));
+                        if (!cubit.isClosed) cubit.refresh();
                       }
                     },
                   ),
@@ -181,10 +182,11 @@ class _HomeContent extends StatelessWidget {
                           padding: const EdgeInsetsDirectional.only(end: 10),
                           child: DoctorCard(
                             doctor: state.doctors[i],
-                            onTap: () {
+                            onTap: () async {
                               final id = state.doctors[i].id;
                               if (id != null) {
-                                context.push(Routes.doctorDetailsOf(id));
+                                await context.push(Routes.doctorDetailsOf(id));
+                                if (!cubit.isClosed) cubit.refresh();
                               }
                             },
                             onFavorite: isLoggedIn

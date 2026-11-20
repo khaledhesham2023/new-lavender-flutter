@@ -189,4 +189,36 @@ void main() {
       expect(notificationBadgeText(100), '+99');
     });
   });
+  group('HomeCubit.refresh', () {
+    test('updates the doctors silently (no loading state)', () async {
+      final (cubit, home, _, _) = await _make();
+      home.homeResult = const ApiSuccess(
+        HomeData(doctors: [DoctorModel(id: 1, isFav: false)]),
+      );
+      await cubit.load();
+      expect(cubit.state.doctors.single.isFav, isFalse);
+
+      home.homeResult = const ApiSuccess(
+        HomeData(doctors: [DoctorModel(id: 1, isFav: true)]),
+      );
+      final statuses = <ViewStatus>[];
+      final sub = cubit.stream.listen((s) => statuses.add(s.status));
+      await cubit.refresh();
+      await sub.cancel();
+      expect(cubit.state.doctors.single.isFav, isTrue);
+      expect(statuses, isNot(contains(ViewStatus.loading)));
+    });
+
+    test('a failed refresh keeps what is shown', () async {
+      final (cubit, home, _, _) = await _make();
+      home.homeResult = const ApiSuccess(
+        HomeData(doctors: [DoctorModel(id: 1)]),
+      );
+      await cubit.load();
+      home.homeResult = const NetworkFailure();
+      await cubit.refresh();
+      expect(cubit.state.status, ViewStatus.success);
+      expect(cubit.state.doctors.length, 1);
+    });
+  });
 }
