@@ -41,3 +41,12 @@ file-download helper used later by session details and my reports.
 ## Gotchas
 - On Android 13+ the download notification needs POST_NOTIFICATIONS, which is requested in T39 — the download itself must work without it.
 - The appointment id can also come from a notification (`appointmentId` extra in Android) — the route path id covers both.
+
+## Notes
+- Built on the T27 branch (`T27-T28-booking-actions-appointment-details`); T27 changes there are still uncommitted/unticked.
+- `AppointmentDetailsScreen` + `AppointmentDetailsCubit` (load/reload), `StatusPill` / `statusPillColors(BookingStatus?)` in `features/appointment_details/widgets/status_pill.dart` (reuse in T29/T36).
+- Actions go through `BookingActions`; any `removed`/`reload` result reloads the details. Rebook pushes the requested screen (no reload).
+- Errors: 404 → "no data to preview" + Back; other server → server error (no button, like Android); network → retry; unknown → toast.
+- `downloadFile(context, url:, title:)` in `core/utils/file_downloader.dart` (`background_downloader`): downloads into app documents, then `moveToSharedStorage(downloads)`; running/complete notifications are configured globally on each call; failure → `connectionError` toast. File name = last URL segment if it has an extension, else `<title>.pdf`.
+- Manifest: added `POST_NOTIFICATIONS` (per the package docs); the runtime request is T39 and the download works without it.
+- Not verified on a device (analyze, 338 tests and the debug APK build pass).
