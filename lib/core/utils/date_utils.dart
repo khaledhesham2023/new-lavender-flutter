@@ -29,10 +29,18 @@ String formatDateToDayMonth(String iso) {
   return '${int.parse(m[2]!)}/${int.parse(m[3]!)}';
 }
 
-/// `HH:mm` -> `hh:mm a`, AM/PM localized by [lang], digits English.
+final RegExp _hhmmPrefix = RegExp(r'^\s*(\d{1,2}:\d{2})');
+
+/// Android parses with a lenient `SimpleDateFormat("HH:mm")`, which accepts
+/// `09:15:00` (the API's `from`/`to`) and ignores what follows the minutes.
+/// `parseStrict` would reject it, so keep only the leading `HH:mm`.
+String _leadingHhmm(String s) => _hhmmPrefix.firstMatch(s)?[1] ?? s;
+
+/// `HH:mm` (a trailing `:ss` is ignored, like Android) -> `hh:mm a`, AM/PM
+/// localized by [lang], digits English.
 /// (The name is inverted on purpose: it returns the 12-hour form.)
 String convertTo24HourTime(String hhmm, String lang) {
-  final d = _parseOrNull(DateFormat('HH:mm', 'en'), hhmm);
+  final d = _parseOrNull(DateFormat('HH:mm', 'en'), _leadingHhmm(hhmm));
   if (d == null) return '';
   return toArabicFreeDigits(DateFormat('hh:mm a', lang).format(d));
 }
@@ -47,7 +55,7 @@ String convertTo24HourTime2(String hhmmss) {
 /// `HH:mm` (English) -> `hh:mm a` with AM/PM localized by [lang].
 /// Android leaves locale digits here; we always emit English digits (PLAN 4.6).
 String reverseConvertTo24HourTime(String hhmm, String lang) {
-  final d = _parseOrNull(DateFormat('HH:mm', 'en'), hhmm);
+  final d = _parseOrNull(DateFormat('HH:mm', 'en'), _leadingHhmm(hhmm));
   if (d == null) return '';
   return toArabicFreeDigits(DateFormat('hh:mm a', lang).format(d));
 }

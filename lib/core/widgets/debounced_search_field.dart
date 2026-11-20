@@ -43,7 +43,14 @@ class _DebouncedSearchFieldState extends State<DebouncedSearchField> {
 
   @override
   Widget build(BuildContext context) {
-    final text = AppTextStyles.medium(12, AppColors.c251836);
+    // Line height 1.0 clips descenders (the "p" of "specialty") inside a text
+    // field, so use a slightly taller line split evenly above and below: no
+    // extra font padding, hint and text stay centered, nothing is cut off.
+    TextStyle tight(TextStyle s) => s.copyWith(
+      height: 1.4,
+      leadingDistribution: TextLeadingDistribution.even,
+    );
+    final text = tight(AppTextStyles.medium(12, AppColors.c251836));
     return SizedBox(
       height: 50,
       child: TextField(
@@ -55,7 +62,7 @@ class _DebouncedSearchFieldState extends State<DebouncedSearchField> {
         textAlignVertical: TextAlignVertical.center,
         decoration: InputDecoration(
           hintText: widget.hint,
-          hintStyle: AppTextStyles.medium(12, AppColors.c666666),
+          hintStyle: tight(AppTextStyles.medium(12, AppColors.c666666)),
           filled: true,
           fillColor: AppColors.cFAFAFA,
           contentPadding: const EdgeInsetsDirectional.only(start: 16, end: 16),
