@@ -17,7 +17,9 @@ import '../../core/widgets/must_login_sheet.dart';
 import '../../core/widgets/state_view.dart';
 import '../../core/widgets/system_ui.dart';
 import '../../data/repositories/doctor_repository.dart';
+import '../../router/route_args.dart';
 import '../../router/routes.dart';
+import '../booking/appointment_type_sheet.dart';
 import '../booking/widgets/day_time_picker.dart';
 import 'doctor_details_cubit.dart';
 import 'widgets/detail_tabs.dart';
@@ -65,10 +67,34 @@ class _DoctorDetailsViewState extends State<_DoctorDetailsView> {
     } else if (state.selectedTime == null) {
       AppToast.show(context, l10n.pleaseSelectTime, ToastType.failed);
     } else if (state.doctor?.userOffers.isNotEmpty ?? false) {
-      // T25: appointment type sheet (for now go straight to book appointment).
-      context.push(Routes.bookAppointment, extra: cubit.buildDraft());
+      _chooseType(context);
     } else {
       context.push(Routes.bookAppointment, extra: cubit.buildDraft());
+    }
+  }
+
+  /// Doctor has purchased offers: pick normal examination or an offer first.
+  Future<void> _chooseType(BuildContext context) async {
+    final cubit = context.read<DoctorDetailsCubit>();
+    final doctor = cubit.state.doctor;
+    final draft = cubit.buildDraft();
+    if (doctor == null || draft == null) return;
+    final offer = await showAppointmentTypeSheet(
+      context,
+      price: doctor.price,
+      offers: doctor.userOffers,
+    );
+    if (offer == null || !context.mounted) return;
+    if (offer.id == normalExaminationId) {
+      context.push(Routes.bookAppointment, extra: draft);
+    } else {
+      context.push(
+        Routes.bookAppointmentWithOffer,
+        extra: BookWithOfferArgs(
+          draft: draft.copyWith(userOfferId: offer.id),
+          offer: offer,
+        ),
+      );
     }
   }
 

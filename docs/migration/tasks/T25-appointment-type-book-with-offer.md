@@ -47,3 +47,10 @@ offer bookings use their own confirmation and success screens.
 
 ## Gotchas
 - Android passes `examinationPrice?.toFloat()` into the string → e.g. `150.0`. Keep the same text (`double.tryParse(price).toString()`).
+
+## Notes
+- Done: `lib/features/booking/appointment_type_sheet.dart` (`showAppointmentTypeSheet`, `normalExaminationId = -1`), `book_with_offer_screen.dart`, `session_requested_{screen,cubit}.dart`, `lib/core/widgets/dashed_border_box.dart` (CustomPainter). Doctor details `_chooseType` handles the offers branch; router builds the real screens for `bookAppointmentWithOffer` and `sessionRequested`. Analyze, tests and debug APK pass; **not run on a device**.
+- Deviation: no `book_with_offer_cubit.dart`. The screen reuses `BookAppointmentCubit`, which now sends `userOfferId: draft.userOfferId` (null for a normal booking), so T24 behavior is unchanged.
+- Remaining-sessions order: Android's last observer to run wins, which is `(number, used_number)`; used on all three screens.
+- Sheet checkbox is the only tap target (as on Android); tapping a checked one unchecks. Normal row (index 0) has a 39 bottom padding like Android since it hides the sessions line.
+- No new tests (UI only); the cubit change is covered by the existing booking cubit tests.
