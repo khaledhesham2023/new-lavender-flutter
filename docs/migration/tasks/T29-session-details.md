@@ -33,3 +33,10 @@ remaining sessions, with rebook marked `forOffer`.
 
 ## Gotchas
 - `SessionDetailsModel.can_reschedule` defaults to **false** (unlike AppointmentData).
+
+## Notes
+- Built together with T30 on branch `T29-T30-session-details-favorites` (off master, which already has T27/T28).
+- `SessionDetailsScreen` + `SessionDetailsCubit` (load/reload) in `features/session_details/`; `sessionToAppointment()` converts the session for `BookingActions` (offer always set, so rebook is `forOffer`; `canReschedule` defaults to false, so Edit is greyed unless the API says otherwise).
+- Report row shows whenever `report != null` (as in Kotlin). Server error has a Retry button here (Android adds one for sessions).
+- Extracted `ReportRow` and `DetailsBarButton` from the appointment details screen into `features/appointment_details/widgets/details_widgets.dart` so both screens share them.
+- Not verified on a device (analyze, 347 tests and the debug APK build pass).
