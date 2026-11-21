@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+import 'package:lavender/core/widgets/spacers.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../core/di/injection.dart';
@@ -474,7 +475,7 @@ class _DisabledBanner extends StatelessWidget {
       child: Row(
         children: [
           const AppSvg(AppAssets.icNotificationDisabled),
-          const SizedBox(width: 10),
+          const HorizontalSpacer(10),
           Expanded(
             child: Text(
               context.l10n.youCanNoLongerReceiveNotifications,

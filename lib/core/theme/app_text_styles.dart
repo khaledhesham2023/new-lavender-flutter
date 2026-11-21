@@ -11,7 +11,7 @@ abstract final class AppTextStyles {
   static const String comicSans = 'ComicSans';
 
   static TextStyle _style(String family, FontWeight weight, double size, Color color) =>
-      TextStyle(fontFamily: family, fontWeight: weight, fontSize: size, color: color, height: 1.0);
+      TextStyle(fontFamily: family, fontWeight: weight, fontSize: size, color: color, height: 1.3);
 
   static TextStyle bold(double size, [Color color = AppColors.c251836]) =>
       _style(urw, FontWeight.w700, size, color);
