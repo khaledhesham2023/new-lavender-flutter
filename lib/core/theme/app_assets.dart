@@ -2,7 +2,8 @@
 
 abstract final class AppAssets {
   // SVG (converted Android vector drawables)
-  static const bgBtnPrimaryColorDisable = 'assets/svg/bg_btn_primary_color_disable.svg';
+  static const bgBtnPrimaryColorDisable =
+      'assets/svg/bg_btn_primary_color_disable.svg';
   static const bgDiscount = 'assets/svg/bg_discount.svg';
   static const bgLogo = 'assets/svg/bg_logo.svg';
   static const bgOfferBackground = 'assets/svg/bg_offer_background.svg';
@@ -14,12 +15,18 @@ abstract final class AppAssets {
   static const icAccountActive = 'assets/svg/ic_account_active.svg';
   static const icAccountInactive = 'assets/svg/ic_account_inactive.svg';
   static const icAppEvaluation = 'assets/svg/ic_app_evaluation.svg';
-  static const icAppointmentDetailsDate = 'assets/svg/ic_appointment_details_date.svg';
-  static const icAppointmentDetailsOffer = 'assets/svg/ic_appointment_details_offer.svg';
-  static const icAppointmentDetailsPrice = 'assets/svg/ic_appointment_details_price.svg';
-  static const icAppointmentDetailsSigns = 'assets/svg/ic_appointment_details_signs.svg';
-  static const icAppointmentDetailsTime = 'assets/svg/ic_appointment_details_time.svg';
-  static const icAppointmentTypeFilter = 'assets/svg/ic_appointment_type_filter.svg';
+  static const icAppointmentDetailsDate =
+      'assets/svg/ic_appointment_details_date.svg';
+  static const icAppointmentDetailsOffer =
+      'assets/svg/ic_appointment_details_offer.svg';
+  static const icAppointmentDetailsPrice =
+      'assets/svg/ic_appointment_details_price.svg';
+  static const icAppointmentDetailsSigns =
+      'assets/svg/ic_appointment_details_signs.svg';
+  static const icAppointmentDetailsTime =
+      'assets/svg/ic_appointment_details_time.svg';
+  static const icAppointmentTypeFilter =
+      'assets/svg/ic_appointment_type_filter.svg';
   static const icArrowEnd = 'assets/svg/ic_arrow_end.svg';
   static const icArrowLeft = 'assets/svg/ic_arrow_left.svg';
   static const icBack = 'assets/svg/ic_back.svg';
@@ -87,7 +94,8 @@ abstract final class AppAssets {
   static const icLogo = 'assets/svg/ic_logo.svg';
   static const icLogout = 'assets/svg/ic_logout.svg';
   static const icMedal = 'assets/svg/ic_medal.svg';
-  static const icMedicalConditionDescription = 'assets/svg/ic_medical_condition_description.svg';
+  static const icMedicalConditionDescription =
+      'assets/svg/ic_medical_condition_description.svg';
   static const icMedicalKit = 'assets/svg/ic_medical_kit.svg';
   static const icMore = 'assets/svg/ic_more.svg';
   static const icMustLogin = 'assets/svg/ic_must_login.svg';
@@ -95,7 +103,8 @@ abstract final class AppAssets {
   static const icNetworkError = 'assets/svg/ic_network_error.svg';
   static const icNetworkError2 = 'assets/svg/ic_network_error_2.svg';
   static const icNoAddress = 'assets/svg/ic_no_address.svg';
-  static const icNoAvailableBookings = 'assets/svg/ic_no_available_bookings.svg';
+  static const icNoAvailableBookings =
+      'assets/svg/ic_no_available_bookings.svg';
   static const icNoBookings = 'assets/svg/ic_no_bookings.svg';
   static const icNoData = 'assets/svg/ic_no_data.svg';
   static const icNoDoctorsFound = 'assets/svg/ic_no_doctors_found.svg';
@@ -104,7 +113,8 @@ abstract final class AppAssets {
   static const icNoReviews = 'assets/svg/ic_no_reviews.svg';
   static const icNotification = 'assets/svg/ic_notification.svg';
   static const icNotificationBing = 'assets/svg/ic_notification_bing.svg';
-  static const icNotificationDisabled = 'assets/svg/ic_notification_disabled.svg';
+  static const icNotificationDisabled =
+      'assets/svg/ic_notification_disabled.svg';
   static const icNotificationImage = 'assets/svg/ic_notification_image.svg';
   static const icOfferBack = 'assets/svg/ic_offer_back.svg';
   static const icOfferCalender = 'assets/svg/ic_offer_calender.svg';
@@ -113,8 +123,10 @@ abstract final class AppAssets {
   static const icPdf = 'assets/svg/ic_pdf.svg';
   static const icPdfAttachment = 'assets/svg/ic_pdf_attachment.svg';
   static const icProfileHeaderGuest = 'assets/svg/ic_profile_header_guest.svg';
-  static const icRadioButtonSelected = 'assets/svg/ic_radio_button_selected.svg';
-  static const icRadioButtonUnSelected = 'assets/svg/ic_radio_button_un_selected.svg';
+  static const icRadioButtonSelected =
+      'assets/svg/ic_radio_button_selected.svg';
+  static const icRadioButtonUnSelected =
+      'assets/svg/ic_radio_button_un_selected.svg';
   static const icRateStarSolidWhite = 'assets/svg/ic_rate_star_solid_white.svg';
   static const icRateStarWhite = 'assets/svg/ic_rate_star_white.svg';
   static const icRelatedProfile = 'assets/svg/ic_related_profile.svg';
@@ -138,21 +150,25 @@ abstract final class AppAssets {
   static const icTimer = 'assets/svg/ic_timer.svg';
   static const icTorch = 'assets/svg/ic_torch.svg';
   static const icTranslate = 'assets/svg/ic_translate.svg';
-  static const icTwitterIcon = 'assets/svg/ic_twitter_icon.svg';
+  static const icXIcon = 'assets/svg/ic_x_icon.svg';
   static const icUnreadBadge = 'assets/svg/ic_unread_badge.svg';
   static const icUnselected = 'assets/svg/ic_unselected.svg';
   static const icWhatsapp = 'assets/svg/ic_whatsapp.svg';
   static const icWhoWeAre = 'assets/svg/ic_who_we_are.svg';
   static const icYoutube = 'assets/svg/ic_youtube.svg';
-  static const myCurrentLocationMarker = 'assets/svg/my_current_location_marker.svg';
+  static const myCurrentLocationMarker =
+      'assets/svg/my_current_location_marker.svg';
 
   // Images
   static const bgDentist = 'assets/images/bg_dentist.jpg';
   static const bgOffer = 'assets/images/bg_offer.png';
   static const bgSplash = 'assets/images/bg_splash.png';
-  static const dashedLineGreyHorizontal = 'assets/images/dashed_line_grey_horizontal.png';
-  static const dashedLineGreyHorizontal2 = 'assets/images/dashed_line_grey_horizontal_2.png';
-  static const dashedLineGreyVertical = 'assets/images/dashed_line_grey_vertical.png';
+  static const dashedLineGreyHorizontal =
+      'assets/images/dashed_line_grey_horizontal.png';
+  static const dashedLineGreyHorizontal2 =
+      'assets/images/dashed_line_grey_horizontal_2.png';
+  static const dashedLineGreyVertical =
+      'assets/images/dashed_line_grey_vertical.png';
   static const dummyCertificate = 'assets/images/dummy_certificate.jpg';
   static const dummyDoctorImage = 'assets/images/dummy_doctor_image.jpg';
   static const dummyOfferBanner = 'assets/images/dummy_offer_banner.jpg';
@@ -188,9 +204,11 @@ abstract final class AppAssets {
   static const successGif = 'assets/gifs/success_gif.gif';
 
   // Lottie
-  static const congratsReservationRequest = 'assets/lottie/congrats_reservation_request.json';
+  static const congratsReservationRequest =
+      'assets/lottie/congrats_reservation_request.json';
   static const lavenderLogo = 'assets/lottie/lavender_logo.json';
-  static const lottieAuthGuestEyes = 'assets/lottie/lottie_auth_guest_eyes.json';
+  static const lottieAuthGuestEyes =
+      'assets/lottie/lottie_auth_guest_eyes.json';
   static const onbaording1Ar = 'assets/lottie/onbaording_1_ar.json';
   static const onbaording2Ar = 'assets/lottie/onbaording_2_ar.json';
   static const onbaording3Ar = 'assets/lottie/onbaording_3_ar.json';
@@ -198,7 +216,6 @@ abstract final class AppAssets {
   static const onboarding2En = 'assets/lottie/onboarding_2_en.json';
   static const onboarding3En = 'assets/lottie/onboarding_3_en.json';
   static const start = 'assets/lottie/start.json';
-
 }
 
 /// SVGs whose Android vector has `autoMirrored="true"`: flip them in RTL.

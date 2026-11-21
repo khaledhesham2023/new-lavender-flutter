@@ -26,7 +26,7 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen>
-    with SingleTickerProviderStateMixin {
+    with SingleTickerProviderStateMixin, WidgetsBindingObserver {
   late final AnimationController _controller = AnimationController(vsync: this);
   Timer? _timer;
   Timer? _watchdog;
@@ -37,6 +37,7 @@ class _SplashScreenState extends State<SplashScreen>
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
     _controller.addStatusListener((status) {
       if (status == AnimationStatus.completed && !_showLoader) _onLogoDone();
     });
@@ -76,8 +77,16 @@ class _SplashScreenState extends State<SplashScreen>
     }
   }
 
+  /// Coming back from the recents / another app: the animation and its timers
+  /// may have stalled while backgrounded, so leave the splash right away.
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) _navigate();
+  }
+
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     _timer?.cancel();
     _watchdog?.cancel();
     _controller.dispose();

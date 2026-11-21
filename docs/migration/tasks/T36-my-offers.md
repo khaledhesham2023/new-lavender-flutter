@@ -37,3 +37,10 @@ Port the user's purchased offers (valid / completed tabs) and the offer details 
 
 ## Gotchas
 - The id can come from a notification of type `user_offer` (T39).
+
+## Notes
+- Done: `lib/features/my_offers/*` (cubits, screens, `my_offer_card`, `offer_general_info_tab`, `offer_bookings_tab`, `offer_session_card`, `ordinal.dart`). Routes myOffers/myOfferDetails replaced.
+- Kotlin argument order for `numberOfSessionsWithValue` is (number, used_number); the duration is `start_date:end_date` (colon, no spaces); the second tab label is `showBookings`; the button label is `checkTheDoctors`.
+- The toggle refetches `myOffers()` on every change (same tab = nothing). Pull to refresh refetches. Unknown failures are only toasted.
+- `myOfferDetails` route is id based (user-offer id) so T39 can open it from a notification.
+- Tests: `ordinal_test.dart` (1..10 en/ar, compounds, fallbacks) and `my_offers_cubits_test.dart`.

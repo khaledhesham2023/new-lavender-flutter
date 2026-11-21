@@ -331,7 +331,7 @@ pops back to Home; back on Home: logged in → finish app, guest → open Auth a
 | Change password (profile) | `K/presentation/profile/addNewPassword/EditProfileAddNewPasswordFragment.kt` | current/new/confirm → `user/change-password` → Success sheet → pop back. "Forgot password" → `password/reset` with own phone → OTP change phone |
 | Forget password for edit | `K/presentation/profile/addNewPassword/ForgetPasswordForEditPasswordFragment.kt` | new password + confirm → `password/change` with otp → Success sheet (→ logout) |
 | Contact us | `K/presentation/profile/contactUs/ContactUsFragment.kt` | name prefilled from UserData, title, message (each ≥ 2 chars) → `client/contact` → Success dialog. WhatsApp icon → `https://api.whatsapp.com/send?phone=<whats_app_number>` |
-| About app | `K/presentation/profile/about/AboutFragment.kt`, `about/adapter/SocialAdapter.kt` | `client/about-app`: HTML text, social icons for keys facebook/twitter/youtube/instagram/link (open in browser via chooser), links → Terms of use, Privacy policy |
+| About app | `K/presentation/profile/about/AboutFragment.kt`, `about/adapter/SocialAdapter.kt` | `client/about-app`: HTML text, social icons for keys facebook/twitter/x/youtube/instagram/link (open in browser via chooser), links → Terms of use, Privacy policy |
 | About us | `K/presentation/profile/aboutUs/AboutUsFragment.kt` | `client/about`: HTML + up to 3 images |
 | Terms / Privacy | `K/presentation/profile/privacypolicy/screen/TermsOfUseFragment.kt`, `PrivacyPolicyFragment.kt` | HTML from `client/term` / `client/policy` |
 | My offers | `K/presentation/myoffers/screen/MyOffersFragment.kt` | tabs Valid / Completed from `client/my-offers`; tap → My offer details |

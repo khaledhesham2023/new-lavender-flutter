@@ -4,6 +4,7 @@ import '../../../core/l10n/l10n_ext.dart';
 import '../../../core/theme/app_assets.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
+import '../../../core/widgets/app_link.dart';
 import '../../../core/widgets/app_svg.dart';
 
 /// Guest replacement of the next-reservation card (`clGuest`): the body line is
@@ -41,13 +42,11 @@ class GuestCard extends StatelessWidget {
                     style: AppTextStyles.semiBold(14, AppColors.c251836),
                   ),
                   const SizedBox(height: 11),
-                  GestureDetector(
-                    behavior: HitTestBehavior.opaque,
+                  AppLink(
+                    text: l10n.tvGuestBody,
+                    size: 12,
+                    weight: FontWeight.w600,
                     onTap: onLogin,
-                    child: Text(
-                      l10n.tvGuestBody,
-                      style: AppTextStyles.semiBold(12, AppColors.primary),
-                    ),
                   ),
                 ],
               ),

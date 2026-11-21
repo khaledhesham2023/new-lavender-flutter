@@ -8,7 +8,7 @@ import '../../../core/di/injection.dart';
 import '../../../core/l10n/l10n_ext.dart';
 import '../../../core/session/session_cubit.dart';
 import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_text_styles.dart';
+import '../../../core/widgets/app_link.dart';
 import '../../../core/widgets/failure_toast.dart';
 import '../../../core/widgets/progress_button.dart';
 import '../../../core/widgets/system_ui.dart';
@@ -140,20 +140,13 @@ class _LoginViewState extends State<_LoginView> {
                           alignment: AlignmentDirectional.centerEnd,
                           child: Padding(
                             padding: const EdgeInsets.symmetric(horizontal: 16),
-                            child: GestureDetector(
-                              behavior: HitTestBehavior.opaque,
+                            child: AppLink(
+                              text: l10n.forgetPassword,
+                              size: 12,
+                              color: AppColors.c3D4C5E,
+                              underline: true,
                               onTap: () =>
                                   context.push(Routes.authForgetPassword),
-                              child: Text(
-                                l10n.forgetPassword,
-                                style:
-                                    AppTextStyles.medium(
-                                      12,
-                                      AppColors.c3D4C5E,
-                                    ).copyWith(
-                                      decoration: TextDecoration.underline,
-                                    ),
-                              ),
                             ),
                           ),
                         ),

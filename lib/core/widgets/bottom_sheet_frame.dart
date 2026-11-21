@@ -27,7 +27,8 @@ Future<T?> showAppBottomSheet<T>(
         ),
         child: SafeArea(top: false, child: builder(ctx)),
       );
-      if (expanded) content = FractionallySizedBox(heightFactor: 0.9, child: content);
+      if (expanded)
+        content = FractionallySizedBox(heightFactor: 0.9, child: content);
       return Padding(
         padding: EdgeInsets.only(bottom: MediaQuery.viewInsetsOf(ctx).bottom),
         child: content,
@@ -35,3 +36,11 @@ Future<T?> showAppBottomSheet<T>(
     },
   );
 }
+
+/// White as it looks under a sheet's dimmed barrier (`0x4D000000`). The status bar is
+/// painted by the system, so the barrier cannot dim it: a screen with a white status
+/// bar switches to this colour while a sheet is open.
+final Color dimmedWhiteStatusBar = Color.alphaBlend(
+  const Color(0x4D000000),
+  AppColors.white,
+);

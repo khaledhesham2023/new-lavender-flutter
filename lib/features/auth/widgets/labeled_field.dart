@@ -1,3 +1,4 @@
+import 'package:lavender/core/widgets/spacers.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../../core/theme/app_colors.dart';
@@ -112,9 +113,12 @@ class LabeledFieldState extends State<LabeledField> {
         onChanged: _onChanged,
         maxLength: 40,
         maxLines: 1,
-        buildCounter:
-            (_, {required currentLength, required isFocused, maxLength}) =>
-                null,
+        buildCounter: (
+          _, {
+          required currentLength,
+          required isFocused,
+          maxLength,
+        }) => null,
         textAlignVertical: TextAlignVertical.center,
         cursorColor: AppColors.c251836,
         cursorWidth: 2,
@@ -137,7 +141,7 @@ class LabeledFieldState extends State<LabeledField> {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: label,
         ),
-        const SizedBox(height: 7),
+        const VerticalSpacer(7),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: SizedBox(
@@ -148,12 +152,12 @@ class LabeledFieldState extends State<LabeledField> {
               textDirection: TextDirection.ltr,
               child: Row(
                 children: [
-                  if (iconLeft) ...[icon, const SizedBox(width: 8)],
+                  if (iconLeft) ...[icon, const HorizontalSpacer(8)],
                   Directionality(
                     textDirection: Directionality.of(context),
                     child: input,
                   ),
-                  if (!iconLeft) ...[const SizedBox(width: 8), icon],
+                  if (!iconLeft) ...[const HorizontalSpacer(8), icon],
                 ],
               ),
             ),

@@ -17,14 +17,25 @@ import '../features/booking/book_appointment_screen.dart';
 import '../features/booking/book_with_offer_screen.dart';
 import '../features/booking/session_requested_screen.dart';
 import '../features/bookings/bookings_screen.dart';
+import '../features/content/about_app_screen.dart';
+import '../features/content/about_us_screen.dart';
+import '../features/content/contact_us_screen.dart';
+import '../features/content/content_cubit.dart';
+import '../features/content/html_page_screen.dart';
 import '../features/doctor_details/doctor_details_screen.dart';
 import '../features/favorites/favorites_screen.dart';
 import '../features/filter/filter_screen.dart';
 import '../features/home/home_screen.dart';
+import '../features/my_offers/my_offer_details_screen.dart';
+import '../features/my_offers/my_offers_screen.dart';
 import '../features/notifications/notifications_screen.dart';
 import '../features/offers/offer_details_screen.dart';
 import '../features/offers/offers_screen.dart';
 import '../features/onboarding/onboarding_screen.dart';
+import '../features/profile/change_password/change_password_screen.dart';
+import '../features/profile/edit_profile/edit_profile_screen.dart';
+import '../features/profile/forget_password_for_edit/forget_password_for_edit_screen.dart';
+import '../features/profile/otp_change_phone/otp_change_phone_screen.dart';
 import '../features/profile/profile_screen.dart';
 import '../features/search/search_screen.dart';
 import '../features/search_details/search_details_screen.dart';
@@ -171,8 +182,7 @@ GoRouter createRouter() {
       ),
       GoRoute(
         path: Routes.doctorDetails,
-        builder: (context, state) =>
-            DoctorDetailsScreen(doctorId: _id(state)),
+        builder: (context, state) => DoctorDetailsScreen(doctorId: _id(state)),
       ),
       GoRoute(
         path: Routes.bookAppointment,
@@ -208,42 +218,61 @@ GoRouter createRouter() {
         builder: (context, state) =>
             SessionDetailsScreen(sessionId: _id(state)),
       ),
-      _page(Routes.editProfile, 'EditProfile'),
+      GoRoute(
+        path: Routes.editProfile,
+        pageBuilder: (context, state) =>
+            _slide(state, const EditProfileScreen()),
+      ),
       GoRoute(
         path: Routes.otpChangePhone,
-        builder: (context, state) {
+        pageBuilder: (context, state) {
           final args = state.extra! as OtpArgs;
-          return PlaceholderScreen(
-            name: 'OtpChangePhone (${args.fromDestination.name})',
-          );
+          return _slide(state, OtpChangePhoneScreen(args: args));
         },
       ),
       GoRoute(
         path: Routes.changePassword,
-        builder: (context, state) {
+        pageBuilder: (context, state) {
           final args = state.extra! as ChangePasswordArgs;
-          return PlaceholderScreen(name: 'ChangePassword (${args.phone})');
+          return _slide(state, ChangePasswordScreen(args: args));
         },
       ),
       GoRoute(
         path: Routes.forgetPasswordForEdit,
-        builder: (context, state) {
+        pageBuilder: (context, state) {
           final args = state.extra! as NewPasswordArgs;
-          return PlaceholderScreen(
-            name: 'ForgetPasswordForEdit (${args.phone})',
-          );
+          return _slide(state, ForgetPasswordForEditScreen(args: args));
         },
       ),
-      _page(Routes.contactUs, 'ContactUs'),
-      _page(Routes.aboutApp, 'AboutApp'),
-      _page(Routes.aboutUs, 'AboutUs'),
-      _page(Routes.terms, 'Terms'),
-      _page(Routes.privacy, 'Privacy'),
-      _page(Routes.myOffers, 'MyOffers'),
+      GoRoute(
+        path: Routes.contactUs,
+        builder: (context, state) => const ContactUsScreen(),
+      ),
+      GoRoute(
+        path: Routes.aboutApp,
+        builder: (context, state) => const AboutAppScreen(),
+      ),
+      GoRoute(
+        path: Routes.aboutUs,
+        builder: (context, state) => const AboutUsScreen(),
+      ),
+      GoRoute(
+        path: Routes.terms,
+        builder: (context, state) =>
+            const HtmlPageScreen(kind: ContentKind.terms),
+      ),
+      GoRoute(
+        path: Routes.privacy,
+        builder: (context, state) =>
+            const HtmlPageScreen(kind: ContentKind.privacy),
+      ),
+      GoRoute(
+        path: Routes.myOffers,
+        builder: (context, state) => const MyOffersScreen(),
+      ),
       GoRoute(
         path: Routes.myOfferDetails,
-        builder: (context, state) =>
-            PlaceholderScreen(name: 'MyOfferDetails #${_id(state)}'),
+        builder: (context, state) => MyOfferDetailsScreen(offerId: _id(state)),
       ),
       _page(Routes.myReports, 'MyReports'),
     ],
