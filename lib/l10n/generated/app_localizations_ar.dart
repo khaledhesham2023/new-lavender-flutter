@@ -1325,7 +1325,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get youCanNoLongerReceiveNotifications =>
-      'لن تستطيع استلام اشعرات جديدة , قم بتفعيل الاشعارات';
+      'لن تستطيع استلام اشعارات جديدة , قم بتفعيل الاشعارات';
 
   @override
   String get youDoNotMakeReservationsYetTitle =>
