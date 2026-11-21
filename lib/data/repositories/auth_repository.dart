@@ -1,5 +1,6 @@
 import '../../core/network/api_client.dart';
 import '../../core/network/api_result.dart';
+import '../../core/push/device_info.dart';
 import '../models/requests/auth_requests.dart';
 import '../models/responses/user.dart';
 import 'repository_parsers.dart';
@@ -38,7 +39,9 @@ class AuthRepository {
       _api.call((s) => s.passwordChange(request.toJson()), parse: parseVoid);
 
   Future<ApiResult<void>> logout(String? deviceToken) => _api.call(
-    (s) => s.logout(AuthRequest(deviceToken: deviceToken).toJson()),
+    (s) => s.logout(
+      AuthRequest(deviceToken: deviceToken, deviceType: deviceType).toJson(),
+    ),
     parse: parseVoid,
   );
 
