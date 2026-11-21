@@ -27,8 +27,9 @@ Future<T?> showAppBottomSheet<T>(
         ),
         child: SafeArea(top: false, child: builder(ctx)),
       );
-      if (expanded)
+      if (expanded) {
         content = FractionallySizedBox(heightFactor: 0.9, child: content);
+      }
       return Padding(
         padding: EdgeInsets.only(bottom: MediaQuery.viewInsetsOf(ctx).bottom),
         child: content,

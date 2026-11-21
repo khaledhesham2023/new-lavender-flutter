@@ -6,6 +6,7 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../core/di/injection.dart';
 import '../../core/l10n/l10n_ext.dart';
+import '../../core/deeplink/deep_link_service.dart';
 import '../../core/push/device_token.dart';
 import '../../core/push/push_service.dart';
 import '../../core/session/session_cubit.dart';
@@ -72,8 +73,11 @@ class _SplashScreenState extends State<SplashScreen>
   void _navigate() {
     if (!mounted || _navigated) return;
     _navigated = true;
-    // A notification that started the app (T39); only a logged in user follows it.
-    final pending = sl<PushService>().takePendingTarget();
+    // A notification (T39) or doctor link (T40) that started the app; only a
+    // logged in user follows it. The push target wins if both exist.
+    final pending =
+        sl<PushService>().takePendingTarget() ??
+        sl<DeepLinkService>().takePendingTarget();
     if (sl<AppPrefs>().isFirstTime) {
       context.go(Routes.onboarding);
     } else if (sl<SessionCubit>().state.isLoggedIn) {

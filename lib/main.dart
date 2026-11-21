@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -38,11 +40,23 @@ Future<void> main() async {
   );
 }
 
+/// Crash reporting (T41, decision D7): off in debug builds.
+Future<void> _initCrashlytics() async {
+  final crashlytics = FirebaseCrashlytics.instance;
+  await crashlytics.setCrashlyticsCollectionEnabled(!kDebugMode);
+  FlutterError.onError = crashlytics.recordFlutterFatalError;
+  PlatformDispatcher.instance.onError = (error, stack) {
+    crashlytics.recordError(error, stack, fatal: true);
+    return true;
+  };
+}
+
 /// Firebase + push (T39). A failure (no Play services, bad config) must not stop
 /// the app from starting: push is simply unavailable then.
 Future<void> _initPush() async {
   try {
     await Firebase.initializeApp();
+    await _initCrashlytics();
     FirebaseMessaging.onBackgroundMessage(firebaseBackgroundHandler);
     await sl<PushService>().init();
   } catch (e) {

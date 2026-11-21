@@ -13,6 +13,7 @@ import '../../data/repositories/profile_repository.dart';
 import '../../data/repositories/search_repository.dart';
 import '../../data/repositories/specialities_repository.dart';
 import '../network/api_client.dart';
+import '../deeplink/deep_link_service.dart';
 import '../push/device_token.dart';
 import '../push/push_service.dart';
 import '../session/session_cubit.dart';
@@ -35,6 +36,9 @@ Future<void> configureDependencies() async {
     ..registerLazySingleton(() => DeviceTokenProvider(sl<AppPrefs>()))
     ..registerLazySingleton(
       () => PushService(sl<AppPrefs>(), sl<SessionCubit>()),
+    )
+    ..registerLazySingleton(
+      () => DeepLinkService(sl<PushService>(), sl<SessionCubit>()),
     )
     ..registerLazySingleton<ApiClient>(() => ApiClient(sl<AppPrefs>()))
     ..registerLazySingleton(() => AuthRepository(sl()))

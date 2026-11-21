@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cupertino_ui/cupertino_ui.dart'
     show GlobalCupertinoLocalizations;
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,6 +8,7 @@ import 'package:flutter_localizations/flutter_localizations.dart'
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
+import 'core/deeplink/deep_link_service.dart';
 import 'core/di/injection.dart';
 import 'core/push/push_service.dart';
 import 'core/session/session_cubit.dart';
@@ -29,6 +32,8 @@ class _LavenderAppState extends State<LavenderApp> {
     super.initState();
     // Notification taps navigate through this router (T39).
     sl<PushService>().attachRouter(_router);
+    // App Links for /doctor/<id> (T40).
+    unawaited(sl<DeepLinkService>().init(_router));
   }
 
   @override

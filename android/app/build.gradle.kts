@@ -1,8 +1,19 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
     id("com.google.gms.google-services")
+    id("com.google.firebase.crashlytics")
+}
+
+// Release keystore (T41): android/key.properties, never committed. Missing file =
+// release builds fall back to the debug key so dev/CI builds still work.
+val keyProperties = Properties()
+val keyPropertiesFile = rootProject.file("key.properties")
+if (keyPropertiesFile.exists()) {
+    keyPropertiesFile.inputStream().use { keyProperties.load(it) }
 }
 
 android {
@@ -33,11 +44,28 @@ android {
         versionName = flutter.versionName
     }
 
+    signingConfigs {
+        if (keyPropertiesFile.exists()) {
+            create("release") {
+                storeFile = file(keyProperties.getProperty("storeFile"))
+                storePassword = keyProperties.getProperty("storePassword")
+                keyAlias = keyProperties.getProperty("keyAlias")
+                keyPassword = keyProperties.getProperty("keyPassword")
+            }
+        }
+    }
+
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig =
+                if (keyPropertiesFile.exists()) {
+                    signingConfigs.getByName("release")
+                } else {
+                    signingConfigs.getByName("debug")
+                }
+            // The Android release had minify off; keeps goSell/Firebase safe.
+            isMinifyEnabled = false
+            isShrinkResources = false
         }
     }
 }

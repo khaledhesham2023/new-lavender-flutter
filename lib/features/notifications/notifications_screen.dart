@@ -269,8 +269,6 @@ class _LoggedInViewState extends State<_LoggedInView> {
                 icon: AppAssets.icNoNotifications,
                 title: l10n.noNotificationsTitle,
                 body: l10n.noNotificationsBody,
-                buttonTitle: l10n.retry,
-                onButton: _reload,
               ),
             );
           case PagingStatus.ongoing:

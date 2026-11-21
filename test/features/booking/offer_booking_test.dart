@@ -192,10 +192,14 @@ void main() {
       expect(radios, findsNWidgets(3));
       await t.tap(radios.at(1));
       await t.pump();
+      await t.ensureVisible(radios.at(2)); // the third row starts below the fold
+      await t.pumpAndSettle();
       await t.tap(radios.at(2)); // moves the selection
       await t.pump();
       await t.tap(radios.at(2)); // unchecks
       await t.pump();
+      await t.ensureVisible(find.text('Confirm'));
+      await t.pumpAndSettle();
       await t.tap(find.text('Confirm'));
       await t.pump();
       expect(find.text('Select an appointment'), findsOneWidget);

@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lavender/app.dart';
+import 'package:lavender/core/deeplink/deep_link_service.dart';
 import 'package:lavender/core/di/injection.dart';
 import 'package:lavender/core/push/device_token.dart';
 import 'package:lavender/core/push/push_service.dart';
@@ -23,7 +24,9 @@ Future<void> _boot(WidgetTester tester, Map<String, Object> values) async {
     ..registerSingleton(
       DeviceTokenProvider(prefs, fetchFcmToken: () async => null),
     )
-    ..registerSingleton(PushService(prefs, session));
+    ..registerSingleton(PushService(prefs, session))
+    // App Links (T40): no platform channel in tests; init failures are caught.
+    ..registerSingleton(DeepLinkService(sl<PushService>(), session));
   await tester.pumpWidget(
     BlocProvider.value(value: session, child: const LavenderApp()),
   );
