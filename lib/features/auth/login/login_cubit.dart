@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/network/api_result.dart';
+import '../../../core/push/device_info.dart';
 import '../../../core/push/device_token.dart';
 import '../../../core/session/session_cubit.dart';
 import '../../../data/models/requests/auth_requests.dart';
@@ -38,7 +39,6 @@ class LoginCubit extends Cubit<LoginState> {
 
   /// `Constants.phoneCode` without the `+` (`tvLoginCode.text.substring(1)`).
   static const String phoneCode = '966';
-  static const String deviceType = 'android';
 
   final AuthRepository _auth;
   final SessionCubit _session;

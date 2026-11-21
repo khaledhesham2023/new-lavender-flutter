@@ -92,12 +92,12 @@ void main() {
     expect(r, isA<ApiSuccess<void>>());
   });
 
-  test('logout sends device_token body', () async {
+  test('logout sends device_token and device_type body', () async {
     final (api, a) = await makeApi();
     final r = await AuthRepository(api).logout('dev123');
     expect(a.method, 'POST');
     expect(a.path, 'client/logout');
-    expect(a.data, {'device_token': 'dev123'});
+    expect(a.data, {'device_token': 'dev123', 'device_type': 'android'});
     expect(r, isA<ApiSuccess<void>>());
   });
 

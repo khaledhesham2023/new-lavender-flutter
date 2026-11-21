@@ -51,3 +51,11 @@ sheet, and "Rate the app" → Play Store (decision D9).
 - Logout sends `device_token` in the body.
 - After logout the language is forced to Arabic even if the user chose English (Android behavior).
 - Menu routing in Android compares localized strings; use an enum per item instead.
+
+## Notes
+- Done on branch `T31-T32-notifications-profile` together with T31. `flutter analyze`, `flutter test` (incl. new `test/features/profile`) and the debug APK build pass; not run on a device yet.
+- `ProfileScreen` creates `ProfileCubit` on each show (the tab is rebuilt on every switch) and again after returning from a pushed screen. The header reads the user from `SessionCubit`; guests do not call `getProfile`.
+- Menu rows are the `ProfileMenu` enum (`widgets/profile_menu_item.dart`), no string matching. Password passes `ChangePasswordArgs(phone, code: +phoneCode)` from the session user.
+- `showGeneralSheet(context, GeneralType)` / `showLanguageSheet(context)` keep the `GoRouter` from the caller, pop the sheet, then `go` (Start after logout/delete, Home after a language change). Logout and delete both go through `session.onLoggedOut()`; language is forced to Arabic by `clearForLogout`.
+- `lib/core/utils/launchers.dart` has `openUrl`, `openPlayStore` (market first, https fallback) and `openWhatsApp(phone)` (`api.whatsapp.com/send?phone=`, digits only) for T35. The manifest got `queries` for `https` and `market`.
+- Status bar on the tab is transparent with light icons (as the task asks); check the 150dp header image on a device.
