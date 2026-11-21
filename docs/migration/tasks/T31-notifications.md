@@ -40,3 +40,11 @@ pull to refresh, guest prompt.
 ## Gotchas
 - The Android adapter retries pagination on any scroll (`setOnScrollChangeListener { retry() }`); the package's built-in retry is enough.
 - `NotificationModel.id` is a string UUID.
+
+## Notes
+- Done on branch `T31-T32-notifications-profile` together with T32. `flutter analyze`, `flutter test` (incl. new `test/features/notifications`) and the debug APK build pass; not run on a device yet.
+- `infinite_scroll_pagination` 5.1.1 (new API: `PagingController(getNextPageKey, fetchPage)` + `PagedListView`). The controller lives in the screen State; `NotificationsCubit` only holds the switch and the read/delete requests (they return `ApiResult`, the screen reacts).
+- A page failure is thrown as `_PageFailure`. First-page loading / error / empty are drawn by the screen (LoadingView / `StateView.forFailure` / `StateView.empty` with Retry); the package only draws the list, a footer loader and a footer Retry. The empty state is also pull-to-refresh capable.
+- Swipe to delete: `Dismissible` end-to-start (already flips in RTL), threshold 0.7, red background with `remove` in RTL and the literal `Delete` in LTR (as Android). The row is removed locally at once (Dismissible requires it); success toasts the server message, failure toasts and reloads the list. Emptying the list also reloads it.
+- Tapping calls `markRead` first (also for already-read rows, like Android), then marks the row read locally and opens the screen by `notify_type`. Destinations other than appointment/offer details are still placeholders (T36, T38).
+- The switch is a small custom widget (40x18 pill, 18dp thumb); a failed toggle flips it back and toasts via `showFailureToast`. It is hidden while the first page is in error, as Android does.
