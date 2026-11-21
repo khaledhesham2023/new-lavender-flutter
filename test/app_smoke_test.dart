@@ -2,6 +2,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lavender/app.dart';
 import 'package:lavender/core/di/injection.dart';
+import 'package:lavender/core/push/device_token.dart';
+import 'package:lavender/core/push/push_service.dart';
 import 'package:lavender/core/session/session_cubit.dart';
 import 'package:lavender/core/storage/app_prefs.dart';
 import 'package:lavender/core/storage/user_store.dart';
@@ -16,7 +18,12 @@ Future<void> _boot(WidgetTester tester, Map<String, Object> values) async {
   await sl.reset();
   sl
     ..registerSingleton<AppPrefs>(prefs)
-    ..registerSingleton<SessionCubit>(session);
+    ..registerSingleton<SessionCubit>(session)
+    // Splash fetches the token; push taps need the service (T39). No Firebase here.
+    ..registerSingleton(
+      DeviceTokenProvider(prefs, fetchFcmToken: () async => null),
+    )
+    ..registerSingleton(PushService(prefs, session));
   await tester.pumpWidget(
     BlocProvider.value(value: session, child: const LavenderApp()),
   );

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
@@ -5,6 +7,7 @@ import 'package:material_ui/material_ui.dart';
 import '../../core/di/injection.dart';
 import '../../core/l10n/l10n_ext.dart';
 import '../../core/network/api_result.dart';
+import '../../core/push/push_service.dart';
 import '../../core/session/session_cubit.dart';
 import '../../core/storage/app_prefs.dart';
 import '../../core/theme/app_assets.dart';
@@ -36,11 +39,15 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => HomeCubit(
-        sl<HomeRepository>(),
-        sl<GeneralRepository>(),
-        sl<AppPrefs>(),
-      )..load(),
+      create: (_) {
+        // The Android 13+ notification dialog, once, the first time Home shows (T39).
+        unawaited(sl<PushService>().requestPermissionOnce());
+        return HomeCubit(
+          sl<HomeRepository>(),
+          sl<GeneralRepository>(),
+          sl<AppPrefs>(),
+        )..load();
+      },
       // Guest -> login -> `context.go(Routes.home)` keeps this very page (same
       // page key), so the cubit is not recreated: reload when the session's
       // login state changes (Android reloads in `onResume`).

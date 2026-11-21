@@ -6,6 +6,8 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../core/di/injection.dart';
 import '../../core/l10n/l10n_ext.dart';
+import '../../core/push/device_token.dart';
+import '../../core/push/push_service.dart';
 import '../../core/session/session_cubit.dart';
 import '../../core/storage/app_prefs.dart';
 import '../../core/theme/app_assets.dart';
@@ -38,6 +40,8 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    // Android SplashActivity: fetch the FCM token and store it.
+    unawaited(sl<DeviceTokenProvider>().getToken());
     _controller.addStatusListener((status) {
       if (status == AnimationStatus.completed && !_showLoader) _onLogoDone();
     });
@@ -68,10 +72,17 @@ class _SplashScreenState extends State<SplashScreen>
   void _navigate() {
     if (!mounted || _navigated) return;
     _navigated = true;
+    // A notification that started the app (T39); only a logged in user follows it.
+    final pending = sl<PushService>().takePendingTarget();
     if (sl<AppPrefs>().isFirstTime) {
       context.go(Routes.onboarding);
     } else if (sl<SessionCubit>().state.isLoggedIn) {
-      context.go(Routes.home);
+      final router = GoRouter.of(context);
+      router.go(Routes.home);
+      if (pending != null && pending != Routes.home) {
+        // Home first, so back from the opened screen lands on Home.
+        WidgetsBinding.instance.addPostFrameCallback((_) => router.push(pending));
+      }
     } else {
       context.go(Routes.authStart);
     }

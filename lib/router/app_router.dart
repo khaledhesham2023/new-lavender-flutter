@@ -33,22 +33,23 @@ import '../features/offers/offer_details_screen.dart';
 import '../features/offers/offers_screen.dart';
 import '../features/onboarding/onboarding_screen.dart';
 import '../features/profile/change_password/change_password_screen.dart';
+import '../features/purchase_offer/offer_purchased_screen.dart';
+import '../features/purchase_offer/purchase_offer_screen.dart';
 import '../features/profile/edit_profile/edit_profile_screen.dart';
 import '../features/profile/forget_password_for_edit/forget_password_for_edit_screen.dart';
 import '../features/profile/otp_change_phone/otp_change_phone_screen.dart';
 import '../features/profile/profile_screen.dart';
+import '../features/reports/my_reports_screen.dart';
 import '../features/search/search_screen.dart';
 import '../features/search_details/search_details_screen.dart';
 import '../features/session_details/session_details_screen.dart';
 import '../features/shell/main_shell.dart';
 import '../features/specialities/all_specialities_screen.dart';
 import '../features/splash/splash_screen.dart';
-import '../features/shell/placeholder_screen.dart';
 import 'route_args.dart';
 import 'routes.dart';
 
-/// Registers every route of the app. Screen tasks (T11+) replace the
-/// [PlaceholderScreen] builders; never add a route outside this file.
+/// Registers every route of the app; never add a route outside this file.
 GoRouter createRouter() {
   return GoRouter(
     initialLocation: Routes.splash,
@@ -158,15 +159,13 @@ GoRouter createRouter() {
       ),
       GoRoute(
         path: Routes.purchaseOffer,
-        builder: (context, state) {
-          final offer = state.extra! as OfferModel;
-          return PlaceholderScreen(name: 'PurchaseOffer #${offer.id}');
-        },
+        builder: (context, state) =>
+            PurchaseOfferScreen(offer: state.extra! as OfferModel),
       ),
       GoRoute(
         path: Routes.offerPurchased,
         builder: (context, state) =>
-            PlaceholderScreen(name: 'OfferPurchased #${_id(state)}'),
+            OfferPurchasedScreen(userOfferId: _id(state)),
       ),
       GoRoute(
         path: Routes.searchDetails,
@@ -274,17 +273,15 @@ GoRouter createRouter() {
         path: Routes.myOfferDetails,
         builder: (context, state) => MyOfferDetailsScreen(offerId: _id(state)),
       ),
-      _page(Routes.myReports, 'MyReports'),
+      GoRoute(
+        path: Routes.myReports,
+        builder: (context, state) => const MyReportsScreen(),
+      ),
     ],
   );
 }
 
 int _id(GoRouterState state) => int.parse(state.pathParameters['id']!);
-
-GoRoute _page(String path, String name) => GoRoute(
-  path: path,
-  builder: (context, state) => PlaceholderScreen(name: name),
-);
 
 /// Android `enter_from_right` / `exit_to_left`.
 CustomTransitionPage<void> _slide(GoRouterState state, Widget child) {

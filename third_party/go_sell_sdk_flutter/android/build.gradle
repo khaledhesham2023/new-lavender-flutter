@@ -1,0 +1,32 @@
+group 'tap.company.go_sell_sdk_flutter'
+version '1.0'
+
+rootProject.allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+apply plugin: 'com.android.library'
+
+android {
+    compileSdk 36
+    namespace = "tap.company.go_sell_sdk_flutter"
+
+    defaultConfig {
+        minSdk 21
+        consumerProguardFiles 'proguard-rules.pro'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+}
+
+dependencies {
+    implementation('com.github.Tap-Payments:goSellSDK-AndroidX:3.19.44')
+    implementation 'com.google.android.gms:play-services-wallet:19.4.0'
+}

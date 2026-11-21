@@ -17,6 +17,7 @@ class AppPrefs {
   static const keyDeviceToken = 'device_token';
   static const keyAllowNotifications = 'allow_notifications';
   static const keyWhatsAppNumber = 'whats_app_number';
+  static const keyNotifPermissionAsked = 'notif_permission_asked';
 
   String get languageCode => _prefs.getString(keyLanguage) ?? 'ar';
   Future<void> setLanguageCode(String value) =>
@@ -44,15 +45,25 @@ class AppPrefs {
   Future<void> setAllowNotifications(bool value) =>
       _prefs.setBool(keyAllowNotifications, value);
 
+  /// Whether the Android 13+ notification dialog was already shown (T39): it is
+  /// asked once per install, so logout keeps it.
+  bool get notifPermissionAsked =>
+      _prefs.getBool(keyNotifPermissionAsked) ?? false;
+  Future<void> setNotifPermissionAsked(bool value) =>
+      _prefs.setBool(keyNotifPermissionAsked, value);
+
   String get whatsAppNumber => _prefs.getString(keyWhatsAppNumber) ?? '';
   Future<void> setWhatsAppNumber(String value) =>
       _prefs.setString(keyWhatsAppNumber, value);
 
-  /// Removes everything except the device token, then resets language to "ar".
+  /// Removes everything except the device token and the permission-asked flag,
+  /// then resets language to "ar".
   /// `first_time` is removed too, so onboarding shows again on next cold start.
   Future<void> clearForLogout() async {
     for (final key in _prefs.getKeys().toList()) {
-      if (key != keyDeviceToken) await _prefs.remove(key);
+      if (key != keyDeviceToken && key != keyNotifPermissionAsked) {
+        await _prefs.remove(key);
+      }
     }
     await _prefs.setString(keyLanguage, 'ar');
   }

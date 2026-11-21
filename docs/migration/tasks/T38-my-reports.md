@@ -29,3 +29,11 @@ Port "Radiology and analysis reports": switch between radiology and laboratory, 
 
 ## Gotchas
 - `ReportModel.file` is a full URL.
+
+## Notes
+- Done: `lib/features/reports/` — `my_reports_cubit.dart`, `my_reports_screen.dart`, `widgets/report_day_group.dart`, `widgets/report_item.dart`. Route `myReports` replaced; the unused `_page` placeholder helper and its import were removed from `app_router.dart` (every route now has a real screen).
+- The purple header with the pill toggle is shared with My offers: new `lib/core/widgets/toggle_header.dart`; `my_offers_screen.dart` now uses it (same look, no behaviour change).
+- Cubit: radiology by default; `select(type)` and pull-to-refresh refetch; a late answer for a type that is no longer selected is ignored. Empty list → "no reports" view; server/network failures use `StateView` (unknown failures are only toasted).
+- Download: `downloadFile(url: report.file, title: report.title)` (T28); a report without a file URL does nothing.
+- Tests: `test/features/reports/my_reports_cubit_test.dart`.
+- **Not verified on a device** (same reports as Android for both types, download to Downloads). Box in PLAN §5 left unticked.
