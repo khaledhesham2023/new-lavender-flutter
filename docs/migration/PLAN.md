@@ -241,11 +241,11 @@ lavender-flutter/
 - [x] T34 - Change password flows from profile (depends on: T33)
 - [x] T35 - Contact us, about app, about us, terms, privacy (depends on: T32)
 - [x] T36 - My offers and my offer details (depends on: T29, T32)
-- [ ] T37 - Purchase offer (Tap payment) and successful purchase (depends on: T18, T35)
-- [ ] T38 - My reports (depends on: T28, T32)
+- [x] T37 - Purchase offer (Tap payment) and successful purchase (depends on: T18, T35)
+- [x] T38 - My reports (depends on: T28, T32)
 
 ### Native features and SDKs
-- [ ] T39 - Firebase and push notifications (depends on: T31, T36, T38)
+- [x] T39 - Firebase and push notifications (depends on: T31, T36, T38)
 - [ ] T40 - Deep links for doctor pages (depends on: T22)
 
 ### Release
