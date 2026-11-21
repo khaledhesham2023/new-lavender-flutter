@@ -14,6 +14,7 @@ import '../../data/repositories/search_repository.dart';
 import '../../data/repositories/specialities_repository.dart';
 import '../network/api_client.dart';
 import '../push/device_token.dart';
+import '../push/push_service.dart';
 import '../session/session_cubit.dart';
 import '../storage/app_prefs.dart';
 import '../storage/user_store.dart';
@@ -32,6 +33,9 @@ Future<void> configureDependencies() async {
     ..registerSingleton<AppPrefs>(prefs)
     ..registerSingleton<UserStore>(userStore)
     ..registerLazySingleton(() => DeviceTokenProvider(sl<AppPrefs>()))
+    ..registerLazySingleton(
+      () => PushService(sl<AppPrefs>(), sl<SessionCubit>()),
+    )
     ..registerLazySingleton<ApiClient>(() => ApiClient(sl<AppPrefs>()))
     ..registerLazySingleton(() => AuthRepository(sl()))
     ..registerLazySingleton(() => ProfileRepository(sl()))

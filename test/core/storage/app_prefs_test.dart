@@ -27,12 +27,14 @@ void main() {
     await p.setAllowNotifications(true);
     await p.setWhatsAppNumber('123');
     await p.setDeviceToken('dev');
+    await p.setNotifPermissionAsked(true);
     expect(p.languageCode, 'en');
     expect(p.isFirstTime, false);
     expect(p.isLoggedIn, true);
     expect(p.allowNotifications, true);
     expect(p.whatsAppNumber, '123');
     expect(p.deviceToken, 'dev');
+    expect(p.notifPermissionAsked, true);
   });
 
   test('bearer token prefix', () async {
@@ -43,15 +45,17 @@ void main() {
     expect(p.bearerToken, 'Bearer xyz');
   });
 
-  test('clearForLogout keeps device token and resets language', () async {
+  test('clearForLogout keeps device token and permission flag, resets language', () async {
     final p = await _make();
     await p.setLanguageCode('en');
     await p.setFirstTime(false);
     await p.setLoggedIn(true);
     await p.setBearerToken('abc');
     await p.setDeviceToken('dev');
+    await p.setNotifPermissionAsked(true);
     await p.clearForLogout();
     expect(p.deviceToken, 'dev');
+    expect(p.notifPermissionAsked, true);
     expect(p.languageCode, 'ar');
     expect(p.isFirstTime, true);
     expect(p.isLoggedIn, false);

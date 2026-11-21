@@ -6,6 +6,8 @@ import 'package:flutter_localizations/flutter_localizations.dart'
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
+import 'core/di/injection.dart';
+import 'core/push/push_service.dart';
 import 'core/session/session_cubit.dart';
 import 'core/theme/app_theme.dart';
 import 'core/widgets/system_ui.dart';
@@ -21,6 +23,13 @@ class LavenderApp extends StatefulWidget {
 
 class _LavenderAppState extends State<LavenderApp> {
   late final GoRouter _router = createRouter();
+
+  @override
+  void initState() {
+    super.initState();
+    // Notification taps navigate through this router (T39).
+    sl<PushService>().attachRouter(_router);
+  }
 
   @override
   void dispose() {
