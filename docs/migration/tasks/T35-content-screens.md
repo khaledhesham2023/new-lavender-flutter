@@ -22,7 +22,7 @@ Port the five simple content screens reachable from Profile (and Terms from Regi
 1. `flutter pub add flutter_widget_from_html_core`. HTML text styled like the Android `TextView` (font, size, color from each layout).
 2. Contact us: name (prefilled from `session.user?.name`), title, message — each must be ≥ 2 chars (errors per Kotlin `isValid`). Send → `contactUs(fullName, title, content)` →
    `await showSuccessDialog(context, l10n.yourComplainSentSuccessfully)` → pop (check what Android does after the dialog). WhatsApp icon → `openUrl('https://api.whatsapp.com/send?phone=${prefs.whatsAppNumber}')`.
-3. About app: `aboutApp()` → HTML `name`; social icons row from `links` where key ∈ {facebook, twitter, youtube, instagram, link} with icons `ic_facebook`, `ic_twitter_icon`, `ic_youtube`, `ic_instagram`
+3. About app: `aboutApp()` → HTML `name`; social icons row from `links` where key ∈ {facebook, twitter/x, youtube, instagram, link} with icons `ic_facebook`, `ic_x_icon`, `ic_youtube`, `ic_instagram`
    (check the adapter for `link`); tap → `openUrl(value)` and on failure toast `noSuitableAppFoundToOpenTheLink` (warning). Rows "Terms of use" → `Routes.terms`, "Privacy policy" → `Routes.privacy`.
 4. About us: `aboutUs()` → HTML `name` + up to 3 images in the layout's card slots (hide unused slots).
 5. Terms (`terms()`) / Privacy (`policy()`): header + HTML body.
@@ -37,3 +37,10 @@ Port the five simple content screens reachable from Profile (and Terms from Regi
 
 ## Gotchas
 - These endpoints send Authorization when logged in; guests can open them too (no header — D10).
+
+## Notes
+- Done: `lib/features/content/*` (`ContentCubit` by `ContentKind`, `ContactUsCubit`, 4 screens, shared `ContentTopBar` and `HtmlContent` over `flutter_widget_from_html_core`). Routes contactUs/aboutApp/aboutUs/terms/privacy replaced.
+- Android shows the success dialog after Contact us and stays on the screen (dialog type main only dismisses), so we do the same and do not clear the fields.
+- The Android message box is a single-line EditText inside a 198dp box; here it is multiline (clearly the intent). Validation (trimmed, >= 2) is unchanged.
+- About app hides links whose key is not facebook/twitter/x/youtube/instagram/link; `link` uses `ic_share`. Failures are only toasted (Kotlin).
+- Tests: `test/features/content/content_cubits_test.dart`.

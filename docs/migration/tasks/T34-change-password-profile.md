@@ -39,3 +39,10 @@ OTP → new password → success → logout).
 
 ## Gotchas
 - `ChangePasswordArgs.code` is `"+966"`; strip the `+` before sending.
+
+## Notes
+- Done: `lib/features/profile/change_password/*` and `forget_password_for_edit/*`; routes `changePassword` / `forgetPasswordForEdit` use the slide transition.
+- Change password sends the raw (untrimmed) text like Kotlin; Forget-for-edit sends `password_confirmation` too (Kotlin does). Phone code is sent without the `+`.
+- Forgot link: the spinner replaces the text while the code is sent; on success it pushes `otpChangePhone` (`editProfileAddNewPassword`).
+- After the forget flow: success sheet, then `AuthRepository.logout(deviceToken)` + `session.onLoggedOut()` + `go(authStart)`. If logout fails: toast and `go(profile)`. Back arrow / system back on that screen = `go(profile)`.
+- Tests: `test/features/profile/change_password_cubits_test.dart`.

@@ -13,6 +13,7 @@ import '../../core/utils/number_utils.dart';
 import '../../core/widgets/app_network_image.dart';
 import '../../core/widgets/app_svg.dart';
 import '../../core/widgets/failure_toast.dart';
+import '../../core/widgets/icon_info_box.dart';
 import '../../core/widgets/loading_view.dart';
 import '../../core/widgets/must_login_sheet.dart';
 import '../../core/widgets/progress_button.dart';
@@ -268,7 +269,7 @@ class _SheetBody extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Expanded(
-                  child: _InfoBox(
+                  child: IconInfoBox(
                     icon: AppAssets.icOfferCalender,
                     value: '${offer.startDate}:${offer.endDate}',
                     label: l10n.offerValidityPeriod,
@@ -278,7 +279,7 @@ class _SheetBody extends StatelessWidget {
                 ),
                 const HorizontalSpacer(11),
                 Expanded(
-                  child: _InfoBox(
+                  child: IconInfoBox(
                     icon: AppAssets.icOfferTicket,
                     value: bookings,
                     label: l10n.numberOfOfferBookings,
@@ -316,74 +317,6 @@ class _SheetBody extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-/// Outlined box with an icon, a bold value and a grey caption
-/// (`bg_stroke_grey_rounded_10_white_background`).
-class _InfoBox extends StatelessWidget {
-  final String icon;
-  final String value;
-  final String label;
-  final double labelStart;
-  final double valueTop;
-
-  const _InfoBox({
-    required this.icon,
-    required this.value,
-    required this.label,
-    required this.labelStart,
-    this.valueTop = 12,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: AppColors.cE6E6E6),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: EdgeInsetsDirectional.only(start: 12, top: valueTop - 1),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                AppSvg(icon),
-                const HorizontalSpacer(6),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsetsDirectional.only(end: 10),
-                    child: Text(
-                      value,
-                      style: AppTextStyles.bold(14).copyWith(height: 1.3),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: EdgeInsetsDirectional.only(
-              start: labelStart,
-              top: 8,
-              end: 10,
-              bottom: 12,
-            ),
-            child: Text(
-              label,
-              style: AppTextStyles.medium(
-                12,
-                AppColors.c666666,
-              ).copyWith(height: 1.3),
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

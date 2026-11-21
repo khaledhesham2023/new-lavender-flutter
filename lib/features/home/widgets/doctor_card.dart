@@ -5,11 +5,11 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../core/utils/number_utils.dart';
 import '../../../core/widgets/app_network_image.dart';
+import '../../../core/widgets/info_tile.dart';
 import '../../../core/widgets/spacers.dart';
 import '../../../core/widgets/star_rating.dart';
 import '../../../data/models/responses/doctor.dart';
 import 'favorite_button.dart';
-import 'info_box.dart';
 
 /// Doctor card (`recycler_item_doctor.xml`). The heart shows only when
 /// [onFavorite] is set (logged-in users). Reused by T20 / T30.
@@ -129,14 +129,14 @@ class DoctorCard extends StatelessWidget {
               child: Row(
                 children: [
                   Expanded(
-                    child: InfoBox(
+                    child: InfoTile(
                       label: l10n.examinationDuration,
                       value: l10n.minValues('${doctor.duration}'),
                     ),
                   ),
                   const HorizontalSpacer(11),
                   Expanded(
-                    child: InfoBox(
+                    child: InfoTile(
                       label: l10n.examinationPrice,
                       value: l10n.priceWithValue(formatDecimal(price)),
                     ),

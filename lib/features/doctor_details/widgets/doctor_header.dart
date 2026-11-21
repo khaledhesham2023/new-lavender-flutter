@@ -7,6 +7,7 @@ import '../../../core/theme/app_text_styles.dart';
 import '../../../core/utils/number_utils.dart';
 import '../../../core/widgets/app_network_image.dart';
 import '../../../core/widgets/app_svg.dart';
+import '../../../core/widgets/icon_info_box.dart';
 import '../../../core/widgets/spacers.dart';
 import '../../../core/widgets/star_rating.dart';
 import '../../../data/models/responses/doctor.dart';
@@ -224,7 +225,11 @@ class DoctorHeader extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Expanded(
-                  child: _StatBox(
+                  child: IconInfoBox(
+                    valueTop: 14,
+                    endPadding: 4,
+                    centerValue: true,
+                    valueMaxLines: 1,
                     icon: AppAssets.icTimer,
                     value: l10n.minValues('${doctor.duration}'),
                     label: l10n.examinationDurationNoColon,
@@ -232,7 +237,11 @@ class DoctorHeader extends StatelessWidget {
                 ),
                 const HorizontalSpacer(8),
                 Expanded(
-                  child: _StatBox(
+                  child: IconInfoBox(
+                    valueTop: 14,
+                    endPadding: 4,
+                    centerValue: true,
+                    valueMaxLines: 1,
                     icon: AppAssets.icCard,
                     value: l10n.priceWithValue(formatDecimal(price)),
                     label: l10n.examinationPriceNoColon,
@@ -240,7 +249,11 @@ class DoctorHeader extends StatelessWidget {
                 ),
                 const HorizontalSpacer(8),
                 Expanded(
-                  child: _StatBox(
+                  child: IconInfoBox(
+                    valueTop: 14,
+                    endPadding: 4,
+                    centerValue: true,
+                    valueMaxLines: 1,
                     icon: AppAssets.icMedal,
                     value: '${formatDecimalString(doctor.experience)}+',
                     label: l10n.yearsOfExperience,
@@ -251,51 +264,6 @@ class DoctorHeader extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class _StatBox extends StatelessWidget {
-  final String icon;
-  final String value;
-  final String label;
-
-  const _StatBox({
-    required this.icon,
-    required this.value,
-    required this.label,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsetsDirectional.fromSTEB(12, 13, 4, 12),
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: AppColors.cE6E6E6),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              AppSvg(icon),
-              const HorizontalSpacer(6),
-              Flexible(
-                child: Text(
-                  value,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: AppTextStyles.bold(14, AppColors.c251836),
-                ),
-              ),
-            ],
-          ),
-          const VerticalSpacer(8),
-          Text(label, style: AppTextStyles.medium(12, AppColors.c666666)),
-        ],
-      ),
     );
   }
 }

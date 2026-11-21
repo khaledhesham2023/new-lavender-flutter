@@ -4,6 +4,7 @@ import '../../../core/l10n/l10n_ext.dart';
 import '../../../core/theme/app_assets.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
+import '../../../core/widgets/app_link.dart';
 import '../../../core/widgets/app_toast.dart';
 import '../../../core/widgets/state_view.dart';
 import '../../../data/models/responses/doctor.dart';
@@ -136,12 +137,11 @@ class _DayTimePickerState extends State<DayTimePicker> {
                     style: AppTextStyles.bold(14, AppColors.c3D4C5E),
                   ),
                   if (widget.showCalendarButton)
-                    GestureDetector(
+                    AppLink(
+                      text: l10n.openCalender,
+                      size: 12,
+                      weight: FontWeight.w600,
                       onTap: _openCalendar,
-                      child: Text(
-                        l10n.openCalender,
-                        style: AppTextStyles.semiBold(12, AppColors.primary),
-                      ),
                     ),
                 ],
               ),

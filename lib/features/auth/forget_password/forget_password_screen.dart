@@ -7,6 +7,7 @@ import '../../../core/di/injection.dart';
 import '../../../core/l10n/l10n_ext.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
+import '../../../core/widgets/app_link.dart';
 import '../../../core/widgets/failure_toast.dart';
 import '../../../core/widgets/progress_button.dart';
 import '../../../core/widgets/system_ui.dart';
@@ -127,16 +128,12 @@ class _ForgetPasswordViewState extends State<_ForgetPasswordView> {
                         style: AppTextStyles.regular(14, AppColors.c666666),
                       ),
                       VerticalSpacer(4),
-                      GestureDetector(
-                        behavior: HitTestBehavior.opaque,
-                        onTap: _back,
-                        child: Padding(
-                          padding: const EdgeInsets.only(bottom: 16),
-                          child: Text(
-                            l10n.backToLogin,
-                            textAlign: TextAlign.center,
-                            style: AppTextStyles.medium(14, AppColors.primary),
-                          ),
+                      Padding(
+                        padding: const EdgeInsets.only(bottom: 16),
+                        child: AppLink(
+                          text: l10n.backToLogin,
+                          textAlign: TextAlign.center,
+                          onTap: _back,
                         ),
                       ),
                     ],

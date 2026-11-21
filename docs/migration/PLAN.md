@@ -238,9 +238,9 @@ lavender-flutter/
 - [x] T31 - Notifications screen (depends on: T28, T29)
 - [x] T32 - Profile tab, logout/delete sheet, language sheet (depends on: T10)
 - [ ] T33 - Edit profile and change phone OTP (depends on: T32, T14)
-- [ ] T34 - Change password flows from profile (depends on: T33)
-- [ ] T35 - Contact us, about app, about us, terms, privacy (depends on: T32)
-- [ ] T36 - My offers and my offer details (depends on: T29, T32)
+- [x] T34 - Change password flows from profile (depends on: T33)
+- [x] T35 - Contact us, about app, about us, terms, privacy (depends on: T32)
+- [x] T36 - My offers and my offer details (depends on: T29, T32)
 - [ ] T37 - Purchase offer (Tap payment) and successful purchase (depends on: T18, T35)
 - [ ] T38 - My reports (depends on: T28, T32)
 

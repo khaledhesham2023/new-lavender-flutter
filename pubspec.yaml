@@ -56,6 +56,8 @@ dependencies:
   background_downloader: ^9.6.6
   infinite_scroll_pagination: ^5.1.1
   url_launcher: ^6.3.3
+  image_picker: ^1.2.4
+  flutter_widget_from_html_core: ^0.17.4
 
 dev_dependencies:
   flutter_test:
