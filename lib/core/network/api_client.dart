@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../config/env.dart';
+import '../push/device_info.dart';
 import '../storage/app_prefs.dart';
 import 'api_logger.dart';
 import 'api_result.dart';
@@ -45,8 +46,8 @@ class ApiClient {
     if (o.data is! FormData) o.headers['Content-Type'] = 'application/json';
     o.headers['lang'] = lang;
     o.headers['Accept-Language'] = lang;
-    o.headers['os'] = 'android';
-    o.headers['type'] = 'android';
+    o.headers['os'] = deviceType;
+    o.headers['type'] = deviceType;
     final token = _prefs.bearerToken;
     if (token != null) o.headers['Authorization'] = token;
     handler.next(o);
