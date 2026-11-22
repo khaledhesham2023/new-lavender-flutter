@@ -10,9 +10,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 import 'app.dart';
-import 'core/di/injection.dart';
-import 'core/push/push_service.dart';
-import 'core/session/session_cubit.dart';
+import 'app/di/injection.dart';
+import 'app/push/push_service.dart';
+import 'shared/session/session_cubit.dart';
 import 'core/theme/app_colors.dart';
 
 Future<void> main() async {
