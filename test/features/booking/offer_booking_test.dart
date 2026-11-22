@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:go_router/go_router.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:lavender/core/di/injection.dart';
+import 'package:lavender/app/di/injection.dart';
 import 'package:lavender/core/network/api_result.dart';
 import 'package:lavender/core/widgets/dashed_border_box.dart';
 import 'package:lavender/data/models/requests/appointment_requests.dart';
@@ -17,7 +17,7 @@ import 'package:lavender/features/booking/book_with_offer_screen.dart';
 import 'package:lavender/features/booking/session_requested_cubit.dart';
 import 'package:lavender/features/booking/session_requested_screen.dart';
 import 'package:lavender/l10n/generated/app_localizations.dart';
-import 'package:lavender/router/routes.dart';
+import 'package:lavender/app/router/routes.dart';
 import 'package:material_ui/material_ui.dart';
 
 class _FakeBookingRepository implements BookingRepository {

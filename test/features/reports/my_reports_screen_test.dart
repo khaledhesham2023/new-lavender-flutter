@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lavender/core/di/injection.dart';
+import 'package:lavender/app/di/injection.dart';
 import 'package:lavender/core/network/api_result.dart';
-import 'package:lavender/data/enums/enums.dart';
+import 'package:lavender/core/enums/enums.dart';
 import 'package:lavender/data/models/responses/report.dart';
 import 'package:lavender/data/repositories/profile_repository.dart';
 import 'package:lavender/features/reports/my_reports_screen.dart';

@@ -3,9 +3,9 @@ import 'package:go_router/go_router.dart';
 import 'package:lavender/core/widgets/spacers.dart';
 import 'package:material_ui/material_ui.dart';
 
-import '../../core/di/injection.dart';
+import '../../app/di/injection.dart';
 import '../../core/l10n/l10n_ext.dart';
-import '../../core/session/session_cubit.dart';
+import '../../shared/session/session_cubit.dart';
 import '../../core/theme/app_assets.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_text_styles.dart';
@@ -14,7 +14,7 @@ import '../../core/widgets/bottom_sheet_frame.dart';
 import '../../core/widgets/failure_toast.dart';
 import '../../core/widgets/progress_button.dart';
 import '../../data/repositories/profile_repository.dart';
-import '../../router/routes.dart';
+import '../../app/router/routes.dart';
 import 'language_cubit.dart';
 
 /// Port of `ChangeLanguageSheet`. Confirming switches the whole app (the

@@ -2,11 +2,11 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/network/api_result.dart';
-import '../../../core/session/session_cubit.dart';
+import '../../../shared/session/session_cubit.dart';
 import '../../../core/storage/app_prefs.dart';
 import '../../../data/models/requests/auth_requests.dart';
 import '../../../data/repositories/auth_repository.dart';
-import '../../../router/route_args.dart';
+import '../../../app/router/route_args.dart';
 
 enum ForgetPasswordForEditEvent {
   none,

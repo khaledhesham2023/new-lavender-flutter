@@ -4,10 +4,10 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:lavender/core/widgets/spacers.dart';
 import 'package:material_ui/material_ui.dart';
 
-import '../../core/di/injection.dart';
+import '../../app/di/injection.dart';
 import '../../core/l10n/l10n_ext.dart';
 import '../../core/network/api_result.dart';
-import '../../core/session/session_cubit.dart';
+import '../../shared/session/session_cubit.dart';
 import '../../core/storage/app_prefs.dart';
 import '../../core/theme/app_assets.dart';
 import '../../core/theme/app_colors.dart';
@@ -19,10 +19,10 @@ import '../../core/widgets/failure_toast.dart';
 import '../../core/widgets/loading_view.dart';
 import '../../core/widgets/state_view.dart';
 import '../../core/widgets/system_ui.dart';
-import '../../data/enums/enums.dart';
+import '../../core/enums/enums.dart';
 import '../../data/models/responses/notification.dart';
 import '../../data/repositories/notifications_repository.dart';
-import '../../router/routes.dart';
+import '../../app/router/routes.dart';
 import 'notifications_cubit.dart';
 import 'widgets/notification_item.dart';
 

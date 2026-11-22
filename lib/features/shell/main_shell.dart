@@ -4,13 +4,13 @@ import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../core/l10n/l10n_ext.dart';
-import '../../core/session/session_cubit.dart';
+import '../../shared/session/session_cubit.dart';
 import '../../core/theme/app_assets.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_text_styles.dart';
 import '../../core/widgets/app_svg.dart';
 import '../../core/widgets/spacers.dart';
-import '../../router/routes.dart';
+import '../../app/router/routes.dart';
 
 /// Scaffold around the five tabs (port of `activity_main.xml` + `MainActivity`).
 /// Detail routes are top-level, so they cover this shell and hide the bar.

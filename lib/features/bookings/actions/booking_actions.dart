@@ -3,9 +3,9 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../../core/l10n/l10n_ext.dart';
 import '../../../core/widgets/success_dialog.dart';
-import '../../../data/enums/enums.dart';
+import '../../../core/enums/enums.dart';
 import '../../../data/models/responses/appointment.dart';
-import '../../../router/routes.dart';
+import '../../../app/router/routes.dart';
 import 'add_comment_sheet.dart';
 import 'confirmation_sheet.dart';
 import 'rebook_sheet.dart';

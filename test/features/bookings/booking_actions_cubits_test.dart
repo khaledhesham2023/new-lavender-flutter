@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:lavender/core/network/api_result.dart';
-import 'package:lavender/data/enums/enums.dart';
+import 'package:lavender/core/enums/enums.dart';
 import 'package:lavender/data/models/requests/appointment_requests.dart';
 import 'package:lavender/data/models/responses/appointment.dart';
 import 'package:lavender/data/models/responses/doctor.dart';

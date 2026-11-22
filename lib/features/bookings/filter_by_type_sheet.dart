@@ -1,7 +1,7 @@
 import 'package:material_ui/material_ui.dart';
 
 import '../../core/l10n/l10n_ext.dart';
-import '../../data/enums/enums.dart';
+import '../../core/enums/enums.dart';
 import 'widgets/filter_options_sheet.dart';
 
 export 'widgets/filter_options_sheet.dart' show FilterSheetResult;

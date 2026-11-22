@@ -3,8 +3,8 @@ import 'package:lavender/core/widgets/spacers.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../../core/l10n/l10n_ext.dart';
-import '../../../core/session/session_cubit.dart';
-import '../../../core/storage/user_store.dart';
+import '../../../shared/session/session_cubit.dart';
+import '../../../shared/session/user_store.dart';
 import '../../../core/theme/app_assets.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';

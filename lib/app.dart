@@ -8,14 +8,14 @@ import 'package:flutter_localizations/flutter_localizations.dart'
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
-import 'core/deeplink/deep_link_service.dart';
-import 'core/di/injection.dart';
-import 'core/push/push_service.dart';
-import 'core/session/session_cubit.dart';
+import 'app/deeplink/deep_link_service.dart';
+import 'app/di/injection.dart';
+import 'app/push/push_service.dart';
+import 'shared/session/session_cubit.dart';
 import 'core/theme/app_theme.dart';
 import 'core/widgets/system_ui.dart';
 import 'l10n/generated/app_localizations.dart';
-import 'router/app_router.dart';
+import 'app/router/app_router.dart';
 
 class LavenderApp extends StatefulWidget {
   const LavenderApp({super.key});

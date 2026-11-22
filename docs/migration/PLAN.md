@@ -84,16 +84,23 @@ lavender-flutter/
     main.dart               # bootstrap: prefs, ApiClient, repositories, SessionCubit, runApp
     app.dart                # LavenderApp: MaterialApp.router, theme, locale, l10n delegates
     l10n/                   # app_en.arb, app_ar.arb (+ generated code via flutter gen-l10n, synthetic package off)
-    core/
+    app/                    # wiring of the whole app (may import everything)
+      di/injection.dart     # get_it registrations
+      router/
+        app_router.dart     # all routes (T10), redirect logic
+        routes.dart         # path constants
+        route_args.dart     # extra classes passed between routes
+      push/                 # T39: push_service.dart (token, channel, handlers, tap routing), notification_target.dart
+      deeplink/             # T40: deep_link_service.dart, doctor_link.dart
+    core/                   # app-agnostic plumbing: imports only packages and other core/ files
       config/env.dart       # String.fromEnvironment for BASE_URL, HOST_URL, HOST, PAYMENT_KEY
+      enums/enums.dart      # BookingStatus, AppointmentType, OfferType, ReportType, SortByStatus, GenderType, NotificationType
       network/
         api_client.dart     # Dio setup, headers, call() maps a Retrofit response to ApiResult
         lavender_api.dart   # @RestApi interface with every endpoint (lavender_api.g.dart is generated)
         api_result.dart     # sealed ApiResult / ApiFailure
-      storage/
-        app_prefs.dart      # typed wrapper over SharedPreferences (CONTEXT §6.1)
-        user_store.dart     # UserData (CONTEXT §6.2) as JSON in prefs
-      session/session_cubit.dart   # isLoggedIn, language, user; login/logout/changeLanguage
+      storage/app_prefs.dart  # typed wrapper over SharedPreferences (CONTEXT §6.1)
+      push/                 # device_token.dart, device_info.dart (no routing)
       theme/
         app_colors.dart     # every colors.xml entry used
         app_text_styles.dart
@@ -103,29 +110,30 @@ lavender-flutter/
       utils/
         date_utils.dart     # ports of the date/time helpers
         number_utils.dart   # formatDecimal, formatPercentage, truncate1
-        validators.dart     # phone/password/name/email rules
         launchers.dart      # url_launcher wrappers (T32)
+        file_downloader.dart
       widgets/              # shared widgets (T04): progress_button, app_toast, state_view,
                             # star_rating, app_network_image, app_back_button, bottom_sheet_frame,
-                            # success_dialog, must_login_sheet, loading_view, debounced_search_field
-      push/                 # T11 stub device_token.dart; T39: push_service.dart (token, channel, handlers)
-      deeplink/             # T40: deep_link_service.dart, doctor_link.dart
+                            # success_dialog, loading_view, debounced_search_field
+    shared/                 # used by several features, knows the app (may import core/, data/, app/router)
+      session/
+        session_cubit.dart  # isLoggedIn, language, user; login/logout/changeLanguage
+        user_store.dart     # UserData (CONTEXT §6.2) as JSON in prefs
+      domain/validators.dart  # phone/password/name/email rules
+      widgets/must_login_sheet.dart
     data/
       models/               # one file per CONTEXT §5.4 group (user.dart, doctor.dart, appointment.dart, offer.dart, ...)
       repositories/         # auth_repository.dart, profile_repository.dart, general_repository.dart,
                             # notifications_repository.dart, home_repository.dart, specialities_repository.dart,
                             # search_repository.dart, doctor_repository.dart, booking_repository.dart,
                             # favorites_repository.dart, offers_repository.dart
-    router/
-      app_router.dart       # all routes (T10), redirect logic
-      routes.dart           # path constants + extra classes
     features/
       splash/ onboarding/ auth/ shell/ home/ specialities/ offers/ search/ search_details/ filter/
       doctor_details/ booking/ bookings/ appointment_details/ session_details/ favorites/
       notifications/ profile/ my_offers/ purchase_offer/ reports/ content/
         # each feature: <screen>_screen.dart, <screen>_cubit.dart (Cubit + state in one file), widgets/
   test/
-    ... mirrors lib/ for models, storage, network, repositories, utils, validators
+    ... mirrors lib/ (app/, core/, shared/, data/, features/)
 ```
 
 ---
@@ -167,7 +175,7 @@ lavender-flutter/
 - Each screen task states which one to use where (copy the Android fragment's `observeAllErrors`).
 
 ### 4.5 Navigation
-- `go_router`. All paths are constants in `lib/router/routes.dart`. T10 registers **every** route of the app with a
+- `go_router`. All paths are constants in `lib/app/router/routes.dart`. T10 registers **every** route of the app with a
   `PlaceholderScreen`; each screen task replaces its placeholder builder. Never add a route outside `app_router.dart`.
 - Typed arguments go in `extra` (classes in `routes.dart`); numeric ids go in path params.
 - Bottom sheets and dialogs are **not** routes: each is a function `Future<T?> showXxxSheet(BuildContext, ...)` in its feature folder.

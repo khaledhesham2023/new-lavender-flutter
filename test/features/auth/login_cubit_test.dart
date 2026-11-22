@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lavender/core/network/api_result.dart';
 import 'package:lavender/core/push/device_token.dart';
-import 'package:lavender/core/session/session_cubit.dart';
+import 'package:lavender/shared/session/session_cubit.dart';
 import 'package:lavender/core/storage/app_prefs.dart';
-import 'package:lavender/core/storage/user_store.dart';
+import 'package:lavender/shared/session/user_store.dart';
 import 'package:lavender/data/models/requests/auth_requests.dart';
 import 'package:lavender/data/models/responses/user.dart';
 import 'package:lavender/data/repositories/auth_repository.dart';

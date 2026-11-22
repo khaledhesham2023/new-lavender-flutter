@@ -9,7 +9,7 @@ import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_text_styles.dart';
 import '../../core/widgets/app_button.dart';
 import '../../core/widgets/system_ui.dart';
-import '../../router/routes.dart';
+import '../../app/router/routes.dart';
 import 'widgets/speed_lottie.dart';
 import 'widgets/continue_as_guest.dart';
 import 'widgets/or_divider.dart';

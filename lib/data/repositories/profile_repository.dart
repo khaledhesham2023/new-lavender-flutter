@@ -3,7 +3,7 @@ import 'package:retrofit/retrofit.dart';
 import '../../core/network/api_client.dart';
 import '../../core/network/api_result.dart';
 import '../../core/network/lavender_api.dart';
-import '../enums/enums.dart';
+import '../../core/enums/enums.dart';
 import '../json/json_utils.dart';
 import '../models/requests/auth_requests.dart';
 import '../models/responses/about.dart';

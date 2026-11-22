@@ -7,7 +7,7 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../core/widgets/progress_button.dart';
 import '../../../core/widgets/system_ui.dart';
-import '../../../router/routes.dart';
+import '../../../app/router/routes.dart';
 
 /// Port of `SuccessFragment`: password changed; the button and system back go to Login.
 class AuthSuccessScreen extends StatelessWidget {

@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart' show ValueGetter;
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/network/api_result.dart';
-import '../../data/enums/enums.dart';
+import '../../core/enums/enums.dart';
 import '../../data/models/responses/appointment.dart';
 import '../../data/repositories/booking_repository.dart';
 

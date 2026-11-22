@@ -8,7 +8,7 @@ import '../../../core/theme/app_text_styles.dart';
 import '../../../core/utils/number_utils.dart';
 import '../../../core/widgets/app_network_image.dart';
 import '../../../core/widgets/star_rating.dart';
-import '../../../data/enums/enums.dart';
+import '../../../core/enums/enums.dart';
 import '../../../data/models/responses/appointment.dart';
 import '../../appointment_details/widgets/status_pill.dart';
 import '../ordinal.dart';

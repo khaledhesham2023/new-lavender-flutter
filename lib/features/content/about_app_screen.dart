@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
-import '../../core/di/injection.dart';
+import '../../app/di/injection.dart';
 import '../../core/l10n/l10n_ext.dart';
 import '../../core/network/api_result.dart';
 import '../../core/theme/app_assets.dart';
@@ -19,7 +19,7 @@ import '../../core/widgets/spacers.dart';
 import '../../core/widgets/system_ui.dart';
 import '../../data/models/responses/about.dart';
 import '../../data/repositories/profile_repository.dart';
-import '../../router/routes.dart';
+import '../../app/router/routes.dart';
 import 'content_cubit.dart';
 import '../../core/widgets/app_top_bar.dart';
 import 'widgets/html_content.dart';

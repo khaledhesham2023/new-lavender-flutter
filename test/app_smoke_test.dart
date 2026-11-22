@@ -1,13 +1,13 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lavender/app.dart';
-import 'package:lavender/core/deeplink/deep_link_service.dart';
-import 'package:lavender/core/di/injection.dart';
+import 'package:lavender/app/deeplink/deep_link_service.dart';
+import 'package:lavender/app/di/injection.dart';
 import 'package:lavender/core/push/device_token.dart';
-import 'package:lavender/core/push/push_service.dart';
-import 'package:lavender/core/session/session_cubit.dart';
+import 'package:lavender/app/push/push_service.dart';
+import 'package:lavender/shared/session/session_cubit.dart';
 import 'package:lavender/core/storage/app_prefs.dart';
-import 'package:lavender/core/storage/user_store.dart';
+import 'package:lavender/shared/session/user_store.dart';
 import 'package:lavender/features/auth/start_now_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

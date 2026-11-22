@@ -5,7 +5,7 @@ import '../../../core/network/api_result.dart';
 import '../../../data/models/requests/auth_requests.dart';
 import '../../../data/repositories/auth_repository.dart';
 import '../../../data/repositories/profile_repository.dart';
-import '../../../router/route_args.dart';
+import '../../../app/router/route_args.dart';
 
 enum ChangePasswordEvent {
   none,

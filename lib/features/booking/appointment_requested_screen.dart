@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:lavender/core/widgets/spacers.dart';
 import 'package:material_ui/material_ui.dart';
 
-import '../../core/di/injection.dart';
+import '../../app/di/injection.dart';
 import '../../core/l10n/l10n_ext.dart';
 import '../../core/network/api_result.dart';
 import '../../core/theme/app_assets.dart';
@@ -20,7 +20,7 @@ import '../../core/widgets/state_view.dart';
 import '../../core/widgets/system_ui.dart';
 import '../../data/models/responses/appointment.dart';
 import '../../data/repositories/booking_repository.dart';
-import '../../router/routes.dart';
+import '../../app/router/routes.dart';
 import '../auth/widgets/speed_lottie.dart';
 import 'appointment_requested_cubit.dart';
 import 'widgets/booking_info_card.dart';

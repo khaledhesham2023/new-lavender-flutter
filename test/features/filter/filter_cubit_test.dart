@@ -4,7 +4,7 @@ import 'package:lavender/data/models/responses/speciality.dart';
 import 'package:lavender/data/repositories/search_repository.dart';
 import 'package:lavender/features/filter/filter_cubit.dart';
 import 'package:lavender/features/search_details/search_filter.dart';
-import 'package:lavender/router/route_args.dart';
+import 'package:lavender/app/router/route_args.dart';
 
 class _FakeSearchRepository implements SearchRepository {
   ApiResult<FilterData> result = const ApiSuccess(FilterData());

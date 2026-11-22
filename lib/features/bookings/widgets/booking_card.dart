@@ -9,7 +9,7 @@ import '../../../core/utils/number_utils.dart';
 import '../../../core/widgets/app_network_image.dart';
 import '../../../core/widgets/app_svg.dart';
 import '../../../core/widgets/star_rating.dart';
-import '../../../data/enums/enums.dart';
+import '../../../core/enums/enums.dart';
 import '../../../data/models/responses/appointment.dart';
 
 /// Booking card (`recycler_item_booking.xml` + `BookingsAdapter`). The buttons

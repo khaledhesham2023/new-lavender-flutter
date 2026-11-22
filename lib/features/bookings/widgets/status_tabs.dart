@@ -3,7 +3,7 @@ import 'package:material_ui/material_ui.dart';
 import '../../../core/l10n/l10n_ext.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
-import '../../../data/enums/enums.dart';
+import '../../../core/enums/enums.dart';
 
 /// Scrollable status tabs (`tabLayoutBookingStatus`): Pending, Confirmed,
 /// Processing, Completed, Canceled, Rejected. Tapping the selected tab does

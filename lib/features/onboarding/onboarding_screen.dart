@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
-import '../../core/di/injection.dart';
+import '../../app/di/injection.dart';
 import '../../core/l10n/l10n_ext.dart';
 import '../../core/storage/app_prefs.dart';
 import '../../core/theme/app_assets.dart';
@@ -10,7 +10,7 @@ import '../../core/theme/app_text_styles.dart';
 import '../../core/widgets/app_button.dart';
 import '../../core/widgets/system_ui.dart';
 import '../../core/widgets/spacers.dart';
-import '../../router/routes.dart';
+import '../../app/router/routes.dart';
 import 'widgets/onboarding_art.dart';
 import 'widgets/page_dots.dart';
 

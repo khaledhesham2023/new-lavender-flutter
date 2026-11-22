@@ -8,7 +8,7 @@ import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../core/widgets/app_svg.dart';
 import '../../../data/models/responses/offer.dart';
-import '../../../router/routes.dart';
+import '../../../app/router/routes.dart';
 import 'offer_session_card.dart';
 
 /// "Bookings" tab of My offer details (`MyOfferBookingsFragment`): the offer's

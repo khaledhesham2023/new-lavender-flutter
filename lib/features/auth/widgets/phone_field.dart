@@ -7,7 +7,7 @@ import '../../../core/l10n/l10n_ext.dart';
 import '../../../core/theme/app_assets.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
-import '../../../core/utils/validators.dart';
+import '../../../shared/domain/validators.dart';
 import 'field_error.dart';
 
 /// Phone input with the fixed `+966` prefix (port of the login phone block).

@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/network/api_result.dart';
-import '../../core/session/session_cubit.dart';
+import '../../shared/session/session_cubit.dart';
 import '../../data/repositories/profile_repository.dart';
 
 class ProfileState extends Equatable {

@@ -9,7 +9,6 @@ import 'package:lavender/data/models/responses/search.dart';
 import 'package:lavender/data/models/responses/speciality.dart';
 import 'package:lavender/data/repositories/booking_repository.dart';
 import 'package:lavender/data/repositories/doctor_repository.dart';
-import 'package:lavender/data/repositories/favorites_repository.dart';
 import 'package:lavender/data/repositories/home_repository.dart';
 import 'package:lavender/data/repositories/offers_repository.dart';
 import 'package:lavender/data/repositories/search_repository.dart';
@@ -219,32 +218,6 @@ void main() {
       expect(a.method, 'POST');
       expect(a.path, 'client/fav');
       expect(a.data, {'doctor_id': '3'});
-    });
-  });
-
-  group('FavoritesRepository', () {
-    test('getFavorites sends doctor_name only when given', () async {
-      var (api, a) = await makeApi(
-        body: {
-          'data': [
-            {'id': 1},
-          ],
-        },
-      );
-      final r = await FavoritesRepository(api).getFavorites();
-      expect(a.path, 'client/fav');
-      expect(a.query, isEmpty);
-      expect((r as ApiSuccess<List<DoctorModel>>).data.length, 1);
-
-      (api, a) = await makeApi(body: {'data': []});
-      await FavoritesRepository(api).getFavorites(name: 'Sam');
-      expect(a.query, {'doctor_name': 'Sam'});
-    });
-
-    test('toggleFavorite doctor_id is a string', () async {
-      final (api, a) = await makeApi();
-      await FavoritesRepository(api).toggleFavorite(11);
-      expect(a.data, {'doctor_id': '11'});
     });
   });
 

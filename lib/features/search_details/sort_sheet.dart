@@ -7,7 +7,7 @@ import '../../core/theme/app_text_styles.dart';
 import '../../core/widgets/app_button.dart';
 import '../../core/widgets/app_svg.dart';
 import '../../core/widgets/bottom_sheet_frame.dart';
-import '../../data/enums/enums.dart';
+import '../../core/enums/enums.dart';
 
 String sortLabel(BuildContext context, SortByStatus status) {
   final l10n = context.l10n;

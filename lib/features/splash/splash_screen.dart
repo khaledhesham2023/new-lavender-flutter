@@ -4,19 +4,19 @@ import 'package:go_router/go_router.dart';
 import 'package:lottie/lottie.dart';
 import 'package:material_ui/material_ui.dart';
 
-import '../../core/di/injection.dart';
+import '../../app/di/injection.dart';
 import '../../core/l10n/l10n_ext.dart';
-import '../../core/deeplink/deep_link_service.dart';
+import '../../app/deeplink/deep_link_service.dart';
 import '../../core/push/device_token.dart';
-import '../../core/push/push_service.dart';
-import '../../core/session/session_cubit.dart';
+import '../../app/push/push_service.dart';
+import '../../shared/session/session_cubit.dart';
 import '../../core/storage/app_prefs.dart';
 import '../../core/theme/app_assets.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/theme/app_text_styles.dart';
 import '../../core/widgets/system_ui.dart';
 import '../../core/widgets/spacers.dart';
-import '../../router/routes.dart';
+import '../../app/router/routes.dart';
 
 /// Measured real duration of `loader.gif` (75 frames). Android plays it once.
 const Duration _loaderGifDuration = Duration(milliseconds: 2510);

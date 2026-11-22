@@ -3,7 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:lavender/core/widgets/spacers.dart';
 import 'package:material_ui/material_ui.dart';
 
-import '../../core/di/injection.dart';
+import '../../app/di/injection.dart';
 import '../../core/l10n/l10n_ext.dart';
 import '../../core/network/api_result.dart';
 import '../../core/theme/app_assets.dart';
@@ -16,9 +16,9 @@ import '../../core/widgets/failure_toast.dart';
 import '../../core/widgets/loading_view.dart';
 import '../../core/widgets/state_view.dart';
 import '../../core/widgets/system_ui.dart';
-import '../../data/enums/enums.dart';
+import '../../core/enums/enums.dart';
 import '../../data/repositories/search_repository.dart';
-import '../../router/route_args.dart';
+import '../../app/router/route_args.dart';
 import 'filter_cubit.dart';
 import 'subspecialties_sheet.dart';
 

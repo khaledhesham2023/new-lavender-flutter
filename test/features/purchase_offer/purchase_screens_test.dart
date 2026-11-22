@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:lavender/core/di/injection.dart';
+import 'package:lavender/app/di/injection.dart';
 import 'package:lavender/core/network/api_result.dart';
-import 'package:lavender/core/session/session_cubit.dart';
+import 'package:lavender/shared/session/session_cubit.dart';
 import 'package:lavender/core/storage/app_prefs.dart';
-import 'package:lavender/core/storage/user_store.dart';
+import 'package:lavender/shared/session/user_store.dart';
 import 'package:lavender/core/widgets/progress_button.dart';
 import 'package:lavender/data/models/responses/offer.dart';
 import 'package:lavender/data/models/responses/speciality.dart';

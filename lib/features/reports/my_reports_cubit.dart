@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/network/api_result.dart';
-import '../../data/enums/enums.dart';
+import '../../core/enums/enums.dart';
 import '../../data/models/responses/report.dart';
 import '../../data/repositories/profile_repository.dart';
 

@@ -4,9 +4,9 @@ import 'package:material_ui/material_ui.dart';
 
 import '../../../core/widgets/spacers.dart';
 
-import '../../../core/di/injection.dart';
+import '../../../app/di/injection.dart';
 import '../../../core/l10n/l10n_ext.dart';
-import '../../../core/session/session_cubit.dart';
+import '../../../shared/session/session_cubit.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/widgets/app_link.dart';
 import '../../../core/widgets/failure_toast.dart';
@@ -14,8 +14,8 @@ import '../../../core/widgets/progress_button.dart';
 import '../../../core/widgets/system_ui.dart';
 import '../../../data/repositories/auth_repository.dart';
 import '../../../core/push/device_token.dart';
-import '../../../router/route_args.dart';
-import '../../../router/routes.dart';
+import '../../../app/router/route_args.dart';
+import '../../../app/router/routes.dart';
 import '../widgets/auth_header.dart';
 import '../widgets/password_field.dart';
 import '../widgets/phone_field.dart';

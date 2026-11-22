@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_ui/material_ui.dart';
 
-import '../../core/di/injection.dart';
+import '../../app/di/injection.dart';
 import '../../core/l10n/l10n_ext.dart';
 import '../../core/network/api_result.dart';
 import '../../core/theme/app_assets.dart';
@@ -12,7 +12,7 @@ import '../../core/widgets/loading_view.dart';
 import '../../core/widgets/state_view.dart';
 import '../../core/widgets/system_ui.dart';
 import '../../core/widgets/toggle_header.dart';
-import '../../data/enums/enums.dart';
+import '../../core/enums/enums.dart';
 import '../../data/models/responses/report.dart';
 import '../../data/repositories/profile_repository.dart';
 import 'my_reports_cubit.dart';
