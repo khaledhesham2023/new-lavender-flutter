@@ -30,15 +30,18 @@ class SpecialitiesRepositoryImpl implements SpecialitiesRepository {
     double? minPrice,
     String? name,
   }) => _api.call(
-    (s) => s.specialtyDoctors(specialtyId, {
-      'sort_by': sortBy,
-      'gender': gender,
-      'max_price': maxPrice,
-      'min_price': minPrice,
-      'doctor_name': name,
-      for (var i = 0; i < subSpecialtyIds.length; i++)
-        'sub_specialty[$i]': subSpecialtyIds[i],
-    }..removeWhere((_, v) => v == null)),
+    (s) => s.specialtyDoctors(
+      specialtyId,
+      {
+        'sort_by': sortBy,
+        'gender': gender,
+        'max_price': maxPrice,
+        'min_price': minPrice,
+        'doctor_name': name,
+        for (var i = 0; i < subSpecialtyIds.length; i++)
+          'sub_specialty[$i]': subSpecialtyIds[i],
+      }..removeWhere((_, v) => v == null),
+    ),
     parse: parseObject(DoctorsBySpecialityData.fromJson),
   );
 }

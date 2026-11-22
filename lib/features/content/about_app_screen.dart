@@ -18,7 +18,7 @@ import '../../core/widgets/loading_view.dart';
 import '../../core/widgets/spacers.dart';
 import '../../core/widgets/system_ui.dart';
 import '../../data/models/responses/about.dart';
-import '../../data/repositories/profile_repository.dart';
+import 'domain/repositories/content_repository.dart';
 import '../../app/router/routes.dart';
 import 'content_cubit.dart';
 import '../../core/widgets/app_top_bar.dart';
@@ -32,7 +32,7 @@ class AboutAppScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_) =>
-          ContentCubit(sl<ProfileRepository>(), ContentKind.aboutApp)..load(),
+          ContentCubit(sl<ContentRepository>(), ContentKind.aboutApp)..load(),
       child: const _AboutAppView(),
     );
   }

@@ -4,10 +4,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:lavender/core/network/api_result.dart';
 import 'package:lavender/core/enums/enums.dart';
 import 'package:lavender/data/models/responses/report.dart';
-import 'package:lavender/data/repositories/profile_repository.dart';
+import 'package:lavender/features/reports/domain/repositories/reports_repository.dart';
 import 'package:lavender/features/reports/my_reports_cubit.dart';
 
-class _FakeProfile implements ProfileRepository {
+class _FakeProfile implements ReportsRepository {
   final Map<ReportType, Completer<ApiResult<List<DayReportsModel>>>> pending =
       {};
   final List<ReportType> asked = [];

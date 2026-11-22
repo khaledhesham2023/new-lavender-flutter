@@ -1,8 +1,10 @@
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../data/repositories/auth_repository.dart';
-import '../../data/repositories/booking_repository.dart';
+import '../../shared/data/repositories/auth_repository_impl.dart';
+import '../../shared/domain/repositories/auth_repository.dart';
+import '../../shared/data/repositories/booking_repository_impl.dart';
+import '../../shared/domain/repositories/booking_repository.dart';
 import '../../features/doctor_details/data/repositories/doctor_repository_impl.dart';
 import '../../features/doctor_details/domain/repositories/doctor_repository.dart';
 import '../../features/favorites/data/repositories/favorites_repository_impl.dart';
@@ -13,8 +15,14 @@ import '../../shared/data/repositories/home_repository_impl.dart';
 import '../../shared/domain/repositories/home_repository.dart';
 import '../../features/notifications/data/repositories/notifications_repository_impl.dart';
 import '../../features/notifications/domain/repositories/notifications_repository.dart';
-import '../../data/repositories/offers_repository.dart';
-import '../../data/repositories/profile_repository.dart';
+import '../../shared/data/repositories/offers_repository_impl.dart';
+import '../../shared/domain/repositories/offers_repository.dart';
+import '../../features/content/data/repositories/content_repository_impl.dart';
+import '../../features/content/domain/repositories/content_repository.dart';
+import '../../features/profile/data/repositories/profile_repository_impl.dart';
+import '../../features/profile/domain/repositories/profile_repository.dart';
+import '../../features/reports/data/repositories/reports_repository_impl.dart';
+import '../../features/reports/domain/repositories/reports_repository.dart';
 import '../../shared/data/repositories/search_repository_impl.dart';
 import '../../shared/domain/repositories/search_repository.dart';
 import '../../shared/data/repositories/specialities_repository_impl.dart';
@@ -48,8 +56,16 @@ Future<void> configureDependencies() async {
       () => DeepLinkService(sl<PushService>(), sl<SessionCubit>()),
     )
     ..registerLazySingleton<ApiClient>(() => ApiClient(sl<AppPrefs>()))
-    ..registerLazySingleton(() => AuthRepository(sl()))
-    ..registerLazySingleton(() => ProfileRepository(sl()))
+    ..registerLazySingleton<AuthRepository>(() => AuthRepositoryImpl(sl()))
+    ..registerLazySingleton<ProfileRepository>(
+      () => ProfileRepositoryImpl(sl()),
+    )
+    ..registerLazySingleton<ContentRepository>(
+      () => ContentRepositoryImpl(sl()),
+    )
+    ..registerLazySingleton<ReportsRepository>(
+      () => ReportsRepositoryImpl(sl()),
+    )
     ..registerLazySingleton<GeneralRepository>(
       () => GeneralRepositoryImpl(sl()),
     )
@@ -62,10 +78,12 @@ Future<void> configureDependencies() async {
     )
     ..registerLazySingleton<SearchRepository>(() => SearchRepositoryImpl(sl()))
     ..registerLazySingleton<DoctorRepository>(() => DoctorRepositoryImpl(sl()))
-    ..registerLazySingleton(() => BookingRepository(sl()))
+    ..registerLazySingleton<BookingRepository>(
+      () => BookingRepositoryImpl(sl()),
+    )
     ..registerLazySingleton<FavoritesRepository>(
       () => FavoritesRepositoryImpl(sl()),
     )
-    ..registerLazySingleton(() => OffersRepository(sl()))
+    ..registerLazySingleton<OffersRepository>(() => OffersRepositoryImpl(sl()))
     ..registerSingleton<SessionCubit>(SessionCubit(prefs, userStore));
 }

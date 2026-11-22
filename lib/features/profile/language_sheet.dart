@@ -13,7 +13,7 @@ import '../../core/widgets/app_svg.dart';
 import '../../core/widgets/bottom_sheet_frame.dart';
 import '../../core/widgets/failure_toast.dart';
 import '../../core/widgets/progress_button.dart';
-import '../../data/repositories/profile_repository.dart';
+import 'domain/repositories/profile_repository.dart';
 import '../../app/router/routes.dart';
 import 'language_cubit.dart';
 

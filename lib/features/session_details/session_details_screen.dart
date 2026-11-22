@@ -18,7 +18,7 @@ import '../../core/widgets/state_view.dart';
 import '../../core/widgets/system_ui.dart';
 import '../../core/enums/enums.dart';
 import '../../data/models/responses/offer.dart';
-import '../../data/repositories/offers_repository.dart';
+import '../../shared/domain/repositories/offers_repository.dart';
 import '../appointment_details/widgets/details_widgets.dart';
 import '../appointment_details/widgets/status_pill.dart';
 import '../booking/widgets/booking_info_card.dart';

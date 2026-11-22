@@ -5,7 +5,7 @@ import '../../../core/network/api_result.dart';
 import '../../../shared/session/session_cubit.dart';
 import '../../../data/models/requests/auth_requests.dart';
 import '../../../shared/domain/repositories/general_repository.dart';
-import '../../../data/repositories/profile_repository.dart';
+import '../domain/repositories/profile_repository.dart';
 
 /// One-shot effect the screen reacts to (then calls [EditProfileCubit.consumeEvent]).
 enum EditProfileEvent {

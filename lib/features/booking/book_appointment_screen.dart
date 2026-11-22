@@ -16,7 +16,7 @@ import '../../core/widgets/failure_toast.dart';
 import '../../core/widgets/progress_button.dart';
 import '../../core/widgets/system_ui.dart';
 import '../../data/models/requests/booking_draft.dart';
-import '../../data/repositories/booking_repository.dart';
+import '../../shared/domain/repositories/booking_repository.dart';
 import '../../app/router/routes.dart';
 import 'book_appointment_cubit.dart';
 import 'change_appointment_sheet.dart';

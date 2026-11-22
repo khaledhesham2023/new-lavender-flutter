@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/network/api_result.dart';
 import '../../../data/models/requests/auth_requests.dart';
-import '../../../data/repositories/auth_repository.dart';
+import '../../../shared/domain/repositories/auth_repository.dart';
 
 /// One-shot effect the screen reacts to (then calls [RegisterCubit.consumeEvent]).
 enum RegisterEvent { none, navigateOtp }

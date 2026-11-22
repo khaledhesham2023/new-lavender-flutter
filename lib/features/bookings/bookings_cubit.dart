@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../core/network/api_result.dart';
 import '../../core/enums/enums.dart';
 import '../../data/models/responses/appointment.dart';
-import '../../data/repositories/booking_repository.dart';
+import '../../shared/domain/repositories/booking_repository.dart';
 
 class BookingsState extends Equatable {
   final BookingStatus status;

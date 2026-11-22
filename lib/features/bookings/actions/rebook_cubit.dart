@@ -6,7 +6,7 @@ import '../../../core/utils/date_utils.dart';
 import '../../../core/enums/enums.dart';
 import '../../../data/models/requests/appointment_requests.dart';
 import '../../../data/models/responses/doctor.dart';
-import '../../../data/repositories/booking_repository.dart';
+import '../../../shared/domain/repositories/booking_repository.dart';
 
 /// Arguments of `ChooseRebookAppointmentSheetFragment`.
 class RebookArgs extends Equatable {

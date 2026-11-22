@@ -14,7 +14,7 @@ import '../../../core/widgets/app_toast.dart';
 import '../../../core/widgets/bottom_sheet_frame.dart';
 import '../../../core/widgets/failure_toast.dart';
 import '../../../core/widgets/star_rating.dart';
-import '../../../data/repositories/booking_repository.dart';
+import '../../../shared/domain/repositories/booking_repository.dart';
 import 'add_comment_cubit.dart';
 
 /// Port of `AddCommentSheetFragment`. Resolves to true after the review was sent.

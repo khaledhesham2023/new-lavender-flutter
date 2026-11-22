@@ -10,7 +10,11 @@ class ReportDayGroup extends StatelessWidget {
   final DayReportsModel day;
   final ValueChanged<ReportModel> onDownload;
 
-  const ReportDayGroup({super.key, required this.day, required this.onDownload});
+  const ReportDayGroup({
+    super.key,
+    required this.day,
+    required this.onDownload,
+  });
 
   @override
   Widget build(BuildContext context) {

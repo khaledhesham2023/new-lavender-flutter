@@ -4,7 +4,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:lavender/core/network/api_result.dart';
 import 'package:lavender/core/enums/enums.dart';
 import 'package:lavender/data/models/responses/appointment.dart';
-import 'package:lavender/data/repositories/booking_repository.dart';
+import 'package:lavender/shared/domain/repositories/booking_repository.dart';
 import 'package:lavender/features/bookings/bookings_cubit.dart';
 
 class _Call {

@@ -51,7 +51,8 @@ String stripLeadingNonAlnum(String s) {
 
 /// Android `Patterns.EMAIL_ADDRESS`.
 final RegExp _email = RegExp(
-    r'^[a-zA-Z0-9\+\.\_\%\-\+]{1,256}\@[a-zA-Z0-9][a-zA-Z0-9\-]{0,64}(\.[a-zA-Z0-9][a-zA-Z0-9\-]{0,25})+$');
+  r'^[a-zA-Z0-9\+\.\_\%\-\+]{1,256}\@[a-zA-Z0-9][a-zA-Z0-9\-]{0,64}(\.[a-zA-Z0-9][a-zA-Z0-9\-]{0,25})+$',
+);
 
 bool isValidEmail(String email) => _email.hasMatch(email);
 

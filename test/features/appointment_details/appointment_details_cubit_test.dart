@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:lavender/core/network/api_result.dart';
 import 'package:lavender/core/utils/file_downloader.dart';
 import 'package:lavender/data/models/responses/appointment.dart';
-import 'package:lavender/data/repositories/booking_repository.dart';
+import 'package:lavender/shared/domain/repositories/booking_repository.dart';
 import 'package:lavender/features/appointment_details/appointment_details_cubit.dart';
 
 class _FakeRepo implements BookingRepository {

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/network/api_result.dart';
 import '../../shared/session/session_cubit.dart';
-import '../../data/repositories/profile_repository.dart';
+import 'domain/repositories/profile_repository.dart';
 
 class LanguageState extends Equatable {
   /// `ar` or `en`.

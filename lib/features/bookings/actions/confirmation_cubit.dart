@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/network/api_result.dart';
 import '../../../data/models/requests/appointment_requests.dart';
-import '../../../data/repositories/booking_repository.dart';
+import '../../../shared/domain/repositories/booking_repository.dart';
 
 /// What the confirmation sheet does when Confirm is tapped.
 sealed class ConfirmAction {

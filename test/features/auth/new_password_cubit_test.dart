@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:lavender/core/network/api_result.dart';
 import 'package:lavender/data/models/requests/auth_requests.dart';
 import 'package:lavender/data/models/responses/user.dart';
-import 'package:lavender/data/repositories/auth_repository.dart';
+import 'package:lavender/shared/domain/repositories/auth_repository.dart';
 import 'package:lavender/features/auth/forget_password/forget_password_cubit.dart';
 import 'package:lavender/features/auth/new_password/new_password_cubit.dart';
 import 'package:lavender/app/router/route_args.dart';

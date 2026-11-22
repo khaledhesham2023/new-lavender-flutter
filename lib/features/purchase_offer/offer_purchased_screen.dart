@@ -18,7 +18,7 @@ import '../../core/widgets/progress_button.dart';
 import '../../core/widgets/state_view.dart';
 import '../../core/widgets/system_ui.dart';
 import '../../data/models/responses/offer.dart';
-import '../../data/repositories/offers_repository.dart';
+import '../../shared/domain/repositories/offers_repository.dart';
 import '../../app/router/routes.dart';
 import '../auth/widgets/speed_lottie.dart';
 import '../my_offers/my_offer_details_cubit.dart';

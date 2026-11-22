@@ -15,7 +15,7 @@ import '../../core/widgets/progress_button.dart';
 import '../../core/widgets/spacers.dart';
 import '../../core/widgets/success_dialog.dart';
 import '../../core/widgets/system_ui.dart';
-import '../../data/repositories/profile_repository.dart';
+import 'domain/repositories/content_repository.dart';
 import '../auth/widgets/field_error.dart';
 import 'contact_us_cubit.dart';
 import '../../core/widgets/app_top_bar.dart';
@@ -27,7 +27,7 @@ class ContactUsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => ContactUsCubit(sl<ProfileRepository>()),
+      create: (_) => ContactUsCubit(sl<ContentRepository>()),
       child: const _ContactUsView(),
     );
   }

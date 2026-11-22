@@ -2,9 +2,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:lavender/core/network/api_result.dart';
 import 'package:lavender/data/models/requests/auth_requests.dart';
 import 'package:lavender/data/models/responses/user.dart';
-import 'package:lavender/data/repositories/auth_repository.dart';
+import 'package:lavender/shared/data/repositories/auth_repository_impl.dart';
+import 'package:lavender/shared/domain/repositories/auth_repository.dart';
 
-import 'fake_api.dart';
+import '../../../data/repositories/fake_api.dart';
 
 void main() {
   const req = AuthRequest(phone: '555', password: 'pw', otp: '1234');
@@ -32,7 +33,7 @@ void main() {
         final (api, a) = await makeApi(
           body: {'data': sampleUser, 'message': 'done'},
         );
-        final r = await e.value.$2(AuthRepository(api));
+        final r = await e.value.$2(AuthRepositoryImpl(api));
         expect(a.method, 'POST');
         expect(a.path, e.value.$1);
         expect(a.data, {'phone': '555', 'password': 'pw', 'otp': '1234'});
@@ -45,7 +46,7 @@ void main() {
 
       test('failure passes through', () async {
         final (api, _) = await makeApi(body: {'message': 'bad'}, status: 422);
-        final r = await e.value.$2(AuthRepository(api));
+        final r = await e.value.$2(AuthRepositoryImpl(api));
         expect(r, isA<ServerFailure<Object?>>());
         expect((r as ServerFailure).code, 422);
         expect(r.message, 'bad');
@@ -55,12 +56,12 @@ void main() {
 
   test('login with missing data is a failure, not a throw', () async {
     final (api, _) = await makeApi(body: {'message': 'x'});
-    expect(await AuthRepository(api).login(req), isA<UnknownFailure>());
+    expect(await AuthRepositoryImpl(api).login(req), isA<UnknownFailure>());
   });
 
   test('optional-user endpoints accept missing data', () async {
     final (api, _) = await makeApi(body: {'message': 'sent'});
-    final r = await AuthRepository(api).resendCode(req);
+    final r = await AuthRepositoryImpl(api).resendCode(req);
     expect(r, isA<ApiSuccess<UserModel?>>());
     expect((r as ApiSuccess<UserModel?>).data, isNull);
     expect(r.message, 'sent');
@@ -68,7 +69,7 @@ void main() {
 
   test('register sends snake_case keys', () async {
     final (api, a) = await makeApi(body: {'data': sampleUser});
-    await AuthRepository(api).register(
+    await AuthRepositoryImpl(api).register(
       const AuthRequest(
         fullName: 'Sara',
         phoneCode: '966',
@@ -86,7 +87,7 @@ void main() {
 
   test('changePassword → POST client/password/change', () async {
     final (api, a) = await makeApi();
-    final r = await AuthRepository(api).changePassword(req);
+    final r = await AuthRepositoryImpl(api).changePassword(req);
     expect(a.method, 'POST');
     expect(a.path, 'client/password/change');
     expect(r, isA<ApiSuccess<void>>());
@@ -94,7 +95,7 @@ void main() {
 
   test('logout sends device_token and device_type body', () async {
     final (api, a) = await makeApi();
-    final r = await AuthRepository(api).logout('dev123');
+    final r = await AuthRepositoryImpl(api).logout('dev123');
     expect(a.method, 'POST');
     expect(a.path, 'client/logout');
     expect(a.data, {'device_token': 'dev123', 'device_type': 'android'});
@@ -103,7 +104,7 @@ void main() {
 
   test('logout failure passes through', () async {
     final (api, _) = await makeApi(body: {'message': 'no'}, status: 401);
-    final r = await AuthRepository(api).logout(null);
+    final r = await AuthRepositoryImpl(api).logout(null);
     expect(r, isA<ServerFailure<void>>());
   });
 }

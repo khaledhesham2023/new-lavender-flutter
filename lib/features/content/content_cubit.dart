@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/network/api_result.dart';
 import '../../data/models/responses/about.dart';
-import '../../data/repositories/profile_repository.dart';
+import 'domain/repositories/content_repository.dart';
 
 /// Which server page a [ContentCubit] loads.
 enum ContentKind { aboutApp, aboutUs, terms, privacy }
@@ -32,7 +32,7 @@ class ContentState extends Equatable {
 class ContentCubit extends Cubit<ContentState> {
   ContentCubit(this._profile, this.kind) : super(const ContentState());
 
-  final ProfileRepository _profile;
+  final ContentRepository _profile;
   final ContentKind kind;
 
   Future<void> load() async {

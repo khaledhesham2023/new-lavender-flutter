@@ -6,7 +6,7 @@ import 'package:lavender/core/storage/app_prefs.dart';
 import 'package:lavender/shared/session/user_store.dart';
 import 'package:lavender/data/models/requests/auth_requests.dart';
 import 'package:lavender/data/models/responses/user.dart';
-import 'package:lavender/data/repositories/auth_repository.dart';
+import 'package:lavender/shared/domain/repositories/auth_repository.dart';
 import 'package:lavender/features/auth/login/login_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

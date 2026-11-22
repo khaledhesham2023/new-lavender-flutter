@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/network/api_result.dart';
-import '../../data/repositories/profile_repository.dart';
+import 'domain/repositories/content_repository.dart';
 
 class ContactUsState extends Equatable {
   final bool sending;
@@ -23,7 +23,7 @@ class ContactUsState extends Equatable {
 class ContactUsCubit extends Cubit<ContactUsState> {
   ContactUsCubit(this._profile) : super(const ContactUsState());
 
-  final ProfileRepository _profile;
+  final ContentRepository _profile;
 
   /// The three texts are trimmed, like Android.
   Future<void> send(String fullName, String title, String content) async {

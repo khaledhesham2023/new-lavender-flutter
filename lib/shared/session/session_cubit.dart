@@ -23,11 +23,13 @@ class SessionState extends Equatable {
 /// App-wide session: login state, language and the stored user.
 class SessionCubit extends Cubit<SessionState> {
   SessionCubit(this._prefs, this._userStore)
-      : super(SessionState(
+    : super(
+        SessionState(
           isLoggedIn: _prefs.isLoggedIn,
           languageCode: _prefs.languageCode,
           user: _userStore.read(),
-        ));
+        ),
+      );
 
   final AppPrefs _prefs;
   final UserStore _userStore;
@@ -53,11 +55,13 @@ class SessionCubit extends Cubit<SessionState> {
 
   Future<void> changeLanguage(String code) async {
     await _prefs.setLanguageCode(code);
-    emit(SessionState(
-      isLoggedIn: state.isLoggedIn,
-      languageCode: code,
-      user: state.user,
-    ));
+    emit(
+      SessionState(
+        isLoggedIn: state.isLoggedIn,
+        languageCode: code,
+        user: state.user,
+      ),
+    );
   }
 
   Future<void> updateUser({
@@ -74,10 +78,12 @@ class SessionCubit extends Cubit<SessionState> {
       image: image,
       email: email,
     );
-    emit(SessionState(
-      isLoggedIn: state.isLoggedIn,
-      languageCode: state.languageCode,
-      user: _userStore.read(),
-    ));
+    emit(
+      SessionState(
+        isLoggedIn: state.isLoggedIn,
+        languageCode: state.languageCode,
+        user: _userStore.read(),
+      ),
+    );
   }
 }

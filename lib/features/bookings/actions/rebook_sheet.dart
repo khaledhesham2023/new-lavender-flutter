@@ -13,7 +13,7 @@ import '../../../core/widgets/failure_toast.dart';
 import '../../../core/widgets/loading_view.dart';
 import '../../../core/widgets/progress_button.dart';
 import '../../../core/widgets/state_view.dart';
-import '../../../data/repositories/booking_repository.dart';
+import '../../../shared/domain/repositories/booking_repository.dart';
 import '../../booking/day_time_logic.dart';
 import '../../booking/widgets/day_time_picker.dart';
 import 'rebook_cubit.dart';

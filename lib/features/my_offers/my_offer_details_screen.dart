@@ -18,7 +18,7 @@ import '../../core/widgets/spacers.dart';
 import '../../core/widgets/state_view.dart';
 import '../../core/widgets/system_ui.dart';
 import '../../data/models/responses/offer.dart';
-import '../../data/repositories/offers_repository.dart';
+import '../../shared/domain/repositories/offers_repository.dart';
 import '../../app/router/routes.dart';
 import '../offers/widgets/discount_badge.dart';
 import 'my_offer_details_cubit.dart';

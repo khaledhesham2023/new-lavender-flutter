@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/network/api_result.dart';
 import '../../data/models/responses/appointment.dart';
-import '../../data/repositories/booking_repository.dart';
+import '../../shared/domain/repositories/booking_repository.dart';
 
 class AppointmentDetailsState extends Equatable {
   final ViewStatus status;

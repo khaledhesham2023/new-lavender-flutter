@@ -12,7 +12,7 @@ import '../../../core/widgets/app_link.dart';
 import '../../../core/widgets/failure_toast.dart';
 import '../../../core/widgets/progress_button.dart';
 import '../../../core/widgets/system_ui.dart';
-import '../../../data/repositories/auth_repository.dart';
+import '../../../shared/domain/repositories/auth_repository.dart';
 import '../../../core/push/device_token.dart';
 import '../../../app/router/route_args.dart';
 import '../../../app/router/routes.dart';

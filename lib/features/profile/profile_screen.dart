@@ -10,7 +10,7 @@ import '../../core/utils/launchers.dart';
 import '../../core/widgets/failure_toast.dart';
 import '../../core/widgets/progress_button.dart';
 import '../../core/widgets/system_ui.dart';
-import '../../data/repositories/profile_repository.dart';
+import 'domain/repositories/profile_repository.dart';
 import '../../app/router/route_args.dart';
 import '../../app/router/routes.dart';
 import 'general_sheet.dart';

@@ -23,7 +23,7 @@ import '../../../core/widgets/progress_button.dart';
 import '../../../core/widgets/spacers.dart';
 import '../../../core/widgets/system_ui.dart';
 import '../../../shared/domain/repositories/general_repository.dart';
-import '../../../data/repositories/profile_repository.dart';
+import '../domain/repositories/profile_repository.dart';
 import '../../../app/router/route_args.dart';
 import '../../../app/router/routes.dart';
 import '../../auth/widgets/field_error.dart';

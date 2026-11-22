@@ -11,7 +11,7 @@ import '../../../core/widgets/app_svg.dart';
 import '../../../core/widgets/bottom_sheet_frame.dart';
 import '../../../core/widgets/failure_toast.dart';
 import '../../../core/widgets/progress_button.dart';
-import '../../../data/repositories/booking_repository.dart';
+import '../../../shared/domain/repositories/booking_repository.dart';
 import 'confirmation_cubit.dart';
 
 export 'confirmation_cubit.dart' show ConfirmAction, CancelAction, UpdateAction;

@@ -1,11 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lavender/core/network/api_result.dart';
 import 'package:lavender/data/models/responses/about.dart';
-import 'package:lavender/data/repositories/profile_repository.dart';
+import 'package:lavender/features/content/domain/repositories/content_repository.dart';
 import 'package:lavender/features/content/contact_us_cubit.dart';
 import 'package:lavender/features/content/content_cubit.dart';
 
-class _FakeProfileRepository implements ProfileRepository {
+class _FakeContentRepository implements ContentRepository {
   ApiResult<AboutModel> aboutResult = const ApiSuccess(
     AboutModel(name: '<p>hello</p>'),
   );
@@ -54,7 +54,7 @@ class _FakeProfileRepository implements ProfileRepository {
 void main() {
   group('ContentCubit', () {
     test('each kind calls its own endpoint', () async {
-      final repo = _FakeProfileRepository();
+      final repo = _FakeContentRepository();
       for (final kind in ContentKind.values) {
         await ContentCubit(repo, kind).load();
       }
@@ -62,14 +62,14 @@ void main() {
     });
 
     test('load keeps the model on success', () async {
-      final cubit = ContentCubit(_FakeProfileRepository(), ContentKind.terms);
+      final cubit = ContentCubit(_FakeContentRepository(), ContentKind.terms);
       await cubit.load();
       expect(cubit.state.status, ViewStatus.success);
       expect(cubit.state.model!.name, '<p>hello</p>');
     });
 
     test('a failure is reported once and keeps an earlier model', () async {
-      final repo = _FakeProfileRepository();
+      final repo = _FakeContentRepository();
       final cubit = ContentCubit(repo, ContentKind.aboutApp);
       await cubit.load();
       repo.aboutResult = const NetworkFailure();
@@ -83,7 +83,7 @@ void main() {
 
   group('ContactUsCubit', () {
     test('send trims the texts and reports success', () async {
-      final repo = _FakeProfileRepository();
+      final repo = _FakeContentRepository();
       final cubit = ContactUsCubit(repo);
       await cubit.send('  Sara ', ' Help ', ' Please  ');
       expect(repo.contacts.single, ('Sara', 'Help', 'Please'));
@@ -92,7 +92,7 @@ void main() {
     });
 
     test('a failure is reported', () async {
-      final repo = _FakeProfileRepository()
+      final repo = _FakeContentRepository()
         ..contactResult = const ServerFailure(422, 'bad');
       final cubit = ContactUsCubit(repo);
       await cubit.send('Sara', 'Help', 'Please');

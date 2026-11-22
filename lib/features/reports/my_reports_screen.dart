@@ -14,7 +14,7 @@ import '../../core/widgets/system_ui.dart';
 import '../../core/widgets/toggle_header.dart';
 import '../../core/enums/enums.dart';
 import '../../data/models/responses/report.dart';
-import '../../data/repositories/profile_repository.dart';
+import 'domain/repositories/reports_repository.dart';
 import 'my_reports_cubit.dart';
 import 'widgets/report_day_group.dart';
 
@@ -26,7 +26,7 @@ class MyReportsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => MyReportsCubit(sl<ProfileRepository>())..load(),
+      create: (_) => MyReportsCubit(sl<ReportsRepository>())..load(),
       // Transparent status bar over the purple header, light icons.
       child: const SystemUi(statusBarIconsDark: false, child: _MyReportsView()),
     );

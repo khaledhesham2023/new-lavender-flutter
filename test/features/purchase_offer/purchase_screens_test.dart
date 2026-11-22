@@ -7,7 +7,7 @@ import 'package:lavender/shared/session/user_store.dart';
 import 'package:lavender/core/widgets/progress_button.dart';
 import 'package:lavender/data/models/responses/offer.dart';
 import 'package:lavender/data/models/responses/speciality.dart';
-import 'package:lavender/data/repositories/offers_repository.dart';
+import 'package:lavender/shared/domain/repositories/offers_repository.dart';
 import 'package:lavender/features/purchase_offer/offer_purchased_screen.dart';
 import 'package:lavender/features/purchase_offer/purchase_offer_screen.dart';
 import 'package:lavender/l10n/generated/app_localizations.dart';

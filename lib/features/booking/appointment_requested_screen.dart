@@ -19,7 +19,7 @@ import '../../core/widgets/progress_button.dart';
 import '../../core/widgets/state_view.dart';
 import '../../core/widgets/system_ui.dart';
 import '../../data/models/responses/appointment.dart';
-import '../../data/repositories/booking_repository.dart';
+import '../../shared/domain/repositories/booking_repository.dart';
 import '../../app/router/routes.dart';
 import '../auth/widgets/speed_lottie.dart';
 import 'appointment_requested_cubit.dart';

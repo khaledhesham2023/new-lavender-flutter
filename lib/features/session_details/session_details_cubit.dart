@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../core/network/api_result.dart';
 import '../../data/models/responses/appointment.dart';
 import '../../data/models/responses/offer.dart';
-import '../../data/repositories/offers_repository.dart';
+import '../../shared/domain/repositories/offers_repository.dart';
 
 class SessionDetailsState extends Equatable {
   final ViewStatus status;

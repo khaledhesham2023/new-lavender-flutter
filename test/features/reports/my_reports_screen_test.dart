@@ -3,12 +3,12 @@ import 'package:lavender/app/di/injection.dart';
 import 'package:lavender/core/network/api_result.dart';
 import 'package:lavender/core/enums/enums.dart';
 import 'package:lavender/data/models/responses/report.dart';
-import 'package:lavender/data/repositories/profile_repository.dart';
+import 'package:lavender/features/reports/domain/repositories/reports_repository.dart';
 import 'package:lavender/features/reports/my_reports_screen.dart';
 import 'package:lavender/l10n/generated/app_localizations.dart';
 import 'package:material_ui/material_ui.dart';
 
-class _FakeProfile implements ProfileRepository {
+class _FakeProfile implements ReportsRepository {
   final List<ReportType> asked = [];
   Map<ReportType, List<DayReportsModel>> data = {
     ReportType.radiology: [
@@ -46,7 +46,7 @@ void main() {
   ) async {
     final repo = _FakeProfile();
     await sl.reset();
-    sl.registerSingleton<ProfileRepository>(repo);
+    sl.registerSingleton<ReportsRepository>(repo);
     await t.binding.setSurfaceSize(const Size(400, 900));
     addTearDown(() => t.binding.setSurfaceSize(null));
     await t.pumpWidget(_host());

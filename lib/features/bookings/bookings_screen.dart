@@ -18,7 +18,7 @@ import '../../core/widgets/state_view.dart';
 import '../../core/widgets/system_ui.dart';
 import '../../core/enums/enums.dart';
 import '../../data/models/responses/appointment.dart';
-import '../../data/repositories/booking_repository.dart';
+import '../../shared/domain/repositories/booking_repository.dart';
 import '../../app/router/routes.dart';
 import 'actions/booking_actions.dart';
 import 'bookings_cubit.dart';

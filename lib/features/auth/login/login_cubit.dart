@@ -6,7 +6,7 @@ import '../../../core/push/device_info.dart';
 import '../../../core/push/device_token.dart';
 import '../../../shared/session/session_cubit.dart';
 import '../../../data/models/requests/auth_requests.dart';
-import '../../../data/repositories/auth_repository.dart';
+import '../../../shared/domain/repositories/auth_repository.dart';
 
 /// One-shot effect the screen reacts to (then calls [LoginCubit.consumeEvent]).
 enum LoginEvent { none, navigateHome, navigateOtp }

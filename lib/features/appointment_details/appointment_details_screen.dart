@@ -19,7 +19,7 @@ import '../../core/widgets/state_view.dart';
 import '../../core/widgets/system_ui.dart';
 import '../../core/enums/enums.dart';
 import '../../data/models/responses/appointment.dart';
-import '../../data/repositories/booking_repository.dart';
+import '../../shared/domain/repositories/booking_repository.dart';
 import '../booking/widgets/booking_info_card.dart';
 import '../booking/widgets/doctor_summary_card.dart';
 import '../bookings/actions/booking_actions.dart';

@@ -5,7 +5,7 @@ import '../../core/network/api_result.dart';
 import '../../core/utils/date_utils.dart';
 import '../../data/models/requests/appointment_requests.dart';
 import '../../data/models/requests/booking_draft.dart';
-import '../../data/repositories/booking_repository.dart';
+import '../../shared/domain/repositories/booking_repository.dart';
 
 class BookAppointmentState extends Equatable {
   /// The booking being confirmed; day / time are replaced by [BookAppointmentCubit.changeTo].

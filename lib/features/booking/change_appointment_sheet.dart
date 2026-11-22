@@ -15,7 +15,7 @@ import '../../core/widgets/loading_view.dart';
 import '../../core/widgets/progress_button.dart';
 import '../../core/widgets/state_view.dart';
 import '../../data/models/requests/appointment_requests.dart';
-import '../../data/repositories/booking_repository.dart';
+import '../../shared/domain/repositories/booking_repository.dart';
 import 'change_appointment_cubit.dart';
 import 'day_time_logic.dart';
 import 'widgets/day_time_picker.dart';

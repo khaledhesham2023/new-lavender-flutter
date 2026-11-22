@@ -119,19 +119,27 @@ lavender-flutter/
       session/
         session_cubit.dart  # isLoggedIn, language, user; login/logout/changeLanguage
         user_store.dart     # UserData (CONTEXT §6.2) as JSON in prefs
-      domain/validators.dart  # phone/password/name/email rules
-      widgets/must_login_sheet.dart
+      domain/
+        validators.dart     # phone/password/name/email rules
+        repositories/       # contracts used by 2+ features: auth, booking, general, home, offers,
+                            # search, specialities (abstract interface classes)
+      data/repositories/    # <name>_repository_impl.dart for each shared contract
+      widgets/              # must_login_sheet, doctor_card, favorite_button
     data/
       models/               # one file per CONTEXT §5.4 group (user.dart, doctor.dart, appointment.dart, offer.dart, ...)
-      repositories/         # auth_repository.dart, profile_repository.dart, general_repository.dart,
-                            # notifications_repository.dart, home_repository.dart, specialities_repository.dart,
-                            # search_repository.dart, doctor_repository.dart, booking_repository.dart,
-                            # favorites_repository.dart, offers_repository.dart
+      json/                 # json_utils, json_converters (used only by data code)
+      repositories/repository_parsers.dart   # parse helpers shared by every *_repository_impl
     features/
       splash/ onboarding/ auth/ shell/ home/ specialities/ offers/ search/ search_details/ filter/
       doctor_details/ booking/ bookings/ appointment_details/ session_details/ favorites/
       notifications/ profile/ my_offers/ purchase_offer/ reports/ content/
-        # each feature: <screen>_screen.dart, <screen>_cubit.dart (Cubit + state in one file), widgets/
+        # target layout per feature (done: favorites, notifications, doctor_details):
+        #   domain/repositories/<name>_repository.dart   abstract contract (feature-only repositories)
+        #   domain/entities/                             feature value types (e.g. NotificationsPage)
+        #   data/repositories/<name>_repository_impl.dart
+        #   presentation/cubit/ (cubit + part state), presentation/screens/, presentation/widgets/
+        # profile, content and reports already have their own domain/ + data/ repositories.
+        # Presentation code depends on contracts only; app/di binds each contract to its Impl.
   test/
     ... mirrors lib/ (app/, core/, shared/, data/, features/)
 ```

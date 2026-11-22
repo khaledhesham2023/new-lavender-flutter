@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../core/network/api_result.dart';
 import '../../core/enums/enums.dart';
 import '../../data/models/responses/report.dart';
-import '../../data/repositories/profile_repository.dart';
+import 'domain/repositories/reports_repository.dart';
 
 class MyReportsState extends Equatable {
   final ReportType type;
@@ -31,7 +31,7 @@ class MyReportsState extends Equatable {
 class MyReportsCubit extends Cubit<MyReportsState> {
   MyReportsCubit(this._repository) : super(const MyReportsState());
 
-  final ProfileRepository _repository;
+  final ReportsRepository _repository;
 
   Future<void> load() async {
     final type = state.type;
@@ -40,10 +40,16 @@ class MyReportsCubit extends Cubit<MyReportsState> {
     if (isClosed || type != state.type) return; // a newer toggle won
     switch (result) {
       case ApiSuccess(:final data):
-        emit(MyReportsState(type: type, status: ViewStatus.success, days: data));
+        emit(
+          MyReportsState(type: type, status: ViewStatus.success, days: data),
+        );
       case ApiFailure():
         emit(
-          MyReportsState(type: type, status: ViewStatus.failure, failure: result),
+          MyReportsState(
+            type: type,
+            status: ViewStatus.failure,
+            failure: result,
+          ),
         );
     }
   }

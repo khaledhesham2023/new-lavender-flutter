@@ -23,11 +23,17 @@ class _FavoriteButtonState extends State<FavoriteButton>
 
   late final Animation<double> _scale = TweenSequence<double>([
     TweenSequenceItem(
-      tween: Tween(begin: 1.0, end: 1.4).chain(CurveTween(curve: Curves.easeOutBack)),
+      tween: Tween(
+        begin: 1.0,
+        end: 1.4,
+      ).chain(CurveTween(curve: Curves.easeOutBack)),
       weight: 1,
     ),
     TweenSequenceItem(
-      tween: Tween(begin: 1.4, end: 1.0).chain(CurveTween(curve: Curves.easeOutBack)),
+      tween: Tween(
+        begin: 1.4,
+        end: 1.0,
+      ).chain(CurveTween(curve: Curves.easeOutBack)),
       weight: 1,
     ),
   ]).animate(_controller);
@@ -51,7 +57,9 @@ class _FavoriteButtonState extends State<FavoriteButton>
       child: ScaleTransition(
         scale: _scale,
         child: AppSvg(
-          widget.isFav ? AppAssets.icFavoriteActive : AppAssets.icFavoriteInactive,
+          widget.isFav
+              ? AppAssets.icFavoriteActive
+              : AppAssets.icFavoriteInactive,
           width: 20,
           height: 20,
         ),

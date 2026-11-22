@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:lavender/core/network/api_result.dart';
 import 'package:lavender/data/models/responses/doctor.dart';
 import 'package:lavender/data/models/responses/offer.dart';
-import 'package:lavender/data/repositories/offers_repository.dart';
+import 'package:lavender/shared/domain/repositories/offers_repository.dart';
 import 'package:lavender/features/session_details/session_details_cubit.dart';
 
 class _FakeRepo implements OffersRepository {

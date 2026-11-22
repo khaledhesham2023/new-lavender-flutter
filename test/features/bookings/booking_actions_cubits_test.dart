@@ -5,7 +5,7 @@ import 'package:lavender/core/enums/enums.dart';
 import 'package:lavender/data/models/requests/appointment_requests.dart';
 import 'package:lavender/data/models/responses/appointment.dart';
 import 'package:lavender/data/models/responses/doctor.dart';
-import 'package:lavender/data/repositories/booking_repository.dart';
+import 'package:lavender/shared/domain/repositories/booking_repository.dart';
 import 'package:lavender/features/bookings/actions/add_comment_cubit.dart';
 import 'package:lavender/features/bookings/actions/confirmation_cubit.dart';
 import 'package:lavender/features/bookings/actions/rebook_cubit.dart';

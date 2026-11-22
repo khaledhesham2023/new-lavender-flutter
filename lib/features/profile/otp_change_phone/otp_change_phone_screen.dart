@@ -12,7 +12,7 @@ import '../../../core/widgets/bottom_sheet_frame.dart';
 import '../../../core/widgets/progress_button.dart';
 import '../../../core/widgets/spacers.dart';
 import '../../../core/widgets/system_ui.dart';
-import '../../../data/repositories/auth_repository.dart';
+import '../../../shared/domain/repositories/auth_repository.dart';
 import '../../../app/router/route_args.dart';
 import '../../../app/router/routes.dart';
 import '../../auth/widgets/auth_header.dart';

@@ -5,7 +5,7 @@ import 'package:lavender/data/models/requests/appointment_requests.dart';
 import 'package:lavender/data/models/requests/booking_draft.dart';
 import 'package:lavender/data/models/responses/appointment.dart';
 import 'package:lavender/data/models/responses/doctor.dart';
-import 'package:lavender/data/repositories/booking_repository.dart';
+import 'package:lavender/shared/domain/repositories/booking_repository.dart';
 import 'package:lavender/features/booking/appointment_requested_cubit.dart';
 import 'package:lavender/features/booking/book_appointment_cubit.dart';
 import 'package:lavender/features/booking/change_appointment_cubit.dart';
