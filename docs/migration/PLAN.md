@@ -121,10 +121,13 @@ lavender-flutter/
         user_store.dart     # UserData (CONTEXT §6.2) as JSON in prefs
       domain/
         validators.dart     # phone/password/name/email rules
+        day_time_logic.dart # booking day/time selection rules (booking, bookings, doctor_details)
+        entities/search_filter.dart  # search/filter criteria (search_details, filter, route args)
         repositories/       # contracts used by 2+ features: auth, booking, general, home, offers,
                             # search, specialities (abstract interface classes)
       data/repositories/    # <name>_repository_impl.dart for each shared contract
-      widgets/              # must_login_sheet, doctor_card, favorite_button
+      widgets/              # widgets used by 2+ features (doctor_card, day_time_picker, status_pill,
+                            # form fields, speed_lottie, ...)
     data/
       models/               # one file per CONTEXT §5.4 group (user.dart, doctor.dart, appointment.dart, offer.dart, ...)
       json/                 # json_utils, json_converters (used only by data code)
@@ -133,13 +136,18 @@ lavender-flutter/
       splash/ onboarding/ auth/ shell/ home/ specialities/ offers/ search/ search_details/ filter/
       doctor_details/ booking/ bookings/ appointment_details/ session_details/ favorites/
       notifications/ profile/ my_offers/ purchase_offer/ reports/ content/
-        # target layout per feature (done: favorites, notifications, doctor_details):
+        # layout per feature:
         #   domain/repositories/<name>_repository.dart   abstract contract (feature-only repositories)
         #   domain/entities/                             feature value types (e.g. NotificationsPage)
-        #   data/repositories/<name>_repository_impl.dart
-        #   presentation/cubit/ (cubit + part state), presentation/screens/, presentation/widgets/
-        # profile, content and reports already have their own domain/ + data/ repositories.
+        #   data/repositories/<name>_repository_impl.dart, data/<service>.dart (e.g. tap_payment_service)
+        #   presentation/   screens, sheets, cubits, widgets/. favorites, notifications and
+        #                   doctor_details use cubit/ + screens/ subfolders; the others keep their
+        #                   earlier sub-structure (e.g. auth/presentation/login/).
         # Presentation code depends on contracts only; app/di binds each contract to its Impl.
+        # Features do not import each other; shared code lives in shared/. Known exceptions:
+        #   appointment_details, session_details -> bookings/presentation/actions/booking_actions.dart
+        #   purchase_offer -> my_offers/presentation/my_offer_details_cubit.dart
+        #   purchase_offer/presentation -> purchase_offer/data/tap_payment_service.dart (no contract yet)
   test/
     ... mirrors lib/ (app/, core/, shared/, data/, features/)
 ```

@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 
 import '../../data/models/requests/booking_draft.dart';
 import '../../data/models/responses/offer.dart';
-import '../../features/search_details/search_filter.dart';
+import '../../shared/domain/entities/search_filter.dart';
 
 /// Typed arguments passed in route `extra` (paths live in routes.dart).
 /// Where an OTP screen was opened from (decides what happens after verifying).

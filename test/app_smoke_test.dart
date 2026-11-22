@@ -8,7 +8,7 @@ import 'package:lavender/app/push/push_service.dart';
 import 'package:lavender/shared/session/session_cubit.dart';
 import 'package:lavender/core/storage/app_prefs.dart';
 import 'package:lavender/shared/session/user_store.dart';
-import 'package:lavender/features/auth/start_now_screen.dart';
+import 'package:lavender/features/auth/presentation/start_now_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> _boot(WidgetTester tester, Map<String, Object> values) async {
