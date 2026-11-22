@@ -8,7 +8,8 @@ import '../../features/favorites/data/repositories/favorites_repository_impl.dar
 import '../../features/favorites/domain/repositories/favorites_repository.dart';
 import '../../data/repositories/general_repository.dart';
 import '../../data/repositories/home_repository.dart';
-import '../../data/repositories/notifications_repository.dart';
+import '../../features/notifications/data/repositories/notifications_repository_impl.dart';
+import '../../features/notifications/domain/repositories/notifications_repository.dart';
 import '../../data/repositories/offers_repository.dart';
 import '../../data/repositories/profile_repository.dart';
 import '../../data/repositories/search_repository.dart';
@@ -45,7 +46,9 @@ Future<void> configureDependencies() async {
     ..registerLazySingleton(() => AuthRepository(sl()))
     ..registerLazySingleton(() => ProfileRepository(sl()))
     ..registerLazySingleton(() => GeneralRepository(sl()))
-    ..registerLazySingleton(() => NotificationsRepository(sl()))
+    ..registerLazySingleton<NotificationsRepository>(
+      () => NotificationsRepositoryImpl(sl()),
+    )
     ..registerLazySingleton(() => HomeRepository(sl()))
     ..registerLazySingleton(() => SpecialitiesRepository(sl()))
     ..registerLazySingleton(() => SearchRepository(sl()))

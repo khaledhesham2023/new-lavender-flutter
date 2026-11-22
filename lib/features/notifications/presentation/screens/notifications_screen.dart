@@ -4,27 +4,27 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:lavender/core/widgets/spacers.dart';
 import 'package:material_ui/material_ui.dart';
 
-import '../../app/di/injection.dart';
-import '../../core/l10n/l10n_ext.dart';
-import '../../core/network/api_result.dart';
-import '../../shared/session/session_cubit.dart';
-import '../../core/storage/app_prefs.dart';
-import '../../core/theme/app_assets.dart';
-import '../../core/theme/app_colors.dart';
-import '../../core/theme/app_text_styles.dart';
-import '../../core/widgets/app_back_button.dart';
-import '../../core/widgets/app_svg.dart';
-import '../../core/widgets/app_toast.dart';
-import '../../core/widgets/failure_toast.dart';
-import '../../core/widgets/loading_view.dart';
-import '../../core/widgets/state_view.dart';
-import '../../core/widgets/system_ui.dart';
-import '../../core/enums/enums.dart';
-import '../../data/models/responses/notification.dart';
-import '../../data/repositories/notifications_repository.dart';
-import '../../app/router/routes.dart';
-import 'notifications_cubit.dart';
-import 'widgets/notification_item.dart';
+import '../../../../app/di/injection.dart';
+import '../../../../core/l10n/l10n_ext.dart';
+import '../../../../core/network/api_result.dart';
+import '../../../../shared/session/session_cubit.dart';
+import '../../../../core/storage/app_prefs.dart';
+import '../../../../core/theme/app_assets.dart';
+import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/app_text_styles.dart';
+import '../../../../core/widgets/app_back_button.dart';
+import '../../../../core/widgets/app_svg.dart';
+import '../../../../core/widgets/app_toast.dart';
+import '../../../../core/widgets/failure_toast.dart';
+import '../../../../core/widgets/loading_view.dart';
+import '../../../../core/widgets/state_view.dart';
+import '../../../../core/widgets/system_ui.dart';
+import '../../../../core/enums/enums.dart';
+import '../../../../data/models/responses/notification.dart';
+import '../../domain/repositories/notifications_repository.dart';
+import '../../../../app/router/routes.dart';
+import '../cubit/notifications_cubit.dart';
+import '../widgets/notification_item.dart';
 
 /// Port of `NotificationsFragment`. Guests see the login prompt; logged-in users
 /// get the allow switch and the paged list (swipe to delete, tap to open).
@@ -106,9 +106,8 @@ class _LoggedInView extends StatefulWidget {
 }
 
 class _LoggedInViewState extends State<_LoggedInView> {
-  final _repository = sl<NotificationsRepository>();
   late final NotificationsCubit _cubit = NotificationsCubit(
-    _repository,
+    sl<NotificationsRepository>(),
     sl<AppPrefs>(),
   );
   late final PagingController<int, NotificationModel> _controller =
@@ -136,7 +135,7 @@ class _LoggedInViewState extends State<_LoggedInView> {
   }
 
   Future<List<NotificationModel>> _fetchPage(int page) async {
-    final result = await _repository.getPage(page);
+    final result = await _cubit.getPage(page);
     return switch (result) {
       ApiSuccess(:final data) => data.items,
       ApiFailure() => throw _PageFailure(result),

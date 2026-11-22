@@ -1,8 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lavender/core/network/api_result.dart';
-import 'package:lavender/data/repositories/notifications_repository.dart';
+import 'package:lavender/features/notifications/data/repositories/notifications_repository_impl.dart';
+import 'package:lavender/features/notifications/domain/entities/notifications_page.dart';
 
-import 'fake_api.dart';
+import '../../../../data/repositories/fake_api.dart';
 
 void main() {
   test('getPage sends page and parses items + meta', () async {
@@ -15,7 +16,7 @@ void main() {
         'meta': {'current_page': 2, 'last_page': 5},
       },
     );
-    final r = await NotificationsRepository(api).getPage(2);
+    final r = await NotificationsRepositoryImpl(api).getPage(2);
     expect(a.method, 'GET');
     expect(a.path, 'client/notifications');
     expect(a.query, {'page': 2});
@@ -28,7 +29,7 @@ void main() {
 
   test('empty page is last; missing meta is fine', () async {
     final (api, _) = await makeApi(body: {'data': []});
-    final r = await NotificationsRepository(api).getPage(3);
+    final r = await NotificationsRepositoryImpl(api).getPage(3);
     final p = (r as ApiSuccess<NotificationsPage>).data;
     expect(p.items, isEmpty);
     expect(p.isLast, true);
@@ -37,13 +38,13 @@ void main() {
 
   test('getPage failure passes through', () async {
     final (api, _) = await makeApi(body: {'message': 'no'}, status: 401);
-    final r = await NotificationsRepository(api).getPage(1);
+    final r = await NotificationsRepositoryImpl(api).getPage(1);
     expect(r, isA<ServerFailure<NotificationsPage>>());
   });
 
   test('delete → DELETE client/notifications/{id}', () async {
     final (api, a) = await makeApi();
-    final r = await NotificationsRepository(api).delete('abc');
+    final r = await NotificationsRepositoryImpl(api).delete('abc');
     expect(a.method, 'DELETE');
     expect(a.path, 'client/notifications/abc');
     expect(r, isA<ApiSuccess<void>>());
@@ -51,14 +52,14 @@ void main() {
 
   test('markRead → GET client/notifications/read/{id}', () async {
     final (api, a) = await makeApi();
-    await NotificationsRepository(api).markRead('abc');
+    await NotificationsRepositoryImpl(api).markRead('abc');
     expect(a.method, 'GET');
     expect(a.path, 'client/notifications/read/abc');
   });
 
   test('readAll → GET client/notifications/read-all', () async {
     final (api, a) = await makeApi();
-    await NotificationsRepository(api).readAll();
+    await NotificationsRepositoryImpl(api).readAll();
     expect(a.method, 'GET');
     expect(a.path, 'client/notifications/read-all');
   });
@@ -69,7 +70,7 @@ void main() {
         'data': {'allow_notification': 1},
       },
     );
-    final r = await NotificationsRepository(api).toggleAllow();
+    final r = await NotificationsRepositoryImpl(api).toggleAllow();
     expect(a.method, 'POST');
     expect(a.path, 'client/user/allow-notifications');
     expect(a.query, {'_method': 'PUT'});
@@ -82,12 +83,12 @@ void main() {
         'data': {'allow_notification': 0},
       },
     );
-    final r = await NotificationsRepository(api).toggleAllow();
+    final r = await NotificationsRepositoryImpl(api).toggleAllow();
     expect((r as ApiSuccess<bool>).data, false);
 
     final (api2, _) = await makeApi(body: {'message': 'x'}, status: 500);
     expect(
-      await NotificationsRepository(api2).toggleAllow(),
+      await NotificationsRepositoryImpl(api2).toggleAllow(),
       isA<ServerFailure<bool>>(),
     );
   });

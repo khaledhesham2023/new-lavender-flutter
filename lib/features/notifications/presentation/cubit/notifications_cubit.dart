@@ -1,32 +1,14 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../core/network/api_result.dart';
-import '../../core/storage/app_prefs.dart';
-import '../../data/repositories/notifications_repository.dart';
+import '../../../../core/network/api_result.dart';
+import '../../../../core/storage/app_prefs.dart';
+import '../../domain/entities/notifications_page.dart';
+import '../../domain/repositories/notifications_repository.dart';
 
-class NotificationsState extends Equatable {
-  /// The "allow notifications" switch (initialized from the stored value).
-  final bool allowed;
+part 'notifications_state.dart';
 
-  /// A toggle request is in flight.
-  final bool toggling;
-
-  /// One-shot: the toggle failed and the switch was put back (the screen
-  /// toasts it, then calls [NotificationsCubit.consumeToggleFailure]).
-  final ApiFailure<dynamic>? toggleFailure;
-
-  const NotificationsState({
-    required this.allowed,
-    this.toggling = false,
-    this.toggleFailure,
-  });
-
-  @override
-  List<Object?> get props => [allowed, toggling, toggleFailure];
-}
-
-/// Port of the non-paging half of `NotificationsViewModel`: the allow switch and
+/// Port of `NotificationsViewModel`: the allow switch, the page requests and
 /// the read / delete requests. The list itself is a `PagingController` owned by
 /// the screen.
 class NotificationsCubit extends Cubit<NotificationsState> {
@@ -55,6 +37,10 @@ class NotificationsCubit extends Cubit<NotificationsState> {
 
   void consumeToggleFailure() =>
       emit(NotificationsState(allowed: state.allowed));
+
+  /// Page [page] (first page is 1) for the screen's `PagingController`.
+  Future<ApiResult<NotificationsPage>> getPage(int page) =>
+      _repository.getPage(page);
 
   Future<ApiResult<void>> markRead(String id) => _repository.markRead(id);
 

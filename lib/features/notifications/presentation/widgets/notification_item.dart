@@ -1,10 +1,10 @@
 import 'package:material_ui/material_ui.dart';
 
-import '../../../core/theme/app_assets.dart';
-import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_text_styles.dart';
-import '../../../core/widgets/app_svg.dart';
-import '../../../data/models/responses/notification.dart';
+import '../../../../core/theme/app_assets.dart';
+import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/app_text_styles.dart';
+import '../../../../core/widgets/app_svg.dart';
+import '../../../../data/models/responses/notification.dart';
 
 /// Port of `recycler_item_notification.xml`: icon, title with the unread dot,
 /// two lines of body, the date and a separator.

@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lavender/core/network/api_result.dart';
 import 'package:lavender/core/storage/app_prefs.dart';
-import 'package:lavender/data/repositories/notifications_repository.dart';
-import 'package:lavender/features/notifications/notifications_cubit.dart';
+import 'package:lavender/features/notifications/domain/repositories/notifications_repository.dart';
+import 'package:lavender/features/notifications/presentation/cubit/notifications_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class _FakeRepo implements NotificationsRepository {

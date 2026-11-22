@@ -28,7 +28,7 @@ import '../../features/filter/filter_screen.dart';
 import '../../features/home/home_screen.dart';
 import '../../features/my_offers/my_offer_details_screen.dart';
 import '../../features/my_offers/my_offers_screen.dart';
-import '../../features/notifications/notifications_screen.dart';
+import '../../features/notifications/presentation/screens/notifications_screen.dart';
 import '../../features/offers/offer_details_screen.dart';
 import '../../features/offers/offers_screen.dart';
 import '../../features/onboarding/onboarding_screen.dart';
