@@ -40,3 +40,11 @@ differences for the owner. No new features.
 
 ## Gotchas
 - Use the same server data for both apps at the same time; bookings change state, so compare right after each action.
+
+## Notes
+- Status: partly done, not ticked in PLAN.md. See `docs/migration/PARITY.md` (Flows, Booking flow, Remaining differences, Not checked, Open questions).
+- Checked on CPH2127 (Flutter only, 2026-11-22): analyze clean, 450 tests pass, debug build and install, booking date fix, book / edit / cancel, bookings filters and search, favorites, notifications (list, routing, toggle, swipe delete), language switch, profile content pages, deep link guest and logged in.
+- Fixed during the check (earlier): notifications empty-state retry button, bottom sheet lint, `offer_booking_test`, booking date timezone.
+- Open differences: guest Bookings sort button and guest Favorites search field (Android shows them above the must-login prompt), onboarding final-yeh glyph, warm deep link Back behaviour.
+- Needs the owner: logins / OTP / payment card rows and a side-by-side Android pass; the Android phone was not driven in this round.
+- Test data left on the server: test account B booking #1065 (pending, Sat 28 Nov 2026 05:00 PM).
