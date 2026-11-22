@@ -84,6 +84,7 @@ Notes for whoever continues: CPH2127 is now logged out (`pm clear` is blocked on
 | Notification time vs phone clock | Note: a booking made at 21:34 phone time shows "10:34 مساءً" in the list. Both apps print the server's `date_formated` as is (Android `NotificationModel.date_formated`, Flutter `notification.dateFormated`), so the one-hour offset comes from the server, not from the app. |
 | Language switch Arabic to English and back (Flutter) | OK: sheet, confirm, app restarts on home in English LTR (tabs, home, profile mirrored), back to Arabic RTL. The home heart was empty after the earlier un-favorite, so home and the Favorites tab stay in sync. |
 | Profile (Flutter, English): contact us (name prefilled, headline, message, send, WhatsApp icon), who are we, about app (social buttons, terms / privacy links), terms, privacy | OK on Flutter; content is server test data ("about", "123", "d"). The message field hint reads "Enter message headline", same as the Android layout (`enter_message_headline` on both fields). Not sent / not compared: send message, WhatsApp, rate app, social links, edit profile, change password, delete account, logout. |
+| Error state: airplane mode (Wi-Fi and data off via `adb svc`), Home / Bookings / Favorites, both phones (2026-11-22) | Same on both for Home (offline view with retry) and Bookings (offline view, no retry). DIFF fixed: Flutter Favorites showed a retry button, Android shows none (`FavoritesFragment` passes no button callback); `favorites_screen.dart` now uses the same `StateView.empty` pattern as Bookings. Re-checked on CPH2127 after the fix. Retry on Home / Favorites recovers once the network is back (Flutter). Doctor details, offers, 404 on offer details not checked. |
 | (earlier note) Success screen date | FIXED in code (branch `fix-booking-date-timezone`), now device-verified (row above): Android showed "Saturday, 28 Nov 2026", Flutter "Friday, 27 Nov 2026". Cause: Android `convertIsoToDateOnly` / `formatToLongDate` parse in UTC but format in the device zone (no zone on the output formatter), so `…T22:00:00Z` is the next day in Egypt; Flutter formatted in UTC. Flutter now uses `toLocal()` in both (`lib/core/utils/date_utils.dart`), covered by a test. The chip label (`formatDateToDayMonth`) reads the raw ISO date on both apps, so it says 11/27 on both, as before. Appointments #1058 and #1059 exist on the test accounts. |
 
 ## Remaining differences
@@ -100,7 +101,7 @@ Notes for whoever continues: CPH2127 is now logged out (`pm clear` is blocked on
 - Booking with an offer, purchase with a Tap **test** card, my offers details, my reports and downloads (test account B has no offers or reports).
 - Bookings tabs with data (confirmed, ongoing, completed, cancelled), rebook, rate; sessions.
 - Push in background / killed, tap from the system tray.
-- Guest doctor details, error states (airplane mode, 404 on offer details), RTL / LTR on the booking flow and bookings.
+- Guest doctor details, error states on doctor details and offers, 404 on offer details, RTL / LTR on the booking flow and bookings.
 - Deep link on the Android app.
 
 ## Open questions

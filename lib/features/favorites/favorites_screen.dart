@@ -173,7 +173,12 @@ class _Content extends StatelessWidget {
     if (state.status == ViewStatus.failure) {
       return switch (state.failure) {
         ServerFailure() => StateView.serverError(body: l10n.serverErrorBody2),
-        NetworkFailure() => StateView.connectionLost(onRetry: cubit.load),
+        // Android shows no retry button on this list view.
+        NetworkFailure() => StateView.empty(
+          icon: AppAssets.icNetworkError2,
+          title: l10n.noInternetConncetion,
+          body: l10n.noInternetConncetionBody2,
+        ),
         // Unknown failures are only toasted.
         _ => const SizedBox.expand(),
       };
