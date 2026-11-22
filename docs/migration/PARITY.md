@@ -1,6 +1,6 @@
 # PARITY: Flutter app vs Android app (T42)
 
-Status: **partly done (2026-11-22).** Flutter side checked on CPH2127 for guest browsing, booking (book, edit, cancel), favorites, notifications, language, profile content pages and deep links. Not done: the Android phone was not re-run side by side for those flows, and rows that need data, OTP, passwords or a payment card are listed under "Not checked" below. T42 is not ticked in PLAN.md.
+Status: **partly done (2026-11-22).** Flutter side checked on CPH2127 for guest browsing, booking (book, edit, cancel), favorites, notifications, language, profile content pages and deep links. Not done: the Android phone was not re-run side by side for those flows, and rows that need data, OTP, passwords or a payment card are listed under "Not checked" below. Backend data (2026-11-22): the backend cannot be changed, so offers, reports and doctor-confirmed bookings were simulated with a temporary local mock proxy (real API for everything else, fake JSON for those screens); the mock, its env copy and the temporary cleartext manifest change were deleted afterwards and the phone is back on the normal debug build. The Flutter side of those rows is checked against that fake data only (shape taken from the Flutter models, not from a real server). Rows that need OTP / passwords or a payment card stay "Not checked". T42 is not ticked in PLAN.md.
 
 ## Setup
 | | Device | App |
@@ -43,7 +43,7 @@ Notes for whoever continues: CPH2127 is now logged out (`pm clear` is blocked on
 | Guest Favorites tab | DIFF: Android shows the "search by doctor name" field above the must-login prompt; Flutter shows only the prompt. Header and prompt text identical. |
 | Guest Profile tab | OK on both (illustration, login button, notifications, language, contact us, rate app, about us rows) |
 | Guest Search tab (popular specialities with doctor counts) | OK on both |
-| Guest: doctor details | Not checked |
+| Guest: doctor details (Flutter, CPH2127, 2026-11-22) | OK by device and Android code (`DoctorDetailsFragment`): header shows share and back only (favorite button hidden for guests, `isLogin` check), Book appointment opens the must-login sheet with a login button, tabs (booking times, general info, reviews with empty state) work. Not run on the Android phone. Home cards also show no heart for guests on Flutter (Android adapter not checked). |
 | Flutter logout, then next launch | OK: start screen right after logout, onboarding on the next launch (matches the Android behaviour in the task) |
 | Register, OTP, logout, login unverified, reset password | Not checked |
 | Book normal appointment (change slot), book with offer | Not checked |
@@ -87,6 +87,12 @@ Notes for whoever continues: CPH2127 is now logged out (`pm clear` is blocked on
 | Error state: airplane mode (Wi-Fi and data off via `adb svc`), Home / Bookings / Favorites, both phones (2026-11-22) | Same on both for Home (offline view with retry) and Bookings (offline view, no retry). DIFF fixed: Flutter Favorites showed a retry button, Android shows none (`FavoritesFragment` passes no button callback); `favorites_screen.dart` now uses the same `StateView.empty` pattern as Bookings. Re-checked on CPH2127 after the fix. Retry on Home / Favorites recovers once the network is back (Flutter). Doctor details, offers, 404 on offer details not checked. |
 | Error state: Offers and Doctor Details offline (2026-11-22) | Offers: same on both phones (offline view with retry). Doctor Details offline on Flutter: offline view with retry; not run on the Android phone (could not open the screen offline there). |
 | English LTR booking flow (Flutter, CPH2127, doctor id 1 "doha"): doctor details, book appointment, success screen #1066, favorites tab, account tab | OK: LTR layout, back arrow on the left, English strings and date format ("Wednesday, 25 November 2026", "03:45 AM"), success screen with details. A system notification "Appointment Booked" appeared while the app was open (foreground push display works). Android side not compared in English. Appointment #1066 (pending) left on the server for test account B. |
+| Simulated data (mock proxy, Flutter only, CPH2127, fake offers / reports / bookings): My offers (valid + completed tabs, price with strike-through, sessions 5/2, subscription date), my offer details (general info tab, bookings tab with session cards), session details (status badge, offer block, remaining sessions, date, notes) | OK |
+| Simulated: rate from session details (sheet, stars, quick replies from the real API, send) and rebook from session details (real work times, confirm sheet, session requested screen) | OK: toast "تم اضافة التقييم بنجاح", button becomes "تم التقييم"; rebook reaches the "request sent" screen. Server effects were faked. |
+| Simulated: My reports (radiology and labs tabs, grouped by date) and download of an image and a PDF | OK: both files landed in the phone's Downloads folder (test files removed afterwards). Android side not compared. |
+| Simulated: bookings tabs with data (confirmed: edit + cancel; ongoing: "عرض التفاصيل"; completed: rebook + rate / "تم التقييم"; cancelled: rebook; rejected tab present and empty) | OK on Flutter. Android side not compared. |
+| Simulated: notification tap routing for report (to My reports), offer (to offer details with "الحصول علي العرض"), user offer (to my offer details), appointment (to appointment details) | OK |
+| Not simulated: Tap payment (SDK, needs a card), push from a real server in background / killed, anything needing OTP or passwords | Not checked |
 | (earlier note) Success screen date | FIXED in code (branch `fix-booking-date-timezone`), now device-verified (row above): Android showed "Saturday, 28 Nov 2026", Flutter "Friday, 27 Nov 2026". Cause: Android `convertIsoToDateOnly` / `formatToLongDate` parse in UTC but format in the device zone (no zone on the output formatter), so `…T22:00:00Z` is the next day in Egypt; Flutter formatted in UTC. Flutter now uses `toLocal()` in both (`lib/core/utils/date_utils.dart`), covered by a test. The chip label (`formatDateToDayMonth`) reads the raw ISO date on both apps, so it says 11/27 on both, as before. Appointments #1058 and #1059 exist on the test accounts. |
 
 ## Remaining differences
@@ -100,10 +106,10 @@ Notes for whoever continues: CPH2127 is now logged out (`pm clear` is blocked on
 ## Not checked (needs data, a person, or the Android phone)
 - Side-by-side re-run on the Android phone (RMX3710) of everything checked on Flutter only.
 - Register, OTP, login unverified, reset password, edit profile, change password, delete account (throwaway account), contact us send, WhatsApp, rate app, social links.
-- Booking with an offer, purchase with a Tap **test** card, my offers details, my reports and downloads (test account B has no offers or reports).
-- Bookings tabs with data (confirmed, ongoing, completed, cancelled), rebook, rate; sessions.
+- Booking with an offer and purchase with a Tap **test** card (the offers, reports and bookings screens were checked with fake data only, see the Simulated rows).
+- The simulated screens on the Android phone, and the same screens against real server data.
 - Push in background / killed, tap from the system tray.
-- Guest doctor details, Doctor Details offline on the Android phone, 404 on offer details, English LTR on the Android phone and on Bookings.
+- Doctor Details offline on the Android phone, 404 on offer details, English LTR on the Android phone and on Bookings.
 - Deep link on the Android app.
 
 ## Open questions
