@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lavender/core/network/api_result.dart';
 import 'package:lavender/data/models/responses/doctor.dart';
-import 'package:lavender/data/repositories/doctor_repository.dart';
-import 'package:lavender/features/doctor_details/doctor_details_cubit.dart';
+import 'package:lavender/features/doctor_details/domain/repositories/doctor_repository.dart';
+import 'package:lavender/features/doctor_details/presentation/cubit/doctor_details_cubit.dart';
 
 class _FakeDoctorRepository implements DoctorRepository {
   ApiResult<DoctorModel> doctorResult = const ApiSuccess(DoctorModel(id: 7));

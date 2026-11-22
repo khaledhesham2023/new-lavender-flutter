@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:material_ui/material_ui.dart';
 
-import '../../../core/l10n/l10n_ext.dart';
+import '../../../../core/l10n/l10n_ext.dart';
 
 /// Port of `showMoreText` / `showLessText`: when [text] is longer than
 /// [maxLines] it is cut at the end of the last allowed line, followed by ".." and

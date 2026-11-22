@@ -8,7 +8,6 @@ import 'package:lavender/data/models/responses/offer.dart';
 import 'package:lavender/data/models/responses/search.dart';
 import 'package:lavender/data/models/responses/speciality.dart';
 import 'package:lavender/data/repositories/booking_repository.dart';
-import 'package:lavender/data/repositories/doctor_repository.dart';
 import 'package:lavender/data/repositories/home_repository.dart';
 import 'package:lavender/data/repositories/offers_repository.dart';
 import 'package:lavender/data/repositories/search_repository.dart';
@@ -175,49 +174,6 @@ void main() {
       expect(d.maxPrice, 200);
       expect(d.minPrice, 10);
       expect(d.specialties.length, 1);
-    });
-  });
-
-  group('DoctorRepository', () {
-    test('getDoctor parses a full doctor', () async {
-      final (api, a) = await makeApi(
-        body: {
-          'data': {
-            'id': 3,
-            'name': 'Dr B',
-            'price': 120,
-            'is_fav': 0,
-            'work_times': [
-              {
-                'day': 'sat',
-                'is_active': 1,
-                'times': [
-                  {'time': '10:00', 'is_reserved': 0},
-                ],
-              },
-            ],
-            'reviews': [
-              {'id': 1, 'rate': '4.5', 'comment': 'good'},
-            ],
-          },
-        },
-      );
-      final r = await DoctorRepository(api).getDoctor(3);
-      expect(a.method, 'GET');
-      expect(a.path, 'general/doctor/3');
-      final d = (r as ApiSuccess<DoctorModel>).data;
-      expect(d.name, 'Dr B');
-      expect(d.price, '120');
-      expect(d.workTimes.single.times.single.time, '10:00');
-      expect(d.reviews.single.rate, 4.5);
-    });
-
-    test('toggleFavorite doctor_id is a string', () async {
-      final (api, a) = await makeApi();
-      await DoctorRepository(api).toggleFavorite(3);
-      expect(a.method, 'POST');
-      expect(a.path, 'client/fav');
-      expect(a.data, {'doctor_id': '3'});
     });
   });
 

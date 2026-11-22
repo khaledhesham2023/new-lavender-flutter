@@ -1,12 +1,12 @@
 import 'package:material_ui/material_ui.dart';
 
-import '../../../core/l10n/l10n_ext.dart';
-import '../../../core/theme/app_assets.dart';
-import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_text_styles.dart';
-import '../../../core/widgets/spacers.dart';
-import '../../../core/widgets/state_view.dart';
-import '../../../data/models/responses/doctor.dart';
+import '../../../../core/l10n/l10n_ext.dart';
+import '../../../../core/theme/app_assets.dart';
+import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/app_text_styles.dart';
+import '../../../../core/widgets/spacers.dart';
+import '../../../../core/widgets/state_view.dart';
+import '../../../../data/models/responses/doctor.dart';
 import 'rating_summary.dart';
 import 'review_item.dart';
 

@@ -1,8 +1,8 @@
 import 'package:material_ui/material_ui.dart';
 
-import '../../../core/l10n/l10n_ext.dart';
-import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_text_styles.dart';
+import '../../../../core/l10n/l10n_ext.dart';
+import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/app_text_styles.dart';
 
 /// The three custom tab buttons (`tabLayoutHolder`): selected = primary fill
 /// with white text (`bg_selected_tab`), others transparent with `c3D4C5E` text.

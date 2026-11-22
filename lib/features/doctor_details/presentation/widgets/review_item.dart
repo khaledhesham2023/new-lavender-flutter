@@ -1,12 +1,12 @@
 import 'package:material_ui/material_ui.dart';
 
-import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_text_styles.dart';
-import '../../../core/utils/date_utils.dart';
-import '../../../core/widgets/app_network_image.dart';
-import '../../../core/widgets/spacers.dart';
-import '../../../core/widgets/star_rating.dart';
-import '../../../data/models/responses/doctor.dart';
+import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/app_text_styles.dart';
+import '../../../../core/utils/date_utils.dart';
+import '../../../../core/widgets/app_network_image.dart';
+import '../../../../core/widgets/spacers.dart';
+import '../../../../core/widgets/star_rating.dart';
+import '../../../../data/models/responses/doctor.dart';
 
 /// Port of `ReviewsAdapter` / `recycler_item_review.xml`: avatar, name, date,
 /// stars and comment on a light grey card.

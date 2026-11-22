@@ -22,7 +22,7 @@ import '../../features/content/about_us_screen.dart';
 import '../../features/content/contact_us_screen.dart';
 import '../../features/content/content_cubit.dart';
 import '../../features/content/html_page_screen.dart';
-import '../../features/doctor_details/doctor_details_screen.dart';
+import '../../features/doctor_details/presentation/screens/doctor_details_screen.dart';
 import '../../features/favorites/presentation/screens/favorites_screen.dart';
 import '../../features/filter/filter_screen.dart';
 import '../../features/home/home_screen.dart';

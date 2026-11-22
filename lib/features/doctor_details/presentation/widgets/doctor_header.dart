@@ -1,16 +1,16 @@
 import 'package:material_ui/material_ui.dart';
 
-import '../../../core/l10n/l10n_ext.dart';
-import '../../../core/theme/app_assets.dart';
-import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_text_styles.dart';
-import '../../../core/utils/number_utils.dart';
-import '../../../core/widgets/app_network_image.dart';
-import '../../../core/widgets/app_svg.dart';
-import '../../../core/widgets/icon_info_box.dart';
-import '../../../core/widgets/spacers.dart';
-import '../../../core/widgets/star_rating.dart';
-import '../../../data/models/responses/doctor.dart';
+import '../../../../core/l10n/l10n_ext.dart';
+import '../../../../core/theme/app_assets.dart';
+import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/app_text_styles.dart';
+import '../../../../core/utils/number_utils.dart';
+import '../../../../core/widgets/app_network_image.dart';
+import '../../../../core/widgets/app_svg.dart';
+import '../../../../core/widgets/icon_info_box.dart';
+import '../../../../core/widgets/spacers.dart';
+import '../../../../core/widgets/star_rating.dart';
+import '../../../../data/models/responses/doctor.dart';
 
 /// Top bar of `fragment_doctor_details.xml`: back, title, heart (logged in only,
 /// once the doctor is loaded) and share.

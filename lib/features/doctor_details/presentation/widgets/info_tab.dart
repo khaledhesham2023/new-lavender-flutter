@@ -3,13 +3,13 @@ import 'package:material_ui/material_ui.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 
-import '../../../core/l10n/l10n_ext.dart';
-import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_text_styles.dart';
-import '../../../core/widgets/app_network_image.dart';
-import '../../../core/widgets/loading_view.dart';
-import '../../../core/widgets/spacers.dart';
-import '../../../data/models/responses/doctor.dart';
+import '../../../../core/l10n/l10n_ext.dart';
+import '../../../../core/theme/app_colors.dart';
+import '../../../../core/theme/app_text_styles.dart';
+import '../../../../core/widgets/app_network_image.dart';
+import '../../../../core/widgets/loading_view.dart';
+import '../../../../core/widgets/spacers.dart';
+import '../../../../data/models/responses/doctor.dart';
 import 'expandable_text.dart';
 
 /// Port of `GeneralInfoFragment`: about (4 lines + show more), work days and the

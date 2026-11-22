@@ -3,7 +3,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../data/repositories/auth_repository.dart';
 import '../../data/repositories/booking_repository.dart';
-import '../../data/repositories/doctor_repository.dart';
+import '../../features/doctor_details/data/repositories/doctor_repository_impl.dart';
+import '../../features/doctor_details/domain/repositories/doctor_repository.dart';
 import '../../features/favorites/data/repositories/favorites_repository_impl.dart';
 import '../../features/favorites/domain/repositories/favorites_repository.dart';
 import '../../data/repositories/general_repository.dart';
@@ -52,7 +53,9 @@ Future<void> configureDependencies() async {
     ..registerLazySingleton(() => HomeRepository(sl()))
     ..registerLazySingleton(() => SpecialitiesRepository(sl()))
     ..registerLazySingleton(() => SearchRepository(sl()))
-    ..registerLazySingleton(() => DoctorRepository(sl()))
+    ..registerLazySingleton<DoctorRepository>(
+      () => DoctorRepositoryImpl(sl()),
+    )
     ..registerLazySingleton(() => BookingRepository(sl()))
     ..registerLazySingleton<FavoritesRepository>(
       () => FavoritesRepositoryImpl(sl()),
