@@ -1,35 +1,15 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/network/api_result.dart';
 import '../../../data/models/responses/speciality.dart';
 import '../../../shared/domain/repositories/specialities_repository.dart';
+import 'all_specialities_state.dart';
 
-/// "All specialities" list: the "Medical offers" tile (id 0) first, then every
-/// speciality, with no "More" tile (port of `SpecialitiesAdapter.submitList`,
-/// `inHome = false`).
 List<SpecialityModel> buildAllSpecialities(
   List<SpecialityModel> specialities,
   String medicalOffersLabel,
 ) {
   return [SpecialityModel(id: 0, name: medicalOffersLabel), ...specialities];
-}
-
-class AllSpecialitiesState extends Equatable {
-  final ViewStatus status;
-  final List<SpecialityModel> specialities;
-
-  /// Failure of `getSpecialities`; the screen picks the view from its type.
-  final ApiFailure<dynamic>? failure;
-
-  const AllSpecialitiesState({
-    this.status = ViewStatus.initial,
-    this.specialities = const [],
-    this.failure,
-  });
-
-  @override
-  List<Object?> get props => [status, specialities, failure];
 }
 
 /// Port of `AllSpecialitiesViewModel`.

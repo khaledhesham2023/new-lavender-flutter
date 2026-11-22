@@ -21,6 +21,7 @@ import '../../../shared/domain/repositories/search_repository.dart';
 import '../../../app/router/route_args.dart';
 import 'filter_cubit.dart';
 import 'subspecialties_sheet.dart';
+import 'filter_state.dart';
 
 /// Port of `FilterFragment`: price range, doctor gender and subspecialties.
 /// Pops the edited `SearchFilter` on "Show results" and nothing on back.

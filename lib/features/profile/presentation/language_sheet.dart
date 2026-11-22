@@ -16,6 +16,7 @@ import '../../../core/widgets/progress_button.dart';
 import '../domain/repositories/profile_repository.dart';
 import '../../../app/router/routes.dart';
 import 'language_cubit.dart';
+import 'language_state.dart';
 
 /// Port of `ChangeLanguageSheet`. Confirming switches the whole app (the
 /// locale flips RTL/LTR) and lands on Home, as Android restarts `MainActivity`.

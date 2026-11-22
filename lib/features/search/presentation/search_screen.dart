@@ -20,6 +20,8 @@ import 'search_cubit.dart';
 import 'widgets/most_selected_list.dart';
 import 'widgets/recent_searches_list.dart';
 import 'widgets/search_results_view.dart';
+import 'search_mode.dart';
+import 'search_state.dart';
 
 /// Port of `LastSearchFragment` (the Search tab).
 class SearchScreen extends StatelessWidget {

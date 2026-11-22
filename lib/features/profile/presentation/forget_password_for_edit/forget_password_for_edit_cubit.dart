@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/network/api_result.dart';
@@ -7,34 +6,8 @@ import '../../../../core/storage/app_prefs.dart';
 import '../../../../data/models/requests/auth_requests.dart';
 import '../../../../shared/domain/repositories/auth_repository.dart';
 import '../../../../app/router/route_args.dart';
-
-enum ForgetPasswordForEditEvent {
-  none,
-
-  /// Password changed: show the success sheet, then call [ForgetPasswordForEditCubit.logout].
-  changed,
-
-  /// Logged out: go to Start now.
-  loggedOut,
-
-  /// The logout call failed: the session stays; toast, then back to Profile.
-  logoutFailed,
-}
-
-class ForgetPasswordForEditState extends Equatable {
-  final bool loading;
-  final ForgetPasswordForEditEvent event;
-  final ApiFailure<dynamic>? failure;
-
-  const ForgetPasswordForEditState({
-    this.loading = false,
-    this.event = ForgetPasswordForEditEvent.none,
-    this.failure,
-  });
-
-  @override
-  List<Object?> get props => [loading, event, failure];
-}
+import 'forget_password_for_edit_event.dart';
+import 'forget_password_for_edit_state.dart';
 
 /// Port of `ForgetPasswordForEditPasswordFragment` + `AuthViewModel.changePassword`,
 /// and of the logout Android runs through Profile's `markedForLogout`.

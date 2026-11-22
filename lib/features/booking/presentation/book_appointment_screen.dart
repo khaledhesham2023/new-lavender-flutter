@@ -22,6 +22,7 @@ import 'book_appointment_cubit.dart';
 import 'change_appointment_sheet.dart';
 import '../../../shared/widgets/booking_info_card.dart';
 import '../../../shared/widgets/doctor_summary_card.dart';
+import 'book_appointment_state.dart';
 
 /// Port of `BookAppointmentFragment`: confirm the chosen day/time, add optional
 /// notes and book.

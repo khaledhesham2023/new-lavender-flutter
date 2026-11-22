@@ -23,6 +23,8 @@ import '../../../app/router/routes.dart';
 import 'content_cubit.dart';
 import '../../../core/widgets/app_top_bar.dart';
 import 'widgets/html_content.dart';
+import 'content_kind.dart';
+import 'content_state.dart';
 
 /// Port of `AboutFragment` (`fragment_about.xml`).
 class AboutAppScreen extends StatelessWidget {

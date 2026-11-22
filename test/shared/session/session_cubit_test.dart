@@ -4,6 +4,7 @@ import 'package:lavender/core/storage/app_prefs.dart';
 import 'package:lavender/shared/session/user_store.dart';
 import 'package:lavender/data/models/responses/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:lavender/shared/session/session_state.dart';
 
 Future<(SessionCubit, AppPrefs, UserStore)> _make([
   Map<String, Object> initial = const {},

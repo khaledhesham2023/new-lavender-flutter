@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/network/api_result.dart';
@@ -6,52 +5,8 @@ import '../../../core/utils/date_utils.dart';
 import '../../../data/models/requests/appointment_requests.dart';
 import '../../../data/models/requests/booking_draft.dart';
 import '../../../shared/domain/repositories/booking_repository.dart';
+import 'book_appointment_state.dart';
 
-class BookAppointmentState extends Equatable {
-  /// The booking being confirmed; day / time are replaced by [BookAppointmentCubit.changeTo].
-  final BookingDraft draft;
-
-  /// Text of the "Date" line: the draft's formatted date until the day is changed.
-  final String dayText;
-
-  /// `loading` while saving; `success` once [bookedId] is set.
-  final ViewStatus status;
-  final int? bookedId;
-  final ApiFailure<dynamic>? failure;
-
-  const BookAppointmentState({
-    required this.draft,
-    required this.dayText,
-    this.status = ViewStatus.initial,
-    this.bookedId,
-    this.failure,
-  });
-
-  bool get saving => status == ViewStatus.loading;
-
-  BookAppointmentState copyWith({
-    BookingDraft? draft,
-    String? dayText,
-    ViewStatus? status,
-    int? bookedId,
-    ApiFailure<dynamic>? failure,
-    bool clearBookedId = false,
-    bool clearFailure = false,
-  }) => BookAppointmentState(
-    draft: draft ?? this.draft,
-    dayText: dayText ?? this.dayText,
-    status: status ?? this.status,
-    bookedId: clearBookedId ? null : (bookedId ?? this.bookedId),
-    failure: clearFailure ? null : (failure ?? this.failure),
-  );
-
-  @override
-  List<Object?> get props => [draft, dayText, status, bookedId, failure];
-}
-
-/// Port of `BookAppointmentsViewModel` + the day/time part of
-/// `BookAppointmentFragment` (`BookingRequestModel` and the change-sheet result
-/// become [BookingDraft] and [changeTo]).
 class BookAppointmentCubit extends Cubit<BookAppointmentState> {
   BookAppointmentCubit(this._repository, BookingDraft draft)
     : super(

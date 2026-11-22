@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/network/api_result.dart';
@@ -6,52 +5,8 @@ import '../../../../shared/session/session_cubit.dart';
 import '../../../../data/models/requests/auth_requests.dart';
 import '../../../../shared/domain/repositories/auth_repository.dart';
 import '../../../../app/router/route_args.dart';
-
-enum OtpChangePhoneEvent {
-  none,
-
-  /// New phone confirmed and stored: show the success sheet, then go back.
-  phoneChanged,
-
-  /// Forgot-password code accepted: open the new-password screen with [OtpChangePhoneState.otp].
-  navigateNewPassword,
-}
-
-class OtpChangePhoneState extends Equatable {
-  final bool loading;
-  final bool codeError;
-  final OtpChangePhoneEvent event;
-  final ApiFailure<dynamic>? failure;
-  final String otp;
-
-  const OtpChangePhoneState({
-    this.loading = false,
-    this.codeError = false,
-    this.event = OtpChangePhoneEvent.none,
-    this.failure,
-    this.otp = '',
-  });
-
-  /// Keeps loading / codeError; the one-shot fields reset unless given.
-  OtpChangePhoneState copyWith({
-    bool? loading,
-    bool? codeError,
-    OtpChangePhoneEvent event = OtpChangePhoneEvent.none,
-    ApiFailure<dynamic>? failure,
-    String otp = '',
-  }) {
-    return OtpChangePhoneState(
-      loading: loading ?? this.loading,
-      codeError: codeError ?? this.codeError,
-      event: event,
-      failure: failure,
-      otp: otp,
-    );
-  }
-
-  @override
-  List<Object?> get props => [loading, codeError, event, failure, otp];
-}
+import 'otp_change_phone_event.dart';
+import 'otp_change_phone_state.dart';
 
 /// Port of `OtpChangePhoneFragment` + `AuthViewModel.verifyChangedPhone /
 /// verifyForgetPassword`. Resend is intentionally not offered.

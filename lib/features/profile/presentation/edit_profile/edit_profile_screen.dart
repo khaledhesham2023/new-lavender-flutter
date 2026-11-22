@@ -30,6 +30,8 @@ import '../../../../shared/widgets/field_error.dart';
 import '../../../../shared/widgets/labeled_field.dart';
 import '../general_sheet.dart';
 import 'edit_profile_cubit.dart';
+import 'edit_profile_event.dart';
+import 'edit_profile_state.dart';
 
 /// Port of `EditProfile` (`fragment_edit_profile.xml`).
 class EditProfileScreen extends StatelessWidget {

@@ -1,29 +1,10 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/network/api_result.dart';
 import '../../../../data/models/requests/auth_requests.dart';
 import '../../../../shared/domain/repositories/auth_repository.dart';
-
-/// One-shot effect the screen reacts to (then calls [ForgetPasswordCubit.consumeEvent]).
-enum ForgetPasswordEvent { none, navigateOtp }
-
-class ForgetPasswordState extends Equatable {
-  final ViewStatus status;
-  final ApiFailure<dynamic>? failure;
-  final ForgetPasswordEvent event;
-
-  const ForgetPasswordState({
-    this.status = ViewStatus.initial,
-    this.failure,
-    this.event = ForgetPasswordEvent.none,
-  });
-
-  bool get isLoading => status == ViewStatus.loading;
-
-  @override
-  List<Object?> get props => [status, failure, event];
-}
+import 'forget_password_event.dart';
+import 'forget_password_state.dart';
 
 /// Port of `ForgetPasswordFragment` + `AuthViewModel.resetPassword`.
 class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {

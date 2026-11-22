@@ -6,6 +6,8 @@ import 'package:lavender/shared/domain/repositories/auth_repository.dart';
 import 'package:lavender/features/auth/presentation/forget_password/forget_password_cubit.dart';
 import 'package:lavender/features/auth/presentation/new_password/new_password_cubit.dart';
 import 'package:lavender/app/router/route_args.dart';
+import 'package:lavender/features/auth/presentation/forget_password/forget_password_event.dart';
+import 'package:lavender/features/auth/presentation/new_password/new_password_event.dart';
 
 class _FakeAuthRepository implements AuthRepository {
   ApiResult<void> changeResult = const ApiSuccess(null);

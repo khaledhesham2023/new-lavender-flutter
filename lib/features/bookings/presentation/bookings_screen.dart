@@ -26,6 +26,7 @@ import 'filter_by_date_sheet.dart';
 import 'filter_by_type_sheet.dart';
 import 'widgets/booking_card.dart';
 import 'widgets/status_tabs.dart';
+import 'bookings_state.dart';
 
 /// Port of `BookingsFragment` (bottom-navigation "Bookings" tab). Guests see
 /// the login prompt; logged-in users get the status tabs, search, filters and
@@ -83,7 +84,8 @@ class _GuestView extends StatelessWidget {
                 child: StateView.empty(
                   icon: AppAssets.icMustLogin,
                   title: l10n.youMustLoginTitle,
-                  body: l10n.youHaveToLoginFirstBodyReservationsAndTrackFavorites,
+                  body:
+                      l10n.youHaveToLoginFirstBodyReservationsAndTrackFavorites,
                   buttonTitle: l10n.login,
                   onButton: () => context.push(Routes.authStart),
                 ),
@@ -362,7 +364,9 @@ class _BookingsList extends StatelessWidget {
               title: l10n.noInternetConncetion,
               body: l10n.noInternetConncetionBody2,
             ),
-            ServerFailure() => StateView.serverError(body: l10n.serverErrorBody2),
+            ServerFailure() => StateView.serverError(
+              body: l10n.serverErrorBody2,
+            ),
             // Unknown failures are only toasted.
             _ => const SizedBox.expand(),
           }),

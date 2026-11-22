@@ -23,6 +23,7 @@ import '../../../app/router/routes.dart';
 import '../../../shared/widgets/speed_lottie.dart';
 import '../../../shared/cubits/my_offer_details_cubit.dart';
 import 'widgets/offer_summary_card.dart';
+import '../../../shared/cubits/my_offer_details_state.dart';
 
 /// Port of `SuccessfulOfferPurchaseFragment`: loads the purchased (user) offer
 /// and shows it under the success banner. The id is a user-offer id.

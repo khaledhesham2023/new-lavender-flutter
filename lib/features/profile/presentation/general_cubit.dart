@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/network/api_result.dart';
@@ -6,25 +5,8 @@ import '../../../shared/session/session_cubit.dart';
 import '../../../core/storage/app_prefs.dart';
 import '../../../shared/domain/repositories/auth_repository.dart';
 import '../domain/repositories/profile_repository.dart';
-
-/// Which confirmation the general sheet shows.
-enum GeneralType { logout, deleteAccount }
-
-class GeneralState extends Equatable {
-  final bool loading;
-
-  /// One-shot: the account was logged out / deleted (the sheet closes and the
-  /// app goes to the Start screen).
-  final bool done;
-
-  /// One-shot failure (toasted, then [GeneralCubit.consumeFailure]).
-  final ApiFailure<dynamic>? failure;
-
-  const GeneralState({this.loading = false, this.done = false, this.failure});
-
-  @override
-  List<Object?> get props => [loading, done, failure];
-}
+import 'general_state.dart';
+import 'general_type.dart';
 
 /// Port of the `Logout` / `DeleteAccount` events of `ProfileViewModel`.
 class GeneralCubit extends Cubit<GeneralState> {

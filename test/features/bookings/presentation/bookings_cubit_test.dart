@@ -6,6 +6,7 @@ import 'package:lavender/core/enums/enums.dart';
 import 'package:lavender/data/models/responses/appointment.dart';
 import 'package:lavender/shared/domain/repositories/booking_repository.dart';
 import 'package:lavender/features/bookings/presentation/bookings_cubit.dart';
+import 'package:lavender/features/bookings/presentation/bookings_state.dart';
 
 class _Call {
   final String status;

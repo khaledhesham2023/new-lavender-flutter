@@ -20,6 +20,8 @@ import '../../../../shared/widgets/field_error.dart';
 import '../../../../shared/widgets/otp_input.dart';
 import '../success_sheet.dart';
 import 'otp_change_phone_cubit.dart';
+import 'otp_change_phone_event.dart';
+import 'otp_change_phone_state.dart';
 
 /// Port of `OtpChangePhoneFragment` (`fragment_otp_change_phone.xml`): confirms the new
 /// phone (Edit profile) or the code of the profile forgot-password flow.

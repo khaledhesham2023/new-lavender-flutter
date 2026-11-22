@@ -10,6 +10,7 @@ import 'package:lavender/shared/domain/repositories/auth_repository.dart';
 import 'package:lavender/features/auth/presentation/otp/otp_cubit.dart';
 import 'package:lavender/app/router/route_args.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:lavender/features/auth/presentation/otp/otp_event.dart';
 
 class _FakeAuthRepository implements AuthRepository {
   ApiResult<UserModel> verifyPhoneResult = const ApiSuccess(UserModel(id: 1));

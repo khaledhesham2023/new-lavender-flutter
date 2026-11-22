@@ -1,70 +1,12 @@
 import 'dart:async';
 
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/network/api_result.dart';
-import '../../../data/models/responses/search.dart';
-import '../../../data/models/responses/speciality.dart';
 import '../../../shared/domain/repositories/search_repository.dart';
+import 'search_mode.dart';
+import 'search_state.dart';
 
-/// Which of the three bodies the Search tab shows.
-enum SearchMode { mostSelected, recent, results }
-
-class SearchState extends Equatable {
-  final SearchMode mode;
-
-  /// Status of the request behind the current [mode]. `loading` hides every
-  /// body (Android shows only the loader); `failure` shows the error view.
-  final ViewStatus status;
-  final ApiFailure<dynamic>? failure;
-
-  final List<SpecialityModel> mostSelected;
-  final List<RecentSearchModel> recent;
-  final SearchResultsData results;
-
-  const SearchState({
-    this.mode = SearchMode.mostSelected,
-    this.status = ViewStatus.initial,
-    this.failure,
-    this.mostSelected = const [],
-    this.recent = const [],
-    this.results = const SearchResultsData(),
-  });
-
-  SearchState copyWith({
-    SearchMode? mode,
-    ViewStatus? status,
-    ApiFailure<dynamic>? failure,
-    bool clearFailure = false,
-    List<SpecialityModel>? mostSelected,
-    List<RecentSearchModel>? recent,
-    SearchResultsData? results,
-  }) {
-    return SearchState(
-      mode: mode ?? this.mode,
-      status: status ?? this.status,
-      failure: clearFailure ? null : (failure ?? this.failure),
-      mostSelected: mostSelected ?? this.mostSelected,
-      recent: recent ?? this.recent,
-      results: results ?? this.results,
-    );
-  }
-
-  @override
-  List<Object?> get props => [
-    mode,
-    status,
-    failure,
-    mostSelected,
-    recent,
-    results,
-  ];
-}
-
-/// Port of `LastSearchViewModel` plus the event logic of `LastSearchFragment`
-/// (`setupListeners`): most-selected specialities, recent searches (logged in
-/// only) and the debounced live search.
 class SearchCubit extends Cubit<SearchState> {
   SearchCubit(
     this._repository, {
@@ -165,9 +107,6 @@ class SearchCubit extends Cubit<SearchState> {
     if (isLoggedIn && text.trim().isEmpty) showRecent();
   }
 
-  /// Text changed. Non-blank text is searched after [debounce]; blank text
-  /// returns at once to recent searches (logged in and focused) or to the most
-  /// selected specialities.
   void onTextChanged(String text, {required bool hasFocus}) {
     _timer?.cancel();
     if (text.trim().isNotEmpty) {

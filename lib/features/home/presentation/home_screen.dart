@@ -30,6 +30,8 @@ import 'widgets/next_reservation_card.dart';
 import 'widgets/section_header.dart';
 import 'widgets/special_offer_card.dart';
 import 'widgets/specialities_section.dart';
+import '../../../shared/session/session_state.dart';
+import 'home_state.dart';
 
 /// Home tab (port of `HomeFragment`). The shell rebuilds this screen every time
 /// the tab is selected, so it reloads like Android's `initializeComponents`.

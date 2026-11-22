@@ -1,31 +1,9 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/network/api_result.dart';
-import '../../../data/models/responses/about.dart';
 import '../domain/repositories/content_repository.dart';
-
-/// Which server page a [ContentCubit] loads.
-enum ContentKind { aboutApp, aboutUs, terms, privacy }
-
-class ContentState extends Equatable {
-  final ViewStatus status;
-  final AboutModel? model;
-
-  /// One-shot failure (toasted, then [ContentCubit.consumeFailure]).
-  final ApiFailure<dynamic>? failure;
-
-  const ContentState({
-    this.status = ViewStatus.initial,
-    this.model,
-    this.failure,
-  });
-
-  bool get isLoading => status == ViewStatus.loading;
-
-  @override
-  List<Object?> get props => [status, model, failure];
-}
+import 'content_kind.dart';
+import 'content_state.dart';
 
 /// Loads one `AboutModel`: `aboutApp()`, `aboutUs()`, `terms()` or `policy()` of
 /// `ProfileViewModel` (the four content fragments share it).

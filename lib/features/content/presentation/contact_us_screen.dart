@@ -19,6 +19,7 @@ import '../domain/repositories/content_repository.dart';
 import '../../../shared/widgets/field_error.dart';
 import 'contact_us_cubit.dart';
 import '../../../core/widgets/app_top_bar.dart';
+import 'contact_us_state.dart';
 
 /// Port of `ContactUsFragment` (`fragment_contact_us.xml`).
 class ContactUsScreen extends StatelessWidget {

@@ -9,6 +9,8 @@ import 'package:lavender/data/models/responses/user.dart';
 import 'package:lavender/shared/domain/repositories/auth_repository.dart';
 import 'package:lavender/features/auth/presentation/login/login_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:lavender/features/auth/presentation/login/login_event.dart';
+import 'package:lavender/features/auth/presentation/login/login_state.dart';
 
 class _FakeAuthRepository implements AuthRepository {
   ApiResult<UserModel> loginResult = const ApiSuccess(UserModel(id: 1));

@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/network/api_result.dart';
@@ -6,33 +5,8 @@ import '../../../../data/models/requests/auth_requests.dart';
 import '../../../../shared/domain/repositories/auth_repository.dart';
 import '../../domain/repositories/profile_repository.dart';
 import '../../../../app/router/route_args.dart';
-
-enum ChangePasswordEvent {
-  none,
-
-  /// Password changed: show the success sheet, then pop.
-  changed,
-
-  /// Code sent to the own phone: open the OTP screen.
-  codeSent,
-}
-
-class ChangePasswordState extends Equatable {
-  final bool saving;
-  final bool sendingCode;
-  final ChangePasswordEvent event;
-  final ApiFailure<dynamic>? failure;
-
-  const ChangePasswordState({
-    this.saving = false,
-    this.sendingCode = false,
-    this.event = ChangePasswordEvent.none,
-    this.failure,
-  });
-
-  @override
-  List<Object?> get props => [saving, sendingCode, event, failure];
-}
+import 'change_password_event.dart';
+import 'change_password_state.dart';
 
 /// Port of `EditProfileAddNewPasswordFragment` (`ChangePassword` and `ResetPassword`
 /// events of `ProfileViewModel`).

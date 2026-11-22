@@ -13,8 +13,10 @@ import '../../core/widgets/failure_toast.dart';
 import '../../core/widgets/progress_button.dart';
 import '../domain/repositories/booking_repository.dart';
 import 'confirmation_cubit.dart';
+import 'confirm_action.dart';
+import 'confirmation_state.dart';
 
-export 'confirmation_cubit.dart' show ConfirmAction, CancelAction, UpdateAction;
+export 'confirm_action.dart';
 
 /// Port of `ConfirmationSheetFragment`: runs [action] when Confirm is tapped.
 /// Resolves to true after it succeeded, false when cancelled / closed.
@@ -93,7 +95,8 @@ class _ConfirmationView extends StatelessWidget {
                     text: l10n.confirm,
                     height: 52,
                     loading: state.loading,
-                    onPressed: () => context.read<ConfirmationCubit>().confirm(),
+                    onPressed: () =>
+                        context.read<ConfirmationCubit>().confirm(),
                   ),
                 ),
                 const HorizontalSpacer(32),

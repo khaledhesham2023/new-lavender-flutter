@@ -26,6 +26,7 @@ import '../../../shared/widgets/doctor_card.dart';
 import 'search_details_cubit.dart';
 import '../../../shared/domain/entities/search_filter.dart';
 import 'sort_sheet.dart';
+import 'search_details_state.dart';
 
 /// Port of `SearchDetailsFragment`: doctors of one speciality with name search,
 /// sort sheet, filter entry point and favorite hearts.

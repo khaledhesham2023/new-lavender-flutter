@@ -4,6 +4,7 @@ import 'package:lavender/data/models/requests/auth_requests.dart';
 import 'package:lavender/data/models/responses/user.dart';
 import 'package:lavender/shared/domain/repositories/auth_repository.dart';
 import 'package:lavender/features/auth/presentation/register/register_cubit.dart';
+import 'package:lavender/features/auth/presentation/register/register_event.dart';
 
 class _FakeAuthRepository implements AuthRepository {
   ApiResult<UserModel> registerResult = const ApiSuccess(

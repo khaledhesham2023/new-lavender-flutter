@@ -19,6 +19,7 @@ import '../../../app/router/routes.dart';
 import 'offers_cubit.dart';
 import 'widgets/offer_card.dart';
 import 'widgets/specialty_tabs.dart';
+import 'offers_state.dart';
 
 /// Port of `OffersFragment`: specialty tabs and the offers of the selected one.
 /// Opened from Home / All specialities ("Medical offers").

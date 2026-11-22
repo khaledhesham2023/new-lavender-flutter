@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/network/api_result.dart';
@@ -7,122 +6,11 @@ import '../../core/enums/enums.dart';
 import '../../data/models/requests/appointment_requests.dart';
 import '../../data/models/responses/doctor.dart';
 import '../domain/repositories/booking_repository.dart';
+import 'rebook_args.dart';
+import 'rebook_confirm.dart';
+import 'rebook_outcome.dart';
+import 'rebook_state.dart';
 
-/// Arguments of `ChooseRebookAppointmentSheetFragment`.
-class RebookArgs extends Equatable {
-  final int appointmentId;
-  final int doctorId;
-  final BookingStatus status;
-
-  /// `"book"` (change a pending / confirmed booking) or `"rebook"`.
-  final String type;
-  final bool forOffer;
-
-  const RebookArgs({
-    required this.appointmentId,
-    required this.doctorId,
-    required this.status,
-    required this.type,
-    this.forOffer = false,
-  });
-
-  @override
-  List<Object?> get props => [appointmentId, doctorId, status, type, forOffer];
-}
-
-/// What the rebook sheet resolves to.
-sealed class RebookOutcome {
-  const RebookOutcome();
-}
-
-/// Pending / confirmed: the new slot, still to be confirmed by the caller.
-class ChangeRequested extends RebookOutcome {
-  final UpdateAppointmentRequest request;
-  const ChangeRequested(this.request);
-}
-
-/// Completed / canceled / rejected: the new appointment was created.
-class Rebooked extends RebookOutcome {
-  final int newId;
-  final bool forOffer;
-  const Rebooked(this.newId, this.forOffer);
-}
-
-class RebookState extends Equatable {
-  final ViewStatus status;
-  final List<WorkTimeModel> days;
-  final WorkTimeModel? selectedDay;
-  final TimeModel? selectedTime;
-  final bool submitting;
-  final ApiFailure<dynamic>? failure;
-
-  const RebookState({
-    this.status = ViewStatus.initial,
-    this.days = const [],
-    this.selectedDay,
-    this.selectedTime,
-    this.submitting = false,
-    this.failure,
-  });
-
-  RebookState copyWith({
-    ViewStatus? status,
-    List<WorkTimeModel>? days,
-    WorkTimeModel? selectedDay,
-    bool clearSelectedDay = false,
-    TimeModel? selectedTime,
-    bool clearSelectedTime = false,
-    bool? submitting,
-    ApiFailure<dynamic>? failure,
-    bool clearFailure = false,
-  }) => RebookState(
-    status: status ?? this.status,
-    days: days ?? this.days,
-    selectedDay: clearSelectedDay ? null : (selectedDay ?? this.selectedDay),
-    selectedTime: clearSelectedTime
-        ? null
-        : (selectedTime ?? this.selectedTime),
-    submitting: submitting ?? this.submitting,
-    failure: clearFailure ? null : (failure ?? this.failure),
-  );
-
-  @override
-  List<Object?> get props => [
-    status,
-    days,
-    selectedDay,
-    selectedTime,
-    submitting,
-    failure,
-  ];
-}
-
-/// Result of [RebookCubit.confirm].
-sealed class RebookConfirm {
-  const RebookConfirm();
-}
-
-class RebookNeedsDay extends RebookConfirm {
-  const RebookNeedsDay();
-}
-
-class RebookNeedsTime extends RebookConfirm {
-  const RebookNeedsTime();
-}
-
-class RebookDone extends RebookConfirm {
-  final RebookOutcome outcome;
-  const RebookDone(this.outcome);
-}
-
-class RebookFailed extends RebookConfirm {
-  final ApiFailure<dynamic> failure;
-  const RebookFailed(this.failure);
-}
-
-/// Port of `ChooseRebookAppointmentSheetFragment`'s state: loads the doctor's
-/// work times, keeps the day / time selection and, on confirm, either returns the
-/// requested change (pending / confirmed) or creates the rebooking.
 class RebookCubit extends Cubit<RebookState> {
   RebookCubit(this._repo, this.args) : super(const RebookState());
 
@@ -157,9 +45,8 @@ class RebookCubit extends Cubit<RebookState> {
     ),
   );
 
-  void selectTime(TimeModel? time) => emit(
-    state.copyWith(selectedTime: time, clearSelectedTime: time == null),
-  );
+  void selectTime(TimeModel? time) =>
+      emit(state.copyWith(selectedTime: time, clearSelectedTime: time == null));
 
   Future<RebookConfirm> confirm() async {
     final day = state.selectedDay;

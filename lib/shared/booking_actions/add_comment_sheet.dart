@@ -16,6 +16,7 @@ import '../../core/widgets/failure_toast.dart';
 import '../../core/widgets/star_rating.dart';
 import '../domain/repositories/booking_repository.dart';
 import 'add_comment_cubit.dart';
+import 'add_comment_state.dart';
 
 /// Port of `AddCommentSheetFragment`. Resolves to true after the review was sent.
 Future<bool> showAddCommentSheet(
@@ -155,7 +156,10 @@ class _AddCommentViewState extends State<_AddCommentView> {
                           Expanded(
                             child: TextField(
                               controller: _controller,
-                              style: AppTextStyles.medium(12, AppColors.c251836),
+                              style: AppTextStyles.medium(
+                                12,
+                                AppColors.c251836,
+                              ),
                               decoration: InputDecoration(
                                 border: InputBorder.none,
                                 isCollapsed: true,
@@ -250,7 +254,8 @@ class _QuickComments extends StatelessWidget {
                     p.quickComments != c.quickComments ||
                     p.loadingQuickComments != c.loadingQuickComments,
                 builder: (context, state) {
-                  if (state.loadingQuickComments && state.quickComments.isEmpty) {
+                  if (state.loadingQuickComments &&
+                      state.quickComments.isEmpty) {
                     return const Center(
                       child: SizedBox(
                         width: 18,

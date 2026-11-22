@@ -1,66 +1,11 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/network/api_result.dart';
 import '../../../data/models/requests/appointment_requests.dart';
 import '../../../data/models/responses/doctor.dart';
 import '../../../shared/domain/repositories/booking_repository.dart';
-
-class ChangeAppointmentState extends Equatable {
-  final ViewStatus status;
-  final List<WorkTimeModel> days;
-  final WorkTimeModel? selectedDay;
-  final TimeModel? selectedTime;
-  final ApiFailure<dynamic>? failure;
-
-  const ChangeAppointmentState({
-    this.status = ViewStatus.initial,
-    this.days = const [],
-    this.selectedDay,
-    this.selectedTime,
-    this.failure,
-  });
-
-  ChangeAppointmentState copyWith({
-    ViewStatus? status,
-    List<WorkTimeModel>? days,
-    WorkTimeModel? selectedDay,
-    bool clearSelectedDay = false,
-    TimeModel? selectedTime,
-    bool clearSelectedTime = false,
-    ApiFailure<dynamic>? failure,
-    bool clearFailure = false,
-  }) => ChangeAppointmentState(
-    status: status ?? this.status,
-    days: days ?? this.days,
-    selectedDay: clearSelectedDay ? null : (selectedDay ?? this.selectedDay),
-    selectedTime: clearSelectedTime
-        ? null
-        : (selectedTime ?? this.selectedTime),
-    failure: clearFailure ? null : (failure ?? this.failure),
-  );
-
-  @override
-  List<Object?> get props => [status, days, selectedDay, selectedTime, failure];
-}
-
-/// Result of [ChangeAppointmentCubit.confirm].
-sealed class ChangeConfirm {
-  const ChangeConfirm();
-}
-
-class ChangeConfirmed extends ChangeConfirm {
-  final ChangeAppointmentRequest request;
-  const ChangeConfirmed(this.request);
-}
-
-class ChangeNeedsDay extends ChangeConfirm {
-  const ChangeNeedsDay();
-}
-
-class ChangeNeedsTime extends ChangeConfirm {
-  const ChangeNeedsTime();
-}
+import 'change_appointment_state.dart';
+import 'change_confirm.dart';
 
 /// Port of the work-times part of `BookingSearchViewModel` used by
 /// `ChangeAppointmentSheetFragment`, plus its day / time selection.
@@ -99,9 +44,8 @@ class ChangeAppointmentCubit extends Cubit<ChangeAppointmentState> {
     ),
   );
 
-  void selectTime(TimeModel? time) => emit(
-    state.copyWith(selectedTime: time, clearSelectedTime: time == null),
-  );
+  void selectTime(TimeModel? time) =>
+      emit(state.copyWith(selectedTime: time, clearSelectedTime: time == null));
 
   /// Validates the selection like the Confirm button of the sheet.
   ChangeConfirm confirm() {

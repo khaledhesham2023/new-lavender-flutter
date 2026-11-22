@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/network/api_result.dart';
@@ -7,30 +6,8 @@ import '../../../../core/push/device_token.dart';
 import '../../../../shared/session/session_cubit.dart';
 import '../../../../data/models/requests/auth_requests.dart';
 import '../../../../shared/domain/repositories/auth_repository.dart';
-
-/// One-shot effect the screen reacts to (then calls [LoginCubit.consumeEvent]).
-enum LoginEvent { none, navigateHome, navigateOtp }
-
-class LoginState extends Equatable {
-  final ViewStatus status;
-  final ApiFailure<dynamic>? failure;
-  final LoginEvent event;
-
-  /// Phone to show on the OTP screen when [event] is [LoginEvent.navigateOtp].
-  final String? otpPhone;
-
-  const LoginState({
-    this.status = ViewStatus.initial,
-    this.failure,
-    this.event = LoginEvent.none,
-    this.otpPhone,
-  });
-
-  bool get isLoading => status == ViewStatus.loading;
-
-  @override
-  List<Object?> get props => [status, failure, event, otpPhone];
-}
+import 'login_event.dart';
+import 'login_state.dart';
 
 /// Port of `LoginFragment` + `AuthViewModel.login/resendCode`.
 class LoginCubit extends Cubit<LoginState> {

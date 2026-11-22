@@ -17,8 +17,13 @@ import '../domain/repositories/booking_repository.dart';
 import '../domain/day_time_logic.dart';
 import '../widgets/day_time_picker.dart';
 import 'rebook_cubit.dart';
+import 'rebook_args.dart';
+import 'rebook_confirm.dart';
+import 'rebook_outcome.dart';
+import 'rebook_state.dart';
 
-export 'rebook_cubit.dart' show RebookArgs, RebookOutcome, ChangeRequested, Rebooked;
+export 'rebook_args.dart';
+export 'rebook_outcome.dart';
 
 /// Port of `ChooseRebookAppointmentSheetFragment`. Not dismissible by tapping
 /// outside (Android `isCancel = false`); Cancel / back close it with null.

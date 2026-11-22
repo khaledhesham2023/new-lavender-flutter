@@ -15,6 +15,8 @@ import '../../../../app/router/routes.dart';
 import '../../../../shared/widgets/auth_header.dart';
 import '../../../../shared/widgets/password_field.dart';
 import 'new_password_cubit.dart';
+import 'new_password_event.dart';
+import 'new_password_state.dart';
 
 class NewPasswordScreen extends StatelessWidget {
   final NewPasswordArgs args;

@@ -21,6 +21,8 @@ import '../../../../shared/widgets/auth_header.dart';
 import '../../../../shared/widgets/field_error.dart';
 import '../../../../shared/widgets/otp_input.dart';
 import 'otp_cubit.dart';
+import 'otp_event.dart';
+import 'otp_state.dart';
 
 class OtpScreen extends StatelessWidget {
   final OtpArgs args;

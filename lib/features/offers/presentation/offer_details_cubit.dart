@@ -1,30 +1,8 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/network/api_result.dart';
-import '../../../data/models/responses/offer.dart';
 import '../../../shared/domain/repositories/offers_repository.dart';
-
-class OfferDetailsState extends Equatable {
-  final ViewStatus status;
-  final OfferModel? offer;
-
-  /// Failure of `details`; the screen picks the view from its type.
-  final ApiFailure<dynamic>? failure;
-
-  const OfferDetailsState({
-    this.status = ViewStatus.initial,
-    this.offer,
-    this.failure,
-  });
-
-  /// The offer no longer exists (HTTP 404).
-  bool get notFound =>
-      failure is ServerFailure && (failure as ServerFailure).code == 404;
-
-  @override
-  List<Object?> get props => [status, offer, failure];
-}
+import 'offer_details_state.dart';
 
 /// Port of the offer-details part of `OffersViewModel`.
 class OfferDetailsCubit extends Cubit<OfferDetailsState> {

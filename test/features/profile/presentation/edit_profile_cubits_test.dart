@@ -12,6 +12,8 @@ import 'package:lavender/features/profile/presentation/edit_profile/edit_profile
 import 'package:lavender/features/profile/presentation/otp_change_phone/otp_change_phone_cubit.dart';
 import 'package:lavender/app/router/route_args.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:lavender/features/profile/presentation/edit_profile/edit_profile_event.dart';
+import 'package:lavender/features/profile/presentation/otp_change_phone/otp_change_phone_event.dart';
 
 class _FakeProfileRepository implements ProfileRepository {
   ApiResult<UserModel> profileResult = const ApiSuccess(

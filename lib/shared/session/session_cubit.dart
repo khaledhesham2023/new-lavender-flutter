@@ -1,24 +1,9 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../data/models/responses/user.dart';
 import '../../core/storage/app_prefs.dart';
 import 'user_store.dart';
-
-class SessionState extends Equatable {
-  final bool isLoggedIn;
-  final String languageCode;
-  final UserData? user;
-
-  const SessionState({
-    this.isLoggedIn = false,
-    this.languageCode = 'ar',
-    this.user,
-  });
-
-  @override
-  List<Object?> get props => [isLoggedIn, languageCode, user];
-}
+import 'session_state.dart';
 
 /// App-wide session: login state, language and the stored user.
 class SessionCubit extends Cubit<SessionState> {

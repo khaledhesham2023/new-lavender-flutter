@@ -17,6 +17,8 @@ import '../../../../app/router/routes.dart';
 import '../../../../shared/widgets/auth_header.dart';
 import '../widgets/phone_field.dart';
 import 'forget_password_cubit.dart';
+import 'forget_password_event.dart';
+import 'forget_password_state.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
   const ForgetPasswordScreen({super.key});

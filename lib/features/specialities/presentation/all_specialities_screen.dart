@@ -18,6 +18,7 @@ import '../../../shared/domain/repositories/specialities_repository.dart';
 import '../../../app/router/routes.dart';
 import '../../../shared/widgets/speciality_item.dart';
 import 'all_specialities_cubit.dart';
+import 'all_specialities_state.dart';
 
 /// Port of `AllSpecialitiesFragment`: 3-column grid of every speciality, opened
 /// from Home ("show all" / "More").

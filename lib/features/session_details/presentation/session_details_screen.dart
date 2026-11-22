@@ -25,6 +25,7 @@ import '../../../shared/widgets/booking_info_card.dart';
 import '../../../shared/widgets/doctor_summary_card.dart';
 import '../../../shared/booking_actions/booking_actions.dart';
 import 'session_details_cubit.dart';
+import 'session_details_state.dart';
 
 /// Port of `SessionDetailsFragment`: an appointment booked with an offer —
 /// like the appointment details plus the offer name and remaining sessions.

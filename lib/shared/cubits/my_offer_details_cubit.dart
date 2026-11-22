@@ -1,24 +1,8 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/network/api_result.dart';
-import '../../data/models/responses/offer.dart';
 import '../domain/repositories/offers_repository.dart';
-
-class MyOfferDetailsState extends Equatable {
-  final ViewStatus status;
-  final OfferModel? offer;
-  final ApiFailure<dynamic>? failure;
-
-  const MyOfferDetailsState({
-    this.status = ViewStatus.initial,
-    this.offer,
-    this.failure,
-  });
-
-  @override
-  List<Object?> get props => [status, offer, failure];
-}
+import 'my_offer_details_state.dart';
 
 /// Port of the `GetMyOfferDetails` event of `OffersViewModel`. The id is a user-offer
 /// id (it can also come from a `user_offer` notification, T39).

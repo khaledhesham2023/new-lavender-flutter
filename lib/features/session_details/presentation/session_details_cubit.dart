@@ -1,25 +1,10 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/network/api_result.dart';
 import '../../../data/models/responses/appointment.dart';
 import '../../../data/models/responses/offer.dart';
 import '../../../shared/domain/repositories/offers_repository.dart';
-
-class SessionDetailsState extends Equatable {
-  final ViewStatus status;
-  final SessionDetailsModel? session;
-  final ApiFailure<dynamic>? failure;
-
-  const SessionDetailsState({
-    this.status = ViewStatus.initial,
-    this.session,
-    this.failure,
-  });
-
-  @override
-  List<Object?> get props => [status, session, failure];
-}
+import 'session_details_state.dart';
 
 /// Port of `OffersViewModel.handleGetSessionDetails` for the session screen.
 class SessionDetailsCubit extends Cubit<SessionDetailsState> {

@@ -1,33 +1,10 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/network/api_result.dart';
 import '../../../../data/models/requests/auth_requests.dart';
 import '../../../../shared/domain/repositories/auth_repository.dart';
-
-/// One-shot effect the screen reacts to (then calls [RegisterCubit.consumeEvent]).
-enum RegisterEvent { none, navigateOtp }
-
-class RegisterState extends Equatable {
-  final ViewStatus status;
-  final ApiFailure<dynamic>? failure;
-  final RegisterEvent event;
-
-  /// Phone from the response, shown on the OTP screen.
-  final String? otpPhone;
-
-  const RegisterState({
-    this.status = ViewStatus.initial,
-    this.failure,
-    this.event = RegisterEvent.none,
-    this.otpPhone,
-  });
-
-  bool get isLoading => status == ViewStatus.loading;
-
-  @override
-  List<Object?> get props => [status, failure, event, otpPhone];
-}
+import 'register_event.dart';
+import 'register_state.dart';
 
 /// Port of `RegisterFragment` + `AuthViewModel.register`.
 class RegisterCubit extends Cubit<RegisterState> {

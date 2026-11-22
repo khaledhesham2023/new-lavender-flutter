@@ -20,7 +20,6 @@ import '../../features/bookings/presentation/bookings_screen.dart';
 import '../../features/content/presentation/about_app_screen.dart';
 import '../../features/content/presentation/about_us_screen.dart';
 import '../../features/content/presentation/contact_us_screen.dart';
-import '../../features/content/presentation/content_cubit.dart';
 import '../../features/content/presentation/html_page_screen.dart';
 import '../../features/doctor_details/presentation/screens/doctor_details_screen.dart';
 import '../../features/favorites/presentation/screens/favorites_screen.dart';
@@ -48,6 +47,7 @@ import '../../features/specialities/presentation/all_specialities_screen.dart';
 import '../../features/splash/presentation/splash_screen.dart';
 import 'route_args.dart';
 import 'routes.dart';
+import '../../features/content/presentation/content_kind.dart';
 
 /// Registers every route of the app; never add a route outside this file.
 GoRouter createRouter() {

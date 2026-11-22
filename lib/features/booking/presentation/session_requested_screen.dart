@@ -24,6 +24,7 @@ import '../../../shared/widgets/speed_lottie.dart';
 import 'session_requested_cubit.dart';
 import '../../../shared/widgets/booking_info_card.dart';
 import '../../../shared/widgets/doctor_summary_card.dart';
+import 'session_requested_state.dart';
 
 /// Port of `SuccessfulAppointmentRequestFragmentWithOfferFragment`: loads the
 /// created offer session and shows it under the success banner.
@@ -75,9 +76,7 @@ class _SessionRequestedView extends StatelessWidget {
                   return const LoadingView();
                 case ViewStatus.failure:
                   return state.failure is NetworkFailure
-                      ? StateView.connectionLost(
-                          onRetry: cubit.load,
-                        )
+                      ? StateView.connectionLost(onRetry: cubit.load)
                       : const StateView.serverError();
                 case ViewStatus.success:
                   return _Content(
@@ -159,7 +158,11 @@ class _Content extends StatelessWidget {
                       left: 0,
                       right: 0,
                       child: Center(
-                        child: AppSvg(AppAssets.icSuccess, width: 90, height: 90),
+                        child: AppSvg(
+                          AppAssets.icSuccess,
+                          width: 90,
+                          height: 90,
+                        ),
                       ),
                     ),
                   ],

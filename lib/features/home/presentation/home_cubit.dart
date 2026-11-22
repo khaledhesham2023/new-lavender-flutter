@@ -1,17 +1,13 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/network/api_result.dart';
 import '../../../core/storage/app_prefs.dart';
-import '../../../data/models/responses/doctor.dart';
 import '../../../data/models/responses/home.dart';
 import '../../../data/models/responses/speciality.dart';
 import '../../../shared/domain/repositories/general_repository.dart';
 import '../../../shared/domain/repositories/home_repository.dart';
+import 'home_state.dart';
 
-/// Home grid: the "Medical offers" tile first, then the specialities. With 8 or
-/// more specialities only the first 7 are kept; the tile at index 7 is drawn as
-/// "More" by the widget (port of `SpecialitiesAdapter.submitList`, `inHome`).
 List<SpecialityModel> buildHomeSpecialities(
   List<SpecialityModel> specialities,
   String medicalOffersLabel,
@@ -20,50 +16,6 @@ List<SpecialityModel> buildHomeSpecialities(
     SpecialityModel(id: 0, name: medicalOffersLabel),
     if (specialities.length >= 8) ...specialities.take(7) else ...specialities,
   ];
-}
-
-class HomeState extends Equatable {
-  final ViewStatus status;
-  final HomeData? data;
-  final List<DoctorModel> doctors;
-
-  /// Failure of `getHome`; the screen picks the view from its type.
-  final ApiFailure<dynamic>? failure;
-
-  /// One-shot: a favorite toggle failed and was reverted (the screen toasts it,
-  /// then calls [HomeCubit.consumeFavoriteFailure]).
-  final ApiFailure<dynamic>? favoriteFailure;
-
-  const HomeState({
-    this.status = ViewStatus.initial,
-    this.data,
-    this.doctors = const [],
-    this.failure,
-    this.favoriteFailure,
-  });
-
-  HomeState copyWith({
-    ViewStatus? status,
-    HomeData? data,
-    List<DoctorModel>? doctors,
-    ApiFailure<dynamic>? failure,
-    ApiFailure<dynamic>? favoriteFailure,
-    bool clearFailure = false,
-    bool clearFavoriteFailure = false,
-  }) {
-    return HomeState(
-      status: status ?? this.status,
-      data: data ?? this.data,
-      doctors: doctors ?? this.doctors,
-      failure: clearFailure ? null : (failure ?? this.failure),
-      favoriteFailure: clearFavoriteFailure
-          ? null
-          : (favoriteFailure ?? this.favoriteFailure),
-    );
-  }
-
-  @override
-  List<Object?> get props => [status, data, doctors, failure, favoriteFailure];
 }
 
 /// Port of `HomeViewModel`.
@@ -81,9 +33,6 @@ class HomeCubit extends Cubit<HomeState> {
     await Future.wait<void>([_loadHome(), _loadSettings()]);
   }
 
-  /// Refetches home without the loading state (after coming back from a
-  /// details screen, as Android does in `onResume`). Failures keep what is
-  /// shown.
   Future<void> refresh() async {
     final result = await _home.getHome();
     if (isClosed || result is! ApiSuccess<HomeData>) return;

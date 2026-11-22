@@ -25,6 +25,7 @@ import '../../../shared/domain/repositories/offers_repository.dart';
 import '../../../app/router/routes.dart';
 import 'offer_details_cubit.dart';
 import '../../../shared/widgets/discount_badge.dart';
+import 'offer_details_state.dart';
 
 /// Port of `OfferDetailsFragment`. The route is id-based so a notification can
 /// open it too (T39).

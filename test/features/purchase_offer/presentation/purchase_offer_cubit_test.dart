@@ -10,6 +10,7 @@ import 'package:lavender/features/purchase_offer/data/tap_payment_service.dart';
 import 'package:lavender/features/purchase_offer/domain/entities/payment_outcome.dart';
 import 'package:lavender/features/purchase_offer/domain/services/payment_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:lavender/features/purchase_offer/presentation/purchase_offer_state.dart';
 
 class _FakePayments implements PaymentService {
   PaymentOutcome outcome = const Paid('chg_1');

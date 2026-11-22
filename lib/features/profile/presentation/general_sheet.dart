@@ -17,8 +17,10 @@ import '../../../shared/domain/repositories/auth_repository.dart';
 import '../domain/repositories/profile_repository.dart';
 import '../../../app/router/routes.dart';
 import 'general_cubit.dart';
+import 'general_state.dart';
+import 'general_type.dart';
 
-export 'general_cubit.dart' show GeneralType;
+export 'general_type.dart';
 
 /// Port of `GeneralSheet`: confirmation for "log out" and "delete account".
 /// On success the session is cleared and the app returns to the Start screen.

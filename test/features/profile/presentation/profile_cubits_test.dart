@@ -10,6 +10,7 @@ import 'package:lavender/features/profile/presentation/general_cubit.dart';
 import 'package:lavender/features/profile/presentation/language_cubit.dart';
 import 'package:lavender/features/profile/presentation/profile_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:lavender/features/profile/presentation/general_type.dart';
 
 class _FakeProfile implements ProfileRepository {
   ApiResult<UserModel> profile = const ApiSuccess(

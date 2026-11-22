@@ -1,24 +1,8 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/network/api_result.dart';
-import '../../../data/models/responses/appointment.dart';
 import '../../../shared/domain/repositories/booking_repository.dart';
-
-class AppointmentRequestedState extends Equatable {
-  final ViewStatus status;
-  final AppointmentData? appointment;
-  final ApiFailure<dynamic>? failure;
-
-  const AppointmentRequestedState({
-    this.status = ViewStatus.initial,
-    this.appointment,
-    this.failure,
-  });
-
-  @override
-  List<Object?> get props => [status, appointment, failure];
-}
+import 'appointment_requested_state.dart';
 
 /// Port of `AppointmentDetailsViewModel.GetAppointmentDetails` as used by
 /// `SuccessfulAppointmentRequestFragment`.

@@ -20,6 +20,8 @@ import '../../../../app/router/routes.dart';
 import '../../../../shared/widgets/password_field.dart';
 import '../success_sheet.dart';
 import 'change_password_cubit.dart';
+import 'change_password_event.dart';
+import 'change_password_state.dart';
 
 /// Port of `EditProfileAddNewPasswordFragment` (`fragment_edit_profile_add_new_password.xml`).
 class ChangePasswordScreen extends StatelessWidget {

@@ -11,6 +11,9 @@ import 'package:lavender/features/profile/presentation/change_password/change_pa
 import 'package:lavender/features/profile/presentation/forget_password_for_edit/forget_password_for_edit_cubit.dart';
 import 'package:lavender/app/router/route_args.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:lavender/features/profile/presentation/change_password/change_password_event.dart';
+import 'package:lavender/features/profile/presentation/change_password/change_password_state.dart';
+import 'package:lavender/features/profile/presentation/forget_password_for_edit/forget_password_for_edit_event.dart';
 
 class _FakeProfileRepository implements ProfileRepository {
   ApiResult<void> changeResult = const ApiSuccess(null);

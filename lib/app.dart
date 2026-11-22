@@ -16,6 +16,7 @@ import 'core/theme/app_theme.dart';
 import 'core/widgets/system_ui.dart';
 import 'l10n/generated/app_localizations.dart';
 import 'app/router/app_router.dart';
+import 'shared/session/session_state.dart';
 
 class LavenderApp extends StatefulWidget {
   const LavenderApp({super.key});

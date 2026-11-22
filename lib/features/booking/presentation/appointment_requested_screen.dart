@@ -25,6 +25,7 @@ import '../../../shared/widgets/speed_lottie.dart';
 import 'appointment_requested_cubit.dart';
 import '../../../shared/widgets/booking_info_card.dart';
 import '../../../shared/widgets/doctor_summary_card.dart';
+import 'appointment_requested_state.dart';
 
 /// Port of `SuccessfulAppointmentRequestFragment`: loads the created appointment
 /// and shows it under the success banner.
@@ -67,29 +68,34 @@ class _AppointmentRequestedView extends StatelessWidget {
         backgroundColor: AppColors.white,
         body: SafeArea(
           bottom: false,
-          child: BlocConsumer<AppointmentRequestedCubit, AppointmentRequestedState>(
-            listenWhen: (prev, curr) =>
-                curr.failure is UnknownFailure && prev.failure != curr.failure,
-            listener: (context, state) =>
-                showFailureToast(context, state.failure!),
-            builder: (context, state) {
-              switch (state.status) {
-                case ViewStatus.initial:
-                case ViewStatus.loading:
-                  return const LoadingView();
-                case ViewStatus.failure:
-                  return state.failure is NetworkFailure
-                      ? StateView.connectionLost(onRetry: cubit.load)
-                      : const StateView.serverError();
-                case ViewStatus.success:
-                  return _Content(
-                    appointment: state.appointment!,
-                    onBack: () => _goHome(context),
-                    onGoToReservations: () => context.go(Routes.bookings),
-                  );
-              }
-            },
-          ),
+          child:
+              BlocConsumer<
+                AppointmentRequestedCubit,
+                AppointmentRequestedState
+              >(
+                listenWhen: (prev, curr) =>
+                    curr.failure is UnknownFailure &&
+                    prev.failure != curr.failure,
+                listener: (context, state) =>
+                    showFailureToast(context, state.failure!),
+                builder: (context, state) {
+                  switch (state.status) {
+                    case ViewStatus.initial:
+                    case ViewStatus.loading:
+                      return const LoadingView();
+                    case ViewStatus.failure:
+                      return state.failure is NetworkFailure
+                          ? StateView.connectionLost(onRetry: cubit.load)
+                          : const StateView.serverError();
+                    case ViewStatus.success:
+                      return _Content(
+                        appointment: state.appointment!,
+                        onBack: () => _goHome(context),
+                        onGoToReservations: () => context.go(Routes.bookings),
+                      );
+                  }
+                },
+              ),
         ),
       ),
     );
@@ -162,7 +168,11 @@ class _Content extends StatelessWidget {
                       left: 0,
                       right: 0,
                       child: Center(
-                        child: AppSvg(AppAssets.icSuccess, width: 90, height: 90),
+                        child: AppSvg(
+                          AppAssets.icSuccess,
+                          width: 90,
+                          height: 90,
+                        ),
                       ),
                     ),
                   ],

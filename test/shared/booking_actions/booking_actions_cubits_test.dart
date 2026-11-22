@@ -9,6 +9,10 @@ import 'package:lavender/shared/domain/repositories/booking_repository.dart';
 import 'package:lavender/shared/booking_actions/add_comment_cubit.dart';
 import 'package:lavender/shared/booking_actions/confirmation_cubit.dart';
 import 'package:lavender/shared/booking_actions/rebook_cubit.dart';
+import 'package:lavender/shared/booking_actions/confirm_action.dart';
+import 'package:lavender/shared/booking_actions/rebook_args.dart';
+import 'package:lavender/shared/booking_actions/rebook_confirm.dart';
+import 'package:lavender/shared/booking_actions/rebook_outcome.dart';
 
 class _FakeRepo implements BookingRepository {
   ApiResult<void> cancelResult = const ApiSuccess(null);

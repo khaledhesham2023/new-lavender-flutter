@@ -19,6 +19,8 @@ import '../../../../shared/widgets/auth_header.dart';
 import '../../../../shared/widgets/password_field.dart';
 import '../success_sheet.dart';
 import 'forget_password_for_edit_cubit.dart';
+import 'forget_password_for_edit_event.dart';
+import 'forget_password_for_edit_state.dart';
 
 /// Port of `ForgetPasswordForEditPasswordFragment` (`fragment_forget_for_edit_password.xml`):
 /// new password after the code sent to the own phone; on success the user is logged out.

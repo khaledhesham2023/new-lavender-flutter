@@ -4,6 +4,7 @@ import 'package:lavender/data/models/responses/about.dart';
 import 'package:lavender/features/content/domain/repositories/content_repository.dart';
 import 'package:lavender/features/content/presentation/contact_us_cubit.dart';
 import 'package:lavender/features/content/presentation/content_cubit.dart';
+import 'package:lavender/features/content/presentation/content_kind.dart';
 
 class _FakeContentRepository implements ContentRepository {
   ApiResult<AboutModel> aboutResult = const ApiSuccess(

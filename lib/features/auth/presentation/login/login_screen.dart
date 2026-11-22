@@ -20,6 +20,8 @@ import '../../../../shared/widgets/auth_header.dart';
 import '../../../../shared/widgets/password_field.dart';
 import '../widgets/phone_field.dart';
 import 'login_cubit.dart';
+import 'login_event.dart';
+import 'login_state.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});

@@ -19,6 +19,8 @@ import '../../../shared/domain/repositories/booking_repository.dart';
 import 'change_appointment_cubit.dart';
 import '../../../shared/domain/day_time_logic.dart';
 import '../../../shared/widgets/day_time_picker.dart';
+import 'change_appointment_state.dart';
+import 'change_confirm.dart';
 
 /// Port of `ChangeAppointmentSheetFragment`: re-pick the day/time from the
 /// doctor's work times. Not dismissible by tapping outside; resolves to the new

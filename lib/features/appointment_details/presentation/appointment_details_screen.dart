@@ -26,6 +26,7 @@ import '../../../shared/booking_actions/booking_actions.dart';
 import 'appointment_details_cubit.dart';
 import '../../../shared/widgets/details_widgets.dart';
 import '../../../shared/widgets/status_pill.dart';
+import 'appointment_details_state.dart';
 
 /// Port of `AppointmentDetailsFragment`: the booking's status, doctor, slot,
 /// price, notes and the attached medical report, with the actions allowed by

@@ -17,6 +17,7 @@ import '../../../data/models/responses/report.dart';
 import '../domain/repositories/reports_repository.dart';
 import 'my_reports_cubit.dart';
 import 'widgets/report_day_group.dart';
+import 'my_reports_state.dart';
 
 /// Port of `MyReportsFragment` (`fragment_my_reports.xml`). Also the target of
 /// `report` notifications (T39).

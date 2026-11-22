@@ -5,6 +5,7 @@ import 'package:lavender/data/models/responses/search.dart';
 import 'package:lavender/data/models/responses/speciality.dart';
 import 'package:lavender/shared/domain/repositories/search_repository.dart';
 import 'package:lavender/features/search/presentation/search_cubit.dart';
+import 'package:lavender/features/search/presentation/search_mode.dart';
 
 class _FakeSearchRepository implements SearchRepository {
   ApiResult<List<SpecialityModel>> mostResult = const ApiSuccess([

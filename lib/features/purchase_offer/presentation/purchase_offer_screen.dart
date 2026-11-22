@@ -22,6 +22,7 @@ import '../../../shared/widgets/terms_row.dart';
 import 'purchase_offer_cubit.dart';
 import '../domain/services/payment_service.dart';
 import 'widgets/offer_summary_card.dart';
+import 'purchase_offer_state.dart';
 
 /// Port of `PurchaseOfferFragment` (`fragment_purchase_offer.xml`).
 class PurchaseOfferScreen extends StatelessWidget {

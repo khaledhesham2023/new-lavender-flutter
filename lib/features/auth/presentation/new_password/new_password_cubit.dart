@@ -1,30 +1,11 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/network/api_result.dart';
 import '../../../../data/models/requests/auth_requests.dart';
 import '../../../../shared/domain/repositories/auth_repository.dart';
 import '../../../../app/router/route_args.dart';
-
-/// One-shot effect the screen reacts to (then calls [NewPasswordCubit.consumeEvent]).
-enum NewPasswordEvent { none, navigateSuccess }
-
-class NewPasswordState extends Equatable {
-  final ViewStatus status;
-  final ApiFailure<dynamic>? failure;
-  final NewPasswordEvent event;
-
-  const NewPasswordState({
-    this.status = ViewStatus.initial,
-    this.failure,
-    this.event = NewPasswordEvent.none,
-  });
-
-  bool get isLoading => status == ViewStatus.loading;
-
-  @override
-  List<Object?> get props => [status, failure, event];
-}
+import 'new_password_event.dart';
+import 'new_password_state.dart';
 
 /// Port of `NewPasswordFragment` + `AuthViewModel.changePassword`.
 class NewPasswordCubit extends Cubit<NewPasswordState> {

@@ -1,4 +1,3 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/network/api_result.dart';
@@ -8,42 +7,8 @@ import '../../../../shared/session/session_cubit.dart';
 import '../../../../data/models/requests/auth_requests.dart';
 import '../../../../shared/domain/repositories/auth_repository.dart';
 import '../../../../app/router/route_args.dart';
-
-/// One-shot effect the screen reacts to (then calls [OtpCubit.consumeEvent]).
-enum OtpEvent {
-  none,
-
-  /// Account verified and session saved: toast [OtpState.message], success dialog, Home.
-  verifiedWithMessage,
-
-  /// Reset-password code accepted: open the new-password screen with [OtpState.otp].
-  navigateNewPassword,
-}
-
-class OtpState extends Equatable {
-  final ViewStatus status;
-  final ApiFailure<dynamic>? failure;
-  final OtpEvent event;
-  final String message;
-  final String otp;
-
-  /// Inline "this code is invalid" line under the boxes (Android `tvCodeError`).
-  final bool codeError;
-
-  const OtpState({
-    this.status = ViewStatus.initial,
-    this.failure,
-    this.event = OtpEvent.none,
-    this.message = '',
-    this.otp = '',
-    this.codeError = false,
-  });
-
-  bool get isLoading => status == ViewStatus.loading;
-
-  @override
-  List<Object?> get props => [status, failure, event, message, otp, codeError];
-}
+import 'otp_event.dart';
+import 'otp_state.dart';
 
 /// Port of `OtpFragment` + `AuthViewModel.verifyPhone/verifyForgetPassword`.
 class OtpCubit extends Cubit<OtpState> {

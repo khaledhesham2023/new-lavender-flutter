@@ -1,44 +1,9 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/network/api_result.dart';
-import '../../data/models/requests/appointment_requests.dart';
 import '../domain/repositories/booking_repository.dart';
-
-/// What the confirmation sheet does when Confirm is tapped.
-sealed class ConfirmAction {
-  const ConfirmAction();
-}
-
-class CancelAction extends ConfirmAction {
-  final int id;
-  const CancelAction(this.id);
-}
-
-class UpdateAction extends ConfirmAction {
-  final int id;
-  final UpdateAppointmentRequest request;
-  const UpdateAction(this.id, this.request);
-}
-
-class ConfirmationState extends Equatable {
-  final bool loading;
-
-  /// Set after a failed confirm; the sheet toasts it and stays open.
-  final ApiFailure<dynamic>? failure;
-
-  /// True once the action succeeded; the sheet then pops with `true`.
-  final bool done;
-
-  const ConfirmationState({
-    this.loading = false,
-    this.failure,
-    this.done = false,
-  });
-
-  @override
-  List<Object?> get props => [loading, failure, done];
-}
+import 'confirm_action.dart';
+import 'confirmation_state.dart';
 
 /// Port of the cancel / update part of `BookingSearchViewModel` used by
 /// `ConfirmationSheetFragment`.

@@ -24,6 +24,7 @@ import '../../../shared/widgets/discount_badge.dart';
 import '../../../shared/cubits/my_offer_details_cubit.dart';
 import 'widgets/offer_bookings_tab.dart';
 import 'widgets/offer_general_info_tab.dart';
+import '../../../shared/cubits/my_offer_details_state.dart';
 
 /// Port of `MyOfferDetailsFragment` (`fragment_my_offer_details.xml`). The route is
 /// id-based so a `user_offer` notification can open it too (T39).

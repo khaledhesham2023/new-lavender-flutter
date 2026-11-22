@@ -21,6 +21,8 @@ import '../../../../shared/widgets/password_field.dart';
 import '../widgets/phone_field.dart';
 import '../../../../shared/widgets/terms_row.dart';
 import 'register_cubit.dart';
+import 'register_event.dart';
+import 'register_state.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});

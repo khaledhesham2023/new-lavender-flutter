@@ -16,6 +16,8 @@ import '../../../shared/domain/repositories/offers_repository.dart';
 import '../../../app/router/routes.dart';
 import 'my_offers_cubit.dart';
 import 'widgets/my_offer_card.dart';
+import 'my_offers_state.dart';
+import 'my_offers_tab.dart';
 
 /// Port of `MyOffersFragment` (`fragment_my_offers.xml`).
 class MyOffersScreen extends StatelessWidget {

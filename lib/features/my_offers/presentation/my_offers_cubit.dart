@@ -1,40 +1,10 @@
-import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/network/api_result.dart';
-import '../../../data/models/responses/offer.dart';
 import '../../../shared/domain/repositories/offers_repository.dart';
+import 'my_offers_state.dart';
+import 'my_offers_tab.dart';
 
-/// The Valid / Completed toggle (`OfferType`).
-enum MyOffersTab { valid, completed }
-
-class MyOffersState extends Equatable {
-  final MyOffersTab tab;
-  final ViewStatus status;
-  final MyOffersData? data;
-  final ApiFailure<dynamic>? failure;
-
-  const MyOffersState({
-    this.tab = MyOffersTab.valid,
-    this.status = ViewStatus.initial,
-    this.data,
-    this.failure,
-  });
-
-  /// The offers of the selected tab.
-  List<OfferModel> get offers {
-    final d = data;
-    if (d == null) return const [];
-    return tab == MyOffersTab.valid ? d.availableOffers : d.completedOffers;
-  }
-
-  @override
-  List<Object?> get props => [tab, status, data, failure];
-}
-
-/// Port of the `GetMyOffers` event of `OffersViewModel` as used by `MyOffersFragment`:
-/// one `myOffers()` call whose answer holds both lists; the toggle picks one and,
-/// like Android, calls the API again on every change.
 class MyOffersCubit extends Cubit<MyOffersState> {
   MyOffersCubit(this._repository) : super(const MyOffersState());
 
