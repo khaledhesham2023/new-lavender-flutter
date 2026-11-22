@@ -4,9 +4,9 @@ import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lavender/core/network/api_result.dart';
 import 'package:lavender/data/models/responses/setting.dart';
-import 'package:lavender/data/repositories/general_repository.dart';
+import 'package:lavender/shared/data/repositories/general_repository_impl.dart';
 
-import 'fake_api.dart';
+import '../../../data/repositories/fake_api.dart';
 
 void main() {
   test('uploadImage posts multipart "file" with query, returns data', () async {
@@ -23,7 +23,7 @@ void main() {
       ..writeAsBytesSync([1, 2, 3]);
 
     final (api, a) = await makeApi(body: {'data': 'stored/pic.png'});
-    final r = await GeneralRepository(api).uploadImage(file.path);
+    final r = await GeneralRepositoryImpl(api).uploadImage(file.path);
 
     expect(a.method, 'POST');
     expect(a.path, 'general/attachments');
@@ -36,7 +36,7 @@ void main() {
 
   test('uploadImage failure passes through', () async {
     final (api, _) = await makeApi(body: {'message': 'big'}, status: 422);
-    final r = await GeneralRepository(api).uploadImage('missing.png');
+    final r = await GeneralRepositoryImpl(api).uploadImage('missing.png');
     // A missing file never reaches the server; either way it is a failure.
     expect(r, isA<ApiFailure<String>>());
   });
@@ -52,7 +52,7 @@ void main() {
     });
     final file = File('${dir.path}/pic.png')..writeAsBytesSync([1]);
     final (api, _) = await makeApi(body: {'message': 'big'}, status: 422);
-    final r = await GeneralRepository(api).uploadImage(file.path);
+    final r = await GeneralRepositoryImpl(api).uploadImage(file.path);
     expect(r, isA<ServerFailure<String>>());
     expect((r as ServerFailure).message, 'big');
   });
@@ -63,7 +63,7 @@ void main() {
         'data': {'allow_notification': 1, 'whats_app_number': '123'},
       },
     );
-    final r = await GeneralRepository(api).getSettings();
+    final r = await GeneralRepositoryImpl(api).getSettings();
     expect(a.method, 'GET');
     expect(a.path, 'general/settings');
     final s = (r as ApiSuccess<SettingModel>).data;
@@ -73,7 +73,7 @@ void main() {
 
   test('getSettings failure passes through', () async {
     final (api, _) = await makeApi(body: {'message': 'x'}, status: 500);
-    final r = await GeneralRepository(api).getSettings();
+    final r = await GeneralRepositoryImpl(api).getSettings();
     expect(r, isA<ServerFailure<SettingModel>>());
   });
 }

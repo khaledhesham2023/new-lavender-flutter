@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/network/api_result.dart';
 import '../../data/models/responses/speciality.dart';
-import '../../data/repositories/search_repository.dart';
+import '../../shared/domain/repositories/search_repository.dart';
 import '../../app/router/route_args.dart';
 import '../search_details/search_filter.dart';
 

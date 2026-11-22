@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/network/api_result.dart';
 import '../../data/models/responses/speciality.dart';
-import '../../data/repositories/specialities_repository.dart';
+import '../../shared/domain/repositories/specialities_repository.dart';
 
 /// "All specialities" list: the "Medical offers" tile (id 0) first, then every
 /// speciality, with no "More" tile (port of `SpecialitiesAdapter.submitList`,

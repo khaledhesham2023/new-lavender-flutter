@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../core/network/api_result.dart';
 import '../../data/models/responses/doctor.dart';
 import '../../data/models/responses/speciality.dart';
-import '../../data/repositories/home_repository.dart';
-import '../../data/repositories/specialities_repository.dart';
+import '../../shared/domain/repositories/home_repository.dart';
+import '../../shared/domain/repositories/specialities_repository.dart';
 import 'search_filter.dart';
 
 class SearchDetailsState extends Equatable {

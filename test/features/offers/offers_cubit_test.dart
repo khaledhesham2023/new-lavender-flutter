@@ -3,7 +3,7 @@ import 'package:lavender/core/network/api_result.dart';
 import 'package:lavender/data/models/responses/offer.dart';
 import 'package:lavender/data/models/responses/speciality.dart';
 import 'package:lavender/data/repositories/offers_repository.dart';
-import 'package:lavender/data/repositories/specialities_repository.dart';
+import 'package:lavender/shared/domain/repositories/specialities_repository.dart';
 import 'package:lavender/features/offers/offer_details_cubit.dart';
 import 'package:lavender/features/offers/offers_cubit.dart';
 import 'package:lavender/features/offers/widgets/offer_card.dart';

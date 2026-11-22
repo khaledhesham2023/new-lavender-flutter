@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../core/network/api_result.dart';
 import '../../data/models/responses/search.dart';
 import '../../data/models/responses/speciality.dart';
-import '../../data/repositories/search_repository.dart';
+import '../../shared/domain/repositories/search_repository.dart';
 
 /// Which of the three bodies the Search tab shows.
 enum SearchMode { mostSelected, recent, results }

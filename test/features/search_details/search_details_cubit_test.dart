@@ -2,8 +2,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:lavender/core/network/api_result.dart';
 import 'package:lavender/data/models/responses/doctor.dart';
 import 'package:lavender/data/models/responses/speciality.dart';
-import 'package:lavender/data/repositories/home_repository.dart';
-import 'package:lavender/data/repositories/specialities_repository.dart';
+import 'package:lavender/shared/domain/repositories/home_repository.dart';
+import 'package:lavender/shared/domain/repositories/specialities_repository.dart';
 import 'package:lavender/features/search_details/search_details_cubit.dart';
 import 'package:lavender/features/search_details/search_filter.dart';
 

@@ -17,7 +17,7 @@ import '../../core/widgets/loading_view.dart';
 import '../../core/widgets/state_view.dart';
 import '../../core/widgets/system_ui.dart';
 import '../../core/enums/enums.dart';
-import '../../data/repositories/search_repository.dart';
+import '../../shared/domain/repositories/search_repository.dart';
 import '../../app/router/route_args.dart';
 import 'filter_cubit.dart';
 import 'subspecialties_sheet.dart';

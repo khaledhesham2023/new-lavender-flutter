@@ -5,7 +5,7 @@ import '../../core/network/api_result.dart';
 import '../../data/models/responses/offer.dart';
 import '../../data/models/responses/speciality.dart';
 import '../../data/repositories/offers_repository.dart';
-import '../../data/repositories/specialities_repository.dart';
+import '../../shared/domain/repositories/specialities_repository.dart';
 
 class OffersState extends Equatable {
   /// Whole-screen status of the specialty tabs request.

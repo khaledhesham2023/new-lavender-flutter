@@ -14,7 +14,7 @@ import '../../core/widgets/loading_view.dart';
 import '../../core/widgets/state_view.dart';
 import '../../core/widgets/system_ui.dart';
 import '../../data/models/responses/speciality.dart';
-import '../../data/repositories/specialities_repository.dart';
+import '../../shared/domain/repositories/specialities_repository.dart';
 import '../../app/router/routes.dart';
 import '../home/widgets/speciality_item.dart';
 import 'all_specialities_cubit.dart';

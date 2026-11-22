@@ -6,8 +6,8 @@ import '../../core/storage/app_prefs.dart';
 import '../../data/models/responses/doctor.dart';
 import '../../data/models/responses/home.dart';
 import '../../data/models/responses/speciality.dart';
-import '../../data/repositories/general_repository.dart';
-import '../../data/repositories/home_repository.dart';
+import '../../shared/domain/repositories/general_repository.dart';
+import '../../shared/domain/repositories/home_repository.dart';
 
 /// Home grid: the "Medical offers" tile first, then the specialities. With 8 or
 /// more specialities only the first 7 are kept; the tile at index 7 is drawn as

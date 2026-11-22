@@ -14,7 +14,7 @@ import '../../core/widgets/app_svg.dart';
 import '../../core/widgets/loading_view.dart';
 import '../../core/widgets/state_view.dart';
 import '../../core/widgets/system_ui.dart';
-import '../../data/repositories/search_repository.dart';
+import '../../shared/domain/repositories/search_repository.dart';
 import '../../app/router/routes.dart';
 import 'search_cubit.dart';
 import 'widgets/most_selected_list.dart';

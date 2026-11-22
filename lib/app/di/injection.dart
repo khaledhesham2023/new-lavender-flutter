@@ -7,14 +7,18 @@ import '../../features/doctor_details/data/repositories/doctor_repository_impl.d
 import '../../features/doctor_details/domain/repositories/doctor_repository.dart';
 import '../../features/favorites/data/repositories/favorites_repository_impl.dart';
 import '../../features/favorites/domain/repositories/favorites_repository.dart';
-import '../../data/repositories/general_repository.dart';
-import '../../data/repositories/home_repository.dart';
+import '../../shared/data/repositories/general_repository_impl.dart';
+import '../../shared/domain/repositories/general_repository.dart';
+import '../../shared/data/repositories/home_repository_impl.dart';
+import '../../shared/domain/repositories/home_repository.dart';
 import '../../features/notifications/data/repositories/notifications_repository_impl.dart';
 import '../../features/notifications/domain/repositories/notifications_repository.dart';
 import '../../data/repositories/offers_repository.dart';
 import '../../data/repositories/profile_repository.dart';
-import '../../data/repositories/search_repository.dart';
-import '../../data/repositories/specialities_repository.dart';
+import '../../shared/data/repositories/search_repository_impl.dart';
+import '../../shared/domain/repositories/search_repository.dart';
+import '../../shared/data/repositories/specialities_repository_impl.dart';
+import '../../shared/domain/repositories/specialities_repository.dart';
 import '../../core/network/api_client.dart';
 import '../deeplink/deep_link_service.dart';
 import '../../core/push/device_token.dart';
@@ -46,16 +50,18 @@ Future<void> configureDependencies() async {
     ..registerLazySingleton<ApiClient>(() => ApiClient(sl<AppPrefs>()))
     ..registerLazySingleton(() => AuthRepository(sl()))
     ..registerLazySingleton(() => ProfileRepository(sl()))
-    ..registerLazySingleton(() => GeneralRepository(sl()))
+    ..registerLazySingleton<GeneralRepository>(
+      () => GeneralRepositoryImpl(sl()),
+    )
     ..registerLazySingleton<NotificationsRepository>(
       () => NotificationsRepositoryImpl(sl()),
     )
-    ..registerLazySingleton(() => HomeRepository(sl()))
-    ..registerLazySingleton(() => SpecialitiesRepository(sl()))
-    ..registerLazySingleton(() => SearchRepository(sl()))
-    ..registerLazySingleton<DoctorRepository>(
-      () => DoctorRepositoryImpl(sl()),
+    ..registerLazySingleton<HomeRepository>(() => HomeRepositoryImpl(sl()))
+    ..registerLazySingleton<SpecialitiesRepository>(
+      () => SpecialitiesRepositoryImpl(sl()),
     )
+    ..registerLazySingleton<SearchRepository>(() => SearchRepositoryImpl(sl()))
+    ..registerLazySingleton<DoctorRepository>(() => DoctorRepositoryImpl(sl()))
     ..registerLazySingleton(() => BookingRepository(sl()))
     ..registerLazySingleton<FavoritesRepository>(
       () => FavoritesRepositoryImpl(sl()),

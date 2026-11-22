@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lavender/core/network/api_result.dart';
 import 'package:lavender/data/models/responses/speciality.dart';
-import 'package:lavender/data/repositories/search_repository.dart';
+import 'package:lavender/shared/domain/repositories/search_repository.dart';
 import 'package:lavender/features/filter/filter_cubit.dart';
 import 'package:lavender/features/search_details/search_filter.dart';
 import 'package:lavender/app/router/route_args.dart';

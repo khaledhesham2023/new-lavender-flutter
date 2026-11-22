@@ -1,13 +1,16 @@
-import '../../core/network/api_client.dart';
-import '../../core/network/api_result.dart';
-import '../models/responses/speciality.dart';
-import 'repository_parsers.dart';
+import '../../../core/network/api_client.dart';
+import '../../../core/network/api_result.dart';
+import '../../../data/models/responses/speciality.dart';
+import '../../../data/repositories/repository_parsers.dart';
+import '../../domain/repositories/specialities_repository.dart';
 
-class SpecialitiesRepository {
-  SpecialitiesRepository(this._api);
+/// [SpecialitiesRepository] over the Lavender API.
+class SpecialitiesRepositoryImpl implements SpecialitiesRepository {
+  SpecialitiesRepositoryImpl(this._api);
 
   final ApiClient _api;
 
+  @override
   Future<ApiResult<List<SpecialityModel>>> getSpecialities() => _api.call(
     (s) => s.specialties(),
     parse: parseList(SpecialityModel.fromJson),
@@ -17,6 +20,7 @@ class SpecialitiesRepository {
   /// `sub_specialty[0]=<id>` (Dio percent-encodes the brackets; the server
   /// decodes them). Prices are sent like Kotlin `Float.toString()` (e.g.
   /// `150.0`).
+  @override
   Future<ApiResult<DoctorsBySpecialityData>> getDoctors(
     int specialtyId, {
     String? sortBy,
