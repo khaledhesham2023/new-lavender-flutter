@@ -74,4 +74,25 @@ void main() {
   test('formatToLongDate', () {
     expect(formatToLongDate('2025-03-07T10:00:00.000000Z', 'en'), '07 March 2025');
   });
+
+  // Android formats these in the device zone, not UTC (booking was saved one
+  // day early on Flutter, PARITY.md). Expected values come from the test
+  // machine's own zone so the test passes anywhere.
+  test('ISO dates are converted to the local day, like Android', () {
+    const iso = '2026-11-27T22:00:00.000000Z';
+    final local = DateTime.utc(2026, 11, 27, 22).toLocal();
+    String two(int n) => n.toString().padLeft(2, '0');
+    expect(
+      convertIsoToDateOnly(iso),
+      '${local.year}-${two(local.month)}-${two(local.day)}',
+    );
+    expect(
+      formatToLongDate(iso, 'en'),
+      '${two(local.day)} November ${local.year}',
+    );
+    // In Egypt (UTC+2) that is the 28th: the day the server means.
+    if (local.timeZoneOffset == const Duration(hours: 2)) {
+      expect(convertIsoToDateOnly(iso), '2026-11-28');
+    }
+  });
 }

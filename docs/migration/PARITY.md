@@ -72,12 +72,10 @@ Notes for whoever continues: CPH2127 is now logged out (`pm clear` is blocked on
 | Home to doctor details (booking times tab, chips, slots, "book" button) | OK, identical |
 | Book appointment screen (date, time, duration, price, notes) | OK; both show "Saturday, 28 November 2026 / 02:00 PM". Android's confirm button is partly under the nav bar, Flutter's is fully visible (Android layout quirk). |
 | Success screen layout, confetti, ids (#1058 Android, #1059 Flutter) | OK |
-| Success screen date | DIFF: Android "Saturday, 28 Nov 2026", Flutter "Friday, 27 Nov 2026" (text comes from the server's `formatedDate`, so the saved day differs by one). The chip label says "Saturday 11/27" on both, so the chip date is a UTC date that is already one day behind the weekday. Both ports send `convertIsoToDateOnly(date)` (UTC); the cause of the one-day gap is not found. Needs the request body of both apps (Charles/proxy or the debug logger, the Flutter logcat had no request lines) to compare `day`. Appointments #1058 and #1059 now exist on the test accounts. |
-
-Resume notes for the date investigation: the Flutter `ApiLogger` writes with `dart:developer` `log`, which neither `flutter attach` nor logcat shows. To see the request body, temporarily make its sink also `print(...)` and use `flutter run -d fe95c1b7 --dart-define-from-file=env/debug.json` (the debug splash takes ~25 s). Compare the saved `day` of a Flutter booking with Android's response text (`formatedDate`). Revert the logger edit afterwards.
+| Success screen date | FIXED in code (branch `fix-booking-date-timezone`), device re-check open: Android showed "Saturday, 28 Nov 2026", Flutter "Friday, 27 Nov 2026". Cause: Android `convertIsoToDateOnly` / `formatToLongDate` parse in UTC but format in the device zone (no zone on the output formatter), so `…T22:00:00Z` is the next day in Egypt; Flutter formatted in UTC. Flutter now uses `toLocal()` in both (`lib/core/utils/date_utils.dart`), covered by a test. The chip label (`formatDateToDayMonth`) reads the raw ISO date on both apps, so it says 11/27 on both, as before. Appointments #1058 and #1059 exist on the test accounts. |
 
 ## Remaining differences
-- Booking: saved date is one day earlier on Flutter than on Android for the same chip (see Booking flow table). Open.
+- Booking: saved date was one day earlier on Flutter than on Android; fixed in code (see Booking flow table), device re-check still open.
 - Guest Bookings: Android shows the sort button in the header, Flutter does not (likely an Android layout quirk, the button does nothing for a guest; owner to decide).
 - Guest Favorites: Android shows the search field above the must-login prompt, Flutter does not (same kind of quirk).
 - Onboarding: final-yeh glyph "فى" (Android) vs "في" (Flutter) with identical strings; likely font.

@@ -78,11 +78,14 @@ String makeTimeFixedOnEnglish(String hhmm) {
   return DateFormat('hh:mm', 'en').format(d);
 }
 
-/// `yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'` (UTC) -> `yyyy-MM-dd`.
+/// `yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'` (UTC) -> `yyyy-MM-dd` in the device's
+/// local time zone. Android parses in UTC but formats with the default zone,
+/// so in Egypt `2026-11-27T22:00:00.000000Z` is `2026-11-28` (the day the
+/// server means). Formatting in UTC here saved bookings one day early.
 String convertIsoToDateOnly(String iso) {
   final d = DateTime.tryParse(iso);
   if (d == null) return '';
-  return DateFormat('yyyy-MM-dd', 'en').format(d.toUtc());
+  return DateFormat('yyyy-MM-dd', 'en').format(d.toLocal());
 }
 
 /// `yyyy-M-dd` -> `yyyy-MM-dd'T'00:00:00.000000'Z'`.
@@ -109,11 +112,14 @@ String convertDateToReadableFormat(String yyyyMMdd, String lang) {
   return toArabicFreeDigits(DateFormat('dd MMMM yyyy', lang).format(d));
 }
 
-/// UTC ISO -> `dd MMMM yyyy` in [lang] (Android `formatToLongDate`).
+/// UTC ISO -> `dd MMMM yyyy` in [lang], in the device's local time zone
+/// (Android `formatToLongDate`, same zone rule as [convertIsoToDateOnly]).
 String formatToLongDate(String iso, String lang) {
   final d = DateTime.tryParse(iso);
   if (d == null) return '';
-  return toArabicFreeDigits(DateFormat('dd MMMM yyyy', lang).format(d.toUtc()));
+  return toArabicFreeDigits(
+    DateFormat('dd MMMM yyyy', lang).format(d.toLocal()),
+  );
 }
 
 /// `yyyy-MM-dd` -> UTC midnight in epoch millis; 0 on failure.
