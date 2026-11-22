@@ -3,37 +3,15 @@ import 'package:go_sell_sdk_flutter/go_sell_sdk_flutter.dart';
 import 'package:go_sell_sdk_flutter/model/models.dart';
 
 import '../../../core/config/env.dart';
-
-/// Result of one Tap payment attempt.
-sealed class PaymentOutcome {
-  const PaymentOutcome();
-}
-
-/// The charge succeeded; [chargeId] is Tap's charge id.
-class Paid extends PaymentOutcome {
-  final String chargeId;
-
-  const Paid(this.chargeId);
-}
-
-/// The user closed the Tap sheet without paying.
-class Cancelled extends PaymentOutcome {
-  const Cancelled();
-}
-
-/// The payment was declined or the SDK failed. [message] may be empty.
-class Failed extends PaymentOutcome {
-  final String message;
-
-  const Failed(this.message);
-}
+import '../domain/entities/payment_outcome.dart';
+import '../domain/services/payment_service.dart';
 
 /// Port of `TapPaymentHelper.kt`. The only file that imports the Tap plugin.
 ///
 /// Mirrors the Android configuration: purchase mode, `SAR`, the customer built
 /// from the logged-in user (full name in the first, middle and last name), card
 /// saving and 3-D Secure on, no receipts, no items, windowed sheet.
-class TapPaymentService {
+class TapPaymentService implements PaymentService {
   const TapPaymentService();
 
   /// Android passes `"999"` when the user has no phone.
@@ -42,6 +20,7 @@ class TapPaymentService {
   /// Android hard-codes the Saudi country code for the customer.
   static const _phoneCountryCode = '966';
 
+  @override
   Future<PaymentOutcome> pay({
     required double amount,
     required String lang,

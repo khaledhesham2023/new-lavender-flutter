@@ -20,20 +20,20 @@ import '../../../shared/domain/repositories/offers_repository.dart';
 import '../../../app/router/routes.dart';
 import '../../../shared/widgets/terms_row.dart';
 import 'purchase_offer_cubit.dart';
-import '../data/tap_payment_service.dart';
+import '../domain/services/payment_service.dart';
 import 'widgets/offer_summary_card.dart';
 
 /// Port of `PurchaseOfferFragment` (`fragment_purchase_offer.xml`).
 class PurchaseOfferScreen extends StatelessWidget {
   final OfferModel offer;
 
-  /// Replaceable so tests can fake the Tap sheet.
-  final TapPaymentService payments;
+  /// Replaceable so tests can fake the payment sheet; defaults to the DI one.
+  final PaymentService? payments;
 
   const PurchaseOfferScreen({
     super.key,
     required this.offer,
-    this.payments = const TapPaymentService(),
+    this.payments,
   });
 
   @override
@@ -41,7 +41,7 @@ class PurchaseOfferScreen extends StatelessWidget {
     return BlocProvider(
       create: (_) => PurchaseOfferCubit(
         sl<OffersRepository>(),
-        payments,
+        payments ?? sl<PaymentService>(),
         sl<SessionCubit>(),
       ),
       child: SystemUi(

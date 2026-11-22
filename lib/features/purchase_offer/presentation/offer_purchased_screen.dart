@@ -21,7 +21,7 @@ import '../../../data/models/responses/offer.dart';
 import '../../../shared/domain/repositories/offers_repository.dart';
 import '../../../app/router/routes.dart';
 import '../../../shared/widgets/speed_lottie.dart';
-import '../../my_offers/presentation/my_offer_details_cubit.dart';
+import '../../../shared/cubits/my_offer_details_cubit.dart';
 import 'widgets/offer_summary_card.dart';
 
 /// Port of `SuccessfulOfferPurchaseFragment`: loads the purchased (user) offer

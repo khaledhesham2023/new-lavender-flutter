@@ -2,16 +2,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lavender/core/widgets/spacers.dart';
 import 'package:material_ui/material_ui.dart';
 
-import '../../../../app/di/injection.dart';
-import '../../../../core/l10n/l10n_ext.dart';
-import '../../../../core/theme/app_assets.dart';
-import '../../../../core/theme/app_colors.dart';
-import '../../../../core/theme/app_text_styles.dart';
-import '../../../../core/widgets/app_svg.dart';
-import '../../../../core/widgets/bottom_sheet_frame.dart';
-import '../../../../core/widgets/failure_toast.dart';
-import '../../../../core/widgets/progress_button.dart';
-import '../../../../shared/domain/repositories/booking_repository.dart';
+import '../../app/di/injection.dart';
+import '../../core/l10n/l10n_ext.dart';
+import '../../core/theme/app_assets.dart';
+import '../../core/theme/app_colors.dart';
+import '../../core/theme/app_text_styles.dart';
+import '../../core/widgets/app_svg.dart';
+import '../../core/widgets/bottom_sheet_frame.dart';
+import '../../core/widgets/failure_toast.dart';
+import '../../core/widgets/progress_button.dart';
+import '../domain/repositories/booking_repository.dart';
 import 'confirmation_cubit.dart';
 
 export 'confirmation_cubit.dart' show ConfirmAction, CancelAction, UpdateAction;

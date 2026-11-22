@@ -23,7 +23,7 @@ import '../../../shared/widgets/details_widgets.dart';
 import '../../../shared/widgets/status_pill.dart';
 import '../../../shared/widgets/booking_info_card.dart';
 import '../../../shared/widgets/doctor_summary_card.dart';
-import '../../bookings/presentation/actions/booking_actions.dart';
+import '../../../shared/booking_actions/booking_actions.dart';
 import 'session_details_cubit.dart';
 
 /// Port of `SessionDetailsFragment`: an appointment booked with an offer —

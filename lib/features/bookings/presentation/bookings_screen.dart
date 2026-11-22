@@ -20,7 +20,7 @@ import '../../../core/enums/enums.dart';
 import '../../../data/models/responses/appointment.dart';
 import '../../../shared/domain/repositories/booking_repository.dart';
 import '../../../app/router/routes.dart';
-import 'actions/booking_actions.dart';
+import '../../../shared/booking_actions/booking_actions.dart';
 import 'bookings_cubit.dart';
 import 'filter_by_date_sheet.dart';
 import 'filter_by_type_sheet.dart';

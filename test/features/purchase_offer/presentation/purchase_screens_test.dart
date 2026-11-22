@@ -9,6 +9,8 @@ import 'package:lavender/data/models/responses/offer.dart';
 import 'package:lavender/data/models/responses/speciality.dart';
 import 'package:lavender/shared/domain/repositories/offers_repository.dart';
 import 'package:lavender/features/purchase_offer/presentation/offer_purchased_screen.dart';
+import 'package:lavender/features/purchase_offer/data/tap_payment_service.dart';
+import 'package:lavender/features/purchase_offer/domain/services/payment_service.dart';
 import 'package:lavender/features/purchase_offer/presentation/purchase_offer_screen.dart';
 import 'package:lavender/l10n/generated/app_localizations.dart';
 import 'package:material_ui/material_ui.dart';
@@ -52,6 +54,8 @@ Future<_FakeOffers> _setup() async {
   await sl.reset();
   sl
     ..registerSingleton<OffersRepository>(offers)
+    // Same default the screen had before PaymentService came from DI.
+    ..registerSingleton<PaymentService>(const TapPaymentService())
     ..registerSingleton<SessionCubit>(SessionCubit(prefs, UserStore(sp)));
   return offers;
 }

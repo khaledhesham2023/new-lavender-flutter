@@ -1,12 +1,12 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/network/api_result.dart';
-import '../../../../core/utils/date_utils.dart';
-import '../../../../core/enums/enums.dart';
-import '../../../../data/models/requests/appointment_requests.dart';
-import '../../../../data/models/responses/doctor.dart';
-import '../../../../shared/domain/repositories/booking_repository.dart';
+import '../../core/network/api_result.dart';
+import '../../core/utils/date_utils.dart';
+import '../../core/enums/enums.dart';
+import '../../data/models/requests/appointment_requests.dart';
+import '../../data/models/responses/doctor.dart';
+import '../domain/repositories/booking_repository.dart';
 
 /// Arguments of `ChooseRebookAppointmentSheetFragment`.
 class RebookArgs extends Equatable {

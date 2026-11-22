@@ -1,9 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/network/api_result.dart';
-import '../../../data/models/responses/offer.dart';
-import '../../../shared/domain/repositories/offers_repository.dart';
+import '../../core/network/api_result.dart';
+import '../../data/models/responses/offer.dart';
+import '../domain/repositories/offers_repository.dart';
 
 class MyOfferDetailsState extends Equatable {
   final ViewStatus status;

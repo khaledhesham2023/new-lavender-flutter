@@ -6,9 +6,9 @@ import 'package:lavender/data/models/requests/appointment_requests.dart';
 import 'package:lavender/data/models/responses/appointment.dart';
 import 'package:lavender/data/models/responses/doctor.dart';
 import 'package:lavender/shared/domain/repositories/booking_repository.dart';
-import 'package:lavender/features/bookings/presentation/actions/add_comment_cubit.dart';
-import 'package:lavender/features/bookings/presentation/actions/confirmation_cubit.dart';
-import 'package:lavender/features/bookings/presentation/actions/rebook_cubit.dart';
+import 'package:lavender/shared/booking_actions/add_comment_cubit.dart';
+import 'package:lavender/shared/booking_actions/confirmation_cubit.dart';
+import 'package:lavender/shared/booking_actions/rebook_cubit.dart';
 
 class _FakeRepo implements BookingRepository {
   ApiResult<void> cancelResult = const ApiSuccess(null);

@@ -7,9 +7,11 @@ import 'package:lavender/data/models/responses/offer.dart';
 import 'package:lavender/shared/domain/repositories/offers_repository.dart';
 import 'package:lavender/features/purchase_offer/presentation/purchase_offer_cubit.dart';
 import 'package:lavender/features/purchase_offer/data/tap_payment_service.dart';
+import 'package:lavender/features/purchase_offer/domain/entities/payment_outcome.dart';
+import 'package:lavender/features/purchase_offer/domain/services/payment_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class _FakePayments implements TapPaymentService {
+class _FakePayments implements PaymentService {
   PaymentOutcome outcome = const Paid('chg_1');
   int calls = 0;
   double? amount;

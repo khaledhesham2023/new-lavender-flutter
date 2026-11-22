@@ -5,7 +5,8 @@ import '../../../core/network/api_result.dart';
 import '../../../shared/session/session_cubit.dart';
 import '../../../data/models/responses/offer.dart';
 import '../../../shared/domain/repositories/offers_repository.dart';
-import '../data/tap_payment_service.dart';
+import '../domain/entities/payment_outcome.dart';
+import '../domain/services/payment_service.dart';
 
 class PurchaseOfferState extends Equatable {
   final bool termsAccepted;
@@ -68,7 +69,7 @@ class PurchaseOfferCubit extends Cubit<PurchaseOfferState> {
     : super(const PurchaseOfferState());
 
   final OffersRepository _repository;
-  final TapPaymentService _payments;
+  final PaymentService _payments;
   final SessionCubit _session;
 
   bool _busy = false;

@@ -22,7 +22,7 @@ import '../../../data/models/responses/appointment.dart';
 import '../../../shared/domain/repositories/booking_repository.dart';
 import '../../../shared/widgets/booking_info_card.dart';
 import '../../../shared/widgets/doctor_summary_card.dart';
-import '../../bookings/presentation/actions/booking_actions.dart';
+import '../../../shared/booking_actions/booking_actions.dart';
 import 'appointment_details_cubit.dart';
 import '../../../shared/widgets/details_widgets.dart';
 import '../../../shared/widgets/status_pill.dart';

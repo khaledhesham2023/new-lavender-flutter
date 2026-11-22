@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/network/api_result.dart';
-import '../../../../data/models/requests/appointment_requests.dart';
-import '../../../../data/models/responses/appointment.dart';
-import '../../../../shared/domain/repositories/booking_repository.dart';
+import '../../core/network/api_result.dart';
+import '../../data/models/requests/appointment_requests.dart';
+import '../../data/models/responses/appointment.dart';
+import '../domain/repositories/booking_repository.dart';
 
 class AddCommentState extends Equatable {
   final List<QuickComment> quickComments;

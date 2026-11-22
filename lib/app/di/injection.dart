@@ -34,6 +34,8 @@ import '../push/push_service.dart';
 import '../../shared/session/session_cubit.dart';
 import '../../core/storage/app_prefs.dart';
 import '../../shared/session/user_store.dart';
+import '../../features/purchase_offer/data/tap_payment_service.dart';
+import '../../features/purchase_offer/domain/services/payment_service.dart';
 
 final GetIt sl = GetIt.instance;
 
@@ -85,5 +87,6 @@ Future<void> configureDependencies() async {
       () => FavoritesRepositoryImpl(sl()),
     )
     ..registerLazySingleton<OffersRepository>(() => OffersRepositoryImpl(sl()))
+    ..registerLazySingleton<PaymentService>(() => const TapPaymentService())
     ..registerSingleton<SessionCubit>(SessionCubit(prefs, userStore));
 }

@@ -128,6 +128,9 @@ lavender-flutter/
       data/repositories/    # <name>_repository_impl.dart for each shared contract
       widgets/              # widgets used by 2+ features (doctor_card, day_time_picker, status_pill,
                             # form fields, speed_lottie, ...)
+      booking_actions/      # comment / confirm / rebook sheets + cubits (bookings, appointment_details,
+                            # session_details)
+      cubits/               # cubits used by 2+ features (my_offer_details_cubit: my_offers, purchase_offer)
     data/
       models/               # one file per CONTEXT §5.4 group (user.dart, doctor.dart, appointment.dart, offer.dart, ...)
       json/                 # json_utils, json_converters (used only by data code)
@@ -144,10 +147,9 @@ lavender-flutter/
         #                   doctor_details use cubit/ + screens/ subfolders; the others keep their
         #                   earlier sub-structure (e.g. auth/presentation/login/).
         # Presentation code depends on contracts only; app/di binds each contract to its Impl.
-        # Features do not import each other; shared code lives in shared/. Known exceptions:
-        #   appointment_details, session_details -> bookings/presentation/actions/booking_actions.dart
-        #   purchase_offer -> my_offers/presentation/my_offer_details_cubit.dart
-        #   purchase_offer/presentation -> purchase_offer/data/tap_payment_service.dart (no contract yet)
+        # Features do not import each other; shared code lives in shared/.
+        # Services follow the same rule as repositories: purchase_offer/domain/services/
+        # payment_service.dart is the contract, data/tap_payment_service.dart the Impl (bound in DI).
   test/
     ... mirrors lib/ (app/, core/, shared/, data/, features/)
 ```

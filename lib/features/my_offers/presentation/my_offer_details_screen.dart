@@ -21,7 +21,7 @@ import '../../../data/models/responses/offer.dart';
 import '../../../shared/domain/repositories/offers_repository.dart';
 import '../../../app/router/routes.dart';
 import '../../../shared/widgets/discount_badge.dart';
-import 'my_offer_details_cubit.dart';
+import '../../../shared/cubits/my_offer_details_cubit.dart';
 import 'widgets/offer_bookings_tab.dart';
 import 'widgets/offer_general_info_tab.dart';
 
