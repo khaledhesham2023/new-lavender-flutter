@@ -19,8 +19,30 @@ class DeviceTokenProvider {
   // `getToken` is deprecated in favour of `register()`/`onRegistered`, which return
   // the Firebase Installation ID, not the FCM registration token the backend sends
   // to (Android used `FirebaseMessaging.token`), so the deprecated call is kept.
-  // ignore: deprecated_member_use
-  static Future<String?> _fcmToken() => FirebaseMessaging.instance.getToken();
+  static Future<String?> _fcmToken() async {
+    await _awaitApnsToken();
+    // ignore: deprecated_member_use
+    return FirebaseMessaging.instance.getToken();
+  }
+
+  /// iOS only. FCM cannot mint a registration token before APNs has handed the
+  /// app its device token, and `getToken` throws `apns-token-not-set` until then.
+  /// Registration is asynchronous and usually lands a moment after launch, so a
+  /// login early in the session would otherwise fall through to the placeholder
+  /// below and leave the backend pushing to an address that never resolves.
+  /// Giving up after the wait is fine: `getToken` then throws and the stored or
+  /// placeholder token is used, exactly as when Firebase is unavailable.
+  static Future<void> _awaitApnsToken() async {
+    if (defaultTargetPlatform != TargetPlatform.iOS) return;
+    const step = Duration(milliseconds: 250);
+    for (var waited = Duration.zero;
+        waited < const Duration(seconds: 5);
+        waited += step) {
+      if (await FirebaseMessaging.instance.getAPNSToken() != null) return;
+      await Future<void>.delayed(step);
+    }
+    debugPrint('APNs token still unset; FCM token will be unavailable');
+  }
 
   /// The fresh FCM token, which is also stored. When Firebase cannot answer
   /// (no Play services, offline) the stored token is returned; with none stored,

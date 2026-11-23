@@ -28,6 +28,18 @@ const String _smallIcon = 'ic_stat_notification';
 const String _fallbackTitle = 'FCM';
 const String _fallbackBody = 'We are glade to reach you';
 
+/// iOS counterpart of the Android channel. Without Darwin settings the plugin
+/// registers no iOS implementation and `show` silently does nothing there.
+/// The three permission flags are off on purpose: iOS would otherwise raise the
+/// system prompt during startup, while the app asks for it the first time the
+/// user reaches Home (`requestPermissionOnce`), as on Android 13+.
+const DarwinInitializationSettings _darwinInitSettings =
+    DarwinInitializationSettings(
+      requestAlertPermission: false,
+      requestSoundPermission: false,
+      requestBadgePermission: false,
+    );
+
 /// Registers the plugin and creates the notification channel. Android never
 /// created it (so nothing was shown on Android 8+, decision D8); the channel is
 /// high importance with the default sound (`PRIORITY_HIGH`). Called from the main
@@ -39,6 +51,7 @@ Future<void> initLocalNotifications(
   await plugin.initialize(
     settings: const InitializationSettings(
       android: AndroidInitializationSettings(_smallIcon),
+      iOS: _darwinInitSettings,
     ),
     onDidReceiveNotificationResponse: onTap,
   );
@@ -90,6 +103,14 @@ Future<void> showRemoteMessage(
         category: AndroidNotificationCategory.message,
         visibility: NotificationVisibility.public,
         styleInformation: BigTextStyleInformation(body),
+      ),
+      // The Android notification carries the channel's importance; on iOS the
+      // equivalent is asking for the banner/sound/badge presentation here.
+      iOS: const DarwinNotificationDetails(
+        presentAlert: true,
+        presentBanner: true,
+        presentSound: true,
+        presentBadge: true,
       ),
     ),
   );
