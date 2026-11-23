@@ -39,6 +39,14 @@ class AppNetworkImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final u = url;
+    // Decode at display size instead of the full server resolution, which can
+    // be many MB per image and gets the app killed on low-RAM phones.
+    final dpr = MediaQuery.devicePixelRatioOf(context);
+    final w = width;
+    final h = height;
+    final cacheW = (w != null && w.isFinite) ? (w * dpr).round() : null;
+    final cacheH =
+        (cacheW == null && h != null && h.isFinite) ? (h * dpr).round() : null;
     final Widget image = (u == null || u.isEmpty)
         ? _error()
         : CachedNetworkImage(
@@ -46,6 +54,8 @@ class AppNetworkImage extends StatelessWidget {
             width: width,
             height: height,
             fit: fit,
+            memCacheWidth: cacheW,
+            memCacheHeight: cacheH,
             fadeInDuration: Duration.zero,
             fadeOutDuration: Duration.zero,
             placeholder: (_, _) {
