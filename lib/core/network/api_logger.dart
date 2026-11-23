@@ -3,8 +3,6 @@ import 'dart:developer' as dev;
 
 import 'package:dio/dio.dart';
 
-/// Debug-only logger: one block per request and per response, with secrets redacted.
-/// Uses `dart:developer` log so long bodies are not truncated like `print`.
 class ApiLogger extends Interceptor {
   ApiLogger({void Function(String message)? sink})
     : _sink = sink ?? ((m) => dev.log(m, name: 'API'));
