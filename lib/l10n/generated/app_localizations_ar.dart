@@ -983,6 +983,9 @@ class AppLocalizationsAr extends AppLocalizations {
   }
 
   @override
+  String get pressBackAgainToExit => 'اضغط رجوع مرة أخرى للخروج';
+
+  @override
   String get privacyPolicy => 'سياسة الخصوصية';
 
   @override

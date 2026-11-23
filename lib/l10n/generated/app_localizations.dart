@@ -1899,6 +1899,12 @@ abstract class AppLocalizations {
   /// **'{p1} SAR'**
   String priceWithValue(String p1);
 
+  /// No description provided for @pressBackAgainToExit.
+  ///
+  /// In en, this message translates to:
+  /// **'Press back again to exit'**
+  String get pressBackAgainToExit;
+
   /// No description provided for @privacyPolicy.
   ///
   /// In en, this message translates to:

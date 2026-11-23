@@ -425,6 +425,7 @@
       }
     }
   },
+  "pressBackAgainToExit": "Press back again to exit",
   "privacyPolicy": "Privacy Policy",
   "processing": "Processing",
   "quickReplies": "Quick replies:",

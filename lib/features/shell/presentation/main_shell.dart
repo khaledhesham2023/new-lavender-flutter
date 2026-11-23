@@ -9,15 +9,24 @@ import '../../../core/theme/app_assets.dart';
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_text_styles.dart';
 import '../../../core/widgets/app_svg.dart';
+import '../../../core/widgets/app_toast.dart';
 import '../../../core/widgets/spacers.dart';
 import '../../../app/router/routes.dart';
 
 /// Scaffold around the five tabs (port of `activity_main.xml` + `MainActivity`).
 /// Detail routes are top-level, so they cover this shell and hide the bar.
-class MainShell extends StatelessWidget {
+class MainShell extends StatefulWidget {
   final Widget child;
 
   const MainShell({super.key, required this.child});
+
+  @override
+  State<MainShell> createState() => _MainShellState();
+}
+
+class _MainShellState extends State<MainShell> {
+  static const _exitWindow = Duration(seconds: 2);
+  DateTime? _lastBack;
 
   // (unselected, selected) per tab, from the *_selector.xml drawables.
   static const _icons = [
@@ -48,7 +57,19 @@ class MainShell extends StatelessWidget {
         if (path != Routes.home) {
           context.go(Routes.home);
         } else if (context.read<SessionCubit>().state.isLoggedIn) {
-          SystemNavigator.pop();
+          // Double back to exit: first press shows a toast, second closes the app.
+          final now = DateTime.now();
+          if (_lastBack != null && now.difference(_lastBack!) < _exitWindow) {
+            SystemNavigator.pop();
+          } else {
+            _lastBack = now;
+            AppToast.show(
+              context,
+              l10n.pressBackAgainToExit,
+              ToastType.normal,
+              duration: _exitWindow,
+            );
+          }
         } else {
           // Android opens Auth and finishes Main.
           context.go(Routes.authStart);
@@ -56,7 +77,7 @@ class MainShell extends StatelessWidget {
       },
       child: Scaffold(
         backgroundColor: AppColors.white,
-        body: child,
+        body: widget.child,
         bottomNavigationBar: _BottomBar(
           selected: index,
           labels: labels,
