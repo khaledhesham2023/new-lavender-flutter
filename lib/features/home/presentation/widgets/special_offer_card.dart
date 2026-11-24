@@ -1,5 +1,6 @@
 import 'dart:math' as math;
 
+import 'package:lavender/core/widgets/spacers.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../../../core/l10n/l10n_ext.dart';
@@ -96,21 +97,21 @@ class SpecialOfferCard extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 12),
+            const VerticalSpacer(12),
             Text(
               offer.name ?? '',
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: AppTextStyles.semiBold(14),
             ),
-            const SizedBox(height: 8),
+            const VerticalSpacer(8),
             Text(
               offer.description ?? '',
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: AppTextStyles.semiBold(12, AppColors.c666666),
             ),
-            const SizedBox(height: 8),
+            const VerticalSpacer(8),
             Row(
               children: [
                 Flexible(
@@ -122,7 +123,7 @@ class SpecialOfferCard extends StatelessWidget {
                         .copyWith(decoration: TextDecoration.lineThrough),
                   ),
                 ),
-                const SizedBox(width: 20),
+                const HorizontalSpacer(20),
                 Flexible(
                   child: Text(
                     l10n.priceWithValue(formatDecimal(offer.finalPrice)),

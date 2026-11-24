@@ -2588,6 +2588,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your reservation request has been sent successfully'**
   String get yourReservationRequestHasBeenSentSuccessfully;
+
+  /// No description provided for @offer_name_1.
+  ///
+  /// In en, this message translates to:
+  /// **'Cold peel session (one area of your choice)'**
+  String get offer_name_1;
+
+  /// No description provided for @offer_desc_1.
+  ///
+  /// In en, this message translates to:
+  /// **'A cold peel treatment for pigmentation, evening out skin tone, and revitalizing the skin.'**
+  String get offer_desc_1;
+
+  /// No description provided for @offer_details_1.
+  ///
+  /// In en, this message translates to:
+  /// **'A comprehensive treatment that targets pigmentation, evens out skin tone, and restores vitality and radiance. It covers one area of ​​your choice: hands, knees, elbows, underarms, the bikini area, or the neck. Suitability for the session will be determined following an assessment by a specialist.'**
+  String get offer_details_1;
+
+  /// No description provided for @spec_dermatology.
+  ///
+  /// In en, this message translates to:
+  /// **'Dermatology'**
+  String get spec_dermatology;
+
+  /// No description provided for @spec_dentistry.
+  ///
+  /// In en, this message translates to:
+  /// **'Dentistry'**
+  String get spec_dentistry;
+
+  /// No description provided for @offer_name_2.
+  ///
+  /// In en, this message translates to:
+  /// **'A Smile That Lasts Forever'**
+  String get offer_name_2;
+
+  /// No description provided for @offer_desc_2.
+  ///
+  /// In en, this message translates to:
+  /// **'A comprehensive dental care and aesthetic package, featuring 6 key services at a 20% discount.'**
+  String get offer_desc_2;
+
+  /// No description provided for @offer_details_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Get our comprehensive dental care package, designed to ensure the health and beauty of your smile. The package includes a thorough examination, teeth cleaning and polishing, gum treatment, and a full range of preventive applications (services 1 through 6). This limited-time offer also features specialized consultations and ongoing follow-up care at a discounted price.'**
+  String get offer_details_2;
+
+  /// No description provided for @offer_name_3.
+  ///
+  /// In en, this message translates to:
+  /// **'Black Friday - Laser Hair Removal (3 Sessions)'**
+  String get offer_name_3;
+
+  /// No description provided for @offer_desc_3.
+  ///
+  /// In en, this message translates to:
+  /// **'3 sessions of Laser Hair Removal available for Small (85 SAR), Medium (95 SAR), Large (105 SAR), or X-Large (175 SAR) areas'**
+  String get offer_desc_3;
+
+  /// No description provided for @offer_details_3.
+  ///
+  /// In en, this message translates to:
+  /// **'Package includes 3 sessions of Laser Hair Removal. Pricing tiers: Small Areas (85 SAR), Medium Areas (95 SAR), Large Areas (105 SAR), X-Large Areas (175 SAR). Terms: All sales are final. Limit 1 per customer. Sale ends 11/25/2026 or without notice based on availability.'**
+  String get offer_details_3;
 }
 
 class _AppLocalizationsDelegate

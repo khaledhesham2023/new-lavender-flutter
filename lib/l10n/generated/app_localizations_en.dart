@@ -1386,4 +1386,43 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get yourReservationRequestHasBeenSentSuccessfully =>
       'Your reservation request has been sent successfully';
+
+  @override
+  String get offer_name_1 => 'Cold peel session (one area of your choice)';
+
+  @override
+  String get offer_desc_1 =>
+      'A cold peel treatment for pigmentation, evening out skin tone, and revitalizing the skin.';
+
+  @override
+  String get offer_details_1 =>
+      'A comprehensive treatment that targets pigmentation, evens out skin tone, and restores vitality and radiance. It covers one area of ​​your choice: hands, knees, elbows, underarms, the bikini area, or the neck. Suitability for the session will be determined following an assessment by a specialist.';
+
+  @override
+  String get spec_dermatology => 'Dermatology';
+
+  @override
+  String get spec_dentistry => 'Dentistry';
+
+  @override
+  String get offer_name_2 => 'A Smile That Lasts Forever';
+
+  @override
+  String get offer_desc_2 =>
+      'A comprehensive dental care and aesthetic package, featuring 6 key services at a 20% discount.';
+
+  @override
+  String get offer_details_2 =>
+      'Get our comprehensive dental care package, designed to ensure the health and beauty of your smile. The package includes a thorough examination, teeth cleaning and polishing, gum treatment, and a full range of preventive applications (services 1 through 6). This limited-time offer also features specialized consultations and ongoing follow-up care at a discounted price.';
+
+  @override
+  String get offer_name_3 => 'Black Friday - Laser Hair Removal (3 Sessions)';
+
+  @override
+  String get offer_desc_3 =>
+      '3 sessions of Laser Hair Removal available for Small (85 SAR), Medium (95 SAR), Large (105 SAR), or X-Large (175 SAR) areas';
+
+  @override
+  String get offer_details_3 =>
+      'Package includes 3 sessions of Laser Hair Removal. Pricing tiers: Small Areas (85 SAR), Medium Areas (95 SAR), Large Areas (105 SAR), X-Large Areas (175 SAR). Terms: All sales are final. Limit 1 per customer. Sale ends 11/25/2026 or without notice based on availability.';
 }

@@ -2,8 +2,10 @@ import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lavender/core/widgets/spacers.dart';
+import 'package:lavender/features/home/cached/cached.dart';
+import 'package:lavender/features/home/presentation/widgets/search_field.dart';
 import 'package:material_ui/material_ui.dart';
-
 import '../../../app/di/injection.dart';
 import '../../../core/l10n/l10n_ext.dart';
 import '../../../core/network/api_result.dart';
@@ -12,7 +14,6 @@ import '../../../shared/session/session_cubit.dart';
 import '../../../core/storage/app_prefs.dart';
 import '../../../core/theme/app_assets.dart';
 import '../../../core/theme/app_colors.dart';
-import '../../../core/theme/app_text_styles.dart';
 import '../../../core/widgets/app_svg.dart';
 import '../../../core/widgets/failure_toast.dart';
 import '../../../core/widgets/loading_view.dart';
@@ -33,8 +34,7 @@ import 'widgets/specialities_section.dart';
 import '../../../shared/session/session_state.dart';
 import 'home_state.dart';
 
-/// Home tab (port of `HomeFragment`). The shell rebuilds this screen every time
-/// the tab is selected, so it reloads like Android's `initializeComponents`.
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -50,20 +50,17 @@ class HomeScreen extends StatelessWidget {
           sl<AppPrefs>(),
         )..load();
       },
-      // Guest -> login -> `context.go(Routes.home)` keeps this very page (same
-      // page key), so the cubit is not recreated: reload when the session's
-      // login state changes (Android reloads in `onResume`).
       child: BlocListener<SessionCubit, SessionState>(
         listenWhen: (prev, curr) => prev.isLoggedIn != curr.isLoggedIn,
         listener: (context, _) => context.read<HomeCubit>().load(),
-        child: const SystemUi(child: _HomeView()),
+        child: const SystemUi(child: HomeView()),
       ),
     );
   }
 }
 
-class _HomeView extends StatelessWidget {
-  const _HomeView();
+class HomeView extends StatelessWidget {
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -121,6 +118,9 @@ class _HomeContent extends StatelessWidget {
     final l10n = context.l10n;
     final state = context.watch<HomeCubit>().state;
     final data = state.data!;
+    final offers = data.offers;
+    final cachedOffers = Cached.getOffers(l10n);
+    final offersToShow = offers.isEmpty ? cachedOffers : offers;
     final cubit = context.read<HomeCubit>();
     final isLoggedIn = context.read<SessionCubit>().state.isLoggedIn;
     final specialities = buildHomeSpecialities(
@@ -141,8 +141,6 @@ class _HomeContent extends StatelessWidget {
             notificationsCount: data.notificationsCount,
             onNotifications: () => context.push(Routes.notifications),
           ),
-          // The 24dp gap stays even without a reservation (Android keeps the
-          // include's margin while both of its children are gone).
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 24, 16, 0),
             child: !isLoggedIn
@@ -160,11 +158,12 @@ class _HomeContent extends StatelessWidget {
                     },
                   ),
           ),
-          const _SearchBox(),
-          if (data.banners.isNotEmpty)
+          const SearchBox(),
+          // if (data.banners.isNotEmpty)
             BannersSection(
-              banners: data.banners,
-              onTap: (b) => context.push(Routes.offerDetailsOf(b.offerId)),
+              banners: Cached.banners,
+              onTap: (b) => {}
+                  // (b) => context.push(Routes.offerDetailsOf(b.offerId)),
             ),
           if (data.specialties.isNotEmpty)
             SpecialitiesSection(
@@ -209,7 +208,7 @@ class _HomeContent extends StatelessWidget {
               ),
             ),
           ],
-          if (data.offers.isNotEmpty) ...[
+          // if (data.offers.isNotEmpty) ...[
             SectionHeader(
               title: l10n.featuredMedicalOffers,
               titleIcon: const AppSvg(AppAssets.icGift, width: 19, height: 19),
@@ -225,15 +224,17 @@ class _HomeContent extends StatelessWidget {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      for (final offer in data.offers)
+                      for (final offer in offersToShow)
                         Padding(
                           padding: const EdgeInsetsDirectional.only(end: 10),
                           child: SpecialOfferCard(
                             offer: offer,
                             onTap: () {
-                              final id = offer.id;
-                              if (id != null) {
-                                context.push(Routes.offerDetailsOf(id));
+                              if(offers.isNotEmpty){
+                                final id = offer.id;
+                                if (id != null) {
+                                  context.push(Routes.offerDetailsOf(id));
+                                }
                               }
                             },
                           ),
@@ -243,48 +244,9 @@ class _HomeContent extends StatelessWidget {
                 ),
               ),
             ),
-          ],
-          const SizedBox(height: 28),
+          // ],
+          const VerticalSpacer(28),
         ],
-      ),
-    );
-  }
-}
-
-/// Read-only search box: opens the Search tab.
-class _SearchBox extends StatelessWidget {
-  const _SearchBox();
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(16, 16, 16, 0),
-      child: GestureDetector(
-        behavior: HitTestBehavior.opaque,
-        onTap: () => context.go(Routes.search),
-        child: Container(
-          height: 50,
-          padding: const EdgeInsetsDirectional.symmetric(horizontal: 16),
-          decoration: BoxDecoration(
-            color: AppColors.cFAFAFA,
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: AppColors.cE6E6E6),
-          ),
-          child: Row(
-            children: [
-              const AppSvg(AppAssets.icSearch, width: 20, height: 20),
-              const SizedBox(width: 10),
-              Expanded(
-                child: Text(
-                  context.l10n.searchBySpecialityOrDoctor,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: AppTextStyles.medium(12, AppColors.c666666),
-                ),
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }
