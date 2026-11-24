@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:material_ui/material_ui.dart';
 
+import '../../core/widgets/capsule_transition.dart';
 import '../../data/models/requests/booking_draft.dart';
 import '../../data/models/responses/offer.dart';
 import '../../data/models/responses/speciality.dart';
@@ -63,42 +64,44 @@ GoRouter createRouter() {
         builder: (context, state) => const OnboardingScreen(),
       ),
 
-      // Auth flow: slide in from the end (Android enter_from_right).
+      // Auth flow and profile edit pages.
       GoRoute(
         path: Routes.authStart,
-        pageBuilder: (context, state) => _slide(state, const StartNowScreen()),
+        pageBuilder: (context, state) =>
+            _capsule(state, const StartNowScreen()),
       ),
       GoRoute(
         path: Routes.authLogin,
-        pageBuilder: (context, state) => _slide(state, const LoginScreen()),
+        pageBuilder: (context, state) => _capsule(state, const LoginScreen()),
       ),
       GoRoute(
         path: Routes.authRegister,
-        pageBuilder: (context, state) => _slide(state, const RegisterScreen()),
+        pageBuilder: (context, state) =>
+            _capsule(state, const RegisterScreen()),
       ),
       GoRoute(
         path: Routes.authForgetPassword,
         pageBuilder: (context, state) =>
-            _slide(state, const ForgetPasswordScreen()),
+            _capsule(state, const ForgetPasswordScreen()),
       ),
       GoRoute(
         path: Routes.authOtp,
         pageBuilder: (context, state) {
           final args = state.extra! as OtpArgs;
-          return _slide(state, OtpScreen(args: args));
+          return _capsule(state, OtpScreen(args: args));
         },
       ),
       GoRoute(
         path: Routes.authNewPassword,
         pageBuilder: (context, state) {
           final args = state.extra! as NewPasswordArgs;
-          return _slide(state, NewPasswordScreen(args: args));
+          return _capsule(state, NewPasswordScreen(args: args));
         },
       ),
       GoRoute(
         path: Routes.authSuccess,
         pageBuilder: (context, state) =>
-            _slide(state, const AuthSuccessScreen()),
+            _capsule(state, const AuthSuccessScreen()),
       ),
 
       // The five tabs share the bottom-navigation shell.
@@ -220,27 +223,27 @@ GoRouter createRouter() {
       GoRoute(
         path: Routes.editProfile,
         pageBuilder: (context, state) =>
-            _slide(state, const EditProfileScreen()),
+            _capsule(state, const EditProfileScreen()),
       ),
       GoRoute(
         path: Routes.otpChangePhone,
         pageBuilder: (context, state) {
           final args = state.extra! as OtpArgs;
-          return _slide(state, OtpChangePhoneScreen(args: args));
+          return _capsule(state, OtpChangePhoneScreen(args: args));
         },
       ),
       GoRoute(
         path: Routes.changePassword,
         pageBuilder: (context, state) {
           final args = state.extra! as ChangePasswordArgs;
-          return _slide(state, ChangePasswordScreen(args: args));
+          return _capsule(state, ChangePasswordScreen(args: args));
         },
       ),
       GoRoute(
         path: Routes.forgetPasswordForEdit,
         pageBuilder: (context, state) {
           final args = state.extra! as NewPasswordArgs;
-          return _slide(state, ForgetPasswordForEditScreen(args: args));
+          return _capsule(state, ForgetPasswordForEditScreen(args: args));
         },
       ),
       GoRoute(
@@ -283,24 +286,14 @@ GoRouter createRouter() {
 
 int _id(GoRouterState state) => int.parse(state.pathParameters['id']!);
 
-/// Android `enter_from_right` / `exit_to_left`.
-CustomTransitionPage<void> _slide(GoRouterState state, Widget child) {
+/// Same capsule-opening transition the theme applies to `builder:` routes.
+CustomTransitionPage<void> _capsule(GoRouterState state, Widget child) {
   return CustomTransitionPage<void>(
     key: state.pageKey,
     child: child,
-    transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      return SlideTransition(
-        position: Tween(
-          begin: const Offset(1, 0),
-          end: Offset.zero,
-        ).animate(CurvedAnimation(parent: animation, curve: Curves.easeOut)),
-        child: SlideTransition(
-          position: Tween(begin: Offset.zero, end: const Offset(-1, 0)).animate(
-            CurvedAnimation(parent: secondaryAnimation, curve: Curves.easeOut),
-          ),
-          child: child,
-        ),
-      );
-    },
+    transitionDuration: CapsuleTransition.forwardDuration,
+    reverseTransitionDuration: CapsuleTransition.reverseDuration,
+    transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+        CapsuleTransition(animation: animation, child: child),
   );
 }

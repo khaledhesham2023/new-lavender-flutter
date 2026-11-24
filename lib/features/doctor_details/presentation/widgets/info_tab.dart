@@ -7,6 +7,7 @@ import '../../../../core/l10n/l10n_ext.dart';
 import '../../../../core/theme/app_colors.dart';
 import '../../../../core/theme/app_text_styles.dart';
 import '../../../../core/widgets/app_network_image.dart';
+import '../../../../core/widgets/capsule_transition.dart';
 import '../../../../core/widgets/loading_view.dart';
 import '../../../../core/widgets/spacers.dart';
 import '../../../../data/models/responses/doctor.dart';
@@ -119,8 +120,10 @@ Future<void> showCertificateViewer(
         certificates: certificates,
         startIndex: startIndex,
       ),
+      transitionDuration: CapsuleTransition.forwardDuration,
+      reverseTransitionDuration: CapsuleTransition.reverseDuration,
       transitionsBuilder: (_, animation, _, child) =>
-          FadeTransition(opacity: animation, child: child),
+          CapsuleTransition(animation: animation, child: child),
     ),
   );
 }
