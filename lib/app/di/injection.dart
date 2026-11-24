@@ -39,9 +39,7 @@ import '../../features/purchase_offer/domain/services/payment_service.dart';
 
 final GetIt sl = GetIt.instance;
 
-/// Registers app-wide singletons. Call once from `main()` before `runApp`.
-/// Screen Cubits are not registered here: they are created by their screens
-/// with `sl<Repository>()`. Only [SessionCubit] lives app-wide.
+
 Future<void> configureDependencies() async {
   final sharedPrefs = await SharedPreferences.getInstance();
   final prefs = AppPrefs(sharedPrefs);

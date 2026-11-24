@@ -1,5 +1,3 @@
-/// Result of every API call (PLAN §4.2). Defined in T04 so shared widgets can use
-/// it; the ApiClient (T07) produces it.
 sealed class ApiResult<T> {
   const ApiResult();
 }

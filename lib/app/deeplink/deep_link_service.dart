@@ -9,10 +9,7 @@ import '../push/push_service.dart';
 import '../../shared/session/session_cubit.dart';
 import 'doctor_link.dart';
 
-/// App Links for doctor pages (`/doctor/<id>`), port of
-/// `MainActivity.handelAppLinks`. Reuses the push service's routing so a link
-/// behaves like a notification tap: guests are ignored, a link received while
-/// the splash shows is kept for it, otherwise Home first, then the doctor.
+// App Links for doctor pages
 class DeepLinkService {
   DeepLinkService(this._push, this._session, {AppLinks? appLinks})
     : _appLinks = appLinks ?? AppLinks();

@@ -1,5 +1,4 @@
-// Safe JSON readers. The backend (Laravel) is inconsistent: numbers arrive as
-// strings, bools as 0/1, fields are missing or null. Never cast JSON directly.
+// extension function for casting backend returned values
 
 int? asInt(dynamic v) {
   if (v is int) return v;

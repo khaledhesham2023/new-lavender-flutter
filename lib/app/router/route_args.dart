@@ -64,7 +64,6 @@ class BookWithOfferArgs extends Equatable {
   List<Object?> get props => [draft, offer];
 }
 
-/// Opens the Filter screen (T21) from Search details; it pops a `SearchFilter`.
 class FilterArgs extends Equatable {
   final int specialtyId;
   final SearchFilter current;

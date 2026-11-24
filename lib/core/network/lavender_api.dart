@@ -5,12 +5,6 @@ import 'package:retrofit/retrofit.dart';
 
 part 'lavender_api.g.dart';
 
-/// Every endpoint of the backend (port of the Kotlin Retrofit interfaces).
-/// Paths are relative: the base URL ends with `/api/`, so no leading slash.
-///
-/// Methods return the raw [HttpResponse]; `ApiClient.call` turns it into an
-/// `ApiResult` (the client accepts every status code, so error bodies arrive
-/// here too). Request headers are added by the `ApiClient` interceptor.
 @RestApi()
 abstract class LavenderApi {
   factory LavenderApi(Dio dio, {String? baseUrl}) = _LavenderApi;
